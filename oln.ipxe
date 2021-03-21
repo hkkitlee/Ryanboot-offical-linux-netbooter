@@ -1,6 +1,6 @@
 #!ipxe
 imgtrust --allow 
-#console --picture http://xxx/yyy.png --x 800 --y 600
+console --picture https://i.dlpng.com/static/png/6860840_preview.png --x 800 --y 600
 cpair --foreground 3 --background 0 2
 cpair --foreground 5 --background 9 3
 cpair --foreground 6 --background 4 1
