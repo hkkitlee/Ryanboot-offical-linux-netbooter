@@ -1,0 +1,599 @@
+#!ipxe
+imgtrust --allow 
+#console --picture http://xxx/yyy.png --x 800 --y 600
+cpair --foreground 3 --background 0 2
+cpair --foreground 5 --background 9 3
+cpair --foreground 6 --background 4 1
+
+
+goto start
+
+:start
+menu
+
+item --gap  -- IP: ${ip}/${netmask} Mac Address:${mac}
+item --gap  -- DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
+item --gap  -- next-server(proxy):${next-server}/${proxydhcp/next-server}
+item --gap  -- Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
+item --gap  -- https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
+item --gap  -- Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
+item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=page%3D1
+item --gap  
+
+item --gap                              Official Linux Installer
+item --key a    ubuntu			(A) Install Ubuntu amd64/i386 @
+item --key b    fedora64                (B) Install Fedora amd64 @
+item --key c    debian			(C) Install Debian amd64/i386 @
+item --key d    parrot			(D) Install Parrot-Linux amd64/i386
+item --key e    kali			(E) Install Kali-Linux amd64/i386 
+item --key f	opensuse		(F) Install openSUSE amd64/i386
+item --key g	ipfire			(G) Install IPFire amd64/i586
+item --gap                              Official Linux Live
+item --key 1    arch			(1) Arch Linux amd64 Live with Option Installer Script
+item --key 2	tinycore		(2) Tinycore amd64/i386
+item --key 3	alpine			(3) Alpine amd64/i386
+item --key 4	slitaz			(4) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item --key 5	slax			(5) Slax amd64/i386
+item --key 6	slackware		(6) Slackware amd64/i386 with Installer
+item --key 7	rancheros		(7) Rancher OS amd64/i386
+item --key 8	x-wrt			(8) X-wrt amd64/i386
+
+item --gap -- Auto select amd64/i386. @ Version Selection. tui/gtk Text/Graphical User Interface
+item --gap
+item            xyz                     Chainload to netboot.xyz
+item --gap				
+
+
+choose --default ubuntu target && cpair 0 && goto ${target}
+
+
+:failed
+goto start
+
+
+
+
+#################################################
+:ubuntu
+
+echo https://launchpad.net/ubuntu/+archivemirrors
+echo Sites:
+echo http://archive.ubuntu.com
+echo http://mirrors.layeronline.com
+echo http://mirrors.aliyun.com
+echo http://mirrors.tuna.tsinghua.edu.cn
+echo
+
+set ds http://mirrors.tuna.tsinghua.edu.cn
+echo -n Ubuntu site: ${}
+read ds
+echo
+
+set version focal
+echo -n Ubuntu installer Version (bionic, focal): ${}
+read version
+
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${version} focal && set link legacy- || set link /
+cpuid --ext 29 && set arch amd64 || set arch i386
+
+
+kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
+
+boot || goto failed
+
+
+#################################################
+:fedora64
+
+echo https://fedoranews.org/fedora/mirrors.html
+echo Sites:
+echo http://ftp.cuhk.edu.hk/pub/linux
+echo http://mirrors.tuna.tsinghua.edu.cn
+echo http://ftp-srv2.kddilabs.jp/Linux/packages
+echo http://ftp.riken.jp/Linux
+echo
+
+set ds http://mirrors.tuna.tsinghua.edu.cn
+echo -n Fedora site: ${}
+read ds
+echo
+
+set version 33
+echo -n Fedora installer Version (32-33): ${}
+read version
+echo
+
+set kp ro ip=dhcp inst.gpt
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+
+initrd ${ds}/fedora/releases/${version}/Everything/x86_64/os/images/pxeboot/initrd.img
+kernel ${ds}/fedora/releases/${version}/Everything/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2=${ds}/fedora/releases/${version}/Everything/x86_64/os ${kp}
+boot || goto failed
+
+
+#################################################
+:debian
+
+echo https://www.debian.org/mirror/list
+echo Sites:
+echo http://ftp.hk.debian.org
+echo http://ftp2.cn.debian.org
+echo http://ftp.cn.debian.org
+echo http://ftp.kr.debian.org
+echo http://ftp.ca.debian.org
+echo https://mirrors.tuna.tsinghua.edu.cn
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn
+echo -n Debian site: ${}
+read ds
+echo
+
+set version buster
+echo -n Debian installer Version (bullseye, buster, jessie): ${}
+read version
+echo
+
+set interface gtk
+echo -n Debian installer interface (tui, gtk): ${}
+read interface
+echo
+
+
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${interface} gtk && set link gtk || set link /
+cpuid --ext 29 && set arch amd64 || set arch i386
+
+
+initrd ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/initrd.gz
+kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+cpair --foreground 0 --background 9 0
+console
+
+boot || goto failed
+
+
+#################################################
+:parrot
+
+echo https://docs.parrotlinux.org/mirror-list/
+echo Sites:
+echo http://dk.archive.ubuntu.com
+echo http://mirrors.mit.edu
+echo http://ftp.th.debian.org
+echo http://mirror.kku.ac.th
+echo http://mirrors.ustc.edu.cn/
+echo https://mirrors.sjtug.sjtu.edu.cn
+echo https://mirrors.tuna.tsinghua.edu.cn
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn
+echo -n Parrot site: ${}
+read ds
+echo
+
+set interface gtk
+echo -n Parrot installer interface (tui, gtk): ${}
+read interface
+echo
+
+set kp auto
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${interface} gtk && set link gtk || set link /
+cpuid --ext 29 && set arch amd64 || set arch i386
+
+
+kernel ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/initrd.gz
+
+boot || goto parrot
+
+
+#################################################
+:kali
+
+echo http://http.kali.org/README.mirrorlist
+echo Sites:
+echo https://http.kali.org
+echo http://kali.download
+echo http://ftp.jaist.ac.jp/pub/Linux
+echo http://mirror.serverius.net
+echo http://mirror1.ku.ac.th
+echo http://kali.cs.nctu.edu.tw
+echo https://mirrors.tuna.tsinghua.edu.cn
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn
+echo -n Kali site: ${}
+read ds
+echo
+
+set interface gtk
+echo -n Kali installer interface (tui, gtk): ${}
+read interface
+echo
+
+set kp auto
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${interface} gtk && set link gtk || set link /
+cpuid --ext 29 && set arch amd64 || set arch i386
+
+
+kernel ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/initrd.gz
+boot || goto failed                                                                                       
+
+
+#################################################
+:arch
+
+echo https://archlinux.org/mirrorlist/
+echo Sites:
+echo http://mirrors.evowise.com
+echo http://hkg.mirror.rackspace.com
+echo http://mirrors.cat.net
+echo http://mirror.cedille.club
+echo https://mirrors.tuna.tsinghua.edu.cn
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn
+echo -n Arch site: ${}
+read ds
+echo
+
+echo Option Installation Script:
+echo http://hkkitlee.ddns.net:8999/arch-installer.sh 
+set is http://hkkitlee.ddns.net:8999/arch-installer.sh
+echo -n Select installation script: ${}
+read is
+echo
+
+set kp ip=dhcp archiso_http_srv=${ds}/archlinux/iso/latest/
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+kernel ${ds}/archlinux/iso/latest/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} script=${is}
+initrd ${ds}/archlinux/iso/latest/arch/boot/x86_64/initramfs-linux.img
+initrd ${ds}/archlinux/iso/latest/arch/boot/amd-ucode.img
+initrd ${ds}/archlinux/iso/latest/arch/boot/intel-ucode.img
+boot || goto failed
+
+
+#################################################
+:tinycore
+
+echo https://www.linuxsecrets.com/tinycorelinux-wiki/wiki:mirrors.html
+echo Sites:
+echo http://tinycorelinux.net
+echo http://mirrors.163.com/tinycorelinux
+echo http://mirror.cpsc.ucalgary.ca/mirror/tinycorelinux
+echo https://mirrors.tuna.tsinghua.edu.cn/tinycorelinux
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn/tinycorelinux
+echo -n Tinycore site: ${}
+read ds
+echo
+
+set version 12
+echo -n 2-12  version: ${}
+read version
+echo
+
+set kp loglevel=3 vga=791 base norestore 
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+cpuid --ext 29 && set arch x86_64 || set arch x86
+cpuid --ext 29 && set file1 64 ||
+
+
+kernel ${ds}/${version}.x/${arch}/release/distribution_files/vmlinuz${file1} initrd=modules${file1}.gz initrd=rootfs${file1}.gz ${kp} 
+initrd ${ds}/${version}.x/${arch}/release/distribution_files/modules${file1}.gz
+initrd ${ds}/${version}.x/${arch}/release/distribution_files/rootfs${file1}.gz
+
+
+boot || goto failed
+
+#################################################
+:alpine
+echo https://mirrors.alpinelinux.org/
+echo Sites:
+echo http://mirrors.tuna.tsinghua.edu.cn/alpine/
+echo http://mirrors.ustc.edu.cn/alpine/
+echo http://mirror.xtom.com.hk/alpine/
+echo http://mirror.csclub.uwaterloo.ca/alpine/
+echo
+
+set ds http://mirrors.tuna.tsinghua.edu.cn/alpine/
+echo -n Alpine site: ${}                                                      
+read ds                                                                         
+echo
+
+set version 3.13                                                                  
+echo -n Version: 3.0-3.13  version: ${}                                                      
+read version                                                                    
+echo
+
+clear start_sshd
+echo -n Enter url to ssh key:${}
+read ssh_key
+isset ${ssh_key} && set start_sshd yes || set start_sshd no
+iseq ${start_sshd} yes && set ssh_key ssh_key=${ssh_key} || clear ssh_key
+
+set flavor lts
+echo -n Options: lts, virt: ${}                                                          
+read flavor                                                                     
+echo
+
+cpuid --ext 29 && set arch x86_64 || set arch x86
+iseq ${arch} x86_64 && set console ttyS1,115200n8 ||
+
+set kp modules=loop,squashfs quiet nomodeset alpine_repo=${ds}v${version}/main modloop=${ds}/${version}/releases/${arch}/netboot/modloop-${flavor} ${ssh_key} ${console}
+echo -n Kernel Parameter, Bootcode: ${}                                         
+read kp                                                                         
+echo 
+
+
+
+kernel ${ds}/v${version}/releases/${arch}/netboot/vmlinuz-${flavor} initrd=initramfs-${flavor} ${kp}
+initrd ${ds}/v${version}/releases/${arch}/netboot/initramfs-${flavor}
+
+boot || goto failed
+#################################################
+:slitaz
+echo Support by teasiu http://wuyou.net/home.php?mod=space&uid=378921
+echo http://wuyou.net/forum.php?mod=viewthread&tid=190810&extra=&page=66
+echo
+echo Sites:
+echo http://ecoo.top:8083/dl/slitaz/
+echo http://www.slitaz.cn:8083/dl/slitaz/
+
+set ds http://www.slitaz.cn:8083/dl/slitaz/
+echo -n SliTaz site: ${}                                                        
+read ds                                                                         
+echo
+
+set bit 64                                                                           
+echo -n Kernel [32 / 64]: ${}                                                                           
+read bit                                                                                                           
+echo
+iseq ${bit} 64 && set path 64 || set path 32
+iseq ${bit} 64 && set kernel bzImage64 || set kernel bzImage
+
+set kp rw root=/dev/null lang=zh_CN kmap=us autologin modprobe=nvidia nomodeset laptop
+echo -n Kernel Parameter, Bootcode: ${}                                                                           
+read kp                                                                                                           
+echo 
+
+kernel ${ds}/iso/rolling/boot${path}/${kernel} initrd=rootfs.gz ${kp}
+initrd ${ds}/iso/rolling/boot${path}/rootfs.gz
+boot || goto failed
+#################################################
+:opensuse
+echo https://mirrors.opensuse.org/
+echo
+echo Sites:
+echo http://mirrors.tuna.tsinghua.edu.cn/opensuse/
+echo https://mirror.bjtu.edu.cn/opensuse/
+echo http://mirrors.ustc.edu.cn/opensuse/
+echo http://download.opensuse.org/
+echo
+
+set ds http://mirrors.tuna.tsinghua.edu.cn/opensuse/
+echo -n openSUSE site: ${}
+read ds
+echo
+
+cpuid --ext 29 && set bit x86_64 || set bit i386
+
+set kp root=/dev/ram0 load_ramdisk=1 splash=silent vga=0x314 showopts install=${ds}/tumbleweed/repo/oss/
+echo -n Kernel Parameter, Bootcode: ${}                                                                           
+read kp                                                                                                           
+echo
+
+kernel ${ds}/tumbleweed/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
+initrd ${ds}/tumbleweed/repo/oss/boot/${bit}/loader/initrd
+
+boot || goto failed
+#################################################
+:slax
+
+echo http://ftp.sh.cvut.cz
+echo http://ftp.linux.cz/pub/linux
+set ds http://ftp.sh.cvut.cz
+echo -n Slax site: ${}
+read ds
+echo
+
+echo Slax Server is slow 
+echo
+set mainv 9
+echo http://ftp.cvut.cz/slax/Slax-${mainv}.x/
+echo -n Main Version : ${}                                                                                   
+read mainv                                                                                                       
+set subv 11.0                                                                                                       
+echo -n Sub Version : ${}                                                                                        
+read subv                                                                                                        
+echo
+
+set kp vga=normal load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 consoleblank=0 nocd nohd
+echo -n Kernel Parameter, Bootcode: ${}                                                                           
+read kp                                                                                                           
+echo 
+
+cpuid --ext 29 && set bit 64 || set bit 32
+kernel ${ds}/slax/Slax-${mainv}.x/ipxe/${mainv}.${subv}/${bit}bit/vmlinuz initrd=initrfs.img slax.flags=toram ${kp} from=${ds}/slax/Slax-${mainv}.x/slax-${bit}bit-${mainv}.${subv}.iso
+initrd ${ds}/slax/Slax-${mainv}.x/ipxe/${mainv}.${subv}/${bit}bit/initrfs.img 
+boot || goto failed
+#################################################
+:ipfire
+
+echo https://mirrors.ipfire.org/
+echo
+echo Sites:
+echo https://downloads.ipfire.org/
+echo http://ftp.fau.de/ipfire/
+echo http://mirror.csclub.uwaterloo.ca/ipfire/
+echo http://ftp.yz.yamagata-u.ac.jp/pub/network/security/ipfire/
+echo http://mirror.aarnet.edu.au/pub/ipfire/
+echo http://hammurabi.acc.umu.se/mirror/ipfire.org/
+echo http://cdimage.debian.org/mirror/ipfire.org/
+echo
+
+set ds http://ftp.yz.yamagata-u.ac.jp/pub/network/security/ipfire/
+echo -n IPFire site: ${}
+read ds
+echo
+
+set mainv ipfire-2.x
+echo -n Main Version: ${}
+read mainv
+echo
+
+set subv 2.25-core153
+echo -n Sub Version: ${}
+read subv
+echo
+
+cpuid --ext 29 && set bit x86_84 || set bit i586
+
+set kp vga=791
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}releases/${mainv}/${subv}/images/${bit}/vmlinuz initrd=instroot ${kp}
+initrd ${ds}/releases/${mainv}/${subv}/images/${bit}/instroot
+boot || goto failed
+#################################################
+:slackware
+
+echo https://mirrors.slackware.com/mirrorlist/
+echo
+echo Sites:
+echo http://ftp.linux.cz/pub/linux/slackware/
+echo http://ftp.nara.wide.ad.jp/pub/Linux/slackware/
+echo https://mirror.csclub.uwaterloo.ca/slackware/
+echo https://mirror.its.dal.ca/slackware/
+echo https://hkg.mirror.rackspace.com/slackware/
+echo https://mirror-hk.koddos.net/slackware/
+echo https://mirrors.bfsu.edu.cn/slackware/
+echo https://mirrors.tuna.tsinghua.edu.cn/slackware/
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn/slackware/
+echo -n Slackware site: ${}
+read ds
+echo
+
+set version current
+echo -n 13.0 - current Version: ${}
+read version
+echo
+
+set huge huge.s
+echo Symmetrical Multi-Processing, No need to set on x86-64
+echo Only need on very old Generic Kernel (i386)
+echo -n hugesmp.s/huge.s: ${}
+read huge
+echo
+
+cpuid --ext 29 && set bit slackware64 || set bit slackware
+
+set kp load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 SLACK_KERNEL=${huge}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+cpuid --ext 29 && set huge huge.s || echo -n Generic Kernels keeps ${huge}
+
+kernel ${ds}/${bit}-${version}/kernels/${huge}/bzImage initrd=initrd.img ${kp}
+initrd ${ds}/${bit}-${version}/isolinux/initrd.img
+boot || goto failed
+#################################################
+:rancheros
+echo https://www.vultr.com/docs/install-rancher-os-via-ipxe
+
+set ds http://releases.rancher.com/os/latest
+
+set passwd temppasswd
+echo -n Temporary password: ${}
+read passwd
+echo
+
+set kp rancher.state.dev=LABEL=RANCHER_STATE rancher.password=${passwd} rancher.cloud_init.datasources=[url:http://example.com/cloud-config] rancher.autologin=tty1
+echo -n Kernel Parameter, Bootcode: ${}                                                                           
+read kp                                                                                                           
+echo  
+
+kernel ${ds}/vmlinuz initrd=initrd ${kp}
+initrd ${ds}/initrd
+boot || goto failed
+#################################################
+:x-wrt
+
+echo Source: https://downloads.x-wrt.com/rom/
+echo Howto: https://blog.x-wrt.com/docs/install-on-vps2/
+echo
+
+set kname x-wrt-9.0-b202103132124-x86-64-generic-initramfs-kernel.bin
+echo -n Kernel name: ${}
+read kname
+echo
+
+kernel https://downloads.x-wrt.com/rom/${kname}
+boot || goto failed
+#################################################
+:openwrt
+echo 64 is for modern PC hardware (anything from around 2007 onward), it is built for 64bit-capable computers and has support for modern CPU features. Choose this unless you have good reasons not to.
+echo
+echo Generic is for 32-bit-only hardware (either old hardware or some Atom processors), should be i686 Linux architecture, will work on Pentium 4 and later. Use this only if your hardware can't run the 64-bit version.
+echo
+echo Legacy is for very old PC hardware, Pentium MMX, what is called i586 in Linux architecture support. It will miss a lot of features you want/need on modern hardware like multi-core support and support for more than 4GB of RAM, but will actually run on ancient hardware while other versions will not.
+
+set archtype 64
+echo -n Kernel type (64, generic, legacy): ${}
+read archtype
+echo
+
+set version 19.07.7
+echo -n Version: ${}
+read version
+echo
+
+set kp failsafe=true console=tty0 noinitrd
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-vmlinuz initrd=openwrt-${version}-x86-${archtype}-generic-rootfs.tar.gz ${kp}
+initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-generic-rootfs.tar.gz
+boot || goto failed
+#################################################
+:xyz
+chain --autofree http://boot.netboot.xyz
+#################################################
+:shell
+shell
