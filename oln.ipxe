@@ -39,6 +39,7 @@ item --key 5	slax		(5) Slax amd64/i386
 item --key 6	slackware	(6) Slackware amd64/i386 with Installer
 item --key 7	rancheros	(7) Rancher OS amd64/i386
 item --key 8	x-wrt		(8) X-wrt amd64/i386
+item --key 9	openwrt		(9) Openwrt amd64/i386
 
 item --gap -- Auto select amd64/i386. @ Version Selection. tui/gtk Text/Graphical User Interface
 item --gap
