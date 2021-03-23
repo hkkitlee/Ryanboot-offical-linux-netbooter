@@ -39,7 +39,6 @@ item --key 5	slax		(5) Slax amd64/i386
 item --key 6	slackware	(6) Slackware amd64/i386 with Installer
 item --key 7	rancheros	(7) Rancher OS amd64/i386
 item --key 8	x-wrt		(8) X-wrt amd64/i386
-item --key 9	openwrt		(9) Openwrt amd64/i386
 
 item --gap -- Auto select amd64/i386. @ Version Selection. tui/gtk Text/Graphical User Interface
 item --gap
@@ -567,32 +566,6 @@ read kname
 echo
 
 kernel https://downloads.x-wrt.com/rom/${kname}
-boot || goto failed
-#################################################
-:openwrt
-echo 64 is for modern PC hardware (anything from around 2007 onward), it is built for 64bit-capable computers and has support for modern CPU features. Choose this unless you have good reasons not to.
-echo
-echo Generic is for 32-bit-only hardware (either old hardware or some Atom processors), should be i686 Linux architecture, will work on Pentium 4 and later. Use this only if your hardware can't run the 64-bit version.
-echo
-echo Legacy is for very old PC hardware, Pentium MMX, what is called i586 in Linux architecture support. It will miss a lot of features you want/need on modern hardware like multi-core support and support for more than 4GB of RAM, but will actually run on ancient hardware while other versions will not.
-
-set archtype 64
-echo -n Kernel type (64, generic, legacy): ${}
-read archtype
-echo
-
-set version 19.07.7
-echo -n Version: ${}
-read version
-echo
-
-set kp failsafe=true console=tty0 noinitrd
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-vmlinuz initrd=openwrt-${version}-x86-${archtype}-rootfs-ext4.img.gz ${kp}
-initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-rootfs-ext4.img.gz
 boot || goto failed
 #################################################
 :devuan
