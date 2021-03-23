@@ -40,6 +40,7 @@ item --key 5	slax		(5) Slax amd64/i386
 item --key 6	slackware	(6) Slackware amd64/i386 with Installer
 item --key 7	rancheros	(7) Rancher OS amd64/i386
 item --key 8	x-wrt		(8) X-wrt amd64/i386
+item --key 9	containerlinux		(9) Container Linux by flatcar amd64
 
 item --gap -- Auto select amd64/i386. Version Selection. tui/gtk Text/Graphical User Interface
 item --gap
@@ -666,6 +667,19 @@ cpuid --ext 29 && set bit x86_64 ||
 
 kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}${version}/BaseOS/${bit}/os
 initrd ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
+boot || goto failed
+#################################################
+:containerlinux
+
+set channel stable
+echo -n Channel(stable, beta, alpha, edge): ${}
+read channel
+echo
+
+set ds http://${channel}.release.flatcar-linux.net/amd64-usr/current
+kernel ${ds}/flatcar_production_pxe.vmlinuz initrd=flatcar_production_pxe_image.cpio.gz
+initrd ${ds}/flatcar_production_pxe_image.cpio.gz
+
 boot || goto failed
 #################################################
 :xyz
