@@ -30,6 +30,7 @@ item --key f	opensuse	(F) Install openSUSE amd64/i386
 item --key g	ipfire		(G) Install IPFire amd64/i586
 item --key h	mageia		(H) Install Mageia amd64/i586
 item --key i	devuan		(I) Install Devuan amd64/i386
+item --key j	alma		  (I) Install AlmaLinux amd64
 item --gap			Official Linux Live
 item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore	(2) Tinycore amd64/i386
@@ -634,6 +635,31 @@ echo
 kernel ${ds}distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
 initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
 boot || goto failed
+#################################################
+:alma
+echo https://mirrors.mageia.org/
+echo
+echo Sites:
+echo https://repo.almalinux.org/almalinux/
+echo http://mirror.epn.edu.ec/almalinux/ 
+echo http://mirror.fem-net.de/almalinux/
+echo http://mirror.hahosting.com/almalinux/
+echo
+
+set ds https://repo.almalinux.org/almalinux/
+echo -n AlmaLinux site: ${}
+read ds
+echo
+
+set version 8
+echo -n Version: ${}
+read version
+echo
+
+cpuid --ext 29 && set bit x86_64 ||
+
+https://repo.almalinux.org/almalinux/${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img
+https://repo.almalinux.org/almalinux/${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
