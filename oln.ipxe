@@ -32,7 +32,7 @@ item --key h    mageia      (H) Install Mageia amd64/i586
 item --key i    devuan      (I) Install Devuan amd64/i586
 item --gap                              Official Linux Live
 item --key 1    arch        (1) Arch Linux amd64 Live with Option Installer Script
-item --key 2	  tinycore		(2) Tinycore amd64/i386
+item --key 2    tinycore    (2) Tinycore amd64/i386
 item --key 3	  alpine			(3) Alpine amd64/i386
 item --key 4	  slitaz			(4) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item --key 5	  slax	  		(5) Slax amd64/i386
