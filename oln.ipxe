@@ -643,8 +643,8 @@ initrd http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd.rd
 boot || goto failed 
 #################################################
 :mirbsd
-kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=bsd4me.rd
 initrd http://www.mirbsd.org/MirOS/current/bsd4me.rd
+kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=bsd4me.rd
 boot || goto failed 
 #################################################
 :xyz
