@@ -594,19 +594,53 @@ initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}
 boot || goto failed
 #################################################
 
-https://www.devuan.org/get-devuan
+echo https://www.devuan.org/get-devuan
+echo
+echo Sites:
+echo
+echo
+echo
 
-https://pkgmaster.devuan.org/devuan/dists/beowulf/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
-https://pkgmaster.devuan.org/devuan/dists/beowulf/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
+set ds https://pkgmaster.devuan.org/devuan
+echo -n Devuan site: ${}
+read ds
+echo
+
+set releases beowulf
+echo -n Releases (jessie,beowulf): ${}
+read releases
+echo
+
+set version current
+echo -n Version: ${}
+read version
+echo
+
+set interface gtk
+echo -n Parrot installer interface (tui, gtk): ${}
+read interface
+echo
+
+iseq ${interface} gtk && set link gtk/ || set link /
+
+cpuid --ext 29 && set bit amd64 || set bit i386
+
+set kp vga=788
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+kernel h${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/linux
+initrd ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/initrd.gz
+boot || goto failed
 #################################################
 :mageia
 
 echo https://mirrors.mageia.org/
 echo
 echo Sites:
-echo http://ftp.sjtu.edu.cn/mageia/
+echo https://free.nchc.org.tw/mageia
 echo https://mirrors.tuna.tsinghua.edu.cn/mageia/
-echo https://mirror.softiternity.com/Mageia/
+echo https://mirrors.ustc.edu.cn/mageia
 
 set ds https://mirrors.tuna.tsinghua.edu.cn/mageia/
 echo -n Mageia site: ${}
@@ -633,6 +667,7 @@ echo
 
 kernel ${ds}/distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
 initrd ${ds}/distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
+boot || goto failed
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
