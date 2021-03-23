@@ -28,6 +28,7 @@ item --key d    parrot			(D) Install Parrot-Linux amd64/i386
 item --key e    kali			(E) Install Kali-Linux amd64/i386 
 item --key f	opensuse		(F) Install openSUSE amd64/i386
 item --key g	ipfire			(G) Install IPFire amd64/i586
+item --key h	mageia			(H) Install Mageia amd64/i586
 item --gap                              Official Linux Live
 item --key 1    arch			(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore		(2) Tinycore amd64/i386
@@ -597,11 +598,42 @@ https://www.devuan.org/get-devuan
 
 https://pkgmaster.devuan.org/devuan/dists/beowulf/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
 https://pkgmaster.devuan.org/devuan/dists/beowulf/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
-##
+#################################################
+:mageia
 
-https://ftp.linux.org.tr/mageia/distrib/8/x86_64/isolinux/x86_64/vmlinuz
-https://ftp.linux.org.tr/mageia/distrib/8/x86_64/isolinux/x86_64/all.rdz
-##
+echo https://mirrors.mageia.org/
+echo
+echo Sites:
+echo http://ftp.sjtu.edu.cn/mageia/
+echo https://mirrors.tuna.tsinghua.edu.cn/mageia/
+echo https://mirror.softiternity.com/Mageia/
+
+set ds https://mirrors.tuna.tsinghua.edu.cn/mageia/
+echo -n Mageia site: ${}
+read ds
+echo
+
+set version 8
+echo -n 6 - 8 Version: ${}
+read version
+echo
+
+set ramdisk all.rdz
+echo -n Driver: all.rdz / all-nonfree.rdz: ${}
+read ramdisk
+echo
+
+cpuid --ext 29 && set bit x86_64 || set bit i586
+cpuid --ext 29 && set path x86_64 || set path i386
+
+set kp vga=788
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}/distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
+initrd ${ds}/distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
+#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
