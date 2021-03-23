@@ -645,7 +645,7 @@ boot || goto failed
 :mirbsd
 #kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=miniroot68.img
 #module http://www.mirbsd.org/MirOS/current/bsd4me.rd
-sanboot http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/miniroot68.img
+sanboot http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/floppy68.img
 boot || goto failed 
 #################################################
 :xyz
