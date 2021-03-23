@@ -29,7 +29,7 @@ item --key e	kali		(E) Install Kali-Linux amd64/i386
 item --key f	opensuse	(F) Install openSUSE amd64/i386
 item --key g	ipfire		(G) Install IPFire amd64/i586
 item --key h	mageia		(H) Install Mageia amd64/i586
-item --key i	devuan		(I) Install Devuan amd64/i586
+item --key i	devuan		(I) Install Devuan amd64/i386
 item --gap			Official Linux Live
 item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore	(2) Tinycore amd64/i386
@@ -652,7 +652,7 @@ echo
 cpuid --ext 29 && set bit x86_64 || set bit i586
 cpuid --ext 29 && set path x86_64 || set path i386
 
-set kp vga=788 automatic=method:http,network:dhcp
+set kp vga=788
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
