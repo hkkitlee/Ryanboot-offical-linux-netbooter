@@ -640,10 +640,12 @@ boot || goto failed
 :openbsd
 kernel http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd initrd=bsd.rd
 initrd http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd.rd
+boot || goto failed 
 #################################################
 :mirbsd
 kernel http://www.mirbsd.org/MirOS/current/bsd4me.com
 initrd http://www.mirbsd.org/MirOS/current/bsd4me.rd
+boot || goto failed 
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
