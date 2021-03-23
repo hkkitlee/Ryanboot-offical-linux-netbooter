@@ -637,16 +637,17 @@ initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
 boot || goto failed
 #################################################
 :alma
-echo https://mirrors.mageia.org/
+echo https://mirrors.almalinux.org/
 echo
 echo Sites:
 echo https://repo.almalinux.org/almalinux/
 echo http://mirror.epn.edu.ec/almalinux/ 
 echo http://mirror.fem-net.de/almalinux/
 echo http://mirror.hahosting.com/almalinux/
+echo http://almalinux.japan.crexio.com/almalinux/
 echo
 
-set ds https://repo.almalinux.org/almalinux/
+set ds http://almalinux.japan.crexio.com/almalinux/
 echo -n AlmaLinux site: ${}
 read ds
 echo
