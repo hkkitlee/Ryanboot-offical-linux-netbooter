@@ -657,9 +657,14 @@ echo -n Version: ${}
 read version
 echo
 
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
 cpuid --ext 29 && set bit x86_64 ||
 
-kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img
+kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}
 initrd ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
