@@ -30,8 +30,6 @@ item --key f	opensuse	(F) Install openSUSE amd64/i386
 item --key g	ipfire		(G) Install IPFire amd64/i586
 item --key h	mageia		(H) Install Mageia amd64/i586
 item --key i	devuan		(I) Install Devuan amd64/i386
-item --key j	openbsd		(J) Install OpenBSD amd64/i386
-item --key k	mirbsd		(K) Install MirBSD amd64/i386
 item --gap			Official Linux Live
 item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore	(2) Tinycore amd64/i386
@@ -636,17 +634,6 @@ echo
 kernel ${ds}distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
 initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
 boot || goto failed
-#################################################
-:openbsd
-kernel http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd initrd=bsd.rd
-module http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd.rd
-boot || goto failed 
-#################################################
-:mirbsd
-#kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=miniroot68.img
-#module http://www.mirbsd.org/MirOS/current/bsd4me.rd
-sanboot http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/install68.img
-boot || goto failed 
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
