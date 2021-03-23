@@ -676,8 +676,14 @@ echo -n Channel(stable, beta, alpha, edge): ${}
 read channel
 echo
 
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
 set ds http://${channel}.release.flatcar-linux.net/amd64-usr/current
-kernel ${ds}/flatcar_production_pxe.vmlinuz initrd=flatcar_production_pxe_image.cpio.gz
+
+kernel ${ds}/flatcar_production_pxe.vmlinuz initrd=flatcar_production_pxe_image.cpio.gz ${kp}
 initrd ${ds}/flatcar_production_pxe_image.cpio.gz
 
 boot || goto failed
