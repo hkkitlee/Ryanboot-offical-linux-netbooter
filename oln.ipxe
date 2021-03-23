@@ -30,7 +30,7 @@ item --key f	opensuse	(F) Install openSUSE amd64/i386
 item --key g	ipfire		(G) Install IPFire amd64/i586
 item --key h	mageia		(H) Install Mageia amd64/i586
 item --key i	devuan		(I) Install Devuan amd64/i386
-item --key j	devuan		(J) Install OpenBSD amd64/i386
+item --key j	openbsd		(J) Install OpenBSD amd64/i386
 item --gap			Official Linux Live
 item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore	(2) Tinycore amd64/i386
