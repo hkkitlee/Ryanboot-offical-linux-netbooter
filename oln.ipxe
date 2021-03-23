@@ -657,7 +657,7 @@ echo -n Version: ${}
 read version
 echo
 
-set kp
+set kp inst.gpt ro
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
