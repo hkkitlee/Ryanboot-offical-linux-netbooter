@@ -31,6 +31,7 @@ item --key g	ipfire		(G) Install IPFire amd64/i586
 item --key h	mageia		(H) Install Mageia amd64/i586
 item --key i	devuan		(I) Install Devuan amd64/i386
 item --key j	openbsd		(J) Install OpenBSD amd64/i386
+item --key k	mirbsd		(K) Install MirBSD amd64/i386
 item --gap			Official Linux Live
 item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore	(2) Tinycore amd64/i386
@@ -640,6 +641,9 @@ boot || goto failed
 kernel http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd initrd=bsd.rd
 initrd http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd.rd
 #################################################
+:mirbsd
+kernel http://www.mirbsd.org/MirOS/current/bsd4me.com
+initrd http://www.mirbsd.org/MirOS/current/bsd4me.rd
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
