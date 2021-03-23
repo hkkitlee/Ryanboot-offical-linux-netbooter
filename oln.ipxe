@@ -21,9 +21,9 @@ item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=pa
 item --gap  
 
 item --gap			Official Linux Installer
-item --key a	ubuntu		(A) Install Ubuntu amd64/i386 @
-item --key b	fedora64	(B) Install Fedora amd64 @
-item --key c	debian		(C) Install Debian amd64/i386 @
+item --key a	ubuntu		(A) Install Ubuntu amd64/i386
+item --key b	fedora64	(B) Install Fedora amd64
+item --key c	debian		(C) Install Debian amd64/i386
 item --key d	parrot		(D) Install Parrot-Linux amd64/i386
 item --key e	kali		(E) Install Kali-Linux amd64/i386 
 item --key f	opensuse	(F) Install openSUSE amd64/i386
@@ -42,7 +42,7 @@ item --key 6	slackware	(6) Slackware amd64/i386 with Installer
 item --key 7	rancheros	(7) Rancher OS amd64/i386
 item --key 8	x-wrt		(8) X-wrt amd64/i386
 
-item --gap -- Auto select amd64/i386. @ Version Selection. tui/gtk Text/Graphical User Interface
+item --gap -- Auto select amd64/i386. Version Selection. tui/gtk Text/Graphical User Interface
 item --gap
 item		xyz		Chainload to netboot.xyz
 item --gap				
@@ -643,7 +643,7 @@ initrd http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd.rd
 boot || goto failed 
 #################################################
 :mirbsd
-kernel http://www.mirbsd.org/MirOS/current/bsd4me.com
+kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=bsd4me.rd
 initrd http://www.mirbsd.org/MirOS/current/bsd4me.rd
 boot || goto failed 
 #################################################
