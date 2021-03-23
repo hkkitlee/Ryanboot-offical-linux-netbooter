@@ -660,6 +660,7 @@ cpuid --ext 29 && set bit x86_64 ||
 
 https://repo.almalinux.org/almalinux/${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img
 https://repo.almalinux.org/almalinux/${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
+boot || goto failed
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
