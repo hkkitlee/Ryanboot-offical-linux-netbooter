@@ -664,7 +664,7 @@ echo
 
 cpuid --ext 29 && set bit x86_64 ||
 
-kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}
+kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}${version}/BaseOS/${bit}/os
 initrd ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
