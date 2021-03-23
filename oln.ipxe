@@ -629,9 +629,9 @@ boot || goto failed
 echo https://mirrors.mageia.org/
 echo
 echo Sites:
-echo https://free.nchc.org.tw/mageia/
-echo https://mirrors.tuna.tsinghua.edu.cn/mageia/
-echo https://mirrors.ustc.edu.cn/mageia/
+echo https://free.nchc.org.tw/
+echo https://mirrors.tuna.tsinghua.edu.cn/
+echo https://mirrors.ustc.edu.cn/
 
 set ds https://mirrors.tuna.tsinghua.edu.cn/mageia/
 echo -n Mageia site: ${}
@@ -651,13 +651,13 @@ echo
 cpuid --ext 29 && set bit x86_64 || set bit i586
 cpuid --ext 29 && set path x86_64 || set path i386
 
-set kp vga=788 automatic=method:http,network:dhcp,server:${ds},directory:distrib/${version}/${bit}
+set kp vga=788 automatic=method:http,network:dhcp,server:${ds},directory:mageia/distrib/${version}/${bit}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
-initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
+kernel ${ds}mageia/distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
+initrd ${ds}mageia/distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
 boot || goto failed
 #################################################
 :xyz
