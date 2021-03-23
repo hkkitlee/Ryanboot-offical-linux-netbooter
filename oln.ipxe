@@ -633,7 +633,7 @@ echo Sites:
 echo https://free.nchc.org.tw/mageia/
 echo https://mirrors.tuna.tsinghua.edu.cn/mageia/
 echo https://mirrors.ustc.edu.cn/mageia/
-
+echo
 set ds https://mirrors.ustc.edu.cn/mageia/
 echo -n Mageia site: ${}
 read ds
