@@ -592,6 +592,16 @@ kernel https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}
 initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-generic-rootfs.tar.gz
 boot || goto failed
 #################################################
+
+https://www.devuan.org/get-devuan
+
+https://pkgmaster.devuan.org/devuan/dists/beowulf/main/installer-amd64/current/images/netboot/debian-installer/amd64/linux
+https://pkgmaster.devuan.org/devuan/dists/beowulf/main/installer-amd64/current/images/netboot/debian-installer/amd64/initrd.gz
+##
+
+https://ftp.linux.org.tr/mageia/distrib/8/x86_64/isolinux/x86_64/vmlinuz
+https://ftp.linux.org.tr/mageia/distrib/8/x86_64/isolinux/x86_64/all.rdz
+##
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
