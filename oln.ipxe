@@ -154,12 +154,12 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-iseq ${interface} gtk && set link gtk || set link /
+iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-initrd ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/initrd.gz
-kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
+kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 cpair --foreground 0 --background 9 0
 console
 
@@ -195,12 +195,12 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-iseq ${interface} gtk && set link gtk || set link /
+iseq ${interface} gtk && set link gtk/ || set link /
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-kernel ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-initrd ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/initrd.gz
+kernel ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
 
 boot || goto parrot
 
@@ -234,12 +234,12 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-iseq ${interface} gtk && set link gtk || set link /
+iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-kernel ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-initrd ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}/debian-installer/${arch}/initrd.gz
+kernel ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
 boot || goto failed                                                                                       
 
 
@@ -593,18 +593,9 @@ kernel https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}
 initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-generic-rootfs.tar.gz
 boot || goto failed
 #################################################
-
-echo https://www.devuan.org/get-devuan
-echo
-echo Sites:
-echo
-echo
-echo
+:devuan
 
 set ds https://pkgmaster.devuan.org/devuan
-echo -n Devuan site: ${}
-read ds
-echo
 
 set releases beowulf
 echo -n Releases (jessie,beowulf): ${}
@@ -638,9 +629,9 @@ boot || goto failed
 echo https://mirrors.mageia.org/
 echo
 echo Sites:
-echo https://free.nchc.org.tw/mageia
+echo https://free.nchc.org.tw/mageia/
 echo https://mirrors.tuna.tsinghua.edu.cn/mageia/
-echo https://mirrors.ustc.edu.cn/mageia
+echo https://mirrors.ustc.edu.cn/mageia/
 
 set ds https://mirrors.tuna.tsinghua.edu.cn/mageia/
 echo -n Mageia site: ${}
@@ -660,13 +651,13 @@ echo
 cpuid --ext 29 && set bit x86_64 || set bit i586
 cpuid --ext 29 && set path x86_64 || set path i386
 
-set kp vga=788
+set kp vga=788 automatic=method:http,network:dhcp,server:${ds},directory:distrib/${version}/${bit}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}/distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
-initrd ${ds}/distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
+kernel ${ds}distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
+initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
 boot || goto failed
 #################################################
 :xyz
