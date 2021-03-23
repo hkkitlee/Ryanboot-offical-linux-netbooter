@@ -643,8 +643,9 @@ module http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/bsd.rd
 boot || goto failed 
 #################################################
 :mirbsd
-kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=bsd4me.rd
-module http://www.mirbsd.org/MirOS/current/bsd4me.rd
+kernel http://www.mirbsd.org/MirOS/current/bsd4me.com initrd=miniroot68.img
+#module http://www.mirbsd.org/MirOS/current/bsd4me.rd
+initrd http://ftp.openbsd.org/pub/OpenBSD/6.8/amd64/miniroot68.img
 boot || goto failed 
 #################################################
 :xyz
