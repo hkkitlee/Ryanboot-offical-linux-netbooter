@@ -79,7 +79,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-iseq ${version} focal && set link legacy- || set link /
+iseq ${version} focal && set link legacy- || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
@@ -196,7 +196,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-iseq ${interface} gtk && set link gtk/ || set link /
+iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
@@ -613,7 +613,7 @@ echo -n Parrot installer interface (tui, gtk): ${}
 read interface
 echo
 
-iseq ${interface} gtk && set link gtk/ || set link /
+iseq ${interface} gtk && set link gtk/ || set link
 
 cpuid --ext 29 && set bit amd64 || set bit i386
 
@@ -621,7 +621,7 @@ set kp vga=788
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
-kernel h${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/linux
+kernel ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/initrd.gz
 boot || goto failed
 #################################################
