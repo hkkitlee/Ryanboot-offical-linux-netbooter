@@ -591,8 +591,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-vmlinuz initrd=openwrt-${version}-x86-${archtype}-generic-rootfs.tar.gz ${kp}
-initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-generic-rootfs.tar.gz
+kernel https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-vmlinuz initrd=openwrt-${version}-x86-${archtype}-rootfs-squashfs.img.gz ${kp}
+initrd https://downloads.openwrt.org/releases/${version}/targets/x86/${archtype}/openwrt-${version}-x86-${archtype}-rootfs-squashfs.img.gz
 boot || goto failed
 #################################################
 :devuan
