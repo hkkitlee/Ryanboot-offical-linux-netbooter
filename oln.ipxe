@@ -31,7 +31,7 @@ item --key g	ipfire		(G) Install IPFire amd64/i586
 item --key h	mageia		(H) Install Mageia amd64/i586
 item --key i	devuan		(I) Install Devuan amd64/i386
 item --key j	alma      (J) Install AlmaLinux amd64
-item --key k	coreos    (K) Install Fedora CoreOS amd64
+item --key k	coreosinstall    (K) Install Fedora CoreOS amd64
 item --gap			Official Linux Live
 item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
 item --key 2	tinycore	(2) Tinycore amd64/i386
