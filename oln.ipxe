@@ -82,7 +82,7 @@ item --key h	x-wrt		          (H) X-wrt amd64/i386
 item --key i	containerlinux	  (I) Container Linux by flatcar amd64
 item --key j	coreoslive        (J) Fedora CoreOS amd64
 
-choose --default ubuntu target && cpair 0 && goto ${target}
+choose --default arch target && cpair 0 && goto ${target}
 
 :failed
 goto start
