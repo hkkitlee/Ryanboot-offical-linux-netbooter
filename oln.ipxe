@@ -731,7 +731,6 @@ read device
 echo
 
 set ds https://builds.coreos.fedoraproject.org/prod/streams/${stream}/builds/${version}/x86_64
-exit
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
