@@ -20,6 +20,28 @@ item --gap  -- Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
 item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=page%3D1
 item --gap  
 
+item --key a installer	(A) Official Linux Installer
+item --key b live 			(B) Official Linux Live
+item --gap -- Auto select amd64/i386. Version Selection. tui/gtk Text/Graphical User Interface
+item --gap
+item		xyz		Chainload to netboot.xyz
+item --gap				
+
+
+choose --default installer target && cpair 0 && goto ${target}
+
+:installer
+menu
+
+item --gap  -- IP: ${ip}/${netmask} Mac Address:${mac}
+item --gap  -- DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
+item --gap  -- next-server(proxy):${next-server}/${proxydhcp/next-server}
+item --gap  -- Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
+item --gap  -- https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
+item --gap  -- Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
+item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=page%3D1
+item --gap  
+
 item --gap			Official Linux Installer
 item --key a	ubuntu		(A) Install Ubuntu amd64/i386
 item --key b	fedora64	(B) Install Fedora amd64
@@ -32,25 +54,35 @@ item --key h	mageia		(H) Install Mageia amd64/i586
 item --key i	devuan		(I) Install Devuan amd64/i386
 item --key j	alma      (J) Install AlmaLinux amd64
 item --key k	coreosinstall    (K) Install Fedora CoreOS amd64
-item --gap			Official Linux Live
-item --key 1	arch		(1) Arch Linux amd64 Live with Option Installer Script
-item --key 2	tinycore	(2) Tinycore amd64/i386
-item --key 3	alpine		(3) Alpine amd64/i386
-item --key 4	slitaz		(4) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
-item --key 5	slax		(5) Slax amd64/i386
-item --key 6	slackware	(6) Slackware amd64/i386 with Installer
-item --key 7	rancheros	(7) Rancher OS amd64/i386
-item --key 8	x-wrt		(8) X-wrt amd64/i386
-item --key 9	containerlinux	(9) Container Linux by flatcar amd64
-
-item --gap -- Auto select amd64/i386. Version Selection. tui/gtk Text/Graphical User Interface
-item --gap
-item		xyz		Chainload to netboot.xyz
-item --gap				
-
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
+
+:live
+menu
+
+item --gap  -- IP: ${ip}/${netmask} Mac Address:${mac}
+item --gap  -- DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
+item --gap  -- next-server(proxy):${next-server}/${proxydhcp/next-server}
+item --gap  -- Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
+item --gap  -- https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
+item --gap  -- Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
+item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=page%3D1
+item --gap  
+
+item --gap			Official Linux Live
+item --key a	arch		(A) Arch Linux amd64 Live with Option Installer Script
+item --key b	tinycore	(B) Tinycore amd64/i386
+item --key c	alpine		(C) Alpine amd64/i386
+item --key d	slitaz		(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item --key e	slax		(E) Slax amd64/i386
+item --key f	slackware	(F) Slackware amd64/i386 with Installer
+item --key g	rancheros	(G) Rancher OS amd64/i386
+item --key h	x-wrt		(H) X-wrt amd64/i386
+item --key i	containerlinux	(I) Container Linux by flatcar amd64
+item --key j	coreoslive    (J) Fedora CoreOS amd64
+
+choose --default ubuntu target && cpair 0 && goto ${target}
 
 :failed
 goto start
