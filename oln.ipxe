@@ -716,7 +716,7 @@ echo
 
 set ds https://builds.coreos.fedoraproject.org/prod/streams/${stream}/builds/${version}/x86_64
 
-set kp ip=dhcp rd.neednet=1 coreos.inst.install_dev=${device} ignition.config.url=${configurl} coreos.inst.stream=${stream} ignition.firstboot ignition.platform.id=metal systemd.unified_cgroup_hierarchy=0
+set kp ip=dhcp rd.neednet=1 coreos.inst.install_dev=${device} coreos.inst.stream=${stream} ignition.firstboot ignition.platform.id=metal systemd.unified_cgroup_hierarchy=0 ignition.config.url=${configurl}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
