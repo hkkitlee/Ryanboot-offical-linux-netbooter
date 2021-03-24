@@ -49,7 +49,7 @@ item		xyz		Chainload to netboot.xyz
 item --gap				
 
 
-choose --default ubuntu target && goto ${target}
+choose --default ubuntu target && cpair 0 && goto ${target}
 
 
 :failed
