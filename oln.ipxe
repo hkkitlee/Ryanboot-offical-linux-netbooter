@@ -722,10 +722,14 @@ initrd ${ds}/flatcar_production_pxe_image.cpio.gz
 boot || goto failed
 #################################################
 :coreosinstall
+set device /dev/vda
+echo -n Device Selection: ${}
+read device
+echo
 echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-echo The device will be formatted without ANYMORE prompt
+echo The DEVICE that you entered will be formatted without ANYMORE prompt
 echo -n Are you SURE!!!? ( Y / n ):${}
 read answer
 iseq ${answer} Y && goto coreos || goto start
@@ -747,11 +751,6 @@ iseq ${stream} next && set version 33.20210315.1.0 ||
 set configurl https://example.com/config.ign
 echo -n Configurl: ${}
 read configurl
-echo
-
-set device /dev/vda
-echo -n Install Device: ${}
-read device
 echo
 
 set ds https://builds.coreos.fedoraproject.org/prod/streams/${stream}/builds/${version}/x86_64
