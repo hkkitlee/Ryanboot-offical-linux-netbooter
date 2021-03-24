@@ -716,12 +716,12 @@ echo
 
 set ds https://builds.coreos.fedoraproject.org/prod/streams/${stream}/builds/${version}/x86_64
 
-set kp ip=dhcp rd.neednet=1 coreos.inst.install_dev=${device} ignition.config.url=${configurl} coreos.inst.stream=stable ignition.firstboot ignition.platform.id=metal systemd.unified_cgroup_hierarchy=0 coreos.live.rootfs_url=${ds}/fedora-coreos-${version}-live-rootfs.x86_64.img
+set kp ip=dhcp rd.neednet=1 coreos.inst.install_dev=${device} ignition.config.url=${configurl} coreos.inst.stream=${stream} ignition.firstboot ignition.platform.id=metal systemd.unified_cgroup_hierarchy=0
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}/fedora-coreos-${version}-live-kernel-x86_64 initrd=fedora-coreos-${version}-live-initramfs.x86_64.img ${kp}
+kernel ${ds}/fedora-coreos-${version}-live-kernel-x86_64 initrd=fedora-coreos-${version}-live-initramfs.x86_64.img coreos.live.rootfs_url=${ds}/fedora-coreos-${version}-live-rootfs.x86_64.img ${kp}
 initrd ${ds}/fedora-coreos-${version}-live-initramfs.x86_64.img
 boot || goto failed
 #################################################
