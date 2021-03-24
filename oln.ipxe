@@ -722,7 +722,10 @@ initrd ${ds}/flatcar_production_pxe_image.cpio.gz
 boot || goto failed
 #################################################
 :coreosinstall
-goto coreos
+echo The device will be formatted without ANYMORE prompt
+echo -n Are you SURE!!!?(Y/n): ${}
+read answer
+iseq ${answer} Y && goto coreos || goto start
 ###
 :coreoslive
 goto coreos
