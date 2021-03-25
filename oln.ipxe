@@ -789,8 +789,7 @@ echo -n Kernel Version: ${}
 read kversion
 echo
 
-kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion} initrd=fatdog-wallpapers.sfs
-initrd ${ds}/sfs/${release}/fatdog-wallpapers.sfs
+kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
 #################################################
 :xyz
