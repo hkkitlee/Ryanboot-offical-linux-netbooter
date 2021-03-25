@@ -42,18 +42,18 @@ item --gap  -- Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
 item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=page%3D1
 item --gap  
 
-item --gap			Official Linux Installer
-item --key a	ubuntu		        (A) Install Ubuntu amd64/i386
-item --key b	fedora64	        (B) Install Fedora amd64
-item --key c	debian       	  	(C) Install Debian amd64/i386
-item --key d	parrot		        (D) Install Parrot-Linux amd64/i386
-item --key e	kali	  	        (E) Install Kali-Linux amd64/i386 
-item --key f	opensuse        	(F) Install openSUSE amd64/i386
-item --key g	ipfire		        (G) Install IPFire amd64/i586
-item --key h	mageia        		(H) Install Mageia amd64/i586
-item --key i	devuan		        (I) Install Devuan amd64/i386
-item --key j	alma              (J) Install AlmaLinux amd64
-item --key k	coreosinstall     (K) Install Fedora CoreOS amd64
+item  --gap   Official Linux Installer
+item  --key a ubuntu            (A) Install Ubuntu amd64/i386
+item  --key b fedora64          (B) Install Fedora amd64
+item  --key c debian            (C) Install Debian amd64/i386
+item  --key d parrot            (D) Install Parrot-Linux amd64/i386
+item  --key e kali              (E) Install Kali-Linux amd64/i386 
+item  --key f opensuse          (F) Install openSUSE amd64/i386
+item  --key g ipfire            (G) Install IPFire amd64/i586
+item  --key h mageia            (H) Install Mageia amd64/i586
+item  --key i devuan            (I) Install Devuan amd64/i386
+item  --key j alma              (J) Install AlmaLinux amd64
+item  --key k coreosinstall     (K) Install Fedora CoreOS amd64
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
