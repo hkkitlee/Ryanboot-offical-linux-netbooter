@@ -792,6 +792,12 @@ echo
 kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
 #################################################
+:xcp-ng
+set ds http://distro.ibiblio.org/xcp-ng/netinstall/latest
+echo set root=(http,${ds})
+echo configfile /EFI/xenserver/grub.cfg
+chain ${ds}/EFI/xenserver/grubx64.efi
+#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
