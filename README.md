@@ -9,7 +9,7 @@ dhcp && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe
 or
 ```
 #!ipxe
-chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe
+dhcp && chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe
 ```
 ###Selection/可選項：
 * Mirror 鏡像源
