@@ -789,8 +789,8 @@ echo -n Kernel Version: ${}
 read kversion
 echo
 
-kernel ${ds}/kernels/${release}/vmlinuz-${kversion} initrd=vmlinuz-initrd-${kversion}
-initrd ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
+#kernel ${ds}/kernels/${release}/vmlinuz-${kversion} initrd=vmlinuz-initrd-${kversion}
+kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
 #################################################
 :xyz
