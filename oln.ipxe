@@ -54,6 +54,7 @@ item --key h	mageia        		(H) Install Mageia amd64/i586
 item --key i	devuan		        (I) Install Devuan amd64/i386
 item --key j	alma              (J) Install AlmaLinux amd64
 item --key k	coreosinstall     (K) Install Fedora CoreOS amd64
+item --key l	fatdog            (L) Install Fatdog64 Linux amd64
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
@@ -770,6 +771,27 @@ echo
 
 kernel ${ds}/fedora-coreos-${version}-live-kernel-x86_64 initrd=fedora-coreos-${version}-live-initramfs.x86_64.img coreos.live.rootfs_url=${ds}/fedora-coreos-${version}-live-rootfs.x86_64.img ${kp}
 initrd ${ds}/fedora-coreos-${version}-live-initramfs.x86_64.img
+boot || goto failed
+#################################################
+:fatdog
+set ds http://distro.ibiblio.org/fatdog
+echo -n Fatdog64 Linux Site: ${}
+read ds
+echo
+
+set release 810
+echo -n Release: ${}
+read release
+echo
+
+set kversion 5.4.7
+echo -n Kernel Version: ${}
+read kversion
+echo
+
+$kversion
+kernel ${ds}/kernels/${release}/vmlinuz-${kversion}
+initrd ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
 #################################################
 :xyz
