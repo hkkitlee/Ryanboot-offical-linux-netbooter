@@ -54,7 +54,6 @@ item --key h	mageia        		(H) Install Mageia amd64/i586
 item --key i	devuan		        (I) Install Devuan amd64/i386
 item --key j	alma              (J) Install AlmaLinux amd64
 item --key k	coreosinstall     (K) Install Fedora CoreOS amd64
-item --key l	xcp-ng            (L) Install XCP-ng amd64
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
@@ -793,10 +792,6 @@ echo
 kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
 #################################################
-:xcp-ng
-set 209:string http://distro.ibiblio.org/xcp-ng/netinstall/latest/EFI/xenserver/grub.cfg
-chain http://distro.ibiblio.org/xcp-ng/netinstall/latest/EFI/xenserver/grubx64.efi
-boot || goto failed
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
