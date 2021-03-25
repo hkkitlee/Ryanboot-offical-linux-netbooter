@@ -794,9 +794,8 @@ kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
 #################################################
 :xcp-ng
-kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/vmlinuz initrd=xen.gz initrd=install.img
-initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/xen.gz
-initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/install.img
+set 209:string http://distro.ibiblio.org/xcp-ng/netinstall/latest/EFI/xenserver/grub.cfg
+chain http://distro.ibiblio.org/xcp-ng/netinstall/latest/EFI/xenserver/grubx64.efi
 boot || goto failed
 #################################################
 :xyz
