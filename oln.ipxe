@@ -756,9 +756,12 @@ echo
 
 echo Producing an Ignition File:
 echo https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/
-set configurl ignition.config.url=https://example.com/config.ign
+clear loadconf
+set configurl https://example.com/config.ign
 echo -n Configurl: ${}
 read configurl
+isset ${configurl} && set loadconf yes || set loadconf no
+iseq ${loadconf} yes && set configurl ignition.config.url=${configurl} || clear configurl
 echo
 
 set ds https://builds.coreos.fedoraproject.org/prod/streams/${stream}/builds/${version}/x86_64
