@@ -54,7 +54,6 @@ item --key h	mageia        		(H) Install Mageia amd64/i586
 item --key i	devuan		        (I) Install Devuan amd64/i386
 item --key j	alma              (J) Install AlmaLinux amd64
 item --key k	coreosinstall     (K) Install Fedora CoreOS amd64
-item --key l	fatdog            (L) Install Fatdog64 Linux amd64
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
@@ -82,6 +81,7 @@ item --key g	rancheros	        (G) Rancher OS amd64/i386
 item --key h	x-wrt		          (H) X-wrt amd64/i386
 item --key i	containerlinux	  (I) Container Linux by flatcar amd64
 item --key j	coreoslive        (J) Fedora CoreOS amd64
+item --key k	fatdog            (K) Fatdog64 Linux amd64
 
 choose --default arch target && cpair 0 && goto ${target}
 
