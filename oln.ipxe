@@ -758,8 +758,8 @@ echo
 
 set ds https://builds.coreos.fedoraproject.org/prod/streams/${stream}/builds/${version}/x86_64
 
-iseq ${target} coreosinstall && set kp coreos.inst.install_dev=${device} ignition.config.url=${configurl} ||
-iseq ${target} coreoslive && set kp ip=dhcp rd.neednet=1 coreos.inst.stream=${stream} ignition.firstboot ignition.platform.id=metal systemd.unified_cgroup_hierarchy=0 ignition.config.url=${configurl} ||
+iseq ${target} coreosinstall && set kp coreos.inst.install_dev=${device} coreos.inst.stream=${stream} ignition.config.url=${configurl} ||
+iseq ${target} coreoslive && set kp ip=dhcp rd.neednet=1 ignition.firstboot ignition.platform.id=metal systemd.unified_cgroup_hierarchy=0 ignition.config.url=${configurl} ||
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
