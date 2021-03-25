@@ -71,15 +71,15 @@ item --gap  -- http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=pa
 item --gap  
 
 item --gap			Official Linux Live
-item --key a	arch		          (A) Arch Linux amd64 Live with Option Installer Script
-item --key b	tinycore        	(B) Tinycore amd64/i386
-item --key c	alpine        		(C) Alpine amd64/i386
-item --key d	slitaz		        (D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
-item --key e	slax		          (E) Slax amd64/i386
-item --key f	slackware	        (F) Slackware amd64/i386 with Installer
-item --key g	rancheros	        (G) Rancher OS amd64/i386
-item --key h	x-wrt		          (H) X-wrt amd64/i386
-item --key i	containerlinux	  (I) Container Linux by flatcar amd64
+item --key a	arch              (A) Arch Linux amd64 Live with Option Installer Script
+item --key b	tinycore          (B) Tinycore amd64/i386
+item --key c	alpine            (C) Alpine amd64/i386
+item --key d	slitaz            (D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item --key e	slax              (E) Slax amd64/i386
+item --key f	slackware         (F) Slackware amd64/i386 with Installer
+item --key g	rancheros         (G) Rancher OS amd64/i386
+item --key h	x-wrt             (H) X-wrt amd64/i386
+item --key i	containerlinux    (I) Container Linux by flatcar amd64
 item --key j	coreoslive        (J) Fedora CoreOS amd64
 item --key k	fatdog            (K) Fatdog64 Linux amd64
 
