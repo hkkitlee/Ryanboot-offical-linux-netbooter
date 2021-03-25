@@ -745,9 +745,13 @@ echo -n Stream(stable, testing, next): ${}
 read stream
 echo
 
+echo https://getfedora.org/en/coreos/
 iseq ${stream} stable && set version 33.20210301.3.1 ||
 iseq ${stream} testing && set version 33.20210314.2.0 ||
 iseq ${stream} next && set version 33.20210315.1.0 ||
+echo -n Version: ${}
+read version
+echo
 
 echo Producing an Ignition File:
 echo https://docs.fedoraproject.org/en-US/fedora-coreos/producing-ign/
