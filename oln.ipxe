@@ -789,7 +789,6 @@ echo -n Kernel Version: ${}
 read kversion
 echo
 
-$kversion
 kernel ${ds}/kernels/${release}/vmlinuz-${kversion}
 initrd ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
 boot || goto failed
