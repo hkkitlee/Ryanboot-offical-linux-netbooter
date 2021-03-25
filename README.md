@@ -4,6 +4,11 @@ Netboot from Linux Distribution
 * Map:[github](https://github.com/hkkitlee/Ryanboot/blob/main/map) [gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/map)
 ```
 #!ipxe
+dhcp && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe
+```
+or
+```
+#!ipxe
 chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe
 ```
 ###Selection/可選項：
