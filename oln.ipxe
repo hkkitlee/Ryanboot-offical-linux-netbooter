@@ -54,6 +54,7 @@ item  --key h mageia            (H) Install Mageia amd64/i586
 item  --key i devuan            (I) Install Devuan amd64/i386
 item  --key j alma              (J) Install AlmaLinux amd64
 item  --key k coreosinstall     (K) Install Fedora CoreOS amd64
+item  --key l smeos             (L) Install Koozali SME Server amd64
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
@@ -797,12 +798,39 @@ echo -n Kernel Version: ${}
 read kversion
 echo
 
-kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion}
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion} ${kp}
 boot || goto failed
 #################################################
 :smeos
-kernel http://distro.ibiblio.org/smeserver/releases/testing/10/smeos/x86_64/images/pxeboot/vmlinuz
-initrd http://distro.ibiblio.org/smeserver/releases/testing/10/smeos/x86_64/images/pxeboot/initrd.img
+
+echo http://mirror.contribs.org/mirrors/
+echo Site:
+echo http://mirror.canada.pialasse.com/releases/
+echo http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
+echo http://mirrors.misouk.com/smeserver/releases/
+echo http://mirror.internode.on.net/pub/smeserver/
+set ds http://mirrors.misouk.com/smeserver/releases/
+echo -n  Site: ${}
+read ds
+echo
+
+set release testing/10
+echo -n Release (9, 9.2, testing/10) : ${}
+read release
+echo
+
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}${release}/smeos/x86_64/images/pxeboot/vmlinuz initrd=initrd.img ${kp}
+initrd ${ds}${release}/smeos/x86_64/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
 :xyz
