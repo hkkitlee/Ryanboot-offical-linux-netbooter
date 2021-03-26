@@ -814,6 +814,7 @@ echo http://mirror.canada.pialasse.com/releases/
 echo http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
 echo http://mirrors.misouk.com/smeserver/releases/
 echo http://mirror.internode.on.net/pub/smeserver/
+echo
 set ds http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
 echo -n Koozali SME Server Site: ${}
 read ds
