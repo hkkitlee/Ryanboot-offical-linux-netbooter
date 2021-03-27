@@ -446,13 +446,13 @@ read ds
 echo
 
 set release tumbleweed
-echo -n Release (tumbleweed, stable, current): ${}
+echo -n Release (tumbleweed, stable, current, leap): ${}
 read release
 echo
 iseq ${release} tumbleweed && set release tumbleweed ||
-iseq ${release} stable && set release openSUSE-stable ||
-iseq ${release} current && set release openSUSE-current ||
-
+iseq ${release} stable && set release distribution/openSUSE-stable ||
+iseq ${release} current && set release distribution/openSUSE-current ||
+iseq ${release} leap && set version 15.3 && echo -n Version (15.0 - 15.3): ${} && read ds && echo && set release distribution/leap/${version} ||
 
 cpuid --ext 29 && set bit x86_64 || set bit i386
 
