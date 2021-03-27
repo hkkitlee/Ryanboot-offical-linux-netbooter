@@ -452,7 +452,8 @@ echo
 iseq ${release} tumbleweed && set release tumbleweed ||
 iseq ${release} stable && set release distribution/openSUSE-stable ||
 iseq ${release} current && set release distribution/openSUSE-current ||
-iseq ${release} leap && set version 15.3 && echo -n Version (15.0 - 15.3): ${} && read ds && echo && set release distribution/leap/${version} ||
+iseq ${release} leap && set version 15.3 && echo -n Version (15.0 - 15.3): ${} && read version && set release distribution/leap/${version} ||
+echo
 
 cpuid --ext 29 && set bit x86_64 || set bit i386
 
