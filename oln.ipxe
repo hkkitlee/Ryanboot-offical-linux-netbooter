@@ -836,8 +836,8 @@ initrd ${ds}${release}/smeos/x86_64/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
 :openwrt
-https://archive.openwrt.org/releases/19.07.5/targets/x86/64/openwrt-19.07.5-x86-64-vmlinuz initrd=openwrt-19.07.5-x86-64-generic-rootfs.tar.gz
-https://archive.openwrt.org/releases/19.07.5/targets/x86/64/openwrt-19.07.5-x86-64-generic-rootfs.tar.gz
+kernel https://archive.openwrt.org/releases/19.07.5/targets/x86/64/openwrt-19.07.5-x86-64-vmlinuz initrd=openwrt-19.07.5-x86-64-generic-rootfs.tar.gz
+initrd https://archive.openwrt.org/releases/19.07.5/targets/x86/64/openwrt-19.07.5-x86-64-generic-rootfs.tar.gz
 boot || goto failed
 #################################################
 :xyz
