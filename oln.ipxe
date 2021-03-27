@@ -83,6 +83,7 @@ item --key h	x-wrt             (H) X-wrt amd64/i386
 item --key i	containerlinux    (I) Container Linux by flatcar amd64
 item --key j	coreoslive        (J) Fedora CoreOS amd64
 item --key k	fatdog            (K) Fatdog64 Linux amd64
+item --key l	openwrt           (L) OpenWRT Linux amd64/i386
 
 choose --default arch target && cpair 0 && goto ${target}
 
@@ -832,6 +833,11 @@ echo
 
 kernel ${ds}${release}/smeos/x86_64/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}${release}/smeos/x86_64/
 initrd ${ds}${release}/smeos/x86_64/images/pxeboot/initrd.img
+boot || goto failed
+#################################################
+:openwrt
+https://archive.openwrt.org/releases/19.07.5/targets/x86/64/openwrt-19.07.5-x86-64-vmlinuz initrd=openwrt-19.07.5-x86-64-generic-rootfs.tar.gz
+https://archive.openwrt.org/releases/19.07.5/targets/x86/64/openwrt-19.07.5-x86-64-generic-rootfs.tar.gz
 boot || goto failed
 #################################################
 :xyz
