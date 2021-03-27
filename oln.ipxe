@@ -533,7 +533,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}releases/${mainv}/${subv}/images/${bit}/vmlinuz initrd=instroot ${kp}
+kernel ${ds}/releases/${mainv}/${subv}/images/${bit}/vmlinuz initrd=instroot ${kp}
 initrd ${ds}/releases/${mainv}/${subv}/images/${bit}/instroot
 boot || goto failed
 #################################################
@@ -630,7 +630,7 @@ read version
 echo
 
 set interface gtk
-echo -n Parrot installer interface (tui, gtk): ${}
+echo -n Devuan installer interface (tui, gtk): ${}
 read interface
 echo
 
