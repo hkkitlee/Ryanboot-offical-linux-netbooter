@@ -223,6 +223,16 @@ echo -n Parrot site: ${}
 read ds
 echo
 
+set release rolling
+echo -n Release (rolling, parrot, stable): ${}
+read release
+echo
+
+set version current
+echo -n Version: ${}
+read version
+echo
+
 set interface gtk
 echo -n Parrot installer interface (tui, gtk): ${}
 read interface
@@ -237,8 +247,8 @@ iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-kernel ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-initrd ${ds}/parrot/dists/rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
+kernel ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
 
 boot || goto parrot
 
@@ -262,6 +272,16 @@ echo -n Kali site: ${}
 read ds
 echo
 
+set release rolling
+echo -n Release (rolling, dev, last-snapshot): ${}
+read release
+echo
+
+set version current
+echo -n Version: ${}
+read version
+echo
+
 set interface gtk
 echo -n Kali installer interface (tui, gtk): ${}
 read interface
@@ -276,8 +296,8 @@ iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-kernel ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-initrd ${ds}/kali/dists/kali-rolling/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
+kernel ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
 boot || goto failed                                                                                       
 
 
