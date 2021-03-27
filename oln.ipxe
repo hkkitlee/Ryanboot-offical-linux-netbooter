@@ -445,15 +445,24 @@ echo -n openSUSE site: ${}
 read ds
 echo
 
+set release tumbleweed
+echo -n Release (tumbleweed, stable, current): ${}
+read release
+echo
+iseq ${release} tumbleweed && set release tumbleweed ||
+iseq ${release} stable && set release openSUSE-stable ||
+iseq ${release} current && set release openSUSE-current ||
+
+
 cpuid --ext 29 && set bit x86_64 || set bit i386
 
-set kp root=/dev/ram0 load_ramdisk=1 splash=silent vga=0x314 showopts install=${ds}/tumbleweed/repo/oss/
+set kp root=/dev/ram0 load_ramdisk=1 splash=silent vga=0x314 showopts install=${ds}/${release}/repo/oss/
 echo -n Kernel Parameter, Bootcode: ${}                                                                           
 read kp                                                                                                           
 echo
 
-kernel ${ds}/tumbleweed/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
-initrd ${ds}/tumbleweed/repo/oss/boot/${bit}/loader/initrd
+kernel ${ds}/${release}/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
+initrd ${ds}/${release}/repo/oss/boot/${bit}/loader/initrd
 
 boot || goto failed
 #################################################
