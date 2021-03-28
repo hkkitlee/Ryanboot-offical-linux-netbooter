@@ -1,7 +1,11 @@
 # Ryanboot-offical-linux-netbooter
 Netboot from Linux Distribution 
 網絡啟動官版Linux
-* Map:[github](https://github.com/hkkitlee/Ryanboot/blob/main/map) [gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/map)
+* Map:[Github](https://github.com/hkkitlee/Ryanboot/blob/main/map) [Gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/map)
+* Changlog:[Github](https://github.com/hkkitlee/Ryanboot/blob/main/changelog) [Gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/changelog)
+## Howto boot:
+* Ryanboot:[Github](https://github.com/hkkitlee/Ryanboot) [Gitee](https://gitee.com/hkkitlee/Ryanboot)
+or
 ```
 #!ipxe
 dhcp && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe
@@ -18,6 +22,3 @@ dhcp && chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-
 * Manual Kernel Parameter 手動核心參數
 * TUI/GUI 文字/圖像介面
 * Arch detection 架構自動偵測
-
-## Main:
-* Ryanboot:[github](https://github.com/hkkitlee/Ryanboot) [gitee](https://gitee.com/hkkitlee/Ryanboot)
