@@ -884,7 +884,7 @@ echo -n Version (20.03-LTS, 20.03-LTS-SP1, 20.09): ${}
 read version
 echo
 
-set kp inst.gpt
+set kp inst.gpt rd.live.check quiet nomodeset
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
