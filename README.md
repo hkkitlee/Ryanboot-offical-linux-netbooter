@@ -13,6 +13,7 @@ dhcp && chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-
 ```
 ###Selection/可選項：
 * Mirror 鏡像源
+* Release 釋放版
 * Version 版本
 * Manual Kernel Parameter 手動核心參數
 * TUI/GUI 文字/圖像介面
