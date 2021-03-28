@@ -872,8 +872,9 @@ echo https://repo.openeuler.org/
 echo https://mirrors.huaweicloud.com/openeuler/
 echo https://mirror.nju.edu.cn/openeuler/
 echo http://mirrors.hit.edu.cn/openeuler/
+echo https://mirror.truenetwork.ru/openeuler/
 echo
-set ds http://mirrors.hit.edu.cn/openeuler/
+set ds https://mirror.truenetwork.ru/openeuler/
 echo -n openEuler Site: ${}
 read ds
 echo
