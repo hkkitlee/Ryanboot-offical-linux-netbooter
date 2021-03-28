@@ -874,6 +874,7 @@ echo https://mirror.nju.edu.cn/openeuler/
 echo http://mirrors.hit.edu.cn/openeuler/
 echo https://mirror.truenetwork.ru/openeuler/
 echo http://mirror.lzu.edu.cn/openeuler/
+echo https://mirrors.hit.edu.cn/openeuler/
 echo
 set ds http://mirror.lzu.edu.cn/openeuler/
 echo -n openEuler Site: ${}
