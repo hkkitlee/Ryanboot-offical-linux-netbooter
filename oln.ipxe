@@ -22,7 +22,8 @@ item --gap
 
 item --key a installer	(A) Official Linux Installer
 item --key b live 			(B) Official Linux Live
-item --gap -- Auto select amd64/i386. Version Selection. tui/gtk Text/Graphical User Interface
+item --gap -- Auto select amd64/i386. Release / Version Selection. 
+item --gap -- tui/gtk Text/Graphical User Interface.
 item --gap
 item		xyz		Chainload to netboot.xyz
 item --gap				
