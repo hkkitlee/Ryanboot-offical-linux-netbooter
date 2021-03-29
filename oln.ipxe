@@ -918,6 +918,7 @@ echo
 
 kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
+7.9.2009/os/x86_64/images/pxeboot/vmlinuz
 boot || goto failed
 #################################################
 :xyz
