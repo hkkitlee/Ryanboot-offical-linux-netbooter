@@ -897,7 +897,9 @@ boot || goto failed
 #################################################
 :centosstream
 echo Site:
-echo
+echo http://mirrors.ustc.edu.cn/centos/
+echo http://mirrors.huaweicloud.com/centos/
+echo http://ftp.sjtu.edu.cn/centos/
 echo http://hk.mirrors.thegigabit.com/centos/
 echo http://mirrors.tuna.tsinghua.edu.cn/centos/
 echo
