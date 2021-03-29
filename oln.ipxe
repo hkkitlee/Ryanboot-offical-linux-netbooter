@@ -886,7 +886,7 @@ echo -n Version (20.03-LTS, 20.03-LTS-SP1, 20.09): ${}
 read version
 echo
 
-set kp inst.gpt quiet nomodeset
+set kp inst.gpt quiet
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
@@ -911,15 +911,13 @@ echo -n Version: ${}
 read version
 echo
 
-set kp inst.gpt quiet nomodeset
+set kp inst.gpt quiet
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz
+kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}-stream/BaseOS/x86_64/ ${kp}
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
-7.9.2009/os/x86_64/images/pxeboot/vmlinuz
-7.9.2009/os/x86_64/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
 :xyz
