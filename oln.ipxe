@@ -57,6 +57,7 @@ item  --key j alma              (J) Install AlmaLinux amd64
 item  --key k coreosinstall     (K) Install Fedora CoreOS amd64
 item  --key l smeos             (L) Install Koozali SME Server amd64
 item  --key m openeuler         (M) Install openEuler amd64
+item  --key n centosstream      (N) Install Centos Stream amd64
 
 choose --default ubuntu target && cpair 0 && goto ${target}
 
@@ -892,6 +893,11 @@ echo
 
 kernel ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}openEuler-${version}/everything/x86_64/ ${kp}
 initrd ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/initrd.img
+boot || goto failed
+#################################################
+:centosstream
+http://hk.mirrors.thegigabit.com/centos/8-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz
+http://hk.mirrors.thegigabit.com/centos/8-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
 :xyz
