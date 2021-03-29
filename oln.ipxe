@@ -896,6 +896,7 @@ initrd ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
 :centosstream
+echo http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 echo Site:
 echo http://mirrors.ustc.edu.cn/centos/
 echo http://mirrors.huaweicloud.com/centos/
