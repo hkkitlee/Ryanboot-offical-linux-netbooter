@@ -904,7 +904,7 @@ echo http://hk.mirrors.thegigabit.com/centos/
 echo http://mirrors.tuna.tsinghua.edu.cn/centos/
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/centos/
-echo -n openEuler Site: ${}
+echo -n Centos Stream Site: ${}
 read ds
 echo
 
