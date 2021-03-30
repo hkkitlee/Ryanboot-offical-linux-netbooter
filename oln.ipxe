@@ -932,6 +932,10 @@ echo http://ftp.kr.debian.org
 echo http://ftp.ca.debian.org
 echo https://mirrors.tuna.tsinghua.edu.cn
 echo
+set ds http://ftp.hk.debian.org
+echo -n Debian Site: ${}
+read ds
+echo
 
 set kp boot=live ethdevice-timeout=60 vga=normal components splash username=user ip=dhcp hooks=filesystem fetch=https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-10.9.0-amd64-gnome.iso.torrent
 echo -n Kernel Parameter, Bootcode: ${}
