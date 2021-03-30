@@ -93,8 +93,7 @@ item	--gap
 item		start			Back to Top
 choose --default arch target && cpair 0 && goto ${target}
 
-:failed
-goto start
+
 
 #################################################
 :ubuntu
@@ -127,9 +126,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
 
-boot || goto failed
-
-
+boot || goto start
 #################################################
 :fedora64
 
