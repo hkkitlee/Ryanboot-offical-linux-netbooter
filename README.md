@@ -16,7 +16,8 @@
 Ryanboot:[Github](https://github.com/hkkitlee/Ryanboot) [Gitee](https://gitee.com/hkkitlee/Ryanboot)
 
 or
-```#!ipxe
+```
+#!ipxe
 dhcp
 goto start
 :start
@@ -24,7 +25,8 @@ chain --autofree https://github.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || cha
 ```
 
 or
-```#!ipxe
+```
+#!ipxe
 dhcp
 goto start
 :start
