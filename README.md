@@ -23,11 +23,13 @@ goto start
 chain --autofree https://github.com/hkkitlee/Ryanboot/raw/main/chain.ipxe ||
 chain --autofree https://gitee.com/hkkitlee/Ryanboot/raw/main/chain.ipxe ||
 chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
-goto start```
+goto start
+```
 
 or
 ```#!ipxe
 dhcp
 goto start
 :start
-chain --autofree https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe || goto start```
+chain --autofree https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe || goto start
+```
