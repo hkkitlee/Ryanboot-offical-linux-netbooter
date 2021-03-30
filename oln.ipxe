@@ -137,6 +137,8 @@ kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}image
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
 
 boot || goto failed
+
+
 #################################################
 :fedora64
 
