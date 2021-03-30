@@ -23,5 +23,7 @@ dhcp && chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe
 or
 ```
 #!ipxe
-dhcp && chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe
+goto start
+:start
+dhcp && chain https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe || goto start
 ```

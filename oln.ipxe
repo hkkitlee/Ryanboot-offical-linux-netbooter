@@ -136,7 +136,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
 
-boot || goto failed
+boot
 
 
 #################################################
@@ -169,7 +169,7 @@ echo
 
 initrd ${ds}/fedora/releases/${version}/Everything/x86_64/os/images/pxeboot/initrd.img
 kernel ${ds}/fedora/releases/${version}/Everything/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2=${ds}/fedora/releases/${version}/Everything/x86_64/os ${kp}
-boot || goto failed
+boot
 
 
 #################################################
@@ -212,7 +212,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 initrd ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
 kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 
-boot || goto failed
+boot
 
 
 #################################################
@@ -261,7 +261,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 kernel ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
 
-boot || goto parrot
+boot
 
 
 #################################################
@@ -309,7 +309,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 
 kernel ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
-boot || goto failed                                                                                       
+boot
 
 
 #################################################
@@ -346,7 +346,7 @@ kernel ${ds}/archlinux/iso/latest/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux i
 initrd ${ds}/archlinux/iso/latest/arch/boot/x86_64/initramfs-linux.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/amd-ucode.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/intel-ucode.img
-boot || goto failed
+boot
 
 
 #################################################
@@ -384,7 +384,7 @@ initrd ${ds}/${version}.x/${arch}/release/distribution_files/modules${file1}.gz
 initrd ${ds}/${version}.x/${arch}/release/distribution_files/rootfs${file1}.gz
 
 
-boot || goto failed
+boot
 
 #################################################
 :alpine
@@ -430,7 +430,7 @@ echo
 kernel ${ds}/v${version}/releases/${arch}/netboot/vmlinuz-${flavor} initrd=initramfs-${flavor} ${kp}
 initrd ${ds}/v${version}/releases/${arch}/netboot/initramfs-${flavor}
 
-boot || goto failed
+boot
 #################################################
 :slitaz
 echo Support by teasiu http://wuyou.net/home.php?mod=space&uid=378921
@@ -459,7 +459,7 @@ echo
 
 kernel ${ds}/iso/rolling/boot${path}/${kernel} initrd=rootfs.gz ${kp}
 initrd ${ds}/iso/rolling/boot${path}/rootfs.gz
-boot || goto failed
+boot
 #################################################
 :opensuse
 echo https://mirrors.opensuse.org/
@@ -496,7 +496,7 @@ echo
 kernel ${ds}${release}/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
 initrd ${ds}${release}/repo/oss/boot/${bit}/loader/initrd
 
-boot || goto failed
+boot
 #################################################
 :slax
 
@@ -526,7 +526,7 @@ echo
 cpuid --ext 29 && set bit 64 || set bit 32
 kernel ${ds}/slax/Slax-${mainv}.x/ipxe/${mainv}.${subv}/${bit}bit/vmlinuz initrd=initrfs.img slax.flags=toram ${kp} from=${ds}/slax/Slax-${mainv}.x/slax-${bit}bit-${mainv}.${subv}.iso
 initrd ${ds}/slax/Slax-${mainv}.x/ipxe/${mainv}.${subv}/${bit}bit/initrfs.img 
-boot || goto failed
+boot
 #################################################
 :ipfire
 
@@ -566,7 +566,7 @@ echo
 
 kernel ${ds}/releases/${mainv}/${subv}/images/${bit}/vmlinuz initrd=instroot ${kp}
 initrd ${ds}/releases/${mainv}/${subv}/images/${bit}/instroot
-boot || goto failed
+boot
 #################################################
 :slackware
 
@@ -611,7 +611,7 @@ cpuid --ext 29 && set huge huge.s || echo -n Generic Kernels keeps ${huge}
 
 kernel ${ds}/${bit}-${version}/kernels/${huge}/bzImage initrd=initrd.img ${kp}
 initrd ${ds}/${bit}-${version}/isolinux/initrd.img
-boot || goto failed
+boot
 #################################################
 :rancheros
 echo https://www.vultr.com/docs/install-rancher-os-via-ipxe
@@ -630,7 +630,7 @@ echo
 
 kernel ${ds}/vmlinuz initrd=initrd ${kp}
 initrd ${ds}/initrd
-boot || goto failed
+boot
 #################################################
 :x-wrt
 
@@ -644,7 +644,7 @@ read kname
 echo
 
 kernel https://downloads.x-wrt.com/rom/${kname}
-boot || goto failed
+boot
 #################################################
 :devuan
 
@@ -675,7 +675,7 @@ read kp
 echo
 kernel ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/initrd.gz
-boot || goto failed
+boot
 #################################################
 :mageia
 
@@ -711,7 +711,7 @@ echo
 
 kernel ${ds}distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk} ${kp}
 initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
-boot || goto failed
+boot
 #################################################
 :alma
 echo https://mirrors.almalinux.org/
@@ -743,7 +743,7 @@ cpuid --ext 29 && set bit x86_64 ||
 
 kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}${version}/BaseOS/${bit}/os
 initrd ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
-boot || goto failed
+boot
 #################################################
 :containerlinux
 
@@ -762,7 +762,7 @@ set ds http://${channel}.release.flatcar-linux.net/amd64-usr/current
 kernel ${ds}/flatcar_production_pxe.vmlinuz initrd=flatcar_production_pxe_image.cpio.gz ${kp}
 initrd ${ds}/flatcar_production_pxe_image.cpio.gz
 
-boot || goto failed
+boot
 #################################################
 :coreosinstall
 set device /dev/vda
@@ -821,7 +821,7 @@ echo
 
 kernel ${ds}${path}/fedora-coreos-${version}-live-kernel-x86_64 initrd=fedora-coreos-${version}-live-initramfs.x86_64.img coreos.live.rootfs_url=${ds}${path}/fedora-coreos-${version}-live-rootfs.x86_64.img ${kp}
 initrd ${ds}${path}/fedora-coreos-${version}-live-initramfs.x86_64.img
-boot || goto failed
+boot
 #################################################
 :fatdog
 set ds http://distro.ibiblio.org/fatdog
@@ -845,7 +845,7 @@ read kp
 echo
 
 kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion} ${kp}
-boot || goto failed
+boot
 #################################################
 :smeos
 
@@ -873,7 +873,7 @@ echo
 
 kernel ${ds}${release}/smeos/x86_64/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}${release}/smeos/x86_64/
 initrd ${ds}${release}/smeos/x86_64/images/pxeboot/initrd.img
-boot || goto failed
+boot
 #################################################
 :openeuler
 echo Sites:
@@ -901,7 +901,7 @@ echo
 
 kernel ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}openEuler-${version}/everything/x86_64/ ${kp}
 initrd ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/initrd.img
-boot || goto failed
+boot
 #################################################
 :centosstream
 echo http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
@@ -929,7 +929,7 @@ echo
 
 kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}-stream/BaseOS/x86_64/os ${kp}
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
-boot || goto failed
+boot
 #################################################
 #################################################
 :xyz
