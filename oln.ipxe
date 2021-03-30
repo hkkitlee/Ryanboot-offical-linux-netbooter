@@ -28,6 +28,7 @@ item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
 item	--gap
+item		ryanboot		Chainload to Ryanboot
 item		xyz			Chainload to netboot.xyz
 item	--gap				
 
@@ -931,9 +932,8 @@ kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=ini
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
-#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
-:shell
-shell
+:ryanboot
+chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe
