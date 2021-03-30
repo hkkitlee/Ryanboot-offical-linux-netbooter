@@ -94,7 +94,7 @@ item		back 			Back to Top
 choose --default arch target && cpair 0 && goto ${target}
 
 :failed
-goto start
+goto target
 
 :back
 goto start
