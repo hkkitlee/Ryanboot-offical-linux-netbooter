@@ -25,6 +25,9 @@ item	--key b live			(B) Official Linux Live
 item	--gap	--	Auto select amd64/i386. Release / Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface.
 item	--gap
+item		poweroff		PowerOff
+item		reboot			Reboot
+item	--gap
 item		xyz			Chainload to netboot.xyz
 item	--gap				
 
@@ -93,7 +96,14 @@ item	--gap
 item		start			Back to Top
 choose --default arch target && cpair 0 && goto ${target}
 
+:failed
+shell
 
+:poweroff
+poweroff
+
+:reboot
+reboot
 
 #################################################
 :ubuntu
@@ -126,7 +136,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
 
-boot || goto start
+boot || goto failed
 #################################################
 :fedora64
 
