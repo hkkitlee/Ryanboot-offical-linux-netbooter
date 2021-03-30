@@ -941,7 +941,7 @@ echo
 initrd https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.img
 initrd ${ds}/debian/dists/Debian10.9/main/installer-amd64/current/images/netboot/${link}debian-installer/amd64/initrd.gz
 kernel ${ds}/debian/dists/Debian10.9/main/installer-amd64/current/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz initrd=RPBL.img ${kp} 
-
+boot || goto failed
 
 
 #################################################
