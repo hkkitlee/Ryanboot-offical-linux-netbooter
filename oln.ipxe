@@ -67,7 +67,7 @@ choose --default ubuntu target && cpair 0 && goto ${target}
 :live
 menu
 
-item	--gap	-	IP: ${ip}/${netmask} Mac Address:${mac}
+item	--gap	--	IP: ${ip}/${netmask} Mac Address:${mac}
 item	--gap	--	DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
 item	--gap	--	next-server(proxy):${next-server}/${proxydhcp/next-server}
 item	--gap	--	Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
