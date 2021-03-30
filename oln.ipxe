@@ -201,8 +201,6 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 
 initrd ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
 kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-cpair --foreground 0 --background 9 0
-console
 
 boot || goto failed
 
@@ -922,6 +920,28 @@ echo
 kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}-stream/BaseOS/x86_64/os ${kp}
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot || goto failed
+#################################################
+:debianbt
+echo https://www.debian.org/mirror/list
+echo Sites:
+echo http://ftp.hk.debian.org
+echo http://ftp2.cn.debian.org
+echo http://ftp.cn.debian.org
+echo http://ftp.kr.debian.org
+echo http://ftp.ca.debian.org
+echo https://mirrors.tuna.tsinghua.edu.cn
+echo
+
+set kp boot=live ethdevice-timeout=60 vga=normal components splash username=user ip=dhcp hooks=filesystem fetch=https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-10.9.0-amd64-gnome.iso.torrent
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+initrd ${ds}/debian/dists/Debian10.9/main/installer-amd64/current/images/netboot/${link}debian-installer/amd64/initrd.gz
+kernel ${ds}/debian/dists/Debian10.9/main/installer-amd64/current/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz ${kp} 
+
+
+
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
