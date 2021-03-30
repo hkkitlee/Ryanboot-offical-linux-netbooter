@@ -86,7 +86,6 @@ item --key h	x-wrt			(H) X-wrt amd64/i386
 item --key i	containerlinux		(I) Container Linux by flatcar amd64
 item --key j	coreoslive		(J) Fedora CoreOS amd64
 item --key k	fatdog			(K) Fatdog64 Linux amd64
-item --key l	debianbt			(l) BT boot Debian amd64
 
 choose --default arch target && cpair 0 && goto ${target}
 
@@ -922,32 +921,6 @@ kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=ini
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot || goto failed
 #################################################
-:debianbt
-echo https://www.debian.org/mirror/list
-echo Sites:
-echo http://ftp.hk.debian.org
-echo http://ftp2.cn.debian.org
-echo http://ftp.cn.debian.org
-echo http://ftp.kr.debian.org
-echo http://ftp.ca.debian.org
-echo https://mirrors.tuna.tsinghua.edu.cn
-echo
-set ds http://ftp.hk.debian.org
-echo -n Debian Site: ${}
-read ds
-echo
-
-set kp boot=live ethdevice-timeout=60 vga=normal components splash username=user ip=dhcp hooks=filesystem fetch=https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/debian-live-10.9.0-amd64-gnome.iso.torrent
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-initrd https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.img
-initrd ${ds}/debian/dists/Debian10.9/main/installer-amd64/current/images/netboot/${link}debian-installer/amd64/initrd.gz
-kernel ${ds}/debian/dists/Debian10.9/main/installer-amd64/current/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz initrd=RPBL.img ${kp} 
-boot || goto failed
-
-
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
