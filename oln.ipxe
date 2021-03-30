@@ -936,4 +936,7 @@ boot
 chain --autofree http://boot.netboot.xyz
 #################################################
 :ryanboot
-chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe
+chain --autofree http://github.com/hkkitlee/Ryanboot/raw/main/chain.ipxe ||
+chain --autofree http://gitee.com/hkkitlee/Ryanboot/raw/main/chain.ipxe ||
+chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe ||
+exit
