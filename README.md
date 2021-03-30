@@ -31,5 +31,7 @@ or
 dhcp
 goto start
 :start
-chain --autofree https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/oln.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe || goto start
+chain --autofree https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe ||
+chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/oln.ipxe ||
+goto start
 ```
