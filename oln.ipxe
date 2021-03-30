@@ -86,6 +86,7 @@ item --key h	x-wrt			(H) X-wrt amd64/i386
 item --key i	containerlinux		(I) Container Linux by flatcar amd64
 item --key j	coreoslive		(J) Fedora CoreOS amd64
 item --key k	fatdog			(K) Fatdog64 Linux amd64
+item --key l	debianbt			(l) BT boot Debian amd64
 
 choose --default arch target && cpair 0 && goto ${target}
 
