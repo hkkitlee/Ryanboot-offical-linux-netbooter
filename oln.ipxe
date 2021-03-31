@@ -957,6 +957,10 @@ kernel ${ds}${version}/install/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.im
 initrd ${ds}${version}/install/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
+http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_build/outputs/installer/squashfs.img
+http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_build/outputs/installer/initrd.img
+http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_build/outputs/installer/vmlinuz
+#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
