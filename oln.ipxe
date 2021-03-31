@@ -969,7 +969,7 @@ read ds
 echo
 
 
-set kp console=ttyS1,115200n8 root=live:${ds}squashfs.img ip=dhcp ks=${ds}smallsystem_ks.cfg boot_device=sda rootfs_device=sda inst.text inst.repo=${ds} security_profile=standard user_namespace.enable=1
+set kp root=live:${ds}squashfs.img ip=dhcp ks=${ds}smallsystem_ks.cfg boot_device=sda rootfs_device=sda inst.gpt inst.repo=${ds} security_profile=standard user_namespace.enable=1
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
