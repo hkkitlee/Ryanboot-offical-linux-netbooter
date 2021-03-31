@@ -962,6 +962,8 @@ boot
 
 echo Sites:
 echo http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_build/outputs/installer/
+echo http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/distro/latest_build/outputs/installer/
+echo http://mirror.starlingx.cengn.ca/mirror/starlingx/release/latest_release/centos/distro/outputs/installer/
 echo
 set ds http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_build/outputs/installer/
 echo -n StarlingX site: ${}
@@ -969,16 +971,13 @@ read ds
 echo
 
 
-set kp root=live:${ds}squashfs.img ip=dhcp ks=${ds}smallsystem_ks.cfg boot_device=sda rootfs_device=sda inst.gpt inst.repo=${ds} security_profile=standard user_namespace.enable=1
+set kp root=live:${ds}squashfs.img ip=dhcp boot_device=sda rootfs_device=sda inst.gpt security_profile=standard user_namespace.enable=1
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-##http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/distro/latest_build/outputs/installer/vmlinuz
-##http://mirror.starlingx.cengn.ca/mirror/starlingx/release/latest_release/centos/distro/outputs/installer/vmlinuz
-#http://mirror.starlingx.cengn.ca/mirror/starlingx/master/centos/latest_build/outputs/installer/squashfs.img
 initrd ${ds}initrd.img
-kernel ${ds}vmlinuz initrd=initrd.img ${kp}
+kernel ${ds}vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}
 boot
 #################################################
 :xyz
