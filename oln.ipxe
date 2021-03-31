@@ -933,8 +933,28 @@ initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
 :cloudlinux
-https://repo.cloudlinux.com/cloudlinux/8/install/x86_64/os/images/pxeboot/vmlinuz
-https://repo.cloudlinux.com/cloudlinux/8/install/x86_64/os/images/pxeboot/initrd.img
+echo Sites:
+echo https://repo.cloudlinux.com/cloudlinux/
+echo
+
+set ds https://repo.cloudlinux.com/cloudlinux/
+echo -n Cloud Linux site: ${}
+read ds
+echo
+
+set version 8
+echo -n Cloud Linux installer Version (5 - 8): ${}
+read version
+echo
+
+set kp ro ip=dhcp inst.gpt
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}${version}/install/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp} inst.repo=${ds}${version}/install/x86_64/os
+initrd ${ds}${version}/install/x86_64/os/images/pxeboot/initrd.img
+boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
