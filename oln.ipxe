@@ -890,7 +890,7 @@ echo -n openEuler Site: ${}
 read ds
 echo
 
-set version 20.03-LTS-SP1
+set version 20.09
 echo -n Version (20.03-LTS, 20.03-LTS-SP1, 20.09): ${}
 read version
 echo
@@ -931,6 +931,10 @@ echo
 kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}-stream/BaseOS/x86_64/os ${kp}
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
+#################################################
+:cloudlinux
+https://repo.cloudlinux.com/cloudlinux/8/install/x86_64/os/images/pxeboot/vmlinuz
+https://repo.cloudlinux.com/cloudlinux/8/install/x86_64/os/images/pxeboot/initrd.img
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
