@@ -48,21 +48,21 @@ item	--gap	--	http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=pag
 item	--gap
 
 item	--gap	Linux Installer
-item	--key a	ubuntu			(A) Install Ubuntu amd64/i386
-item	--key b	fedora64		(B) Install Fedora (Everything, Server, Silverblue) amd64
-item	--key c	debian			(C) Install Debian amd64/i386
-item	--key d	parrot			(D) Install Parrot-Linux amd64/i386
-item	--key e	kali			(E) Install Kali-Linux amd64/i386 
-item	--key f	opensuse		(F) Install openSUSE amd64/i386
-item	--key g	ipfire			(G) Install IPFire amd64/i586
-item	--key h	mageia			(H) Install Mageia amd64/i586
-item	--key i	devuan			(I) Install Devuan amd64/i386
-item	--key j	alma			(J) Install AlmaLinux amd64
-item	--key k	coreosinstall		(K) Install Fedora CoreOS amd64
-item	--key l	smeos			(L) Install Koozali SME Server amd64
-item	--key m	openeuler		(M) Install openEuler amd64
-item	--key n	centosstream		(N) Install Centos Stream amd64
-item	--key o	cloudlinuxos		(O) Install CloudLinux OS amd64
+item	--key a	ubuntu			(A) Ubuntu amd64/i386
+item	--key b	fedora64		(B) Fedora (Everything, Server, Silverblue) amd64
+item	--key c	debian			(C) Debian amd64/i386
+item	--key d	parrot			(D) Parrot-Linux amd64/i386
+item	--key e	kali			(E) Kali-Linux amd64/i386 
+item	--key f	opensuse		(F) openSUSE amd64/i386
+item	--key g	ipfire			(G) IPFire amd64/i586
+item	--key h	mageia			(H) Mageia amd64/i586
+item	--key i	devuan			(I) Devuan amd64/i386
+item	--key j	alma			(J) AlmaLinux amd64
+item	--key k	coreosinstall		(K) Fedora CoreOS amd64
+item	--key l	smeos			(L) Koozali SME Server amd64
+item	--key m	openeuler		(M) openEuler amd64
+item	--key n	centosstream		(N) Centos Stream amd64
+item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
 
 item	--gap
