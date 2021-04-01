@@ -49,7 +49,7 @@ item	--gap
 
 item	--gap	Linux Installer
 item	--key a	ubuntu			(A) Install Ubuntu amd64/i386
-item	--key b	fedora64		(B) Install Fedora amd64
+item	--key b	fedora64		(B) Install Fedora (Everything, Server, Silverblue) amd64
 item	--key c	debian			(C) Install Debian amd64/i386
 item	--key d	parrot			(D) Install Parrot-Linux amd64/i386
 item	--key e	kali			(E) Install Kali-Linux amd64/i386 
@@ -162,15 +162,19 @@ echo -n Fedora installer Version (32-33): ${}
 read version
 echo
 
+set release Everything
+echo -n Release (Everything, Server, Silverblue): ${}
+read version
+echo
+
 set kp ro ip=dhcp inst.gpt
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-
-
-initrd ${ds}/fedora/releases/${version}/Everything/x86_64/os/images/pxeboot/initrd.img
-kernel ${ds}/fedora/releases/${version}/Everything/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2=${ds}/fedora/releases/${version}/Everything/x86_64/os ${kp}
+set path ${ds}/fedora/releases/${version}/${release}/x86_64/os
+initrd ${path}/images/pxeboot/initrd.img
+kernel ${path}/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2=${path} ${kp}
 boot
 
 
