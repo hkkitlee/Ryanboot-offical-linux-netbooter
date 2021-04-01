@@ -63,6 +63,7 @@ item	--key l	smeos			(L) Install Koozali SME Server amd64
 item	--key m	openeuler		(M) Install openEuler amd64
 item	--key n	centosstream		(N) Install Centos Stream amd64
 item	--key o	cloudlinuxos		(O) Install CloudLinux OS amd64
+item	--key p	absolute		(P) Absolute-Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -93,7 +94,6 @@ item	--key h	x-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
-item	--key l	absolute		(L) Absolute-Linux amd64
 
 item	--gap
 item		start			Back to Top
