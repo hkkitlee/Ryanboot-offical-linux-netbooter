@@ -960,6 +960,8 @@ boot
 https://hkg.mirror.rackspace.com/fedora/releases/33/Silverblue/x86_64/os/images/pxeboot/vmlinuz
 https://hkg.mirror.rackspace.com/fedora/releases/33/Silverblue/x86_64/os/images/pxeboot/initrd.img
 #################################################
+https://www.absolutelinux.org/ftp/absolute-current64/EFI/BOOT/huge.s
+#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
