@@ -962,15 +962,21 @@ kernel ${ds}${version}/install/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.im
 initrd ${ds}${version}/install/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
-#################################################
 :absolute
 echo Sites:
-echo https://www.absolutelinux.org/ftp/absolute-current64/
+echo https://www.absolutelinux.org/ftp/
+echo https://slackware.uk/absolute/
+echo http://mirrors.standaloneinstaller.com/absolutelinux/
 echo
 
-set ds https://www.absolutelinux.org/ftp/absolute-current64/
+set ds https://www.absolutelinux.org/ftp/
 echo -n Absolute Linux site: ${}
 read ds
+echo
+
+set version absolute-current64
+echo -n Absolute Linux Version : ${}
+read version
 echo
 
 set kp load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 nomodeset SLACK_KERNEL=huge.s
@@ -978,9 +984,11 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}kernels/huge.s/bzImage initrd=initrd.img ${kp}
-initrd ${ds}isolinux/initrd.img
+kernel ${ds}${version}/kernels/huge.s/bzImage initrd=initrd.img ${kp}
+initrd ${ds}${version}/isolinux/initrd.img
 boot
+#################################################
+#################################################
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
