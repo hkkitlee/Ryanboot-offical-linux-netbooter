@@ -164,7 +164,7 @@ echo
 
 set release Everything
 echo -n Release (Everything, Server, Silverblue): ${}
-read version
+read release
 echo
 
 set kp ro ip=dhcp inst.gpt
