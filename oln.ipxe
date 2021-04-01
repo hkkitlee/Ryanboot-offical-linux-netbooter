@@ -957,6 +957,11 @@ kernel ${ds}${version}/install/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.im
 initrd ${ds}${version}/install/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
+:sliverblue
+https://hkg.mirror.rackspace.com/fedora/releases/33/Silverblue/x86_64/os/images/install.img
+https://hkg.mirror.rackspace.com/fedora/releases/33/Silverblue/x86_64/os/images/pxeboot/initrd.img
+https://hkg.mirror.rackspace.com/fedora/releases/33/Silverblue/x86_64/os/images/pxeboot/vmlinuz
+boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
