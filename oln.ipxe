@@ -1038,12 +1038,12 @@ echo
 iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
-#initrd ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
-#kernel ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-sanboot ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}mini.iso
+initrd ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
+kernel ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+#sanboot ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}mini.iso
 #/dists/ucclia/main/installer-amd64/current/images/netboot/mini.iso
 #/dists/ucclia/main/installer-amd64/current/images/netboot/gtk/mini.iso
-#boot
+boot
 #################################################
 :pureos
 echo Sites:
