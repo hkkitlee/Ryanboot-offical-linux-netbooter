@@ -1001,6 +1001,7 @@ boot
 #################################################
 http://archive.gnewsense.org/gnewsense/dists/ucclia/main/installer-amd64/current/images/netboot/gtk/debian-installer/amd64/linux
 #################################################
+https://repo.puri.sm/pureos/dists/green/main/installer-amd64/20171204pureos2/images/netboot/gtk/debian-installer/amd64/linux
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
