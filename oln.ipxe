@@ -1037,8 +1037,8 @@ echo
 iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
-kernel ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
+kernel ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 boot
 #################################################
 :pureos
@@ -1076,8 +1076,8 @@ echo
 
 iseq ${interface} gtk && set link gtk/ || set link
 
-initrd ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/initrd.gz
 kernel ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz ${kp}
+initrd ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/initrd.gz
 boot
 
 #################################################
