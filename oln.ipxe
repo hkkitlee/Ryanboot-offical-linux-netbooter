@@ -1076,8 +1076,8 @@ echo
 
 iseq ${interface} gtk && set link gtk/ || set link
 
-kernel ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz ${kp}
 initrd ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/initrd.gz
+kernel ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz ${kp}
 boot
 
 #################################################
