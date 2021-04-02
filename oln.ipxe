@@ -20,8 +20,10 @@ item	--gap	--	Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
 item	--gap	--	http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=page%3D1
 item	--gap  
 
-item	--key a installer		(A) Official Linux Installer
-item	--key b live			(B) Official Linux Live
+item	--gap	--	Ryanboot-offical-linux-netbooter
+item	--gap
+item	--key a installer		(A) Linux Installer
+item	--key b live			(B) Linux Live
 item	--gap	--	Auto select amd64/i386. Release / Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface.
 item	--gap
