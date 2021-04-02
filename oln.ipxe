@@ -1001,7 +1001,40 @@ boot
 #################################################
 http://archive.gnewsense.org/gnewsense/dists/ucclia/main/installer-amd64/current/images/netboot/gtk/debian-installer/amd64/linux
 #################################################
-https://repo.puri.sm/pureos/dists/green/main/installer-amd64/20171204pureos2/images/netboot/gtk/debian-installer/amd64/linux
+:pureos
+echo Sites:
+echo https://mirrors.sonic.net/pureos/repo/pureos/
+echo https://mirrors.jevincanders.net/pureos/repo/pureos/
+echo http://mirror.linux.pizza/pureos/
+echo https://repo.puri.sm/pureos/
+echo
+
+set ds http://mirror.linux.pizza/pureos/
+echo -n PureOS site: ${}
+read ds
+echo
+
+set version current
+echo -n PureOS Linux Version : ${}
+read version
+echo
+
+set interface gtk
+echo -n PureOS installer interface (tui, gtk): ${}
+read interface
+echo
+
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${interface} gtk && set link gtk/ || set link
+
+kernel ${ds}dists/green/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz ${kp}
+initrd ${ds}dists/green/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/initrd.gz
+boot
+
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
