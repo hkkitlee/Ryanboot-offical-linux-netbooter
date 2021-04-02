@@ -64,6 +64,7 @@ item	--key m	openeuler		(M) openEuler amd64
 item	--key n	centosstream		(N) Centos Stream amd64
 item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
+item	--key q	pureos			(Q) PureOS Linux amd64
 
 item	--gap
 item		start			Back to Top
