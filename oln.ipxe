@@ -1043,7 +1043,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 sanboot ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}mini.iso
 #/dists/ucclia/main/installer-amd64/current/images/netboot/mini.iso
 #/dists/ucclia/main/installer-amd64/current/images/netboot/gtk/mini.iso
-boot
+#boot
 #################################################
 :pureos
 echo Sites:
