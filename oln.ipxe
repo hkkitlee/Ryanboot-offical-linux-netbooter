@@ -124,17 +124,30 @@ echo -n Ubuntu site: ${}
 read ds
 echo
 
+echo Ubuntu 18.04.5 LTS (Bionic Beaver)
+echo Ubuntu 20.04.2 LTS (Focal Fossa)
+echo Ubuntu 20.10 (Groovy Gorilla)
+echo Ubuntu 21.04 (Hirsute Hippo)
+echo
 set version focal
-echo -n Ubuntu installer Version (bionic, focal): ${}
+echo -n Ubuntu installer Version (bionic, focal, groovy, hirsute): ${}
 read version
+
+echo Ubuntu only provide i386 netinstaller for Groovy & Hirsute.
+echo No amd64 is available.
 
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-iseq ${version} focal && set link legacy- || set link
+iseq ${version} focal && set link legacy- ||
 cpuid --ext 29 && set arch amd64 || set arch i386
 
+#reset arch to i386 for netinstaller in Groovy / Hirsute.
+#/ubuntu/dists/groovy/main/installer-i386/current/images/netboot/ubuntu-installer/i386/linux
+#/ubuntu/dists/hirsute/main/installer-i386/current/images/netboot/ubuntu-installer/i386/linux
+iseq ${version} groovy && set arch i386 || 
+iseq ${version} hirsute && set arch i386 ||
 
 kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
