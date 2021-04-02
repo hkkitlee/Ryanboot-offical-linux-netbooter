@@ -988,6 +988,7 @@ kernel ${ds}${version}/kernels/huge.s/bzImage initrd=initrd.img ${kp}
 initrd ${ds}${version}/isolinux/initrd.img
 boot
 #################################################
+http://archive.gnewsense.org/gnewsense/dists/ucclia/main/installer-amd64/current/images/netboot/gtk/debian-installer/amd64/linux
 #################################################
 #################################################
 :xyz
