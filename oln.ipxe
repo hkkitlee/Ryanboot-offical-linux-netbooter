@@ -144,8 +144,6 @@ iseq ${version} focal && set link legacy- ||
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 #reset arch to i386 for netinstaller in Groovy / Hirsute.
-#/ubuntu/dists/groovy/main/installer-i386/current/images/netboot/ubuntu-installer/i386/linux
-#/ubuntu/dists/hirsute/main/installer-i386/current/images/netboot/ubuntu-installer/i386/linux
 iseq ${version} groovy && set arch i386 || 
 iseq ${version} hirsute && set arch i386 ||
 
