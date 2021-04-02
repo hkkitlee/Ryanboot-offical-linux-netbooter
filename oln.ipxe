@@ -1007,9 +1007,10 @@ boot
 echo Sites:
 echo http://heanet.archive.gnewsense.org/gnewsense/
 echo http://archive.gnewsense.org/gnewsense/
+echo http://mirrors.mit.edu/gnewsense/gnewsense/
 echo
 
-set ds http://archive.gnewsense.org/gnewsense/
+set ds http://mirrors.mit.edu/gnewsense/gnewsense/
 echo -n gNewSense site: ${}
 read ds
 echo
