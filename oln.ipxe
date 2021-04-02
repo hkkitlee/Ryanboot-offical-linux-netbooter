@@ -1029,7 +1029,7 @@ echo -n Installer interface (tui, gtk): ${}
 read interface
 echo
 
-set kp
+set kp priority=low vga=788 --
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
