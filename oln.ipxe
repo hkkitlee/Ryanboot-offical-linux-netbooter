@@ -67,7 +67,6 @@ item	--key n	centosstream		(N) Centos Stream amd64
 item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
-item	--key r	gnewsense		(R) gNewSense Linux amd64/i386
 
 item	--gap
 item		start			Back to Top
@@ -1003,47 +1002,6 @@ kernel ${ds}${version}/kernels/huge.s/bzImage initrd=initrd.img ${kp}
 initrd ${ds}${version}/isolinux/initrd.img
 boot
 #################################################
-:gnewsense
-echo Sites:
-echo http://heanet.archive.gnewsense.org/gnewsense/
-echo http://archive.gnewsense.org/gnewsense/
-echo http://mirrors.mit.edu/gnewsense/gnewsense/
-echo
-
-set ds http://mirrors.mit.edu/gnewsense/gnewsense/
-echo -n gNewSense site: ${}
-read ds
-echo
-
-set release ucclia
-echo -n Release : ${}
-read release
-echo
-
-set version current
-echo -n Version : ${}
-read version
-echo
-
-set interface gtk
-echo -n Installer interface (tui, gtk): ${}
-read interface
-echo
-
-set kp priority=low vga=788 --
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-iseq ${interface} gtk && set link gtk/ || set link
-cpuid --ext 29 && set arch amd64 || set arch i386
-
-initrd ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
-kernel ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-#sanboot ${ds}dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}mini.iso
-#/dists/ucclia/main/installer-amd64/current/images/netboot/mini.iso
-#/dists/ucclia/main/installer-amd64/current/images/netboot/gtk/mini.iso
-boot
 #################################################
 :pureos
 echo Sites:
