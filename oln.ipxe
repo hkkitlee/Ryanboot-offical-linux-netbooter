@@ -31,6 +31,8 @@ item		poweroff		PowerOff
 item		reboot			Reboot
 item	--gap
 item		ryanboot		Chainload to Ryanboot
+item		rpbl			Chainload to Ryanboot-P2PBitTorrent-Boot-Linux
+item	--gap
 item		xyz			Chainload to netboot.xyz
 item	--gap				
 
@@ -110,6 +112,9 @@ poweroff
 
 :reboot
 reboot
+
+:rpbl
+chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe
 
 #################################################
 :ubuntu
