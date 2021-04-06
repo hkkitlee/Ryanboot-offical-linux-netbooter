@@ -120,7 +120,8 @@ chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/R
 
 #################################################
 :test
-chain https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/imgboot.efi https://ftp.halifax.rwth-aachen.de/blackarch/iso/blackarch-linux-netinst-2020.12.01-x86_64.iso
+initrd https://ftp.halifax.rwth-aachen.de/blackarch/iso/blackarch-linux-netinst-2020.12.01-x86_64.iso
+chain https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/imgboot.efi 
 #################################################
 :ubuntu
 
