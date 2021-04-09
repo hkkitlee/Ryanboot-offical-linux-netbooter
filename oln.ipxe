@@ -1081,6 +1081,7 @@ boot
 :springdalelive
 kernel http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/vmlinuz initrd=initrd.img
 initrd http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/initrd.img
+boot
 
 #################################################
 :clearos
