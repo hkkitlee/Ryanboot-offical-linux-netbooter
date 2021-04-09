@@ -70,6 +70,7 @@ item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdaleinstall	(R) Springdale Linux amd64
+item	--key s	clearos			(S) ClearOS Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1072,7 +1073,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64/os ${kp}
+kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64 ${kp}
 initrd ${ds}${version}/x86_64/os/images/pxeboot/initrd.img
 boot
 
@@ -1083,15 +1084,34 @@ initrd http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/is
 
 #################################################
 :clearos
+echo http://mirror.clearos.com/mirrorlist/
+echo Sites:
 echo http://mirror1-singapore.clearos.com/clearos/
 echo http://mirror2-singapore.clearos.com/clearos/
 echo http://www.mirrorservice.org/sites/clearfoundation.com/
-echo mirror-stage.clearos.com
 echo http://mirror1-newyork.clearos.com/clearos/
 echo http://mirror1-sanfrancisco.clearos.com/clearos/
+echo
 
-http://mirror1-amsterdam.clearos.com/clearos/7/os/x86_64/images/pxeboot/vmlinuz
-http://mirror1-amsterdam.clearos.com/clearos/7/os/x86_64/images/pxeboot/initrd.img
+set ds http://mirror1-singapore.clearos.com/clearos/
+echo -n ClearOS site: ${}
+read ds
+echo
+
+set version 7
+echo -n ClearOS installer Version : ${}
+read version
+echo
+
+set kp ro ip=dhcp inst.gpt
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}${version}/os/x86_64/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/os ${kp}
+initrd ${ds}${version}/os/x86_64/images/pxeboot/initrd.img
+boot
+
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
