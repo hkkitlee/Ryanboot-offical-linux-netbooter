@@ -1101,7 +1101,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}/${version}/x86_64/os/isolinux/vmlinuz initrd=initrd.img ${kp}
+kernel ${ds}/${version}/x86_64/os/isolinux/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64/os ${kp}
 initrd ${ds}/${version}/x86_64/os/isolinux/initrd.img
 boot
 
