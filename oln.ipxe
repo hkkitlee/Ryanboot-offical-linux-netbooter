@@ -70,7 +70,8 @@ item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdaleinstall	(R) Springdale Linux amd64
-item	--key s	clearos			(S) ClearOS Linux amd64
+item	--key s	springdale-puias	(S) Springdale-PUIAS Linux amd64
+item	--key t	clearos			(T) ClearOS Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -101,7 +102,6 @@ item	--key h	x-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
-item	--key l	springdalelive		(L) Springdale Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1078,9 +1078,31 @@ initrd ${ds}${version}/x86_64/os/images/pxeboot/initrd.img
 boot
 
 #################################################
-:springdalelive
-kernel http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/vmlinuz initrd=initrd.img
-initrd http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/initrd.img
+:springdale-puias
+echo http://springdale.math.ias.edu/
+echo Site:
+echo http://mirror.math.princeton.edu/pub/springdale/Springdale/
+echo http://ftp.halifax.rwth-aachen.de/puias/
+echo http://springdale.princeton.edu/data/springdale/
+echo
+
+set ds http://mirror.math.princeton.edu/pub/springdale/Springdale/
+echo -n Springdale site: ${}
+read ds
+echo
+
+set version 8
+echo -n Springdale-PUIAS installer Version (6-8): ${}
+read version
+echo
+
+set kp ro ip=dhcp inst.gpt
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}/${version}/x86_64/os/isolinux/vmlinuz initrd=initrd.img ${kp}
+initrd ${ds}/${version}/x86_64/os/isolinux/initrd.img
 boot
 
 #################################################
