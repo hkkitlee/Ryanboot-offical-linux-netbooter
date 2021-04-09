@@ -1073,7 +1073,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64 ${kp}
+kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64/os ${kp}
 initrd ${ds}${version}/x86_64/os/images/pxeboot/initrd.img
 boot
 
