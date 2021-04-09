@@ -1055,6 +1055,7 @@ echo Site:
 echo http://mirror.math.princeton.edu/pub/springdale/Springdale/
 echo http://ftp.halifax.rwth-aachen.de/puias/
 echo http://springdale.princeton.edu/data/springdale/
+echo
 
 set ds http://springdale.princeton.edu/data/springdale/
 echo -n Springdale site: ${}
@@ -1071,14 +1072,14 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img ${kp}
+kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64/os ${kp}
 initrd ${ds}${version}/x86_64/os/images/pxeboot/initrd.img
 boot
 
 #################################################
 :springdalelive
-initrd http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/initrd.img
 kernel http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/vmlinuz initrd=initrd.img
+initrd http://mirror.math.princeton.edu/pub/springdale/Springdale/6/x86_64/os/isolinux/initrd.img
 
 #################################################
 :clearos
