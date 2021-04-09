@@ -1058,7 +1058,7 @@ echo http://ftp.halifax.rwth-aachen.de/puias/
 echo http://springdale.princeton.edu/data/springdale/
 echo
 
-set ds http://springdale.princeton.edu/data/springdale/
+set ds //mirror.math.princeton.edu/pub/springdale/Springdale/
 echo -n Springdale site: ${}
 read ds
 echo
