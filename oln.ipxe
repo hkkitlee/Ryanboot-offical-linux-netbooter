@@ -101,7 +101,7 @@ item	--key h	x-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
-item	--key l	onefilelinux		(L) OneFileLinux (From GitHub or Ryanboot Server)
+item	--key l	onefilelinux		(L) OneFileLinux (Boot from GitHub or Ryanboot Server)
 
 item	--gap
 item		start			Back to Top
@@ -1109,7 +1109,17 @@ boot
 
 #################################################
 :onefilelinux
-kernel https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/OneFileLinux.efi || kernel http://hkkitlee.ddns.net:8999/OneFileLinux.efi
+echo Site: 
+echo
+echo https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/
+echo http://hkkitlee.ddns.net:8999/
+
+set ds https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/
+echo -n OneFileLinux site: ${}
+read ds
+echo
+
+kernel ${ds}OneFileLinux.efi
 boot
 #################################################
 :xyz
