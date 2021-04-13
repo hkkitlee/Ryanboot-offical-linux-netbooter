@@ -1107,6 +1107,10 @@ initrd ${ds}${version}/os/x86_64/images/pxeboot/initrd.img
 boot
 
 #################################################
+:onefilelinux
+kernel https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/OneFileLinux.efi
+boot
+#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
