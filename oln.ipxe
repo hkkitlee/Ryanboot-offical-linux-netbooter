@@ -1126,24 +1126,22 @@ kernel ${ds}OneFileLinux.efi
 boot
 #################################################
 :proxmox
-#echo https://www.cxthhhhh.com/2020/11/15/elite-idc-plan-one-click-network-starts-to-install-proxmox-ve-6-x-rookie-white-version.html
+echo https://www.cxthhhhh.com/2020/11/15/elite-idc-plan-one-click-network-starts-to-install-proxmox-ve-6-x-rookie-white-version.html
 
-#set version 6
-#echo -n Proxmox installer Version (5, 6, 6_v3-1): ${}
-#read version
-#echo
+echo
+set version 6_v3-1
+echo -n Proxmox installer Version (5, 6, 6_v3-1): ${}
+read version
+echo
 
-#set kp vga=791 video=vesafb:ywrap,mtrr ramdisk_size=16777216 rw quiet splash=verbose proxdebug
-#echo -n Kernel Parameter, Bootcode: ${}
-#read kp
-#echo
+set kp vga=791 video=vesafb:ywrap,mtrr ramdisk_size=16777216 rw quiet splash=verbose proxdebug
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
 
-#initrd http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-SYS_${version}
-#kernel http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-LOAD_${version} ${kp} initrd=PVE-SYS_${version}
-#boot
-
-chain --autofree https://odc.cxthhhhh.com/SyStem/Proxmox-VE/pve6
-
+kernel http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-LOAD_${version} ${kp} initrd=PVE-SYS_${version}
+initrd http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-SYS_${version}
+boot
 #################################################
 :helenos
 set version 0.11.1
