@@ -1138,8 +1138,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-LOAD_${version} ${kp} initrd=PVE-SYS_${version}
 initrd http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-SYS_${version}
+kernel http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-LOAD_${version} ${kp} initrd=PVE-SYS_${version}
 boot
 #################################################
 :helenos
