@@ -1128,6 +1128,8 @@ boot
 :proxmox
 echo https://www.cxthhhhh.com/2020/11/15/elite-idc-plan-one-click-network-starts-to-install-proxmox-ve-6-x-rookie-white-version.html
 
+set serverip 1.1.1.1
+
 echo
 set version 6_v3-1
 echo -n Proxmox installer Version (5, 6, 6_v3-1): ${}
