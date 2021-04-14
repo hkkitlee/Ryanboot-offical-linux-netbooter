@@ -71,6 +71,7 @@ item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
+item	--key t	proxmox			(T) Proxmox Linux amd64 (Boot from cxthhhhh.com)
 
 item	--gap
 item		start			Back to Top
@@ -1120,6 +1121,23 @@ read ds
 echo
 
 kernel ${ds}OneFileLinux.efi
+boot
+#################################################
+:proxmox
+echo https://www.cxthhhhh.com/2020/11/15/elite-idc-plan-one-click-network-starts-to-install-proxmox-ve-6-x-rookie-white-version.html
+
+set version 6
+echo -n Proxmox installer Version (5, 6, 6_v3-1): ${}
+read version
+echo
+
+set kp vga=791 video=vesafb:ywrap,mtrr ramdisk_size=16777216 rw quiet splash=verbose proxdebug
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-LOAD_${version} ${kp} initrd=PVE-SYS_${version}
+initrd http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-SYS_${version}
 boot
 #################################################
 :xyz
