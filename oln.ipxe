@@ -27,6 +27,8 @@ item	--key b live			(B) Linux Live
 item	--gap	--	Auto select amd64/i386. Release / Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface.
 item	--gap
+item	--key c	helenos			(C) HelenOS
+item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
 item	--gap
@@ -1139,6 +1141,14 @@ echo
 kernel http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-LOAD_${version} ${kp} initrd=PVE-SYS_${version}
 initrd http://odc.cxthhhhh.com/SyStem/Proxmox-VE/ImageData/${version}/PVE-SYS_${version}
 boot
+#################################################
+:helenos
+set version 0.11.1
+echo -n HelenOS Version (0.2.0.1 - 0.11.1): ${}
+read version
+echo
+
+sanboot http://www.helenos.org/releases/HelenOS-${version}-amd64.iso
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
