@@ -22,18 +22,18 @@ item	--gap
 
 item	--gap	--	Ryanboot-offical-linux-netbooter
 item	--gap
-item	--key a installer		(A) Linux Installer
-item	--key b live			(B) Linux Live
+item	--key a installer			(A) Linux Installer
+item	--key b live				(B) Linux Live
 item	--gap	--	Auto select amd64/i386. Release / Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface.
 item	--gap
-item		poweroff		PowerOff
-item		reboot			Reboot
+item		poweroff			PowerOff
+item		reboot				Reboot
 item	--gap
-item		ryanboot		Chainload to Ryanboot
-item		rpbl			Chainload to Ryanboot-P2PBitTorrent-Boot-Linux
+item		ryanboot			Chainload to Ryanboot
+item		rpbl				Chainload to Ryanboot-P2PBitTorrent-Boot-Linux
 item	--gap
-item		xyz			Chainload to netboot.xyz
+item		xyz				Chainload to netboot.xyz
 item	--gap				
 
 
@@ -52,28 +52,28 @@ item	--gap	--	http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=pag
 item	--gap
 
 item	--gap	Linux Installer
-item	--key a	ubuntu			(A) Ubuntu amd64/i386
-item	--key b	fedora64		(B) Fedora (Everything, Server, Silverblue) amd64
-item	--key c	debian			(C) Debian amd64/i386
-item	--key d	parrot			(D) Parrot-Linux amd64/i386
-item	--key e	kali			(E) Kali-Linux amd64/i386 
-item	--key f	opensuse		(F) openSUSE amd64/i386
-item	--key g	ipfire			(G) IPFire amd64/i586
-item	--key h	mageia			(H) Mageia amd64/i586
-item	--key i	devuan			(I) Devuan amd64/i386
-item	--key j	alma			(J) AlmaLinux amd64
-item	--key k	coreosinstall		(K) Fedora CoreOS amd64
-item	--key l	smeos			(L) Koozali SME Server amd64
-item	--key m	openeuler		(M) openEuler amd64
-item	--key n	centosstream		(N) Centos Stream amd64
-item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
-item	--key p	absolute		(P) Absolute-Linux amd64
-item	--key q	pureos			(Q) PureOS Linux amd64
-item	--key r	springdale		(R) Springdale Linux amd64
-item	--key s	clearos			(S) ClearOS Linux amd64
+item	--key a	ubuntu				(A) Ubuntu amd64/i386
+item	--key b	fedora64			(B) Fedora (Everything, Server, Silverblue) amd64
+item	--key c	debian				(C) Debian amd64/i386
+item	--key d	parrot				(D) Parrot-Linux amd64/i386
+item	--key e	kali				(E) Kali-Linux amd64/i386 
+item	--key f	opensuse			(F) openSUSE amd64/i386
+item	--key g	ipfire				(G) IPFire amd64/i586
+item	--key h	mageia				(H) Mageia amd64/i586
+item	--key i	devuan				(I) Devuan amd64/i386
+item	--key j	alma				(J) AlmaLinux amd64
+item	--key k	coreosinstall			(K) Fedora CoreOS amd64
+item	--key l	smeos				(L) Koozali SME Server amd64
+item	--key m	openeuler			(M) openEuler amd64
+item	--key n	centosstream			(N) Centos Stream amd64
+item	--key o	cloudlinuxos			(O) CloudLinux OS amd64
+item	--key p	absolute			(P) Absolute-Linux amd64
+item	--key q	pureos				(Q) PureOS Linux amd64
+item	--key r	springdale			(R) Springdale Linux amd64
+item	--key s	clearos				(S) ClearOS Linux amd64
 
 item	--gap
-item		start			Back to Top
+item		start				Back to Top
 choose --default ubuntu target && cpair 0 && goto ${target}
 
 
@@ -90,21 +90,21 @@ item	--gap	--	http://bbs.wuyou.net/forum.php?mod=viewthread&tid=415206&extra=pag
 item	--gap  
 
 item	--gap	Linux Live
-item	--key a	arch			(A) Arch Linux amd64 Live with Option Installer Script
-item	--key b	tinycore		(B) Tinycore amd64/i386
-item	--key c	alpine			(C) Alpine amd64/i386
-item	--key d	slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
-item	--key e	slax			(E) Slax amd64/i386
-item	--key f	slackware		(F) Slackware amd64/i386 with Installer
-item	--key g	rancheros		(G) Rancher OS amd64/i386
-item	--key h	x-wrt			(H) X-wrt amd64/i386
-item	--key i	containerlinux		(I) Container Linux by flatcar amd64
-item	--key j	coreoslive		(J) Fedora CoreOS amd64
-item	--key k	fatdog			(K) Fatdog64 Linux amd64
-item	--key l	onefilelinux		(L) OneFileLinux (Boot from GitHub or Ryanboot Server)
+item	--key a	arch				(A) Arch Linux amd64 Live with Option Installer Script
+item	--key b	tinycore			(B) Tinycore amd64/i386
+item	--key c	alpine				(C) Alpine amd64/i386
+item	--key d	slitaz				(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item	--key e	slax				(E) Slax amd64/i386
+item	--key f	slackware			(F) Slackware amd64/i386 with Installer
+item	--key g	rancheros			(G) Rancher OS amd64/i386
+item	--key h	x-wrt				(H) X-wrt amd64/i386
+item	--key i	containerlinux			(I) Container Linux by flatcar amd64
+item	--key j	coreoslive			(J) Fedora CoreOS amd64
+item	--key k	fatdog				(K) Fatdog64 Linux amd64
+item	--key l	onefilelinux			(L) OneFileLinux (Boot from GitHub or Ryanboot Server)
 
 item	--gap
-item		start			Back to Top
+item		start				Back to Top
 choose --default arch target && cpair 0 && goto ${target}
 
 :failed
