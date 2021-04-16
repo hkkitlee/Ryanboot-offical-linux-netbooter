@@ -1,4 +1,7 @@
 #!ipxe
+###無雙 Project Gutenberg###
+###任何事情做到極致，都是藝術。###
+###The pursuit of perfection in any field ... is an art.###
 imgtrust --allow 
 console --picture https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/matrix.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png --x 800 --y 600
 cpair --foreground 3 --background 0 2
