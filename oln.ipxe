@@ -530,6 +530,7 @@ boot
 #################################################
 :slax
 
+echo Sites:
 echo http://ftp.sh.cvut.cz
 echo http://ftp.linux.cz/pub/linux
 set ds http://ftp.sh.cvut.cz
@@ -543,7 +544,8 @@ set mainv 9
 echo http://ftp.cvut.cz/slax/Slax-${mainv}.x/
 echo -n Main Version : ${}                                                                                   
 read mainv                                                                                                       
-set subv 11.0                                                                                                       
+
+set subv 11.0
 echo -n Sub Version : ${}                                                                                        
 read subv                                                                                                        
 echo
@@ -647,6 +649,9 @@ boot
 echo https://www.vultr.com/docs/install-rancher-os-via-ipxe
 
 set ds http://releases.rancher.com/os/latest
+echo -n RancherOS site: ${}
+read ds
+echo
 
 set passwd temppasswd
 echo -n Temporary password: ${}
@@ -679,6 +684,9 @@ boot
 :devuan
 
 set ds https://pkgmaster.devuan.org/devuan
+echo -n Devuan site: ${}
+read ds
+echo
 
 set releases beowulf
 echo -n Releases (jessie,beowulf): ${}
@@ -782,12 +790,15 @@ echo -n Channel(stable, beta, alpha, edge): ${}
 read channel
 echo
 
+set ds http://${channel}.release.flatcar-linux.net/amd64-usr/current
+echo -n Slackware site: ${}
+read ds
+echo
+
 set kp
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
-
-set ds http://${channel}.release.flatcar-linux.net/amd64-usr/current
 
 kernel ${ds}/flatcar_production_pxe.vmlinuz initrd=flatcar_production_pxe_image.cpio.gz ${kp}
 initrd ${ds}/flatcar_production_pxe_image.cpio.gz
