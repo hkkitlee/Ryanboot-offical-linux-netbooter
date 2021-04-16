@@ -1157,6 +1157,7 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 
 kernel ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
+boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
