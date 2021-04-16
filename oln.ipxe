@@ -1122,6 +1122,40 @@ echo
 kernel ${ds}OneFileLinux.efi
 boot
 #################################################
+:steamos
+echo https://www.debian.org/mirror/list
+echo Sites:
+echo http://repo.steampowered.com/steamos/
+echo https://mirrors.nju.edu.cn/steamos/steamos/
+echo https://mirrors.tuna.tsinghua.edu.cn/steamos/steamos/
+echo
+
+set ds https://mirrors.tuna.tsinghua.edu.cn/steamos/steamos/
+echo -n SteamOS site: ${}
+read ds
+echo
+
+set version brewmaster
+echo -n SteamOS installer Version (alchemist, clockwerk, brewmaster): ${}
+read version
+echo
+
+set interface gtk
+echo -n Debian installer interface (tui, gtk): ${}
+read interface
+echo
+
+
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${interface} gtk && set link gtk/ || set link
+cpuid --ext 29 && set arch amd64 || set arch i386
+
+
+kernel ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${gtk}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${gtk}debian-installer/${arch}/initrd.gz
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
