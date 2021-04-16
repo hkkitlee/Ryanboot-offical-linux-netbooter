@@ -71,6 +71,7 @@ item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
+item	--key t	steamos			(T) SteamOS Linux amd64
 
 item	--gap
 item		start			Back to Top
