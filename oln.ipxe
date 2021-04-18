@@ -1175,7 +1175,8 @@ initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${lin
 boot
 #################################################
 :memtest86
-sanboot --no-describe --drive 0x80 https://fossies.org/windows/misc/memtest86-iso.zip/Memtest86-7.5.iso
+#sanboot --no-describe --drive 0x80 https://fossies.org/windows/misc/memtest86-iso.zip/Memtest86-7.5.iso
+kernel https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/memtest86%2B-5.31b.bin || kernel https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/memtest86%2B-5.31b.bin
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
