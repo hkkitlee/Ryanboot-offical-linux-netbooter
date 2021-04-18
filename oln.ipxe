@@ -1175,7 +1175,8 @@ initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${lin
 boot
 #################################################
 :xcp-ng
-kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/xen.gz initrd=vmlinuz initrd=install.img ${kp}
+kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/isolinux/mboot.c32 initrd=vmlinuz initrd=install.img ${kp}
+initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/xen.gz
 initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/vmlinuz
 initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/install.img
 boot
