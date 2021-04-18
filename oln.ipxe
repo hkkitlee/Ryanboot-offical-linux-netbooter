@@ -1181,7 +1181,8 @@ sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.i
 #################################################
 :memtest86+
 #https://www.memtest.org/download/5.31b/memtest86+-5.31b.iso.zip
-sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/mt531b.iso
+#sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/mt531b.iso
+boot https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/memtest86%2B-5.31b.bin || boot https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/memtest86%2B-5.31b.bin
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
