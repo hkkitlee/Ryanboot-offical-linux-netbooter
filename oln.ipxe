@@ -1175,8 +1175,8 @@ initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${lin
 boot
 #################################################
 :memtest86
-#https://fossies.org/windows/misc/memtest86-iso.zip/Memtest86-7.5.iso
-sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.iso
+sanboot --no-describe --drive 0x80 https://fossies.org/windows/misc/memtest86-iso.zip/Memtest86-7.5.iso
+#sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.iso
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
