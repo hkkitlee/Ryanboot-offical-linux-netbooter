@@ -30,7 +30,6 @@ item	--key b live			(B) Linux Live
 item	--gap	--	Auto select amd64/i386. Release / Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface.
 item	--key c memtest86		(C) Memtest86
-item	--key d memtest86+		(D) Memtest86+
 item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
@@ -1178,11 +1177,6 @@ boot
 :memtest86
 #https://fossies.org/windows/misc/memtest86-iso.zip/Memtest86-7.5.iso
 sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.iso
-#################################################
-:memtest86+
-#https://www.memtest.org/download/5.31b/memtest86+-5.31b.iso.zip
-#sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/mt531b.iso
-boot https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/memtest86%2B-5.31b.bin || boot https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/memtest86%2B-5.31b.bin
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
