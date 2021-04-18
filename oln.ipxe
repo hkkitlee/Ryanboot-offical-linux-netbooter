@@ -75,6 +75,7 @@ item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
+item	--key u	xcp-ng			(U) XCP-ng Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1171,6 +1172,12 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 
 kernel ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
+boot
+#################################################
+:xcp-ng
+kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/xen.gz initrd=vmlinuz initrd=install.img ${kp}
+initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/vmlinuz
+initrd http://distro.ibiblio.org/xcp-ng/netinstall/latest/install.img
 boot
 #################################################
 :xyz
