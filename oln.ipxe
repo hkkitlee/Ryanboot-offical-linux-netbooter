@@ -29,6 +29,7 @@ item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
 item	--gap	--	Auto select amd64/i386. Release / Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface.
+item	--key c memtest86		(C) Memtest86
 item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
@@ -1172,6 +1173,9 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 kernel ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
 boot
+#################################################
+:memtest86
+sanboot --no-describe --drive 0x80 https://fossies.org/windows/misc/memtest86-iso.zip/Memtest86-7.5.iso
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
