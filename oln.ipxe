@@ -1176,9 +1176,9 @@ boot
 #################################################
 :xcp-ng
 #kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/isolinux/mboot.c32 
-kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/xen.gz 
-imgargs xen.gz initrd=vmlinuz initrd=install.img ${kp}
-module http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/vmlinuz
+kernel http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/xen.gz dom0_max_vcpus=1-2 dom0_mem=max:752M com1=115200,8n1 console=com1,vga
+#imgargs xen.gz initrd=vmlinuz initrd=install.img ${kp}
+module http://distro.ibiblio.org/xcp-ng/netinstall/latest/boot/vmlinuz xencons=hvc console=hvc0 console=tty0
 module http://distro.ibiblio.org/xcp-ng/netinstall/latest/install.img
 boot
 #################################################
