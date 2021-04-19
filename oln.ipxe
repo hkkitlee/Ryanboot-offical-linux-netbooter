@@ -1179,7 +1179,7 @@ boot
 :memtest86
 sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.iso
 #################################################
-:supergrub
+:supergrub2
 sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/super_grub2_disk_hybrid_2.04s1.iso
 #################################################
 :gparted
