@@ -1203,6 +1203,7 @@ echo https://blackarch.org/blackarch-install.html
 
 echo Login : root
 echo Password : blackarch 
+echo blackarch-install
 
 set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=http://hkkitlee.ddns.net:8999/blackarch/
 echo -n Kernel Parameter, Bootcode: ${}
