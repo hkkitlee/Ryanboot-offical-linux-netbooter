@@ -77,6 +77,7 @@ item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
+item	--key u	proxmox			(U) Proxmox Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1180,6 +1181,10 @@ sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.i
 #################################################
 :supergrub2
 sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/super_grub2_disk_hybrid_2.04s1.iso
+#################################################
+:proxmox
+chain http://odc.cxthhhhh.com/SyStem/Proxmox-VE/pve63
+#################################################
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
