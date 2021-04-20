@@ -78,6 +78,7 @@ item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64
+item	--key v	blackarch		(V) BlackArch Linux OS amd64
 
 item	--gap
 item		start			Back to Top
@@ -1192,7 +1193,22 @@ echo
 
 linux http://hkkitlee.ddns.net:8999/clearlinux/linux initrd=initrd ${kp}
 initrd http://hkkitlee.ddns.net:8999/clearlinux/initrd
+
+boot
 #################################################
+:blackarch
+
+set kp ip=dhcp archiso_http_srv=http://hkkitlee.ddns.net:8999/blackarch/
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/vmlinuz-linux initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img
+initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/initramfs-linux.img
+initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/amd-ucode.img
+initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/intel-ucode.img
+
+boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
