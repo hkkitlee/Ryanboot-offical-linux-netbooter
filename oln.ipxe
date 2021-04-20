@@ -1191,7 +1191,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-linux http://hkkitlee.ddns.net:8999/clearlinux/linux initrd=initrd ${kp}
+kernel http://hkkitlee.ddns.net:8999/clearlinux/linux initrd=initrd ${kp}
 initrd http://hkkitlee.ddns.net:8999/clearlinux/initrd
 
 boot
