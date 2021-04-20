@@ -1187,8 +1187,12 @@ sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/super_grub2_dis
 echo https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 
 echo
-set kp quiet init=/usr/lib/systemd/systemd-bootchart initcall_debug tsc=reliable no_timer_check noreplace-smp rw 
-#clri.descriptor=http://IPXE_LAN_IP/clr-server.yaml
+set mode desktop
+echo -n Install mode (desktop, server): ${}
+read mode
+echo
+
+set kp quiet init=/usr/lib/systemd/systemd-bootchart initcall_debug tsc=reliable no_timer_check noreplace-smp rw clri.descriptor=https://cdn.download.clearlinux.org/current/config/image/live-${mode}.yaml
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
