@@ -1203,7 +1203,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/vmlinuz-linux initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img
+kernel http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/vmlinuz-linux initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
 initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/initramfs-linux.img
 initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/amd-ucode.img
 initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/intel-ucode.img
