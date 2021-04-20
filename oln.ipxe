@@ -1199,6 +1199,10 @@ initrd http://hkkitlee.ddns.net:8999/clearlinux/initrd
 boot
 #################################################
 :blackarch
+echo https://blackarch.org/blackarch-install.html
+
+echo Login : root
+echo Password : blackarch 
 
 set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=http://hkkitlee.ddns.net:8999/blackarch/
 echo -n Kernel Parameter, Bootcode: ${}
