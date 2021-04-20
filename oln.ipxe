@@ -1200,7 +1200,7 @@ boot
 #################################################
 :blackarch
 
-set kp ip=dhcp archiso_http_srv=http://hkkitlee.ddns.net:8999/blackarch/
+set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=http://hkkitlee.ddns.net:8999/blackarch/
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
