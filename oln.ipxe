@@ -1262,7 +1262,7 @@ boot
 #################################################
 :porteus-kiosk
 
-set ds http://hkkitlee.ddns.net:8999/porteus/
+set ds http://hkkitlee.ddns.net:8999/porteus-kiosk/
 echo -n Porteus-Kiosk site: ${}
 read ds
 echo
@@ -1272,7 +1272,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}boot/vmlinuz initrd=initrd.xz initrd=initrdpxe.xz
+kernel ${ds}boot/vmlinuz initrd=initrd.xz initrd=initrdpxe.xz ${kp}
 initrd ${ds}boot/initrd.xz
 initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
 boot
