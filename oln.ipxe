@@ -1257,7 +1257,7 @@ echo -n Proxmox-VE site: ${}
 read ds
 echo
 
-set kp ro ramdisk_size=16777216 rw quiet splash=verbose proxdebug fetch=${ds}proxmox-ve_6.3-1.iso
+set kp ro ramdisk_size=16777216 rw quiet splash=verbose proxdebug
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
