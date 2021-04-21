@@ -31,6 +31,7 @@ item	--gap	--	Auto select amd64/i[3,6]86. Release / Version Selection.
 item	--gap	--	tui/gtk Text/Graphical User Interface. 3rd provided by 3rd party.
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
+item	--key e memtest86+		(E) Memtest86+
 item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
@@ -1303,6 +1304,8 @@ kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
 initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
 boot
 #################################################
+:memtest86+
+linux16 http://hkkitlee.ddns.net:8999/memtest86%2b.bin
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
