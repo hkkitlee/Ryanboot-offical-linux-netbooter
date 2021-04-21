@@ -78,6 +78,7 @@ item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64
+item	--key v	proxmoxv		(V) Proxmox VE OS amd64
 
 item	--gap
 item		start			Back to Top
@@ -1247,6 +1248,22 @@ initrd ${ds}blackarch/boot/x86_64/initramfs-linux.img
 initrd ${ds}blackarch/boot/amd-ucode.img
 initrd ${ds}blackarch/boot/intel-ucode.img
 
+boot
+#################################################
+:proxmoxve
+
+set ds http://hkkitlee.ddns.net:8999/proxmox/
+echo -n Proxmox-VE site: ${}
+read ds
+echo
+
+set kp ro ramdisk_size=16777216 rw quiet splash=verbose proxdebug fetch=${ds}proxmox-ve_6.3-1.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel ${ds}boot/linux26 initrd=initrd.img ${kp}
+initrd ${ds}boot/initrd.img
 boot
 #################################################
 :porteus
