@@ -78,7 +78,7 @@ item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64
-item	--key v	proxmoxv		(V) Proxmox VE OS amd64
+item	--key v	proxmoxve		(V) Proxmox VE OS amd64
 
 item	--gap
 item		start			Back to Top
