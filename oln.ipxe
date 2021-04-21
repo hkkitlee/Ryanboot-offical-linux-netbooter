@@ -111,7 +111,7 @@ item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
-item	--key n	porteus			(N) Porteus Linux amd64
+item	--key n	porteus-kiosk		(N) Porteus-Kiosk Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1260,20 +1260,7 @@ initrd ${ds}initrd.img
 initrd ${ds}proxmox.iso.img
 boot
 #################################################
-:porteus
-#echo http://porteus.org/porteus-mirrors.txt
-#echo Site:
-#echo http://ftp.vim.org/ftp/os/Linux/distr/porteus/
-#echo http://ftp.nluug.nl/os/Linux/distr/porteus/
-#echo http://mirrors.dotsrc.org/porteus/
-#echo https://mirrors.dotsrc.org/porteus/
-#echo http://ftp.cc.uoc.gr/pub/linux/porteus/
-#echo http://www6.frugalware.org/mirrors/linux/porteus/
-#echo http://ftp.riken.jp/Linux/porteus/
-#echo http://www.mirrorservice.org/sites/dl.porteus.org/
-#echo http://linux.rz.rub.de/porteus/
-#echo http://ftpmirror1.infania.net/mirror/porteus/
-#echo
+:porteus-kiosk
 
 set ds http://hkkitlee.ddns.net:8999/porteus/
 echo -n Porteus-Kiosk site: ${}
@@ -1287,7 +1274,6 @@ echo
 
 kernel ${ds}boot/vmlinuz initrd=initrd.xz http_server=${ds}
 initrd ${ds}boot/initrd.xz
-#initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
 
 boot
 #################################################
