@@ -110,6 +110,7 @@ item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux (Boot from GitHub or Ryanboot Server)
+item	--key m	porteus			(M) Porteus amd64/i586
 
 item	--gap
 item		start			Back to Top
