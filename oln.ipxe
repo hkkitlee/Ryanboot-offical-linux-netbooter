@@ -111,6 +111,7 @@ item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
+item	--key n	porteus			(M) Porteus Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1291,8 +1292,9 @@ echo
 
 cpuid --ext 29 && set arch x86_64 || set arch i586
 
-kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
-initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
+kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz ${kp}
+#kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
+#initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
 boot
 #################################################
 #################################################
