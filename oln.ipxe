@@ -1257,7 +1257,7 @@ echo -n Proxmox-VE site: ${}
 read ds
 echo
 
-set kp ro ramdisk_size=16777216 rw quiet splash=verbose proxdebug
+set kp ro ramdisk_size=16777216 rw quiet splash=verbose
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
