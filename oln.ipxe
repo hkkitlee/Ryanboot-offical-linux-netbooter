@@ -1292,9 +1292,8 @@ echo
 
 cpuid --ext 29 && set arch x86_64 || set arch i586
 
-kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz ${kp}
-#kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
-#initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
+kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
+initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
 boot
 #################################################
 #################################################
