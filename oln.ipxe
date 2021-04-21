@@ -1213,7 +1213,6 @@ echo
 
 kernel http://hkkitlee.ddns.net:8999/clearlinux/linux initrd=initrd ${kp}
 initrd http://hkkitlee.ddns.net:8999/clearlinux/initrd
-#https://drive.google.com/uc?export=download&confirm=bIkg&id=1s6Eo1dB-AQA41FQvpD96LZmE1m8XbH7g initrd
 boot
 #################################################
 :blackarch
