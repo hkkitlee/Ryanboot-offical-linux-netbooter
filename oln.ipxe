@@ -1197,20 +1197,23 @@ echo
 iseq ${answer} Y && goto clearlinuxinstall || goto start
 
 :clearlinuxinstall
+echo Below sample from Clear Linux OS
+echo https://cdn.download.clearlinux.org/current/config/image/live-desktop.yaml
+echo https://cdn.download.clearlinux.org/current/config/image/live-server.yaml
 echo
-set mode desktop
-echo -n Install mode (desktop, server): ${}
-read mode
+set config https://cdn.download.clearlinux.org/current/config/image/live-server.yaml
+echo -n Please enter your yaml config location: ${}
+read config
 echo
 
-set kp init=/usr/lib/systemd/systemd-bootchart initcall_debug tsc=reliable no_timer_check noreplace-smp rw clri.descriptor=https://cdn.download.clearlinux.org/current/config/image/live-${mode}.yaml
+set kp init=/usr/lib/systemd/systemd-bootchart initcall_debug tsc=reliable no_timer_check noreplace-smp rw clri.descriptor=${config}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 kernel http://hkkitlee.ddns.net:8999/clearlinux/linux initrd=initrd ${kp}
 initrd http://hkkitlee.ddns.net:8999/clearlinux/initrd
-
+#https://drive.google.com/uc?export=download&confirm=bIkg&id=1s6Eo1dB-AQA41FQvpD96LZmE1m8XbH7g initrd
 boot
 #################################################
 :blackarch
