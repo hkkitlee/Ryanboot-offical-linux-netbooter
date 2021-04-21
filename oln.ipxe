@@ -1267,7 +1267,7 @@ echo -n Porteus-Kiosk site: ${}
 read ds
 echo
 
-set kp http_server=${ds}
+set kp http_server=https://porteus-kiosk.org/public/5.2/
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
