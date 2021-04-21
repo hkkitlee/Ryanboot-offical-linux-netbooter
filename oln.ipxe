@@ -1262,8 +1262,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}boot/linux26 initrd=initrd.img ${kp}
-initrd ${ds}boot/initrd.img
+kernel ${ds}linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
+initrd ${ds}initrd.img
+initrd ${ds}proxmox.iso.img
 boot
 #################################################
 :porteus
