@@ -1129,17 +1129,18 @@ boot
 
 #################################################
 :onefilelinux
-echo Site: 
-echo
-echo https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/
-echo http://hkkitlee.ddns.net:8999/
+#echo Site: 
+#echo
+echo https://github.com/zhovner/OneFileLinux
+#echo http://hkkitlee.ddns.net:8999/
 
-set ds https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/
-echo -n OneFileLinux site: ${}
-read ds
-echo
+#set ds https://github.com/zhovner/OneFileLinux/releases/download/v0.3.2/
+#echo -n OneFileLinux site: ${}
+#read ds
+#echo
 
-kernel ${ds}OneFileLinux.efi
+#kernel ${ds}OneFileLinux.efi
+kernel https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/OneFileLinux.efi || kernel https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/OneFileLinux.efi
 boot
 #################################################
 :steamos
