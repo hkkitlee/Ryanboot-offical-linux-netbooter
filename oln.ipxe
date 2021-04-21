@@ -111,7 +111,6 @@ item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
-item	--key n	porteus-kiosk		(N) Porteus-Kiosk Linux amd64
 
 item	--gap
 item		start			Back to Top
@@ -1260,22 +1259,6 @@ initrd ${ds}initrd.img
 initrd ${ds}proxmox.iso.img
 boot
 #################################################
-:porteus-kiosk
-
-set ds http://hkkitlee.ddns.net:8999/porteus-kiosk/
-echo -n Porteus-Kiosk site: ${}
-read ds
-echo
-
-set kp http_server=https://porteus-kiosk.org/public/5.2/
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel ${ds}boot/vmlinuz initrd=initrd.xz initrd=initrdpxe.xz ${kp}
-initrd ${ds}boot/initrd.xz
-initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
-boot
 #################################################
 #################################################
 :xyz
