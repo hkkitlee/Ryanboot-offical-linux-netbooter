@@ -1275,32 +1275,19 @@ boot
 #echo http://ftpmirror1.infania.net/mirror/porteus/
 #echo
 
-#set ds http://ftp.riken.jp/Linux/porteus/
-#echo -n Porteus site: ${}
-#read ds
-#echo
+set ds http://hkkitlee.ddns.net:8999/porteus/
+echo -n Porteus-Kiosk site: ${}
+read ds
+echo
 
-#set version 4.0
-#echo -n Version (3.2, 3.2.2, 4.0, 5.0): ${}
-#read version
-#echo
+set kp http_server=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
 
-#set kp 3 base_only noauto nocd nohd
-#echo -n Kernel Parameter, Bootcode: ${}
-#read kp
-#echo
-
-#cpuid --ext 29 && set arch x86_64 || set arch i586
-
-#kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
-#initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
-
-
-
-kernel http://hkkitlee.ddns.net:8999/porteus/vmlinuz initrd=initrd.xz initrd=initrdpxe.xz http_server=https://porteus-kiosk.org/public/5.2/
-initrd http://hkkitlee.ddns.net:8999/porteus/initrd.xz
-initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
-
+kernel ${ds}porteus/vmlinuz initrd=initrd.xz http_server=${ds}
+initrd ${ds}initrd.xz
+#initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
 
 boot
 #################################################
