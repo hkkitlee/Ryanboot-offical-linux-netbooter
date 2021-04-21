@@ -1185,18 +1185,13 @@ sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/super_grub2_dis
 #################################################
 :clearlinux
 echo https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
-
 echo
-echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-echo The DEVICE that you entered will be formatted without ANYMORE prompt
-echo -n Are you SURE!!!? ( Y / n ):${}
-read answer
-echo
-iseq ${answer} Y && goto clearlinuxinstall || goto start
 
-:clearlinuxinstall
+set ds http://hkkitlee.ddns.net:8999/clearlinux/
+echo -n Clear Linux OS site: ${}
+read ds
+echo
+
 echo Below sample from Clear Linux OS
 echo https://cdn.download.clearlinux.org/current/config/image/live-desktop.yaml
 echo https://cdn.download.clearlinux.org/current/config/image/live-server.yaml
@@ -1211,28 +1206,45 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel http://hkkitlee.ddns.net:8999/clearlinux/linux initrd=initrd ${kp}
-initrd http://hkkitlee.ddns.net:8999/clearlinux/initrd
+echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+echo Your computer will be formatted without ANYMORE prompt
+echo -n Are you SURE!!!? ( Y / n ):${}
+read answer
+echo
+iseq ${answer} Y && goto clearlinuxinstall || goto start
+echo
+
+
+:clearlinuxinstall
+kernel ${ds}linux initrd=initrd ${kp}
+initrd ${ds}initrd
 boot
 #################################################
 :blackarch
 echo https://blackarch.org/blackarch-install.html
 echo
 
-echo Login : root
-echo Password : blackarch 
-echo blackarch-install
+set ds http://hkkitlee.ddns.net:8999/blackarch/
+echo -n BlackArch site: ${}
+read ds
 echo
 
-set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=http://hkkitlee.ddns.net:8999/blackarch/
+echo Login : root
+echo Password : blackarch 
+echo Installer script : blackarch-install
+echo
+
+set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/vmlinuz-linux initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
-initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/x86_64/initramfs-linux.img
-initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/amd-ucode.img
-initrd http://hkkitlee.ddns.net:8999/blackarch/blackarch/boot/intel-ucode.img
+kernel ${ds}blackarch/boot/x86_64/vmlinuz-linux initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
+initrd ${ds}blackarch/boot/x86_64/initramfs-linux.img
+initrd ${ds}blackarch/boot/amd-ucode.img
+initrd ${ds}blackarch/boot/intel-ucode.img
 
 boot
 #################################################
