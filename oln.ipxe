@@ -1285,8 +1285,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}porteus/vmlinuz initrd=initrd.xz http_server=${ds}
-initrd ${ds}initrd.xz
+kernel ${ds}boot/vmlinuz initrd=initrd.xz http_server=${ds}
+initrd ${ds}boot/initrd.xz
 #initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
 
 boot
