@@ -1261,39 +1261,47 @@ initrd ${ds}proxmox.iso.img
 boot
 #################################################
 :porteus
-echo http://porteus.org/porteus-mirrors.txt
-echo Site:
-echo http://ftp.vim.org/ftp/os/Linux/distr/porteus/
-echo http://ftp.nluug.nl/os/Linux/distr/porteus/
-echo http://mirrors.dotsrc.org/porteus/
-echo https://mirrors.dotsrc.org/porteus/
-echo http://ftp.cc.uoc.gr/pub/linux/porteus/
-echo http://www6.frugalware.org/mirrors/linux/porteus/
-echo http://ftp.riken.jp/Linux/porteus/
-echo http://www.mirrorservice.org/sites/dl.porteus.org/
-echo http://linux.rz.rub.de/porteus/
-echo http://ftpmirror1.infania.net/mirror/porteus/
-echo
+#echo http://porteus.org/porteus-mirrors.txt
+#echo Site:
+#echo http://ftp.vim.org/ftp/os/Linux/distr/porteus/
+#echo http://ftp.nluug.nl/os/Linux/distr/porteus/
+#echo http://mirrors.dotsrc.org/porteus/
+#echo https://mirrors.dotsrc.org/porteus/
+#echo http://ftp.cc.uoc.gr/pub/linux/porteus/
+#echo http://www6.frugalware.org/mirrors/linux/porteus/
+#echo http://ftp.riken.jp/Linux/porteus/
+#echo http://www.mirrorservice.org/sites/dl.porteus.org/
+#echo http://linux.rz.rub.de/porteus/
+#echo http://ftpmirror1.infania.net/mirror/porteus/
+#echo
 
-set ds http://ftp.riken.jp/Linux/porteus/
-echo -n Porteus site: ${}
-read ds
-echo
+#set ds http://ftp.riken.jp/Linux/porteus/
+#echo -n Porteus site: ${}
+#read ds
+#echo
 
-set version 4.0
-echo -n Version (3.2, 3.2.2, 4.0, 5.0): ${}
-read version
-echo
+#set version 4.0
+#echo -n Version (3.2, 3.2.2, 4.0, 5.0): ${}
+#read version
+#echo
 
-set kp 3 base_only noauto nocd nohd
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
+#set kp 3 base_only noauto nocd nohd
+#echo -n Kernel Parameter, Bootcode: ${}
+#read kp
+#echo
 
-cpuid --ext 29 && set arch x86_64 || set arch i586
+#cpuid --ext 29 && set arch x86_64 || set arch i586
 
-kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
-initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
+#kernel ${ds}${arch}/Porteus-v${version}/kernel/vmlinuz initrd=initrd.xz ${kp}
+#initrd ${ds}${arch}/Porteus-v${version}/kernel/initrd.xz
+
+
+
+kernel http://hkkitlee.ddns.net:8999/porteus/vmlinuz initrd=initrd.xz initrd=initrdpxe.xz http_server=https://porteus-kiosk.org/public/5.2/
+initrd http://hkkitlee.ddns.net:8999/porteus/initrd.xz
+initrd https://porteus-kiosk.org/public/5.2/initrdpxe.xz
+
+
 boot
 #################################################
 #################################################
