@@ -1250,7 +1250,7 @@ read ds
 echo
 
 echo ramdisk_size value is in kb
-set kp ro ramdisk_size=921600 rw quiet splash=verbose
+set kp ro ramdisk_size=921600 rw splash=verbose
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
@@ -1260,6 +1260,7 @@ initrd ${ds}initrd.img
 initrd ${ds}proxmox.iso.img
 boot
 #################################################
+https://gfsvf1szkm2avg6akkqdza-on.drv.tw/ryanboot/
 #################################################
 #################################################
 :xyz
