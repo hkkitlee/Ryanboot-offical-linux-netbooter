@@ -1260,7 +1260,6 @@ initrd ${ds}initrd.img
 initrd ${ds}proxmox.iso.img
 boot
 #################################################
-https://gfsvf1szkm2avg6akkqdza-on.drv.tw/ryanboot/
 #################################################
 #################################################
 :xyz
