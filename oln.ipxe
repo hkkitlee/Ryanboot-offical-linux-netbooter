@@ -1279,6 +1279,22 @@ initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
 initrd --name proxmox.iso.img --timeout 100000 ${ds}proxmox.iso.img${link}
 boot
 #################################################
+:clonezilla
+
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
+echo -n Clonezilla site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 ||
+
+set kp union=overlay boot=live config noswap edd=on nomodeset ocs_live_run="ocs-live-general" vga=791 ethdevice-timeout=60 fetch=${ds}clonezilla/live/filesystem.squashfs${link}
+kernel --name vmlinuz --timeout 100000 ${ds}clonezilla/live/vmlinuz${link} initrd=initrd.img ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}clonezilla/live/initrd.img${link}
+boot
 #################################################
 #################################################
 :xyz
