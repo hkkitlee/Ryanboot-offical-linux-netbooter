@@ -1181,7 +1181,12 @@ sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/super_grub2_dis
 echo https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 echo
 
-set ds http://hkkitlee.ddns.net:8999/clearlinux/
+echo Sites:
+echo
+echo https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
+echo http://hkkitlee.ddns.net:8999/clearlinux/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
 echo -n Clear Linux OS site: ${}
 read ds
 echo
@@ -1194,6 +1199,8 @@ set config https://cdn.download.clearlinux.org/current/config/image/live-server.
 echo -n Please enter your yaml config location: ${}
 read config
 echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clearlinux/ && set link ?viasf=1 ||
 
 set kp init=/usr/lib/systemd/systemd-bootchart initcall_debug tsc=reliable no_timer_check noreplace-smp rw clri.descriptor=${config}
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1212,15 +1219,20 @@ echo
 
 ###
 :clearlinuxinstall
-kernel ${ds}linux initrd=initrd ${kp}
-initrd ${ds}initrd
+kernel --name linux --timeout 10000 ${ds}linux${link} initrd=initrd ${kp}
+initrd --name initrd --timeout 10000 ${ds}initrd${link}
 boot
 #################################################
 :blackarch
 echo https://blackarch.org/blackarch-install.html
 echo
 
-set ds http://hkkitlee.ddns.net:8999/blackarch/
+echo Sites:
+echo
+echo https://master.dl.sourceforge.net/project/ryanboot/blackarch/
+echo http://hkkitlee.ddns.net:8999/blackarch/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/blackarch/
 echo -n BlackArch site: ${}
 read ds
 echo
@@ -1230,15 +1242,17 @@ echo Password : blackarch
 echo Installer script : blackarch-install
 echo
 
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/blackarch/ && set link ?viasf=1 ||
+
 set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}blackarch/boot/x86_64/vmlinuz-linux initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
-initrd ${ds}blackarch/boot/x86_64/initramfs-linux.img
-initrd ${ds}blackarch/boot/amd-ucode.img
-initrd ${ds}blackarch/boot/intel-ucode.img
+kernel --name vmlinuz-linux --timeout 10000 ${ds}blackarch/boot/x86_64/vmlinuz-linux${link} initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
+initrd --name initramfs-linux.img --timeout 10000 ${ds}blackarch/boot/x86_64/initramfs-linux.img${link}
+initrd --name amd-ucode.img --timeout 10000 ${ds}blackarch/boot/amd-ucode.img${link}
+initrd --name intel-ucode.img --timeout 10000 ${ds}blackarch/boot/intel-ucode.img${link}
 
 boot
 #################################################
@@ -1254,7 +1268,7 @@ echo -n Proxmox-VE site: ${}
 read ds
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/proxmox/ && set link ?viasf=1
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/proxmox/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
 set kp ro ramdisk_size=921600 rw splash=verbose
@@ -1262,10 +1276,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 10000 ${ds}linux26${link}
+kernel --name linux26 --timeout 10000 ${ds}linux26${link} linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
 initrd --name initrd.img --timeout 10000 ${ds}initrd.img${link}
 initrd --name proxmox.iso.img --timeout 10000 ${ds}proxmox.iso.img${link}
-imgargs linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
 boot
 #################################################
 #################################################
