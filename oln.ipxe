@@ -1255,9 +1255,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 https://sourceforge.net/projects/ryanboot/files/proxmox/linux26/download || kernel ${ds}linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
-initrd --name initrd.img https://sourceforge.net/projects/ryanboot/files/proxmox/initrd.img/download || initrd ${ds}initrd.img
-initrd --name proxmox.iso.img https://sourceforge.net/projects/ryanboot/files/proxmox/proxmox.iso.img/download || initrd ${ds}proxmox.iso.img
+kernel --name linux26 http://sourceforge.net/projects/ryanboot/files/proxmox/linux26/download || kernel ${ds}linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
+initrd --name initrd.img http://sourceforge.net/projects/ryanboot/files/proxmox/initrd.img/download || initrd ${ds}initrd.img
+initrd --name proxmox.iso.img http://sourceforge.net/projects/ryanboot/files/proxmox/proxmox.iso.img/download || initrd ${ds}proxmox.iso.img
 boot
 #################################################
 #################################################
