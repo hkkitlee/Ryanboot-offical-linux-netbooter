@@ -1255,8 +1255,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 10000 https://sourceforge.net/projects/ryanboot/files/proxmox/linux26/download || kernel ${ds}linux26
-initrd --name initrd.img --timeout 10000 https://sourceforge.net/projects/ryanboot/files/proxmox/initrd.img/download || initrd ${ds}initrd.img
+kernel --name linux26 --timeout 10000 https://master.dl.sourceforge.net/projects/ryanboot/files/proxmox/linux26?viasf=1 || kernel ${ds}linux26
+initrd --name initrd.img --timeout 10000 https://master.dl.sourceforge.net/project/ryanboot/proxmox/initrd.img?viasf=1 || initrd ${ds}initrd.img
 initrd --name proxmox.iso.img --timeout 10000 https://master.dl.sourceforge.net/project/ryanboot/proxmox/proxmox.iso.img?viasf=1 || initrd ${ds}proxmox.iso.img
 imgargs linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
 boot
