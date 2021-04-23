@@ -1297,8 +1297,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img initrd=ca.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+initrd --name ca.img --timeout 100000 https://master.dl.sourceforge.net/project/ryanboot/ca.img${link}
 boot
 #################################################
 #################################################
