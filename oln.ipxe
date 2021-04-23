@@ -1182,7 +1182,6 @@ echo https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 echo
 
 echo Sites:
-echo
 echo https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
 echo http://hkkitlee.ddns.net:8999/clearlinux/
 echo
@@ -1207,6 +1206,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
+set answer n
 echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 echo CAUTION!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -1219,8 +1219,8 @@ echo
 
 ###
 :clearlinuxinstall
-kernel --name linux --timeout 10000 ${ds}linux${link} initrd=initrd ${kp}
-initrd --name initrd --timeout 10000 ${ds}initrd${link}
+kernel --name linux --timeout 100000 ${ds}linux${link} initrd=initrd ${kp}
+initrd --name initrd --timeout 100000 ${ds}initrd${link}
 boot
 #################################################
 :blackarch
@@ -1228,7 +1228,6 @@ echo https://blackarch.org/blackarch-install.html
 echo
 
 echo Sites:
-echo
 echo https://master.dl.sourceforge.net/project/ryanboot/blackarch/
 echo http://hkkitlee.ddns.net:8999/blackarch/
 echo
@@ -1249,17 +1248,16 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz-linux --timeout 10000 ${ds}blackarch/boot/x86_64/vmlinuz-linux${link} initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
-initrd --name initramfs-linux.img --timeout 10000 ${ds}blackarch/boot/x86_64/initramfs-linux.img${link}
-initrd --name amd-ucode.img --timeout 10000 ${ds}blackarch/boot/amd-ucode.img${link}
-initrd --name intel-ucode.img --timeout 10000 ${ds}blackarch/boot/intel-ucode.img${link}
+kernel --name vmlinuz-linux --timeout 100000 ${ds}blackarch/boot/x86_64/vmlinuz-linux${link} initrd=initramfs-linux.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
+initrd --name initramfs-linux.img --timeout 100000 ${ds}blackarch/boot/x86_64/initramfs-linux.img${link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}blackarch/boot/amd-ucode.img${link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}blackarch/boot/intel-ucode.img${link}
 
 boot
 #################################################
 :proxmoxve
 
 echo Sites:
-echo
 echo https://master.dl.sourceforge.net/project/ryanboot/proxmox/
 echo http://hkkitlee.ddns.net:8999/proxmox/
 echo
@@ -1276,9 +1274,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 10000 ${ds}linux26${link} linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
-initrd --name initrd.img --timeout 10000 ${ds}initrd.img${link}
-initrd --name proxmox.iso.img --timeout 10000 ${ds}proxmox.iso.img${link}
+kernel --name linux26 --timeout 100000 ${ds}linux26${link} linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
+initrd --name proxmox.iso.img --timeout 100000 ${ds}proxmox.iso.img${link}
 boot
 #################################################
 #################################################
