@@ -1195,6 +1195,8 @@ echo https://cdn.download.clearlinux.org/current/config/image/live-desktop.yaml
 echo https://cdn.download.clearlinux.org/current/config/image/live-server.yaml
 echo
 set config https://cdn.download.clearlinux.org/current/config/image/live-server.yaml
+echo -n Please enter your yaml config location: ${}
+read config
 echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clearlinux/ && set link ?viasf=1 ||
