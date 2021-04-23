@@ -1293,6 +1293,10 @@ echo
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 ||
 
 set kp union=overlay boot=live config noswap edd=on nomodeset ocs_live_run="ocs-live-general" vga=791 ethdevice-timeout=60 fetch=${ds}live/filesystem.squashfs${link}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
 kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 boot
