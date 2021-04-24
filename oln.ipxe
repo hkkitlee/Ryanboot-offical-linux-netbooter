@@ -1282,7 +1282,7 @@ initrd --name proxmox.iso.img --timeout 100000 ${ds}proxmox.iso.img${link}
 boot
 #################################################
 :ubuntukylin-install
-set kp locale=zh_CN keyboard-configuration/layoutcode?=cn boot=casper quiet splash ---
+set kp locale=zh_CN keyboard-configuration/layoutcode?=cn boot=casper splash ---
 goto ubuntukylin
 
 :ubuntukylin-live
@@ -1300,7 +1300,7 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/ubuntukylin/ && set link ?viasf=1 ||
 
-iseq ${target} ubuntukylin-live && set kp locale=zh_CN keyboard-configuration/layoutcode?=cn file=${ds}casper/filesystem.squashfs${link} quiet splash --- ||
+iseq ${target} ubuntukylin-live && set kp locale=zh_CN keyboard-configuration/layoutcode?=cn file=${ds}casper/filesystem.squashfs${link} splash --- ||
 
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
