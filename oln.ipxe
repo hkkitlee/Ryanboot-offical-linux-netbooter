@@ -111,7 +111,7 @@ item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
-item	--key n garuda			(N) Garuda Linux amd64 Live with Installer Script
+item	--key n garuda			(N) Garuda Linux amd64 Live with Installer
 
 item	--gap
 item		start			Back to Top
