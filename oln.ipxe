@@ -172,8 +172,6 @@ kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}image
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
 
 boot
-
-
 #################################################
 :fedora64
 
@@ -209,8 +207,6 @@ set path ${ds}/fedora/releases/${version}/${release}/x86_64/os
 initrd ${path}/images/pxeboot/initrd.img
 kernel ${path}/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2=${path} ${kp}
 boot
-
-
 #################################################
 :debian
 
@@ -252,8 +248,6 @@ initrd ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netbo
 kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 
 boot
-
-
 #################################################
 :parrot
 
@@ -301,8 +295,6 @@ kernel ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/ne
 initrd ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
 
 boot
-
-
 #################################################
 :kali
 
@@ -349,8 +341,6 @@ cpuid --ext 29 && set arch amd64 || set arch i386
 kernel ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 initrd ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
 boot
-
-
 #################################################
 :arch
 
@@ -386,8 +376,6 @@ initrd ${ds}/archlinux/iso/latest/arch/boot/x86_64/initramfs-linux.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/amd-ucode.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/intel-ucode.img
 boot
-
-
 #################################################
 :tinycore
 
@@ -424,7 +412,6 @@ initrd ${ds}/${version}.x/${arch}/release/distribution_files/rootfs${file1}.gz
 
 
 boot
-
 #################################################
 :alpine
 echo https://mirrors.alpinelinux.org/
@@ -1069,7 +1056,6 @@ iseq ${interface} gtk && set link gtk/ || set link
 kernel ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/linux initrd=initrd.gz ${kp}
 initrd ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/initrd.gz
 boot
-
 #################################################
 :springdale
 echo http://springdale.math.ias.edu/
@@ -1097,7 +1083,6 @@ echo
 kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/x86_64/os ${kp}
 initrd ${ds}${version}/x86_64/os/images/pxeboot/initrd.img
 boot
-
 #################################################
 :clearos
 echo http://mirror.clearos.com/mirrorlist/
@@ -1127,7 +1112,6 @@ echo
 kernel ${ds}${version}/os/x86_64/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/os/x86_64 ${kp}
 initrd ${ds}${version}/os/x86_64/images/pxeboot/initrd.img
 boot
-
 #################################################
 :onefilelinux
 echo https://github.com/zhovner/OneFileLinux
@@ -1184,7 +1168,6 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
-echo http://hkkitlee.ddns.net:8999/clearlinux/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
 echo -n Clear Linux OS site: ${}
@@ -1230,7 +1213,6 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/blackarch/
-echo http://hkkitlee.ddns.net:8999/blackarch/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/blackarch/
 echo -n BlackArch site: ${}
@@ -1260,7 +1242,6 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/proxmox/
-echo http://hkkitlee.ddns.net:8999/proxmox/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/proxmox/
 echo -n Proxmox-VE site: ${}
@@ -1309,7 +1290,6 @@ initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 
 boot
-
 #################################################
 #################################################
 :xyz
