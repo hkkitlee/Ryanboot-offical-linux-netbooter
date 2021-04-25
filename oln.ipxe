@@ -112,7 +112,6 @@ item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
 item	--key n garuda			(N) Garuda Linux amd64 Live with Installer
-item	--key o redorescue		(O) Redo Rescue amd64
 
 item	--gap
 item		start			Back to Top
@@ -1236,7 +1235,6 @@ kernel --name vmlinuz-linux --timeout 100000 ${ds}blackarch/boot/x86_64/vmlinuz-
 initrd --name initramfs-linux.img --timeout 100000 ${ds}blackarch/boot/x86_64/initramfs-linux.img${link}
 initrd --name amd-ucode.img --timeout 100000 ${ds}blackarch/boot/amd-ucode.img${link}
 initrd --name intel-ucode.img --timeout 100000 ${ds}blackarch/boot/intel-ucode.img${link}
-
 boot
 #################################################
 :proxmoxve
@@ -1288,28 +1286,8 @@ kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} in
 initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/initramfs-x86_64.img${link}
 initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
-
 boot
 #################################################
-:redorescue
-echo Sites:
-echo https://master.dl.sourceforge.net/project/ryanboot/redorescue/
-echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/redorescue/
-echo -n Redo Rescue site: ${}
-read ds
-echo
-
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redorescue/ && set link ?viasf=1 ||
-
-set kp boot=live vga=791 splash setkmap=us fetch=${ds}live/filesystem.squashfs
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${kp}
-initrd --name initrd --timeout 100000 ${ds}initrd${link}
-boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
