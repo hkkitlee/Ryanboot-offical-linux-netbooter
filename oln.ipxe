@@ -674,6 +674,10 @@ echo -n Kernel name: ${}
 read kname
 echo
 
+echo SSID:X-WRT_XXXX Wifi passwd:88888888
+echo Web index:http://192.168.15.1/
+echo Username/Passwd:root/admin
+
 kernel https://downloads.x-wrt.com/rom/${kname}
 boot
 #################################################
