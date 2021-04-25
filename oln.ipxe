@@ -112,6 +112,7 @@ item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
 item	--key n garuda			(N) Garuda Linux amd64 Live with Installer
+item	--key o redorescue		(O) Redo Rescue amd64
 
 item	--gap
 item		start			Back to Top
@@ -1278,7 +1279,6 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/garuda/ && set link ?viasf=1 ||
 
-#set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=${ds}
 set kp ip=dhcp misobasedir=garuda miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
@@ -1291,6 +1291,25 @@ initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 
 boot
 #################################################
+:redorescue
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/redorescue/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/redorescue/
+echo -n Redo Rescue site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redorescue/ && set link ?viasf=1 ||
+
+set kp boot=live vga=791 splash setkmap=us fetch=${ds}live/filesystem.squashfs
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${kp}
+initrd --name initrd --timeout 100000 ${ds}initrd${link}
+boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
