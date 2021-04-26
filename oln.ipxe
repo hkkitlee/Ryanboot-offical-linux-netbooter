@@ -82,7 +82,7 @@ item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64
-item	--key w	oracle8			(W) OracleLinux 8 Full amd64
+item	--key w	oracle8			(W) OracleLinux R8 Full amd64
 
 item	--gap
 item		start			Back to Top
