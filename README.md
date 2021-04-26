@@ -1,6 +1,7 @@
 # Ryanboot-offical-linux-netbooter
 ## Part of Ryanboot: Netboot from Linux Distribution 網絡啟動官版Linux
 
+* 下載：[主機下載](https://hkkitlee.ddns.net:9000/ryan.zip) [備用下載](http://hkkitlee.ddns.net:8999/ryan.zip) [Github](https://github.com/hkkitlee/Ryanboot/raw/main/ryan.zip) [Gitee](https://gitee.com/hkkitlee/Ryanboot/raw/main/ryan.zip)
 * Map:[Github](https://github.com/hkkitlee/Ryanboot/blob/main/map) [Gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/map)
 * Changlog:[Github](https://github.com/hkkitlee/Ryanboot/blob/main/changelog) [Gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/changelog)
 
