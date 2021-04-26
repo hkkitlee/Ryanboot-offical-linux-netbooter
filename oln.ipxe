@@ -82,6 +82,7 @@ item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64
+item	--key w	oracle8			(W) OracleLinux 8 Full amd64
 
 item	--gap
 item		start			Back to Top
@@ -1295,6 +1296,25 @@ initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 boot
 #################################################
+:oracle8
+echo https://master.dl.sourceforge.net/project/ryanboot/oracle8/
+echo
+
+set ds https://master.dl.sourceforge.net/project/ryanboot/oracle8/
+echo -n OracleLinux R8 site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/oracle8/ && set link ?viasf=1 ||
+
+set kp ro ip=dhcp inst.gpt
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img inst.stage2=${ds} ${kp}
+boot
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
