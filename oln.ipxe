@@ -1307,7 +1307,7 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/oracle8/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt inst.addrepo=https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ inst.stage2=${ds}
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ inst.stage2=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
