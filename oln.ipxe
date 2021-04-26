@@ -1307,13 +1307,13 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/oracle8/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt
+set kp ro ip=dhcp inst.gpt inst.stage2=https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
-kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img inst.stage2=${ds} ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
 boot
 #################################################
 :xyz
