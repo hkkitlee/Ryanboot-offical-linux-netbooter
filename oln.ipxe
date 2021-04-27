@@ -1360,7 +1360,6 @@ echo
 kernel --name gentoo --timeout 100000 ${ds}boot/gentoo${link} initrd=gentoo.igz ${kp}
 initrd --name gentoo.igz --timeout 100000 ${ds}boot/gentoo.igz${link}
 initrd --name image.squashfs.img --timeout 100000 ${ds}image.squashfs.img${link}
-
 boot
 #################################################
 :xyz
