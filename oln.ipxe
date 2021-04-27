@@ -1379,7 +1379,7 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kaspersky-rd/ && set link ?viasf=1 ||
 
-set kp netboot=${ds}data/* loadsrm=000-core.srm,001-xorg.srm,002-xfce.srm,003-kl.srm,004-krt.srm,005-bases.srm,008-firefox.srm net.ifnames=0 dostartx
+set kp netboot=${ds}data/* loadsrm=000-core.srm,001-xorg.srm,002-xfce.srm,003-kl.srm,004-krt.srm,005-bases.srm,008-firefox.srm,kernel.dat net.ifnames=0 dostartx
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
