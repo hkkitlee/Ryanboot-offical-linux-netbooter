@@ -1353,7 +1353,7 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/ && set link ?viasf=1 ||
 
-set kp root=/dev/ram0 init=/linuxrc  dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791
+set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
