@@ -1343,6 +1343,10 @@ boot
 #################################################
 :gentoo-minimal
 
+echo https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation#Minimal_installation_CD
+echo https://www.unixmen.com/a-beginners-guide-to-install-gentoo/
+echo
+
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
 echo
