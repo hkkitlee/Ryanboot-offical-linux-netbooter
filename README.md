@@ -6,7 +6,7 @@
 * Changlog:[Github](https://github.com/hkkitlee/Ryanboot/blob/main/changelog) [Gitee](https://gitee.com/hkkitlee/Ryanboot/blob/main/changelog)
 
 ### Selection/可選項：
-* Mirror 鏡像源
+* Mirror 鏡像源 [SourceForge](https://sourceforge.net/projects/ryanboot/files/)
 * Release 釋放版
 * Version 版本
 * Manual Kernel Parameter 手動核心參數
