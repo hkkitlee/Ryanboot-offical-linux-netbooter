@@ -1379,13 +1379,14 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kaspersky-rd/ && set link ?viasf=1 ||
 
-set kp netboot=${ds}data/* loadsrm=000-core.srm,001-xorg.srm,002-xfce.srm,003-kl.srm,004-krt.srm,005-bases.srm,008-firefox.srm,kernel.dat net.ifnames=0 dostartx
+set kp loadsrm=000-core.srm,001-xorg.srm,002-xfce.srm,003-kl.srm,004-krt.srm,005-bases.srm,008-firefox.srm,kernel.dat net.ifnames=0 dostartx
+#netboot=${ds}data/*
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name k-x86_64 --timeout 100000 ${ds}boot/grub/k-x86_64${link} initrd=initrd.xz initrd=krd.img ${kp}
-initrd --name initrd.xz --timeout 100000 ${ds}boot/grub/initrd.xz${link}
+kernel --name k-x86_64 --timeout 100000 ${ds}boot/grub/k-x86_64${link} initrd=krd.img ${kp}
+#initrd --name initrd.xz --timeout 100000 ${ds}boot/grub/initrd.xz${link}
 initrd --name krd.img --timeout 100000 ${ds}krd.img${link}
 boot
 #################################################
