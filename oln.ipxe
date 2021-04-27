@@ -1362,6 +1362,27 @@ initrd --name gentoo.igz --timeout 100000 ${ds}boot/gentoo.igz${link}
 initrd --name image.squashfs.img --timeout 100000 ${ds}image.squashfs.img${link}
 boot
 #################################################
+:kaspersky-rd
+
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/kaspersky-rd/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/kaspersky-rd/
+echo -n Kaspersky Rescue Disk site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kaspersky-rd/ && set link ?viasf=1 ||
+
+set kp netboot=${ds}data/* loadsrm=000-core.srm,001-xorg.srm,002-xfce.srm,003-kl.srm,004-krt.srm,005-bases.srm,008-firefox.srm net.ifnames=0 dostartx
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name k-x86_64 --timeout 100000 ${ds}boot/grub/k-x86_64${link} initrd=initrd.xz ${kp}
+initrd --name initrd.xz --timeout 100000 ${ds}boot/grub/initrd.xz${link}
+boot
+#################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
