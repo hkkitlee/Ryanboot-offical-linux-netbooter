@@ -1384,8 +1384,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name k-x86_64 --timeout 100000 ${ds}boot/grub/k-x86_64${link} initrd=initrd.xz ${kp}
+kernel --name k-x86_64 --timeout 100000 ${ds}boot/grub/k-x86_64${link} initrd=initrd.xz initrd=krd.img ${kp}
 initrd --name initrd.xz --timeout 100000 ${ds}boot/grub/initrd.xz${link}
+initrd --name krd.img --timeout 100000 ${ds}krd.img${link}
 boot
 #################################################
 :xyz
