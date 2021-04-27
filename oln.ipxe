@@ -118,6 +118,7 @@ item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64
+item	--key q kaspersky-rd		(Q) Kaspersky Rescue Disk 18 amd64
 
 item	--gap
 item		start			Back to Top
