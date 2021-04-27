@@ -116,6 +116,8 @@ item	--key k	fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer
+item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer
+item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64
 
 item	--gap
 item		start			Back to Top
@@ -1336,6 +1338,29 @@ kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} in
 initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/initramfs-x86_64.img${link}
 initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
+boot
+#################################################
+:gentoo-minimal
+
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
+echo -n Gentoo site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/ && set link ?viasf=1 ||
+
+set kp root=/dev/ram0 init=/linuxrc  dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name gentoo --timeout 100000 ${ds}boot/gentoo${link} initrd=gentoo.igz ${kp}
+initrd --name gentoo.igz --timeout 100000 ${ds}boot/gentoo.igz${link}
+initrd --name image.squashfs.img --timeout 100000 ${ds}image.squashfs.img${link}
+
 boot
 #################################################
 :xyz
