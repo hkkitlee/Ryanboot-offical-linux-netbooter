@@ -133,7 +133,7 @@ chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/R
 #################################################
 :background
 
-set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png
+set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrixcovernaked.png
 echo -n Picture URL (png): ${}
 read pic
 set x 800
@@ -142,7 +142,8 @@ read x
 set y 600
 echo -n Height: ${}
 read y
-console --picture ${pic} --x ${x} --y ${y}
+console --picture ${pic} --left 32 --right 32 --top 32 --bottom 48
+#--x ${x} --y ${y}
 goto start
 
 #################################################
