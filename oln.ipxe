@@ -4,14 +4,7 @@
 ###The pursuit of perfection in any field ... is an art.###
 
 
-
 imgtrust --allow 
-#console --picture https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/matrix.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png --x 800 --y 600
-#cpair --foreground 3 --background 0 2
-#cpair --foreground 5 --background 9 3
-#cpair --foreground 6 --background 4 1
-console
-cpair 0
 
 goto start
 
@@ -36,6 +29,7 @@ item	--gap	--	tui/gtk Text/Graphical User Interface. 3rd provided by 3rd party.
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
 item	--gap
+item		background		Background config
 item		poweroff		PowerOff
 item		reboot			Reboot
 item	--gap
@@ -135,6 +129,16 @@ reboot
 
 :rpbl
 chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe
+
+#################################################
+:background
+
+set pic --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png --x 800 --y 600
+echo -n Picture URL (png): ${}
+read pic
+echo
+console ${pic}
+goto start
 
 #################################################
 :ubuntu
