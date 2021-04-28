@@ -6,11 +6,12 @@
 
 
 imgtrust --allow 
-console --picture https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/matrix.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png --x 800 --y 600
-cpair --foreground 3 --background 0 2
-cpair --foreground 5 --background 9 3
-cpair --foreground 6 --background 4 1
-
+#console --picture https://raw.githubusercontent.com/hkkitlee/Ryanboot-offical-linux-netbooter/main/matrix.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png --x 800 --y 600
+#cpair --foreground 3 --background 0 2
+#cpair --foreground 5 --background 9 3
+#cpair --foreground 6 --background 4 1
+console
+cpair 0
 
 goto start
 
