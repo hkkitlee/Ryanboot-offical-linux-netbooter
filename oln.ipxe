@@ -131,21 +131,6 @@ reboot
 chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe
 
 #################################################
-:background
-
-set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrixcovernaked.png
-echo -n Picture URL (png): ${}
-read pic
-set x 800
-echo -n Length: ${}
-read x
-set y 600
-echo -n Height: ${}
-read y
-console --picture ${pic} --x ${x} --y ${y}
-goto start
-
-#################################################
 :ubuntu
 
 echo https://launchpad.net/ubuntu/+archivemirrors
@@ -1376,6 +1361,19 @@ initrd --name gentoo.igz --timeout 100000 ${ds}boot/gentoo.igz${link}
 initrd --name image.squashfs.img --timeout 100000 ${ds}image.squashfs.img${link}
 boot
 #################################################
+:background
+
+set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrixcovernaked.png
+echo -n Picture URL (png): ${}
+read pic
+set x 800
+echo -n Length: ${}
+read x
+set y 600
+echo -n Height: ${}
+read y
+console --picture ${pic} --x ${x} --y ${y}
+goto start
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
