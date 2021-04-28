@@ -142,8 +142,7 @@ read x
 set y 600
 echo -n Height: ${}
 read y
-console --picture ${pic} --left 2 --right 2 --top 2 --bottom 4
-#--x ${x} --y ${y}
+console --picture ${pic} --x ${x} --y ${y}
 goto start
 
 #################################################
