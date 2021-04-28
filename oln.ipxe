@@ -136,7 +136,6 @@ chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/R
 set pic --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrix.png --x 800 --y 600
 echo -n Picture URL (png): ${}
 read pic
-echo
 console ${pic}
 goto start
 
