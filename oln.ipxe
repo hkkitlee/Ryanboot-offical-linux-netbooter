@@ -1368,15 +1368,16 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/
+echo http://hkkitlee.ddns.net:8999/calculate-cls/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/
+set ds http://hkkitlee.ddns.net:8999/calculate-cls/
 echo -n Gentoo site: ${}
 read ds
 echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/ && set link ?viasf=1 ||
 
-set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791 rd.live.squashimg=livecd.squashfs nodevfs noresume verbose rd.plymouth=0
+set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/livecd.squashfs cdroot vga=791 rd.live.squashimg=/livecd.squashfs nodevfs noresume verbose rd.plymouth=0
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
