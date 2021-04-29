@@ -1363,7 +1363,7 @@ boot
 #################################################
 :background
 
-set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/matrixcovernaked.png
+set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/1.png
 echo -n Picture URL (png): ${}
 read pic
 set x 800
