@@ -1395,7 +1395,7 @@ read pi
 cpair --foreground ${fc} --background ${bc} ${pi}
 
 set leave y
-echo -n Want to leave now? ( y / n ):${}
+echo -n Press enter to leave or N/n to do again (N/n):${}
 read leave
 echo
 iseq ${answer} n && goto colour ||
