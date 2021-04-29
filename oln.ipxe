@@ -1380,16 +1380,6 @@ goto start
 echo https://ipxe.org/cmd/cpair
 echo
 
-echo Pair index Usage				Foreground colour index Background colour index
-echo 0		Default colour			9 (default: white)	9 (default: black or transparent)
-echo 1		Normal user interface text	7 (white)		4 (blue or transparent)
-echo 2		Highlighted text		7 (white)		1 (red)
-echo 3		Separators			6 (cyan)		4 (blue or transparent)
-echo 4		Editable text			0 (black)		6 (cyan)
-echo 5		Error messages			7 (white)		1 (red)
-echo 6		Help URLs			6 (cyan)		4 (blue or transparent)
-echo 7		PXE menu selection		0 (black)		7 (white) 
-
 set fc 0
 echo -n Foreground colour index: ${}
 read fc
