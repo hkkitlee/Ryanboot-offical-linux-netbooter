@@ -30,6 +30,7 @@ item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
 item	--gap
 item		background		Background config
+item		colour			cpair config
 item		poweroff		PowerOff
 item		reboot			Reboot
 item	--gap
