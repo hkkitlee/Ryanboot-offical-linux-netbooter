@@ -17,6 +17,10 @@
 Ryanboot:[Github](https://github.com/hkkitlee/Ryanboot) [Gitee](https://gitee.com/hkkitlee/Ryanboot)
 
 or
+
+Online compile (enable https)，在線編譯「選https功能」：[rom-o-matic](https://rom-o-matic.dev/)
+
+or
 ```
 #!ipxe
 dhcp
