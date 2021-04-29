@@ -114,6 +114,7 @@ item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64
+item	--key q calculate-cls		(Q) Calculate Linux CLS amd64
 
 item	--gap
 item		start			Back to Top
@@ -1361,6 +1362,30 @@ kernel --name gentoo --timeout 100000 ${ds}boot/gentoo${link} initrd=gentoo.igz 
 initrd --name gentoo.igz --timeout 100000 ${ds}boot/gentoo.igz${link}
 initrd --name image.squashfs.img --timeout 100000 ${ds}image.squashfs.img${link}
 boot
+#################################################
+:calculate-cls
+echo
+
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/
+echo -n Gentoo site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/ && set link ?viasf=1 ||
+
+set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791 rd.live.squashimg=livecd.squashfs nodevfs noresume verbose rd.plymouth=0
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}boot/vmlinuz${link} initrd=initrd initrd=livecd.squashfs.img ${kp}
+initrd --name initrd --timeout 100000 ${ds}boot/initrd${link}
+initrd --name livecd.squashfs.img --timeout 100000 ${ds}livecd.squashfs.img${link}
+boot
+
 #################################################
 :background
 
