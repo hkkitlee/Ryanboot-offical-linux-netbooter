@@ -190,8 +190,8 @@ echo -n Fedora site: ${}
 read ds
 echo
 
-set version 33
-echo -n Fedora installer Version (32-33): ${}
+set version 34
+echo -n Fedora installer Version (32-34): ${}
 read version
 echo
 
