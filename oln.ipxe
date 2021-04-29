@@ -1377,7 +1377,8 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/ && set link ?viasf=1 ||
 
-set kp root=live:LABEL=CLS-20210427 initrd=initrd vga=791 init=/linuxrc rd.live.squashimg=/livecd.squashfs nodevfs quiet noresume verbose rd.plymouth=0
+set kp vga=791 init=/linuxrc rd.live.squashimg=/livecd.squashfs nodevfs quiet noresume verbose rd.plymouth=0
+#root=live:LABEL=CLS-20210427 initrd=initrd vga=791 init=/linuxrc rd.live.squashimg=/livecd.squashfs nodevfs quiet noresume verbose rd.plymouth=0
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
