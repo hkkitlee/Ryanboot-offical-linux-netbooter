@@ -1377,7 +1377,7 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/calculate-cls/ && set link ?viasf=1 ||
 
-set kp init=/linuxrc looptype=squashfs loop=/livecd.squashfs rd.live.squashimg=/livecd.squashfs nodevfs noresume verbose rd.plymouth=0
+set kp init=/linuxrc rd.live.squashimg=livecd.squashfs nodevfs quiet noresume verbose rd.plymouth=0
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
