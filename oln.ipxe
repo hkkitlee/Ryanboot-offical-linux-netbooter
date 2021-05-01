@@ -9,7 +9,7 @@ imgtrust --allow
 goto start
 
 :start
-menu
+menu			Ryanboot-offical-linux-netbooter
 
 item	--gap	--	IP: ${ip}/${netmask} Mac Address:${mac}
 item	--gap	--	DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
@@ -41,7 +41,7 @@ item		xyz			Chainload to netboot.xyz
 choose --default installer target && cpair 0 && goto ${target}
 
 :installer
-menu
+menu		Ryanboot-offical-linux-netbooter
 
 item	--gap	Linux Installer
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
@@ -76,7 +76,7 @@ choose --default ubuntu target && cpair 0 && goto ${target}
 
 
 :live
-menu
+menu			Ryanboot-offical-linux-netbooter
 
 item	--gap	Linux Live
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
