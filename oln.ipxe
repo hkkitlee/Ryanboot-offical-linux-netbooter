@@ -13,9 +13,8 @@ menu
 
 item	--gap	--	IP: ${ip}/${netmask} Mac Address:${mac}
 item	--gap	--	DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
-item	--gap	--	next-server(proxy):${next-server}/${proxydhcp/next-server}
+item	--gap	--	next-server(proxy):${next-server}/${proxydhcp/next-server} SMBIOS UUID:${uuid}
 item	--gap	--	Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
-item	--gap	--	UUID:${uuid} SERIAL:${serial}
 item	--gap	--	https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
 item	--gap	--	Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
 item	--gap	--	https://git[hub,ee].com/hkkitlee/Ryanboot-offical-linux-netbooter
@@ -25,8 +24,7 @@ item	--gap	--	Ryanboot-offical-linux-netbooter
 item	--gap
 item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
-item	--gap	--	Auto select amd64/i[3,6]86. Release / Version Selection. 
-item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge..
+item	--gap
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
 item	--gap
@@ -47,17 +45,9 @@ choose --default installer target && cpair 0 && goto ${target}
 :installer
 menu
 
-item	--gap	--	IP: ${ip}/${netmask} Mac Address:${mac}
-item	--gap	--	DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
-item	--gap	--	next-server(proxy):${next-server}/${proxydhcp/next-server}
-item	--gap	--	Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
-item	--gap	--	UUID:${uuid} SERIAL:${serial}
-item	--gap	--	https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
-item	--gap	--	Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
-item	--gap	--	https://git[hub,ee].com/hkkitlee/Ryanboot-offical-linux-netbooter
-item	--gap
-
 item	--gap	Linux Installer
+item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
+item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a	ubuntu			(A) Ubuntu amd64/i386
 item	--key b	fedora64		(B) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	debian			(C) Debian amd64/i386
@@ -90,17 +80,9 @@ choose --default ubuntu target && cpair 0 && goto ${target}
 :live
 menu
 
-item	--gap	--	IP: ${ip}/${netmask} Mac Address:${mac}
-item	--gap	--	DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
-item	--gap	--	next-server(proxy):${next-server}/${proxydhcp/next-server}
-item	--gap	--	Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
-item	--gap	--	UUID:${uuid} SERIAL:${serial}
-item	--gap	--	https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
-item	--gap	--	Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
-item	--gap	--	https://git[hub,ee].com/hkkitlee/Ryanboot-offical-linux-netbooter
-item	--gap  
-
 item	--gap	Linux Live
+item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
+item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a	arch			(A) Arch Linux amd64 Live with Option Installer Script
 item	--key b	tinycore		(B) Tinycore amd64/i386
 item	--key c	alpine			(C) Alpine amd64/i386
