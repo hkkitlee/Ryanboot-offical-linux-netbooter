@@ -23,7 +23,6 @@ item	--gap
 item	--gap	--	Ryanboot-offical-linux-netbooter
 item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
-item	--gap
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
 item	--gap
