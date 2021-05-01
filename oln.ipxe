@@ -36,9 +36,7 @@ item		reboot			Reboot
 item	--gap
 item		ryanboot		Chainload to Ryanboot
 item		rpbl			Chainload to Ryanboot-P2PBitTorrent-Boot-Linux
-item	--gap
 item		xyz			Chainload to netboot.xyz
-item	--gap				
 
 
 choose --default installer target && cpair 0 && goto ${target}
