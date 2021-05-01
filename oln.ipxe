@@ -21,15 +21,16 @@ item	--gap	--	https://git[hub,ee].com/hkkitlee/Ryanboot-offical-linux-netbooter
 item	--gap  
 
 item	--gap	--	Ryanboot-offical-linux-netbooter
-item	--gap
 item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
 item	--gap
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
 item	--gap
+item	--gap	--	Config
 item		background		Background config
 item		colour			cpair config
+item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
 item	--gap
