@@ -1370,7 +1370,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz${link} initrd=initrd.img inst.repo=https://download.rockylinux.org/pub/rocky/BaseOS/x86_64/os inst.stage2=${ds}${version}/BaseOS/x86_64/os inst.stage2.all ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz${link} initrd=initrd.img inst.repo=https://download.rockylinux.org/pub/rocky/BaseOS/x86_64/os inst.stage2.all ${kp}
+# inst.stage2=${ds}${version}/BaseOS/x86_64/os
+# inst.stage2.all ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img${link}
 boot
 #################################################
