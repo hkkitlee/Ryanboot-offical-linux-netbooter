@@ -1365,12 +1365,12 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/rocky/ && set link ?viasf=1 ||
 
-set kp ro inst.gpt
+set kp ro ip=dhcp inst.gpt inst.repo=https://download.rockylinux.org/pub/rocky/BaseOS/x86_64/os inst.stage2=${ds}${version}/BaseOS/x86_64/os
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz${link} initrd=initrd.img inst.repo=https://download.rockylinux.org/pub/rocky/BaseOS/x86_64/os inst.stage2.all inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz${link} initrd=initrd.img inst.stage2.all ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img${link}
 boot
 #################################################
