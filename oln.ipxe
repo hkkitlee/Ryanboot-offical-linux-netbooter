@@ -1365,7 +1365,7 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/rocky/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt inst.repo=https://download.rockylinux.org/pub/rocky/BaseOS/x86_64/os inst.stage2=${ds}${version}/BaseOS/x86_64/os
+set kp ro ip=dhcp inst.gpt inst.repo=http://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os inst.stage2=${ds}${version}/BaseOS/x86_64/os
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
