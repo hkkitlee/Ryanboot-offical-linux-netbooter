@@ -69,7 +69,7 @@ item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64 SF
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64 SF
 item	--key w	oracle8			(W) OracleLinux R8 Full amd64 SF
-item	--key x	rocky			(W) RockyLinux 8 amd64
+item	--key x	rocky			(X) RockyLinux 8 amd64
 
 item	--gap
 item		start			Back to Top
@@ -1367,8 +1367,10 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
-initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
+#kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
+kernel https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os ${kp}
+#initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
+initrd https://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
 :background
