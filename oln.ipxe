@@ -1350,10 +1350,9 @@ boot
 
 echo https://rockylinux.org/
 echo Site:
-echo https://download.rockylinux.org/pub/rocky/
-echo https://master.dl.sourceforge.net/project/ryanboot/rocky/
+echo http://download.rockylinux.org/pub/rocky/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/rocky/
+set ds http://download.rockylinux.org/pub/rocky/
 echo -n Rocky Linux Site: ${}
 read ds
 echo
@@ -1363,15 +1362,14 @@ echo -n (8, 8.3) Version: ${}
 read version
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/rocky/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt inst.repo=http://download.rockylinux.org/pub/rocky/8/BaseOS/x86_64/os inst.stage2=${ds}${version}/BaseOS/x86_64/os
+set kp ro ip=dhcp inst.gpt
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz${link} initrd=initrd.img inst.stage2.all ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img${link}
+kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2.all inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
+initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
 :background
