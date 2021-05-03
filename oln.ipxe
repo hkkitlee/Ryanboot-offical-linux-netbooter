@@ -32,7 +32,6 @@ item		colour			cpair config
 item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
-item		shell			Shell
 item	--gap
 item		ryanboot		Chainload to Ryanboot
 item		rpbl			Chainload to Ryanboot-P2PBitTorrent-Boot-Linux
@@ -1416,8 +1415,6 @@ goto start
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
-:shell
-shell
 #################################################
 :ryanboot
 chain --autofree https://github.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe || exit
