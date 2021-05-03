@@ -3,7 +3,7 @@
 ###任何事情做到極致，都是藝術。###
 ###The pursuit of perfection in any field ... is an art.###
 
-console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600
+console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600
 imgtrust --allow 
 
 goto start
