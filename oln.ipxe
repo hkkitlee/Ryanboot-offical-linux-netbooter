@@ -1418,6 +1418,7 @@ chain --autofree http://boot.netboot.xyz
 #################################################
 :cl
 set script 
+echo -n Format:https://gitee.com/xxx  <---Enter your URL as xxx
 echo -n iPXE script in gitee.com URL:${}
 read script
 echo
