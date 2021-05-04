@@ -35,6 +35,7 @@ item		reboot			Reboot
 item	--gap
 item		ryanboot		Chainload to Ryanboot
 item		rpbl			Chainload to Ryanboot-P2PBitTorrent-Boot-Linux
+item		cl			Chainload to https://gitee.com/xxx
 item		xyz			Chainload to netboot.xyz
 
 
@@ -1415,6 +1416,12 @@ goto start
 :xyz
 chain --autofree http://boot.netboot.xyz
 #################################################
+:cl
+set script 
+echo -n iPXE script in gitee.com URL:${}
+read script
+echo
+chain --autofree https://gitee.com/${script} || goto start
 #################################################
 :ryanboot
 chain --autofree https://github.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe || exit
