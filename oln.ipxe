@@ -1423,7 +1423,7 @@ echo Format:https://gitee.com/xxx  <---Enter your URL replace xxx
 echo -n Command:chain --autofree --replace https://gitee.com/${}
 read script
 echo
-chain --autofree --replace https://gitee.com/${script} || goto start
+chain --autofree --replace https://gitee.com/${script}
 #################################################
 :ryanboot
 chain --autofree https://github.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot/raw/main/chain.ipxe || chain --autofree http://hkkitlee.ddns.net:8999/chain.ipxe || exit
