@@ -100,6 +100,7 @@ item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
+item	--key q gparted-live		(Q) Gparted-Live amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1373,6 +1374,30 @@ echo
 kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
 initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
+#################################################
+:gparted-live
+
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
+echo -n Gparted-Live site: ${}
+read ds
+echo
+
+set fssf ${ds}
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set fssf https://sourceforge.net/projects/ryanboot/files/gparted-live/ ||
+
+set kp boot=live union=overlay username=user config components noswap ip=dhcp net.ifnames=0 hooks=filesystem
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img fetch=${fssf}live/filesystem.squashfs ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+boot
+
 #################################################
 :background
 
