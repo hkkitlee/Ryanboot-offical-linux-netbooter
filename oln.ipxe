@@ -1387,12 +1387,12 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set img initrd=gparted-live-1.3.0-1-amd64.iso.img && set from findiso=/gparted-live-1.3.0-1-amd64.iso || set from fetch=${ds}live/filesystem.squashfs
 
-set kp boot=live union=overlay username=user config components noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
+set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img toram=filesystem.squashfs ${img} ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 iseq ${img} initrd=gparted-live-1.3.0-1-amd64.iso.img && initrd --name gparted-live-1.3.0-1-amd64.iso.img --timeout 100000 ${ds}gparted-live-1.3.0-1-amd64.iso.img${link} ||
 boot
