@@ -1385,17 +1385,16 @@ echo -n Gparted-Live site: ${}
 read ds
 echo
 
-set fssf ${ds}
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set img initrd=filesystem.squashfs.img && set from live-media-path=/live || set from fetch=${ds}live/filesystem.squashfs
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set fssf https://sourceforge.net/projects/ryanboot/files/gparted-live/ ||
-
-set kp boot=live union=overlay username=user config components noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem
+set kp boot=live union=overlay username=user config components noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img fetch=${fssf}live/filesystem.squashfs ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+iseq ${img} initrd=filesystem.squashfs.img && initrd --name filesystem.squashfs.img --timeout 100000 ${ds}live/filesystem.squashfs.img${link} ||
 boot
 
 #################################################
