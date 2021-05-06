@@ -1389,7 +1389,7 @@ set fssf ${ds}
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set fssf https://sourceforge.net/projects/ryanboot/files/gparted-live/ ||
 
-set kp boot=live union=overlay username=user config components noswap ip=dhcp net.ifnames=0 hooks=filesystem
+set kp boot=live union=overlay username=user config components noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
