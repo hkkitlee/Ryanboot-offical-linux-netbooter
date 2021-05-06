@@ -1385,7 +1385,7 @@ echo -n Gparted-Live site: ${}
 read ds
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set img initrd=gparted-live-1.3.0-1-amd64.iso.img && set from findiso=/gparted-live-1.3.0-1-amd64.iso.img || set from fetch=${ds}live/filesystem.squashfs
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set img initrd=gparted-live-1.3.0-1-amd64.iso.img && set from findiso=/gparted-live-1.3.0-1-amd64.iso || set from fetch=${ds}live/filesystem.squashfs
 
 set kp boot=live union=overlay username=user config components noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
 echo -n Kernel Parameter, Bootcode: ${}
