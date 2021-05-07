@@ -1411,7 +1411,7 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set img initrd=clonezilla-20200703.iso.img && set from fromiso=/clonezilla-20200703.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
+ set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset ocs_live_run="ocs-live-general"
  echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
