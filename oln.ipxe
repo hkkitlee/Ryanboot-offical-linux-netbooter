@@ -1434,7 +1434,7 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=drbl-live-xfce.iso.img && set from fromiso=/root/drbl-live-xfce.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset config
+ set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset config ip=
 echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
