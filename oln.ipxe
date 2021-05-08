@@ -102,7 +102,8 @@ item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
 item	--key r clonezilla-live		(R) Clonezilla-Live amd64 SF
-item	--key s redo-rescue		(S) Redo-Rescue amd64 SF
+item	--key s clonezilla-server	(S) Clonezilla-Server amd64 SF
+item	--key t	redo-rescue		(T) Redo-Rescue amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1420,6 +1421,27 @@ boot
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=clonezilla-20200703.iso.img && initrd --name clonezilla-20200703.iso.img --timeout 100000 ${ds}clonezilla-20200703.iso.img${link} ||
  boot
+#################################################
+:clonezilla-server
+
+ echo Sites:
+ echo https://master.dl.sourceforge.net/project/ryanboot/clonezilla-server/
+ echo
+ set ds https://master.dl.sourceforge.net/project/ryanboot/clonezilla-server/
+ echo -n Clonezilla-Live site: ${}
+ read ds
+ echo
+
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla-server/ && set link ?viasf=1 && set img initrd=drbl-live-xfce-2.5.1-16-amd64.iso.img && set from fromiso=/drbl-live-xfce-2.5.1-16-amd64.iso || set from fetch=${ds}live/filesystem.squashfs
+
+ set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset ocs_live_run="ocs-live-general"
+ echo -n Kernel Parameter, Bootcode: ${}
+ read kp
+ echo
+
+ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img toram=filesystem.squashfs ${img} ${kp}
+ initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+ iseq ${img} initrd=drbl-live-xfce-2.5.1-16-amd64.iso.img && initrd --name drbl-live-xfce-2.5.1-16-amd64.iso.img --timeout 100000 ${ds}drbl-live-xfce-2.5.1-16-amd64.iso.img${link} ||
 #################################################
 :redo-rescue
 
