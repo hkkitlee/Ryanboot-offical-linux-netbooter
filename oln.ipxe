@@ -1412,7 +1412,7 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set img initrd=clonezilla-20200703.iso.img && set from fromiso=/clonezilla-20200703.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp hostname=focal config enforcing=0 locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ip= splash i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1 boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset 
+ set kp hostname=Ryanboot config enforcing=0 locales= keyboard-layouts= ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ip= splash i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1 boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset 
  echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
@@ -1434,7 +1434,7 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=drbl-live-xfce.iso.img && set from fromiso=drbl-live-xfce.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset ocs_live_run="ocs-live-general" config components vga=785 ip= nosplash i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1 
+ set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset ocs_live_run="ocs-live-general" 
 echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
