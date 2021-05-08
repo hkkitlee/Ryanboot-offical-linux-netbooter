@@ -101,8 +101,8 @@ item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer 
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
-item	--key r clonezilla-live		(R) Clonezilla-Live amd64 SF
-item	--key s clonezilla-server	(S) Clonezilla-Server amd64 SF
+item	--key r clonezilla-live		(R) Clonezilla Live amd64 SF
+item	--key s clonezilla-server	(S) Clonezilla Server Edition amd64 SF
 item	--key t	redo-rescue		(T) Redo-Rescue amd64 SF
 
 item	--gap
@@ -1425,14 +1425,14 @@ boot
 :clonezilla-server
 
  echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/clonezilla-server/
+ echo https://master.dl.sourceforge.net/project/ryanboot/drbl/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/clonezilla-server/
+ set ds https://master.dl.sourceforge.net/project/ryanboot/drbl/
  echo -n Clonezilla-Live site: ${}
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla-server/ && set link ?viasf=1 && set img initrd=drbl-live-xfce-2.5.1-16-amd64.iso.img && set from fromiso=/drbl-live-xfce-2.5.1-16-amd64.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=drbl-live-xfce-2.5.1-16-amd64.iso.img && set from fromiso=/drbl-live-xfce-2.5.1-16-amd64.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset ocs_live_run="ocs-live-general"
  echo -n Kernel Parameter, Bootcode: ${}
