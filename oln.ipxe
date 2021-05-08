@@ -1417,7 +1417,7 @@ boot
  read kp
  echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img toram=filesystem.squashfs boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" ${img} ${kp}
+ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=clonezilla-20200703.iso.img && initrd --name clonezilla-20200703.iso.img --timeout 100000 ${ds}clonezilla-20200703.iso.img${link} ||
  boot
@@ -1439,7 +1439,7 @@ echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img toram=filesystem.squashfs ${img} ${kp}
+ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=drbl-live-xfce.iso.img && initrd --name drbl-live-xfce.iso.img --timeout 100000 ${ds}drbl-live-xfce.iso.img${link} ||
 boot
@@ -1461,7 +1461,7 @@ boot
  read kp
  echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd toram=filesystem.squashfs ${img} ${kp}
+ kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${img} ${kp}
  initrd --name initrd --timeout 100000 ${ds}initrd${link}
  iseq ${img} initrd=redorescue-3.0.2.iso.img && initrd --name redorescue-3.0.2.iso.img --timeout 100000 ${ds}redorescue-3.0.2.iso.img${link} ||
  boot
