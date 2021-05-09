@@ -1412,7 +1412,7 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set img initrd=clonezilla-20200703.iso.img && set from fromiso=/clonezilla-20200703.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp hostname=Ryanboot config enforcing=0 locales= keyboard-layouts= vga=788 ip= i915.blacklist=yes radeonhd.blacklist=yes nouveau.blacklist=yes vmwgfx.enable_fbdev=1 ${from} edd=on nomodeset 
+ set kp hostname=Ryanboot config enforcing=0 locales= keyboard-layouts= vga=788 ${from} edd=on nomodeset 
  echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
