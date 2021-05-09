@@ -1439,7 +1439,7 @@ echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
+ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img toram=filesystem.squashfs ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=filesystem.squashfs.img && initrd --name filesystem.squashfs.img --timeout 100000 ${ds}filesystem.squashfs.img${link} ||
 boot
