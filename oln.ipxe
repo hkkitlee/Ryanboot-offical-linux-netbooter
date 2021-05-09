@@ -1454,7 +1454,7 @@ boot
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/ && set link ?viasf=1 && set img initrd=redorescue-3.0.2.iso.img && set from fromiso=/redorescue-3.0.2.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/ && set link ?viasf=1 && set img initrd=redorescue.iso.img && set from fromiso=/redorescue-3.0.2.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
  echo -n Kernel Parameter, Bootcode: ${}
@@ -1463,7 +1463,7 @@ boot
 
  kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd toram=filesystem.squashfs ${img} ${kp}
  initrd --name initrd --timeout 100000 ${ds}initrd${link}
- iseq ${img} initrd=redorescue-3.0.2.iso.img && initrd --name redorescue-3.0.2.iso.img --timeout 100000 ${ds}redorescue-3.0.2.iso.img${link} ||
+ iseq ${img} initrd=redorescue.iso.img && initrd --name redorescue.iso.img --timeout 100000 ${ds}redorescue.iso.img${link} ||
  boot
 #################################################
 #################################################
