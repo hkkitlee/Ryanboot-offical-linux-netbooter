@@ -1454,7 +1454,7 @@ boot
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/ && set link ?viasf=1 && set img initrd=redorescue.iso.img && set from fromiso=/redorescue-3.0.2.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/ && set link ?viasf=1 && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
  echo -n Kernel Parameter, Bootcode: ${}
