@@ -1412,12 +1412,12 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set img initrd=clonezilla-20200703.iso.img && set from fromiso=/clonezilla-20200703.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp hostname=Ryanboot config enforcing=0 locales= keyboard-layouts= vga=788 ${from} edd=on nomodeset 
+ set kp config enforcing=0 boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset 
  echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" ${img} ${kp}
+ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=clonezilla-20200703.iso.img && initrd --name clonezilla-20200703.iso.img --timeout 100000 ${ds}clonezilla-20200703.iso.img${link} ||
  boot
