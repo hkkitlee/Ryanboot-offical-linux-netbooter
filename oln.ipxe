@@ -1432,7 +1432,7 @@ boot
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=drbl-live-xfce.iso.img && set from live-media-path=/root || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=filesystem.squashfs.img && set from live-media-path=/root || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset config ip=
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1441,7 +1441,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=drbl-live-xfce.iso.img && initrd --name drbl-live-xfce.iso.img --timeout 100000 ${ds}drbl-live-xfce.iso.img${link} ||
+ iseq ${img} initrd=filesystem.squashfs.img && initrd --name filesystem.squashfs.img --timeout 100000 ${ds}filesystem.squashfs.img${link} ||
 boot
 #################################################
 :redo-rescue
