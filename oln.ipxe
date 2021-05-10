@@ -1434,12 +1434,12 @@ boot
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=filesystem.squashfs.img && set from live-media-path=/root || set from fetch=${ds}live/filesystem.squashfs
 
- set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from} edd=on nomodeset config ip=
+ set kp boot=live union=overlay username=user components hooks=filesystem ${from} edd=on nomodeset
 echo -n Kernel Parameter, Bootcode: ${}
  read kp
  echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img toram=filesystem.squashfs ${img} ${kp}
+ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=filesystem.squashfs.img && initrd --name filesystem.squashfs.img --timeout 100000 ${ds}filesystem.squashfs.img${link} ||
 boot
