@@ -101,9 +101,8 @@ item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer 
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
-item	--key r clonezilla-live		(R) Clonezilla Live amd64 SF
-item	--key s clonezilla-server	(S) Clonezilla Server Edition amd64 SF
-item	--key t	redo-rescue		(T) Redo-Rescue amd64 SF
+item	--key r clonezilla-live		(R) Clonezilla Live/Lite Server amd64 SF
+item	--key s	redo-rescue		(S) Redo-Rescue amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1402,6 +1401,7 @@ boot
 #################################################
 :clonezilla-live
 
+ echo Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
  echo
@@ -1421,28 +1421,6 @@ boot
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
  iseq ${img} initrd=clonezilla-20200703.iso.img && initrd --name clonezilla-20200703.iso.img --timeout 100000 ${ds}clonezilla-20200703.iso.img${link} ||
  boot
-#################################################
-:clonezilla-server
-
- echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/drbl/
- echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/drbl/
- echo -n Clonezilla-Live site: ${}
- read ds
- echo
-
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/drbl/ && set link ?viasf=1 && set img initrd=filesystem.squashfs.img && set from live-media-path=/root || set from fetch=${ds}live/filesystem.squashfs
-
- set kp boot=live union=overlay username=user components hooks=filesystem ${from} edd=on nomodeset
-echo -n Kernel Parameter, Bootcode: ${}
- read kp
- echo
-
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
- initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=filesystem.squashfs.img && initrd --name filesystem.squashfs.img --timeout 100000 ${ds}filesystem.squashfs.img${link} ||
-boot
 #################################################
 :redo-rescue
 
