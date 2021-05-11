@@ -72,6 +72,7 @@ item	--key u	clearlinux		(U) Clear Linux OS amd64 SF
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64 SF
 item	--key w	oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	rocky			(X) RockyLinux 8 amd64
+item	--key y	kylin-install		(Y) Ubuntu Kylin amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1445,6 +1446,10 @@ echo -n Kernel Parameter, Bootcode: ${}
  iseq ${img} initrd=redorescue.iso.img && initrd --name redorescue.iso.img --timeout 100000 ${ds}redorescue.iso.img${link} ||
  boot
 #################################################
+:kylin-install
+set kylininstall boot=casper
+goto kylin
+
 :kylin
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/kylin/
@@ -1461,12 +1466,10 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd fetch=${ds}casper/filesystem.squashfs${link} ${from} ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd fetch=${ds}casper/filesystem.squashfs${link} ${from} ${kp} ${kylininstall}
 initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
  iseq ${img} initrd=ubuntukylin.iso.img && initrd --name ubuntukylin.iso.img --timeout 100000 ${ds}ubuntukylin.iso.img${link} ||
  boot
-
-boot
 #################################################
 :background
 
