@@ -1454,7 +1454,7 @@ echo -n Kernel Parameter, Bootcode: ${}
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kylin/ && set link ?viasf=1 && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kylin/ && set link ?viasf=1 && set img initrd=ubuntukylin.iso.img && set from fromiso=/ubuntukylin-20.04-pro-amd64.iso || set from fetch=${ds}live/filesystem.squashfs
 
 set kp locale=zh_CN keyboard-configuration/layoutcode?=cn
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1463,6 +1463,8 @@ echo
 
 kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd fetch=${ds}casper/filesystem.squashfs${link} ${kp}
 initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
+ iseq ${img} initrd=ubuntukylin.iso.img && initrd --name ubuntukylin.iso.img --timeout 100000 ${ds}ubuntukylin.iso.img${link} ||
+ boot
 
 boot
 #################################################
