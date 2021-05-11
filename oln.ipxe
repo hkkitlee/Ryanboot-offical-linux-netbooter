@@ -1454,7 +1454,7 @@ echo -n Kernel Parameter, Bootcode: ${}
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kylinn/ && set link ?viasf=1 && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/kylin/ && set link ?viasf=1 && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
 
 set kp locale=zh_CN keyboard-configuration/layoutcode?=cn
 echo -n Kernel Parameter, Bootcode: ${}
