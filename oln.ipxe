@@ -1410,7 +1410,7 @@ boot
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set img initrd=clonezilla-20200703.iso.img && set from fromiso=/clonezilla-20200703.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set img initrd=clonezilla.iso.img && set from fromiso=/clonezilla.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp config enforcing=0 username=user components hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset 
  echo -n Kernel Parameter, Bootcode: ${}
@@ -1419,7 +1419,7 @@ boot
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=clonezilla-20200703.iso.img && initrd --name clonezilla-20200703.iso.img --timeout 100000 ${ds}clonezilla-20200703.iso.img${link} ||
+ iseq ${img} initrd=clonezilla.iso.img && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
  boot
 #################################################
 :redo-rescue
