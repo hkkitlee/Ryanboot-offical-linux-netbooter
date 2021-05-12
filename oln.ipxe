@@ -1388,7 +1388,7 @@ boot
  echo
 
 set answer Y
-echo This initrd is not support direct boot from https (SourceForge forced to Y).
+echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
@@ -1418,7 +1418,7 @@ iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${targ
  echo
 
 set answer Y
-echo This initrd is not support direct boot from https (SourceForge forced to Y).
+echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
@@ -1448,7 +1448,7 @@ set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_
  echo
 
 set answer Y
-echo This initrd is not support direct boot from https (SourceForge forced to Y).
+echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
