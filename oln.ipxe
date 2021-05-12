@@ -1380,14 +1380,21 @@ boot
 :gparted-live
 
  echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
+ echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
+ set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo -n Gparted-Live site: ${}
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+set answer Y
+echo This initrd is not support direct boot from https (SourceForge forced to Y).
+echo -n Do you want to use iPXE injection to boot (Y/n): ${}
+read answer
+echo
+
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y
+iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
  echo -n Kernel Parameter, Bootcode: ${}
@@ -1396,22 +1403,29 @@ boot
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=gparted-live.iso.img && initrd --name gparted-live.iso.img --timeout 100000 ${ds}gparted-live.iso.img${link} ||
+ iseq ${img} initrd=${target}.iso.img && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
  boot
 #################################################
 :clonezilla
 
  echo Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
  echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
+ echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
+ set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo -n Clonezilla-Live site: ${}
  read ds
  echo
 
+set answer Y
+echo This initrd is not support direct boot from https (SourceForge forced to Y).
+echo -n Do you want to use iPXE injection to boot (Y/n): ${}
+read answer
+echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y
+iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+
  
 set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset 
  echo -n Kernel Parameter, Bootcode: ${}
@@ -1420,20 +1434,27 @@ set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=clonezilla.iso.img && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
+ iseq ${img} initrd=${target}.iso.img && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
  boot
 #################################################
 :redorescue
 
  echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/
+ echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/
+ set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo -n Redo-Rescue site: ${}
  read ds
  echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+set answer Y
+echo This initrd is not support direct boot from https (SourceForge forced to Y).
+echo -n Do you want to use iPXE injection to boot (Y/n): ${}
+read answer
+echo
+
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y
+iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user vga=791 quiet splash setkmap=us ${from}
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1442,7 +1463,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 
  kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${img} ${kp}
  initrd --name initrd --timeout 100000 ${ds}initrd${link}
- iseq ${img} initrd=redorescue.iso.img && initrd --name redorescue.iso.img --timeout 100000 ${ds}redorescue.iso.img${link} ||
+ iseq ${img} initrd=${target}.iso.img && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
  boot
 #################################################
 #################################################
