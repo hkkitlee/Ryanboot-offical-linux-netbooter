@@ -101,8 +101,8 @@ item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer 
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
-item	--key r clonezilla-live		(R) Clonezilla Live/Lite Server amd64 SF
-item	--key s	redo-rescue		(S) Redo-Rescue amd64 SF
+item	--key r clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
+item	--key s	redorescue		(S) Redo-Rescue amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1399,7 +1399,7 @@ boot
  iseq ${img} initrd=gparted-live.iso.img && initrd --name gparted-live.iso.img --timeout 100000 ${ds}gparted-live.iso.img${link} ||
  boot
 #################################################
-:clonezilla-live
+:clonezilla
 
  echo Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
  echo Sites:
@@ -1422,7 +1422,7 @@ boot
  iseq ${img} initrd=clonezilla.iso.img && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
  boot
 #################################################
-:redo-rescue
+:redorescue
 
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/redo-rescue/
