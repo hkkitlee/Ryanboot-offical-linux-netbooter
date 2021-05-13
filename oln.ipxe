@@ -1480,15 +1480,16 @@ echo
 
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/partmagic/ && set link ?viasf=1 ||
 
-set kp edd=on vga=normal mem=32G boot=live eject=no netsrc=wget neturl="${ds}pmagic/pmodules/"
+set kp edd=on vga=normal boot=live eject=no
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name bzImage --timeout 100000 ${ds}pmagic/bzImage${link} linux26 initrd=initrd.img initrd=fu.img initrd=m.img ${kp}
+kernel --name bzImage --timeout 100000 ${ds}pmagic/bzImage${link} linux26 initrd=initrd.img initrd=fu.img initrd=m.img initrd=partmagic.sqfs.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}pmagic/initrd.img${link}
 initrd --name fu.img --timeout 100000 ${ds}pmagic/fu.img${link}
 initrd --name m.img --timeout 100000 ${ds}pmagic/m.img${link}
+initrd --name partmagic.sqfs.img --timeout 100000 ${ds}partmagic.sqfs.img${link}
 boot
 
 #################################################
