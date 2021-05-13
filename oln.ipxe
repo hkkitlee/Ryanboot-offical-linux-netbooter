@@ -1488,10 +1488,10 @@ read kp
 echo
 
 kernel --name bzImage --timeout 100000 ${ds}pmagic/bzImage${link} linux26 initrd=initrd.img initrd=fu.img initrd=m.img initrd=files.cgz ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}pmagic/initrd.img${link}
-initrd --name fu.img --timeout 100000 ${ds}pmagic/fu.img${link}
-initrd --name m.img --timeout 100000 ${ds}pmagic/m.img${link}
-initrd --name files.cgz --timeout 100000 ${ds}pmagic/files.cgz${link}
+initrd --name initrd.img --timeout 1000000 ${ds}pmagic/initrd.img${link}
+initrd --name fu.img --timeout 1000000 ${ds}pmagic/fu.img${link}
+initrd --name m.img --timeout 1000000 ${ds}pmagic/m.img${link}
+initrd --name files.cgz --timeout 1000000 ${ds}pmagic/files.cgz${link}
 boot
 
 #################################################
