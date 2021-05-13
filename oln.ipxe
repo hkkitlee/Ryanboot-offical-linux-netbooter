@@ -1536,6 +1536,7 @@ goto start
 #################################################
 :setting
 config
+goto start
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
