@@ -29,6 +29,7 @@ item	--gap
 item	--gap	--	Config
 item		background		Background config
 item		colour			cpair config
+item		setting			iPXE config
 item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
@@ -1506,6 +1507,9 @@ echo
 iseq ${answer} n && goto colour ||
 iseq ${answer} N && goto colour ||
 goto start
+#################################################
+:setting
+config
 #################################################
 :xyz
 chain --autofree http://boot.netboot.xyz
