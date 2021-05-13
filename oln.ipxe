@@ -1469,6 +1469,8 @@ echo -n Kernel Parameter, Bootcode: ${}
  boot
 #################################################
 :partmagic
+echo https://partedmagic.com/pxe/
+echo boot/pxelinux/pm2pxe.sh
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/partmagic/
