@@ -1165,6 +1165,7 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
+echo http://183.230.23.18:58000/ryanboot/clearinux/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
 echo -n Clear Linux OS site: ${}
@@ -1210,6 +1211,7 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/blackarch/
+echo http://183.230.23.18:58000/ryanboot/blackarch/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/blackarch/
 echo -n BlackArch site: ${}
@@ -1238,6 +1240,7 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/proxmox/
+echo http://183.230.23.18:58000/ryanboot/proxmox/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/proxmox/
 echo -n Proxmox-VE site: ${}
@@ -1261,6 +1264,7 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
+echo http://183.230.23.18:58000/ryanboot/garuda-wayfire/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
 echo -n Garuda site: ${}
@@ -1286,6 +1290,7 @@ boot
 #################################################
 :oracle8
 echo https://master.dl.sourceforge.net/project/ryanboot/oracle8/
+echo http://183.230.23.18:58000/ryanboot/oracle8/
 echo
 
 set ds https://master.dl.sourceforge.net/project/ryanboot/oracle8/
@@ -1308,6 +1313,7 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
+echo http://183.230.23.18:58000/ryanboot/manjaro-xfce/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
 echo -n Manjaro site: ${}
@@ -1335,6 +1341,7 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
+echo http://183.230.23.18:58000/ryanboot/gentoo-minimal/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
 echo -n Gentoo site: ${}
@@ -1383,6 +1390,7 @@ boot
 
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
+ echo http://183.230.23.18:58000/ryanboot/${target}/
  echo
  set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo -n Gparted-Live site: ${}
@@ -1413,6 +1421,7 @@ iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${targ
  echo Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
+ echo http://183.230.23.18:58000/ryanboot/${target}/
  echo
  set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo -n Clonezilla-Live site: ${}
@@ -1425,7 +1434,7 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
  
@@ -1443,6 +1452,7 @@ set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_
 
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
+ echo echo http://183.230.23.18:58000/ryanboot/${target}/
  echo
  set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
  echo -n Redo-Rescue site: ${}
@@ -1475,6 +1485,7 @@ echo boot/pxelinux/pm2pxe.sh
 echo
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/partmagic/
+echo http://183.230.23.18:58000/ryanboot/partmagic/
 echo
 set ds https://master.dl.sourceforge.net/project/ryanboot/partmagic/
 echo -n Parted Magic site: ${}
