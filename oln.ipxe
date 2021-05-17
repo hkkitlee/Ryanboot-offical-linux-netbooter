@@ -1413,7 +1413,7 @@ iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${targ
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=${target}.iso.img && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
+ iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
  boot
 #################################################
 :clonezilla
@@ -1445,7 +1445,7 @@ set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${img} initrd=${target}.iso.img && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
+ iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
  boot
 #################################################
 :redorescue
@@ -1475,7 +1475,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 
  kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${img} ${kp}
  initrd --name initrd --timeout 100000 ${ds}initrd${link}
- iseq ${img} initrd=${target}.iso.img && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
+ iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
  boot
 #################################################
 :partmagic
