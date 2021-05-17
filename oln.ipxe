@@ -1403,7 +1403,7 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
@@ -1465,7 +1465,7 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user vga=791 quiet splash setkmap=us ${from}
