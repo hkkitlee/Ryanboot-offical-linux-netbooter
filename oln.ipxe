@@ -1518,10 +1518,14 @@ echo -n Tails Linux site: ${}
 read ds
 echo
 
-
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 ||
 set answer Y
-iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso ||
+echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
+echo -n Do you want to use iPXE injection to boot (Y/n): ${}
+read answer
+echo
+
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
 #set kp noprompt timezone=Etc/UTC splash noautologin module=Tails ${from} iso-scan/filename=/${target}.iso
 set kp  findiso=/${target}.iso iso-scan/filename=/${target}.iso ${from}
