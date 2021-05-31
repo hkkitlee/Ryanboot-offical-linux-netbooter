@@ -1527,8 +1527,7 @@ echo
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
 
-set kp findiso=/${target}.iso iso-scan/filename=/${target}.iso
-# ${from}
+set kp findiso=/${target}.iso iso-scan/filename=/${target}.iso ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
