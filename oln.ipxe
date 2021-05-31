@@ -105,6 +105,7 @@ item	--key q gparted-live		(Q) Gparted-Live amd64 SF
 item	--key r clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	redorescue		(S) Redo-Rescue amd64 SF
 item	--key t	partmagic		(T) Parted Magic amd64 SF
+item	--key u	tails			(U) Tails Linux amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1506,6 +1507,32 @@ initrd --name m.img --timeout 1000000 ${ds}pmagic/m.img${link}
 initrd --name files.cgz --timeout 1000000 ${ds}pmagic/files.cgz${link}
 boot
 
+#################################################
+:tails
+echo Sites:
+echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
+echo http://183.230.23.18:58000/ryanboot/${target}/
+echo
+set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
+echo -n Tails Linux site: ${}
+read ds
+echo
+
+
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 ||
+set answer Y
+iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso ||
+
+set kp noprompt timezone=Etc/UTC splash noautologin module=Tails ${from}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live config live-media=removable nopersistence slab_nomerge slub_debug=FZP mce=0 vsyscall=none page_poison=1 init_on_free=1 mds=full,nosmt ${img}
+initrd --name initrd.img --timeout 1000000 ${ds}live/initrd.img${link}
+iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
+
+boot
 #################################################
 #################################################
 :background
