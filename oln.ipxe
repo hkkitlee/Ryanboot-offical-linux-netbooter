@@ -1534,7 +1534,7 @@ read kp
 echo
 
 #kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live config nopersistence slab_nomerge slub_debug=FZP mce=0 vsyscall=none page_poison=1 init_on_free=1 mds=full,nosmt ${img}
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live union=overlay username=user config components quiet noswap noeject  toram=filesystem.squashfs ip=  nosplash ${img}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live union=overlay username=user config components quiet noswap noeject toram=filesystem.squashfs nosplash ip=dhcp ${img}
 initrd --name initrd.img --timeout 1000000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
 
