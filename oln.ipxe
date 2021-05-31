@@ -1523,12 +1523,14 @@ echo
 set answer Y
 iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso ||
 
-set kp noprompt timezone=Etc/UTC splash noautologin module=Tails ${from} iso-scan/filename=/${target}.iso
+#set kp noprompt timezone=Etc/UTC splash noautologin module=Tails ${from} iso-scan/filename=/${target}.iso
+set kp  ${from} iso-scan/filename=/${target}.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live config nopersistence slab_nomerge slub_debug=FZP mce=0 vsyscall=none page_poison=1 init_on_free=1 mds=full,nosmt ${img}
+#kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live config nopersistence slab_nomerge slub_debug=FZP mce=0 vsyscall=none page_poison=1 init_on_free=1 mds=full,nosmt ${img}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp} boot=live apparmor=1 nopersistence noprompt timezone=Etc/UTC block.events_dfl_poll_msecs=1000 noautologin module=Tails slab_nomerge slub_debug=FZP mce=0 vsyscall=none page_poison=1 union=aufs ${img}
 initrd --name initrd.img --timeout 1000000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
 
