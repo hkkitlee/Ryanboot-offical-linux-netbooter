@@ -1154,10 +1154,30 @@ initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${lin
 boot
 #################################################
 :memtest86
-sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/Memtest86-7.5.iso
+
+echo Sites:
+echo http://183.230.23.18:58000/ryanboot/
+echo http://hkkitlee.ddns.net:8999/
+echo
+set ds http://183.230.23.18:58000/ryanboot/
+echo -n Memtest86 site: ${}
+read ds
+echo
+
+sanboot --no-describe --drive 0x80 ${ds}Memtest86-7.5.iso
 #################################################
 :supergrub2
-sanboot --no-describe --drive 0x80 http://hkkitlee.ddns.net:8999/super_grub2_disk_hybrid_2.04s1.iso
+
+echo Sites:
+echo http://183.230.23.18:58000/ryanboot/
+echo http://hkkitlee.ddns.net:8999/
+echo
+set ds http://183.230.23.18:58000/ryanboot/
+echo -n Super Grub2 Disk site: ${}
+read ds
+echo
+
+sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 #################################################
 :clearlinux
 echo https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
