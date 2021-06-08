@@ -1392,7 +1392,7 @@ read ds
 echo
 
 set version 8
-echo -n (8, 8.3) Version: ${}
+echo -n (8.3, 8(8.4)) Version: ${}
 read version
 echo
 
