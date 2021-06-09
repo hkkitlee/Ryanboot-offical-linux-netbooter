@@ -25,7 +25,6 @@ item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
-item	--key e	EFISystemCloner		(E) EFISystemCloner
 item	--gap
 item	--gap	--	Config
 item		background		Background config
@@ -1528,27 +1527,6 @@ initrd --name files.cgz --timeout 1000000 ${ds}pmagic/files.cgz${link}
 boot
 
 #################################################
-:eficheck
-
-iseq ${platform} efi && goto EFISystemCloner || 
-echo UEFI bios ONLY!
-sleep 5
-goto start
-
-:EFISystemCloner
-echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo echo http://183.230.23.18:58000/ryanboot/${target}/
- echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo -n EFISystemCloner site: ${}
- read ds
-echo
-
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 ||
-
-kernel --name bootx64.efi --timeout 100000 ${ds}efi/boot/bootx64.efi${link}
-boot
 #################################################
 #################################################
 :background
