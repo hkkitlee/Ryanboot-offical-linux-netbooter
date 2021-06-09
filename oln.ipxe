@@ -1530,7 +1530,6 @@ boot
 #################################################
 :eficheck
 
-iseq ${arch} x86_64 || goto start && 
 iseq ${platform} efi && goto EFISystemCloner || 
 echo UEFI bios ONLY!
 sleep 5
