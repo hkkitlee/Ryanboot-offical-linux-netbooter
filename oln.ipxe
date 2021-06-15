@@ -1112,9 +1112,16 @@ boot
 #################################################
 :onefilelinux
 echo https://github.com/zhovner/OneFileLinux
+echo Sites:
+echo http://183.230.23.18:58000/ryanboot/
+echo https://master.dl.sourceforge.net/project/ryanboot/
+echo
+set ds http://183.230.23.18:58000/ryanboot/
+echo -n OneFileLinux site: ${}
+read ds
 echo
 
-kernel https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/OneFileLinux.efi || kernel https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/OneFileLinux.efi
+kernel ${ds}OneFileLinux.efi
 boot
 #################################################
 :steamos
