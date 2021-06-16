@@ -23,6 +23,7 @@ item	--gap
 item	--gap	--	Ryanboot-offical-linux-netbooter
 item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
+item		based			() Sort by Distribution
 item	--key c memtest86		(C) Memtest86
 item	--key d supergrub2		(D) SuperGrub2 Disk
 item	--gap
@@ -44,9 +45,8 @@ item		xyz			netboot.xyz
 choose --default installer target && cpair 0 && goto ${target}
 
 :installer
-menu		Ryanboot-offical-linux-netbooter
+menu		Ryanboot-offical-linux-netbooter (Sort by installer)
 
-item	--gap	Linux Installer
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a	ubuntu			(A) Ubuntu amd64/i386
@@ -80,9 +80,8 @@ choose --default ubuntu target && cpair 0 && goto ${target}
 
 
 :live
-menu			Ryanboot-offical-linux-netbooter
+menu		Ryanboot-offical-linux-netbooter (Sort by live)
 
-item	--gap	Linux Live
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a	arch			(A) Arch Linux amd64 Live with Option Installer Script
@@ -109,6 +108,65 @@ item	--key t	partmagic		(T) Parted Magic amd64 SF
 item	--gap
 item		start			Back to Top
 choose --default arch target && cpair 0 && goto ${target}
+
+
+:based
+menu            Ryanboot-offical-linux-netbooter (Sort by Distribution)
+
+item    --gap   --      Auto select amd64/i[3,6]86. Release/Version Selection.
+item    --gap   --      tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
+item    ubuntu                  Ubuntu installer amd64/i386
+item    fedora64                Fedora installer (Everything, Server, Silverblue) amd64
+item    debian                  Debian installer amd64/i386
+item    parrot                  Parrot-Linux installer amd64/i386
+item    kali                    Kali-Linux installer amd64/i386
+item    opensuse                openSUSE installer amd64/i386
+item    ipfire                  IPFire installer amd64/i586
+item    mageia                  Mageia installer amd64/i586
+item    devuan                  Devuan installer amd64/i386
+item    alma                    AlmaLinux installer amd64
+item    coreosinstall           Fedora CoreOS installer amd64
+item    smeos                   Koozali SME Server installer amd64
+item    openeuler               openEuler installer amd64
+item    centosstream            Centos Stream installer amd64
+item    cloudlinuxos            CloudLinux OS installer amd64
+item    absolute                Absolute-Linux installer amd64
+item    pureos                  PureOS Linux installer amd64
+item    springdale              Springdale Linux installer amd64
+item    clearos                 ClearOS Linux installer amd64
+item    steamos                 SteamOS Linux installer amd64
+item    clearlinux              Clear Linux OS installer amd64 SF
+item    proxmoxve               Proxmox VE OS installer amd64 SF
+item    oracle8                 OracleLinux R8 Full installer amd64 SF
+item    rocky                   RockyLinux 8 installer amd64
+item    arch                    Arch Linux live amd64 with Option Installer Script
+item    tinycore                Tinycore live amd64/i386
+item    alpine                  Alpine live amd64/i386
+item    slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item    slax                    Slax live amd64/i386
+item    slackware               Slackware live amd64/i386 with Installer
+item    rancheros               Rancher OS live amd64/i386
+item    x-wrt                   X-wrt live amd64/i386
+item    containerlinux          Container Linux by flatcar live amd64
+item    coreoslive              Fedora CoreOS live amd64
+item    fatdog                  Fatdog64 Linux live amd64
+item    onefilelinux            OneFileLinux live
+item    blackarch               BlackArch Linux live amd64 with Installer Script SF
+item    garuda-wayfire          Garuda Linux Wayfire live amd64 with Installer SF
+item    manjaro-xfce            Manjaro Linux Xfce live amd64 with Installer SF
+item    gentoo-minimal          Gentoo Linux Minimal live amd64 SF
+item    gparted-live            Gparted-Live live amd64 SF
+item    clonezilla              Clonezilla Live/Lite Server live amd64 SF
+item    redorescue              Redo-Rescue live amd64 SF
+item    partmagic               Parted Magic live amd64 SF
+item    --gap
+item            start                   Back to Top
+choose --default ubuntu target && cpair 0 && goto ${target}
+
+
+
+
+
 
 :failed
 start
