@@ -895,8 +895,8 @@ echo -n Koozali SME Server Site: ${}
 read ds
 echo
 
-set release testing/10
-echo -n Release (9, 9.2, testing/10) : ${}
+set release 10
+echo -n Release (9, 9.2, 10, 10.0, testing/10.0.rc1) : ${}
 read release
 echo
 
