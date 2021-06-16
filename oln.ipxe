@@ -23,9 +23,9 @@ item	--gap
 item	--gap	--	Ryanboot-offical-linux-netbooter
 item	--key a installer		(A) Linux Installer
 item	--key b live			(B) Linux Live
-item		based			() Sort by Distribution
-item	--key c memtest86		(C) Memtest86
-item	--key d supergrub2		(D) SuperGrub2 Disk
+item	--key c	based			(C) Sort by Based on
+item	--key d memtest86		(D) Memtest86
+item	--key e supergrub2		(E) SuperGrub2 Disk
 item	--gap
 item	--gap	--	Config
 item		background		Background config
@@ -111,7 +111,7 @@ choose --default arch target && cpair 0 && goto ${target}
 
 
 :based
-menu            Ryanboot-offical-linux-netbooter (Sort by Distribution)
+menu            Ryanboot-offical-linux-netbooter (Sort by Based on)
 
 item    --gap   --      Auto select amd64/i[3,6]86. Release/Version Selection.
 item    --gap   --      tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
