@@ -115,39 +115,49 @@ menu            Ryanboot-offical-linux-netbooter (Sort by Distribution)
 
 item    --gap   --      Auto select amd64/i[3,6]86. Release/Version Selection.
 item    --gap   --      tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
-item    ubuntu                  Ubuntu installer amd64/i386
-item    fedora64                Fedora installer (Everything, Server, Silverblue) amd64
-item    debian                  Debian installer amd64/i386
-item    parrot                  Parrot-Linux installer amd64/i386
-item    kali                    Kali-Linux installer amd64/i386
-item    opensuse                openSUSE installer amd64/i386
-item    ipfire                  IPFire installer amd64/i586
-item    mageia                  Mageia installer amd64/i586
-item    devuan                  Devuan installer amd64/i386
-item    alma                    AlmaLinux installer amd64
-item    coreosinstall           Fedora CoreOS installer amd64
-item    smeos                   Koozali SME Server installer amd64
-item    openeuler               openEuler installer amd64
-item    centosstream            Centos Stream installer amd64
-item    cloudlinuxos            CloudLinux OS installer amd64
-item    absolute                Absolute-Linux installer amd64
-item    pureos                  PureOS Linux installer amd64
-item    springdale              Springdale Linux installer amd64
-item    clearos                 ClearOS Linux installer amd64
-item    steamos                 SteamOS Linux installer amd64
-item    clearlinux              Clear Linux OS installer amd64 SF
-item    proxmoxve               Proxmox VE OS installer amd64 SF
-item    oracle8                 OracleLinux R8 Full installer amd64 SF
+item	--gap RedHat
 item    rocky                   RockyLinux 8 installer amd64
-item    arch                    Arch Linux live amd64 with Option Installer Script
-item    tinycore                Tinycore live amd64/i386
-item    alpine                  Alpine live amd64/i386
-item    slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item    oracle8                 OracleLinux R8 Full installer amd64 SF
+item    centosstream            Centos Stream installer amd64
+item    fedora64                Fedora installer (Everything, Server, Silverblue) amd64
+item    coreosinstall           Fedora CoreOS installer amd64
+item    alma                    AlmaLinux installer amd64
+item    springdale              Springdale Linux installer amd64
+item    smeos                   Koozali SME Server installer amd64
+item    clearos                 ClearOS Linux installer amd64
+item	--gap Debian
+item    debian                  Debian installer amd64/i386
+item    ubuntu                  Ubuntu installer amd64/i386
+item    kali                    Kali-Linux installer amd64/i386
+item    parrot                  Parrot-Linux installer amd64/i386
+item    proxmoxve               Proxmox VE OS installer amd64 SF
 item    slax                    Slax live amd64/i386
-item    slackware               Slackware live amd64/i386 with Installer
-item    rancheros               Rancher OS live amd64/i386
-item    x-wrt                   X-wrt live amd64/i386
+item    devuan                  Devuan installer amd64/i386
+item    pureos                  PureOS Linux installer amd64
+item	--gap Arch
+item    arch                    Arch Linux live amd64 with Option Installer Script
+item	--gap Gentoo
 item    containerlinux          Container Linux by flatcar live amd64
+item	--gap openSUSE
+item    opensuse                openSUSE installer amd64/i386
+item	--gap Slackware
+item    slackware               Slackware live amd64/i386 with Installer
+item    absolute                Absolute-Linux installer amd64
+item	--gap Busybox
+item    tinycore                Tinycore live amd64/i386
+item    slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item    alpine                  Alpine live amd64/i386
+item	--gap Mandriva
+item    mageia                  Mageia installer amd64/i586
+item	--gap Others
+item    ipfire                  IPFire installer amd64/i586
+item    rancheros               Rancher OS live amd64/i386
+item    clearlinux              Clear Linux OS installer amd64 SF
+
+item    openeuler               openEuler installer amd64
+item    cloudlinuxos            CloudLinux OS installer amd64
+item    steamos                 SteamOS Linux installer amd64
+item    x-wrt                   X-wrt live amd64/i386
 item    coreoslive              Fedora CoreOS live amd64
 item    fatdog                  Fatdog64 Linux live amd64
 item    onefilelinux            OneFileLinux live
