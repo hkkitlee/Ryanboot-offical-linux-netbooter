@@ -21,9 +21,9 @@ item	--gap	--	https://git[hub,ee].com/hkkitlee/Ryanboot-offical-linux-netbooter
 item	--gap  
 
 item	--gap	--	Ryanboot-offical-linux-netbooter
-item	--key a installer		(A) Linux Installer
-item	--key b live			(B) Linux Live
-item	--key c	based			(C) Sort by Based on
+item	--key a installer		(A) List Installer
+item	--key b live			(B) List Live
+item	--key c	based			(C) List by Based on
 
 item	--gap  
 item	--key d memtest86		(D) Memtest86
