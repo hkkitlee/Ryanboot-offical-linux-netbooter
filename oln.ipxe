@@ -6,6 +6,8 @@
 console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600
 imgtrust --allow 
 
+set mirror0 http://183.230.23.18:58000/ryanboot/
+
 goto start
 
 :start
@@ -1204,10 +1206,10 @@ boot
 :onefilelinux
 echo https://github.com/zhovner/OneFileLinux
 echo Sites:
-echo http://183.230.23.18:58000/ryanboot/
+echo ${mirror0}
 echo https://master.dl.sourceforge.net/project/ryanboot/
 echo
-set ds http://183.230.23.18:58000/ryanboot/
+set ds ${mirror0}
 echo -n OneFileLinux site: ${}
 read ds
 echo
@@ -1254,10 +1256,10 @@ boot
 :memtest86
 
 echo Sites:
-echo http://183.230.23.18:58000/ryanboot/
+echo ${mirror0}
 echo http://hkkitlee.ddns.net:8999/
 echo
-set ds http://183.230.23.18:58000/ryanboot/
+set ds ${mirror0}
 echo -n Memtest86 site: ${}
 read ds
 echo
@@ -1267,10 +1269,10 @@ sanboot --no-describe --drive 0x80 ${ds}Memtest86-7.5.iso
 :supergrub2
 
 echo Sites:
-echo http://183.230.23.18:58000/ryanboot/
+echo ${mirror0}
 echo http://hkkitlee.ddns.net:8999/
 echo
-set ds http://183.230.23.18:58000/ryanboot/
+set ds ${mirror0}
 echo -n Super Grub2 Disk site: ${}
 read ds
 echo
@@ -1283,9 +1285,9 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
-echo http://183.230.23.18:58000/ryanboot/clearinux/
+echo ${mirror0}clearinux/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
+set ds ${mirror0}clearlinux/
 echo -n Clear Linux OS site: ${}
 read ds
 echo
@@ -1329,9 +1331,9 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/blackarch/
-echo http://183.230.23.18:58000/ryanboot/blackarch/
+echo ${mirror0}blackarch/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/blackarch/
+set ds ${mirror0}blackarch/
 echo -n BlackArch site: ${}
 read ds
 echo
@@ -1358,9 +1360,9 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/proxmox/
-echo http://183.230.23.18:58000/ryanboot/proxmox/
+echo ${mirror0}proxmox/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/proxmox/
+set ds ${mirror0}proxmox/
 echo -n Proxmox-VE site: ${}
 read ds
 echo
@@ -1382,9 +1384,9 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
-echo http://183.230.23.18:58000/ryanboot/garuda-wayfire/
+echo ${mirror0}garuda-wayfire/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
+set ds ${mirror0}garuda-wayfire/
 echo -n Garuda site: ${}
 read ds
 echo
@@ -1408,10 +1410,10 @@ boot
 #################################################
 :oracle8
 echo https://master.dl.sourceforge.net/project/ryanboot/oracle8/
-echo http://183.230.23.18:58000/ryanboot/oracle8/
+echo ${mirror0}oracle8/
 echo
 
-set ds https://master.dl.sourceforge.net/project/ryanboot/oracle8/
+set ds ${mirror0}oracle8/
 echo -n OracleLinux R8 site: ${}
 read ds
 echo
@@ -1431,9 +1433,9 @@ boot
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
-echo http://183.230.23.18:58000/ryanboot/manjaro-xfce/
+echo ${mirror0}manjaro-xfce/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
+set ds ${mirror0}manjaro-xfce/
 echo -n Manjaro site: ${}
 read ds
 echo
@@ -1459,9 +1461,9 @@ echo
 
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
-echo http://183.230.23.18:58000/ryanboot/gentoo-minimal/
+echo ${mirror0}gentoo-minimal/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
+set ds ${mirror0}gentoo-minimal/
 echo -n Gentoo site: ${}
 read ds
 echo
@@ -1508,9 +1510,9 @@ boot
 
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo http://183.230.23.18:58000/ryanboot/${target}/
+ echo ${mirror0}${target}/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
+ set ds ${mirror0}${target}/
  echo -n Gparted-Live site: ${}
  read ds
  echo
@@ -1539,9 +1541,9 @@ iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${targ
  echo Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo http://183.230.23.18:58000/ryanboot/${target}/
+ echo ${mirror0}${target}/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
+ set ds ${mirror0}${target}/
  echo -n Clonezilla-Live site: ${}
  read ds
  echo
@@ -1570,9 +1572,9 @@ set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_
 
  echo Sites:
  echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo echo http://183.230.23.18:58000/ryanboot/${target}/
+ echo echo ${mirror0}${target}/
  echo
- set ds https://master.dl.sourceforge.net/project/ryanboot/${target}/
+ set ds ${mirror0}${target}/
  echo -n Redo-Rescue site: ${}
  read ds
  echo
@@ -1603,9 +1605,9 @@ echo boot/pxelinux/pm2pxe.sh
 echo
 echo Sites:
 echo https://master.dl.sourceforge.net/project/ryanboot/partmagic/
-echo http://183.230.23.18:58000/ryanboot/partmagic/
+echo ${mirror0}partmagic/
 echo
-set ds https://master.dl.sourceforge.net/project/ryanboot/partmagic/
+set ds ${mirror0}partmagic/
 echo -n Parted Magic site: ${}
 read ds
 echo
