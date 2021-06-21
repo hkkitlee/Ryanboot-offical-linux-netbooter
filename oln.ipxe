@@ -545,12 +545,54 @@ initrd ${ds}/v${version}/releases/${arch}/netboot/initramfs-${flavor}
 boot
 #################################################
 :slitaz
+
+menu Slitaz Version
+item    --key a offical_slitaz			(A) Offical Slitaz
+item    --key b teasiu_slitaz			(B) Teasiu Slitaz
+choose --default offical_slitaz target && cpair 0 && goto ${target}
+
+:offical_slitaz
+echo Sites:
+echo ${mirror0}slitaz/
+echo https://master.dl.sourceforge.net/project/ryanboot/slitaz/
+echo 
+
+set ds ${mirror0}slitaz/
+echo -n SliTaz site: ${}
+read ds
+echo
+
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/slitaz/ && set link ?viasf=1 ||
+
+set bit 64
+echo -n Kernel [32 / 64]: ${}                                                         
+read bit                                                                              
+echo
+iseq ${bit} 64 && set bit 64 || set bit  
+
+set kp rw root=/dev/null lang=zh_CN kmap=us autologin modprobe=nvidia nomodeset laptop
+echo -n Kernel Parameter, Bootcode: ${}                                               
+read kp                                                                               
+echo
+
+kernel --name bzImage${bit} --timeout 100000 ${ds}boot/bzImage${bit}${link} initrd=rootfs1.gz${bit} initrd=rootfs2.gz initrd=rootfs3.gz initrd=rootfs4.gz initrd=rootfs5.gz ${kp}
+initrd --name rootfs1.gz${bit} --timeout 100000 ${ds}boot/rootfs1.gz${bit}${link}
+initrd --name rootfs2.gz --timeout 100000 ${ds}boot/rootfs2.gz${link}
+initrd --name rootfs3.gz --timeout 100000 ${ds}boot/rootfs3.gz${link}
+initrd --name rootfs4.gz --timeout 100000 ${ds}boot/rootfs4.gz${link}
+initrd --name rootfs5.gz --timeout 100000 ${ds}boot/rootfs5.gz${link}
+boot
+
+
+
+:teasiu_slitaz
 echo Support by teasiu http://wuyou.net/home.php?mod=space&uid=378921
 echo http://wuyou.net/forum.php?mod=viewthread&tid=190810&extra=&page=66
 echo
 echo Sites:
 echo http://ecoo.top:8083/dl/slitaz/
 echo http://www.slitaz.cn:8083/dl/slitaz/
+echo ${mirror0}
 
 set ds http://www.slitaz.cn:8083/dl/slitaz/
 echo -n SliTaz site: ${}                                                        
