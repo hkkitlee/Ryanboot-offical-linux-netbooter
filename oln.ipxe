@@ -196,11 +196,7 @@ item    onefilelinux            OneFileLinux live
 item    --gap
 
 item            start                   Back to Top
-choose --default ubuntu target && cpair 0 && goto ${target}
-
-
-
-
+choose --default rocky target && cpair 0 && goto ${target}
 
 
 :failed
@@ -551,6 +547,7 @@ item    --key a offical_slitaz			(A) Offical Slitaz
 item    --key b teasiu_slitaz			(B) Teasiu Slitaz
 choose --default offical_slitaz target && cpair 0 && goto ${target}
 
+
 :offical_slitaz
 echo Sites:
 echo ${mirror0}slitaz/
@@ -570,7 +567,7 @@ read bit
 echo
 iseq ${bit} 64 && set bit 64 || set bit  
 
-set kp rw root=/dev/null lang=zh_CN kmap=us autologin modprobe=nvidia nomodeset laptop
+set kp root=/dev/null nomodeset laptop video=-32 autologin
 echo -n Kernel Parameter, Bootcode: ${}                                               
 read kp                                                                               
 echo
@@ -582,7 +579,6 @@ initrd --name rootfs3.gz --timeout 100000 ${ds}boot/rootfs3.gz${link}
 initrd --name rootfs4.gz --timeout 100000 ${ds}boot/rootfs4.gz${link}
 initrd --name rootfs5.gz --timeout 100000 ${ds}boot/rootfs5.gz${link}
 boot
-
 
 
 :teasiu_slitaz
@@ -649,7 +645,6 @@ echo
 
 kernel ${ds}${release}/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
 initrd ${ds}${release}/repo/oss/boot/${bit}/loader/initrd
-
 boot
 #################################################
 :slax
