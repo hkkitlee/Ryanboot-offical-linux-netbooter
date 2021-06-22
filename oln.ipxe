@@ -2075,7 +2075,7 @@ read answer
 echo
 
  iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/gparted-live.iso || set from fetch=${ds}live/filesystem.squashfs
+iseq ${answer} Y && set img initrd=gparted-live.iso.img && set from fromiso=/gparted-live.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
  echo -n Kernel Parameter, Bootcode: ${}
