@@ -652,7 +652,7 @@ boot
 menu ${target} Version
 item    --key a offical_Slitaz			(A) Offical Slitaz
 item    --key b teasiu_Slitaz			(B) Teasiu Slitaz
-choose target && goto ${target}
+choose target_Slitaz && goto ${target_Slitaz}
 
 
 :offical_Slitaz
