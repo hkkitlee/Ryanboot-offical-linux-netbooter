@@ -278,23 +278,19 @@ set ds2 http://mirrors.tuna.tsinghua.edu.cn
 set ds3 http://ftp-srv2.kddilabs.jp/Linux/packages
 set ds4 http://ftp.riken.jp/Linux
 
-echo https://fedoranews.org/fedora/mirrors.html
-echo Sites:
-echo 1 ${ds1}
-echo 2 ${ds2}
-echo 3 ${ds3}
-echo 4 ${ds4}
-echo manual Manual Entry URL
-echo
-echo -n Select 1-4, manual: ${}
-read siteno
-echo
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
 
-iseq ${siteno} manual && goto fedora64_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto fedora64_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto fedora64_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto fedora64_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto fedora64_stage2 || set siteno 2 && goto fedora64
+iseq ${siteno} manual && goto ${target}_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
 
 :fedora64_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
