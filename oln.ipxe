@@ -73,7 +73,7 @@ item	--key q	PureOS			(Q) PureOS Linux amd64
 item	--key r	Springdale		(R) Springdale Linux amd64
 item	--key s	ClearOS			(S) ClearOS Linux amd64
 item	--key t	SteamOS			(T) SteamOS Linux amd64
-item	--key u	clearlinux		(U) Clear Linux OS amd64 SF
+item	--key u	ClearLinux		(U) Clear Linux OS amd64 SF
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64 SF
 item	--key w	oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	rocky			(X) RockyLinux 8 amd64
@@ -191,7 +191,7 @@ item    --gap
 item	--gap Others
 item    IPFire                  IPFire installer amd64/i586
 item    Rancheros               Rancher OS live amd64/i386
-item    clearlinux              Clear Linux OS installer amd64 SF
+item    ClearLinux              Clear Linux OS installer amd64 SF
 item    OneFileLinux            OneFileLinux live
 item    --gap
 
@@ -1740,19 +1740,29 @@ goto ${target}_stage2
 :SuperGrub2_stage2
 sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 #################################################
-:clearlinux
-echo https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
-echo
+:ClearLinux
 
-echo Sites:
-echo https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
-echo ${mirror0}clearinux/
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
+set ds2 ${mirror0}clearinux/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:ClearLinux_manual
+echo Howto: https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 echo
 set ds ${mirror0}clearlinux/
 echo -n Clear Linux OS site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:ClearLinux_stage2
 echo Below sample from Clear Linux OS
 echo https://cdn.download.clearlinux.org/current/config/image/live-desktop.yaml
 echo https://cdn.download.clearlinux.org/current/config/image/live-server.yaml
