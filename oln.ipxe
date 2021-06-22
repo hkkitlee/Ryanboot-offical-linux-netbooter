@@ -232,10 +232,10 @@ read siteno
 echo
 
 iseq ${siteno} manual && goto ubuntu_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ubuntu-stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ubuntu-stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ubuntu-stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ubuntu-stage2 || set siteno 4 && goto ubuntu
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ubuntu_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ubuntu_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ubuntu_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ubuntu_stage2 || set siteno 4 && goto ubuntu
 
 :ubuntu_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
