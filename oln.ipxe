@@ -94,7 +94,7 @@ item	--key c	Alpine			(C) Alpine amd64/i386
 item	--key d	Slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item	--key e	Slax			(E) Slax amd64/i386
 item	--key f	Slackware		(F) Slackware amd64/i386 with Installer
-item	--key g	rancheros		(G) Rancher OS amd64/i386
+item	--key g	Rancheros		(G) Rancher OS amd64/i386
 item	--key h	x-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
@@ -190,7 +190,7 @@ item    --gap
 
 item	--gap Others
 item    IPFire                  IPFire installer amd64/i586
-item    rancheros               Rancher OS live amd64/i386
+item    Rancheros               Rancher OS live amd64/i386
 item    clearlinux              Clear Linux OS installer amd64 SF
 item    onefilelinux            OneFileLinux live
 item    --gap
