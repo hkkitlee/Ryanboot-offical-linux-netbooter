@@ -67,7 +67,7 @@ item	--key k	coreosinstall		(K) Fedora CoreOS amd64
 item	--key l	SmeOS			(L) Koozali SME Server amd64
 item	--key m	openEuler		(M) openEuler amd64
 item	--key n	CentosStream		(N) Centos Stream amd64
-item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
+item	--key o	CloudLinuxOS		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
@@ -132,7 +132,7 @@ item    Alma                    AlmaLinux installer amd64
 item    springdale              Springdale Linux installer amd64
 item    SmeOS                   Koozali SME Server installer amd64
 item    clearos                 ClearOS Linux installer amd64
-item    cloudlinuxos            CloudLinux OS installer amd64
+item    CloudLinuxOS            CloudLinux OS installer amd64
 item    openEuler               openEuler installer amd64
 item    --gap
 
