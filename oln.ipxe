@@ -869,7 +869,7 @@ echo -n Sub Version: ${}
 read subv
 echo
 
-cpuid --ext 29 && set bit x86_84 || set bit i586
+cpuid --ext 29 && set bit x86_64 || set bit i586
 
 set kp vga=791
 echo -n Kernel Parameter, Bootcode: ${}
