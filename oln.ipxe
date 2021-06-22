@@ -66,7 +66,7 @@ item	--key j	Alma			(J) AlmaLinux amd64
 item	--key k	coreosinstall		(K) Fedora CoreOS amd64
 item	--key l	SmeOS			(L) Koozali SME Server amd64
 item	--key m	openEuler		(M) openEuler amd64
-item	--key n	centosstream		(N) Centos Stream amd64
+item	--key n	CentosStream		(N) Centos Stream amd64
 item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
@@ -124,7 +124,7 @@ item    --gap
 item	--gap RedHat
 item    rocky                   RockyLinux 8 installer amd64
 item    oracle8                 OracleLinux R8 Full installer amd64 SF
-item    centosstream            Centos Stream installer amd64
+item    CentosStream            Centos Stream installer amd64
 item    Fedora	                Fedora installer (Everything, Server, Silverblue) amd64
 item    coreosinstall           Fedora CoreOS installer amd64
 item    coreoslive              Fedora CoreOS live amd64
@@ -1377,20 +1377,34 @@ kernel ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/vmlinuz initrd
 initrd ${ds}openEuler-${version}/everything/x86_64/images/pxeboot/initrd.img
 boot
 #################################################
-:centosstream
+:CentosStream
+set ds1 http://mirrors.ustc.edu.cn/centos/
+set ds2 http://mirrors.huaweicloud.com/centos/
+set ds3 http://ftp.sjtu.edu.cn/centos/
+set ds4 http://hk.mirrors.thegigabit.com/centos/
+set ds5 http://mirrors.tuna.tsinghua.edu.cn/centos/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:CentosStream_manual
 echo http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
-echo Site:
-echo http://mirrors.ustc.edu.cn/centos/
-echo http://mirrors.huaweicloud.com/centos/
-echo http://ftp.sjtu.edu.cn/centos/
-echo http://hk.mirrors.thegigabit.com/centos/
-echo http://mirrors.tuna.tsinghua.edu.cn/centos/
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/centos/
 echo -n Centos Stream Site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:CentosStream_stage2
 set version 8
 echo -n Version: ${}
 read version
