@@ -28,8 +28,8 @@ item	--key b live			(B) List Live
 item	--key c	based			(C) List by Based on
 
 item	--gap  
-item	--key d memtest86		(D) Memtest86
-item	--key e supergrub2		(E) SuperGrub2 Disk
+item	--key d Memtest86		(D) Memtest86
+item	--key e SuperGrub2		(E) SuperGrub2 Disk
 item	--gap
 item	--gap	--	Config
 item		background		Background config
@@ -1692,30 +1692,52 @@ kernel ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${lin
 initrd ${ds}dists/${version}/main/installer-${arch}/current/images/netboot/${link}debian-installer/${arch}/initrd.gz
 boot
 #################################################
-:memtest86
+:Memtest86
 
-echo Sites:
-echo ${mirror0}
-echo http://hkkitlee.ddns.net:8999/
-echo
+set ds1 ${mirror0}
+set ds2 http://hkkitlee.ddns.net:8999/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Memtest86_manual
 set ds ${mirror0}
 echo -n Memtest86 site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Memtest86_stage2
 sanboot --no-describe --drive 0x80 ${ds}Memtest86-7.5.iso
 #################################################
-:supergrub2
+:SuperGrub2
 
-echo Sites:
-echo ${mirror0}
-echo http://hkkitlee.ddns.net:8999/
-echo
+set ds1 ${mirror0}
+set ds2 http://hkkitlee.ddns.net:8999/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:SuperGrub2_manual
 set ds ${mirror0}
 echo -n Super Grub2 Disk site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:SuperGrub2_stage2
 sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 #################################################
 :clearlinux
