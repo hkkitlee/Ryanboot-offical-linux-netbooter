@@ -59,7 +59,7 @@ item	--key c	Debian			(C) Debian amd64/i386
 item	--key d	Parrot			(D) Parrot-Linux amd64/i386
 item	--key e	Kali			(E) Kali-Linux amd64/i386 
 item	--key f	openSUSE		(F) openSUSE amd64/i386
-item	--key g	ipfire			(G) IPFire amd64/i586
+item	--key g	IPFire			(G) IPFire amd64/i586
 item	--key h	mageia			(H) Mageia amd64/i586
 item	--key i	devuan			(I) Devuan amd64/i386
 item	--key j	alma			(J) AlmaLinux amd64
@@ -189,7 +189,7 @@ item    fatdog                  Fatdog64 Linux live amd64
 item    --gap
 
 item	--gap Others
-item    ipfire                  IPFire installer amd64/i586
+item    IPFire                  IPFire installer amd64/i586
 item    rancheros               Rancher OS live amd64/i386
 item    clearlinux              Clear Linux OS installer amd64 SF
 item    onefilelinux            OneFileLinux live
@@ -825,25 +825,40 @@ kernel ${ds}/slax/Slax-${mainv}.x/ipxe/${mainv}.${subv}/${bit}bit/vmlinuz initrd
 initrd ${ds}/slax/Slax-${mainv}.x/ipxe/${mainv}.${subv}/${bit}bit/initrfs.img 
 boot
 #################################################
-:ipfire
+:IPFire
 
+set ds1 https://downloads.ipfire.org/
+set ds2 http://ftp.fau.de/ipfire/
+set ds3 http://mirror.csclub.uwaterloo.ca/ipfire/
+set ds4 http://ftp.yz.yamagata-u.ac.jp/pub/network/security/ipfire/
+set ds5 http://mirror.aarnet.edu.au/pub/ipfire/
+set ds6 http://hammurabi.acc.umu.se/mirror/ipfire.org/
+set ds7 http://cdimage.debian.org/mirror/ipfire.org/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item 6 ${ds6}
+item 7 ${ds7}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:IPFire_manual
 echo https://mirrors.ipfire.org/
 echo
-echo Sites:
-echo https://downloads.ipfire.org/
-echo http://ftp.fau.de/ipfire/
-echo http://mirror.csclub.uwaterloo.ca/ipfire/
-echo http://ftp.yz.yamagata-u.ac.jp/pub/network/security/ipfire/
-echo http://mirror.aarnet.edu.au/pub/ipfire/
-echo http://hammurabi.acc.umu.se/mirror/ipfire.org/
-echo http://cdimage.debian.org/mirror/ipfire.org/
-echo
-
 set ds http://ftp.yz.yamagata-u.ac.jp/pub/network/security/ipfire/
 echo -n IPFire site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:IPFire_stage2
 set mainv ipfire-2.x
 echo -n Main Version: ${}
 read mainv
