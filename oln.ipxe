@@ -91,7 +91,7 @@ item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceFor
 item	--key a	Arch			(A) Arch Linux amd64 Live with Option Installer Script
 item	--key b	Tinycore		(B) Tinycore amd64/i386
 item	--key c	Alpine			(C) Alpine amd64/i386
-item	--key d	slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item	--key d	Slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item	--key e	slax			(E) Slax amd64/i386
 item	--key f	slackware		(F) Slackware amd64/i386 with Installer
 item	--key g	rancheros		(G) Rancher OS amd64/i386
