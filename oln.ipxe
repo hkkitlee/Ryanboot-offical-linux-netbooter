@@ -57,7 +57,7 @@ item	--key a	Ubuntu			(A) Ubuntu amd64/i386
 item	--key b	Fedora			(B) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	Debian			(C) Debian amd64/i386
 item	--key d	Parrot			(D) Parrot-Linux amd64/i386
-item	--key e	kali			(E) Kali-Linux amd64/i386 
+item	--key e	Kali			(E) Kali-Linux amd64/i386 
 item	--key f	opensuse		(F) openSUSE amd64/i386
 item	--key g	ipfire			(G) IPFire amd64/i586
 item	--key h	mageia			(H) Mageia amd64/i586
@@ -139,7 +139,7 @@ item    --gap
 item	--gap Debian
 item    Debian                  Debian installer amd64/i386
 item    Ubuntu                  Ubuntu installer amd64/i386
-item    kali                    Kali-Linux installer amd64/i386
+item    Kali                    Kali-Linux installer amd64/i386
 item    Parrot                  Parrot-Linux installer amd64/i386
 item    proxmoxve               Proxmox VE OS installer amd64 SF
 item    slax                    Slax live amd64/i386
@@ -452,24 +452,47 @@ initrd ${ds}/parrot/dists/${release}/main/installer-${arch}/${version}/images/ne
 
 boot
 #################################################
-:kali
+:Kali
 
+set ds1 https://http.kali.org
+set ds2 http://kali.download
+set ds3 http://ftp.jaist.ac.jp/pub/Linux
+set ds4 http://mirror.serverius.net
+set ds5 http://mirror1.ku.ac.th
+set ds6 http://kali.cs.nctu.edu.tw
+set ds7 https://mirrors.tuna.tsinghua.edu.cn
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item 6 ${ds6}
+item 7 ${ds7}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 7 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 7 && goto ${target}
+
+
+:Kali_manual
 echo http://http.kali.org/README.mirrorlist
-echo Sites:
-echo https://http.kali.org
-echo http://kali.download
-echo http://ftp.jaist.ac.jp/pub/Linux
-echo http://mirror.serverius.net
-echo http://mirror1.ku.ac.th
-echo http://kali.cs.nctu.edu.tw
-echo https://mirrors.tuna.tsinghua.edu.cn
 echo
-
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Kali site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Kali_stage2
 set release rolling
 echo -n Release (rolling, dev, last-snapshot): ${}
 read release
