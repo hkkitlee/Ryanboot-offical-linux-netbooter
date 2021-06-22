@@ -105,7 +105,7 @@ item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer 
 item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
-item	--key r clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
+item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	redorescue		(S) Redo-Rescue amd64 SF
 item	--key t	partmagic		(T) Parted Magic amd64 SF
 
@@ -147,7 +147,7 @@ item    Devuan                  Devuan installer amd64/i386
 item    PureOS                  PureOS Linux installer amd64
 item    SteamOS                 SteamOS Linux installer amd64
 item    Gparted-Live            Gparted-Live live amd64 SF
-item    clonezilla              Clonezilla Live/Lite Server live amd64 SF
+item    Clonezilla              Clonezilla Live/Lite Server live amd64 SF
 item    redorescue              Redo-Rescue live amd64 SF
 item    partmagic               Parted Magic live amd64 SF
 item    --gap
@@ -2087,26 +2087,36 @@ iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/gparte
  iseq ${answer} Y && initrd --name gparted-live.iso.img --timeout 100000 ${ds}gparted-live.iso.img${link} ||
  boot
 #################################################
-:clonezilla
+:Clonezilla
 
- echo Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
- echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo ${mirror0}${target}/
- echo
- set ds ${mirror0}${target}/
- echo -n Clonezilla-Live site: ${}
- read ds
- echo
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
+set ds2 ${mirror0}${target}/
 
+menu Sites boot ${target} from:
+item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Clonezilla_manual
+set ds ${mirror0}${target}/
+echo -n Clonezilla-Live site: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Clonezilla_stage2
 set answer Y
 echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=clonezilla.iso.img && set from fromiso=/clonezilla.iso || set from fetch=${ds}live/filesystem.squashfs
 
  
 set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset 
@@ -2116,7 +2126,7 @@ set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
+ iseq ${answer} Y && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
  boot
 #################################################
 :redorescue
