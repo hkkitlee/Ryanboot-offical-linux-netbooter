@@ -783,20 +783,30 @@ kernel ${ds}${release}/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
 initrd ${ds}${release}/repo/oss/boot/${bit}/loader/initrd
 boot
 #################################################
-:slax
+:Slax
 
-echo Sites:
-echo http://ftp.sh.cvut.cz
-echo http://ftp.linux.cz/pub/linux
+set ds1 http://ftp.sh.cvut.cz
+set ds2 http://ftp.linux.cz/pub/linux
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Slax_manual
 set ds http://ftp.sh.cvut.cz
 echo -n Slax site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Slax_stage2
 echo Slax Server is slow 
 echo
 set mainv 9
-echo http://ftp.cvut.cz/slax/Slax-${mainv}.x/
 echo -n Main Version : ${}                                                                                   
 read mainv                                                                                                       
 
