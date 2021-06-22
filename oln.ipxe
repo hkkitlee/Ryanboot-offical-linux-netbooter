@@ -103,7 +103,7 @@ item	--key l	OneFileLinux		(L) OneFileLinux
 item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
 item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
-item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
+item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
 item	--key r clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	redorescue		(S) Redo-Rescue amd64 SF
@@ -160,7 +160,7 @@ item    Garuda-Wayfire          Garuda Linux Wayfire live amd64 with Installer S
 item    --gap
 
 item	--gap Gentoo
-item    gentoo-minimal          Gentoo Linux Minimal live amd64 SF
+item    Gentoo-Minimal          Gentoo Linux Minimal live amd64 SF
 item    containerlinux          Container Linux by flatcar live amd64
 item    --gap
 
@@ -1977,21 +1977,29 @@ initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 boot
 #################################################
-:gentoo-minimal
+:Gentoo-Minimal
 
-echo https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation#Minimal_installation_CD
-echo https://www.unixmen.com/a-beginners-guide-to-install-gentoo/
-echo
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
+set ds2 ${mirror0}gentoo-minimal/
 
-echo Sites:
-echo https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
-echo ${mirror0}gentoo-minimal/
-echo
+menu Sites boot ${target} from:
+item --gap -- https://www.unixmen.com/a-beginners-guide-to-install-gentoo/
+item --gap -- https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation#Minimal_installation_CD
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Gentoo-Minimal_manual
 set ds ${mirror0}gentoo-minimal/
 echo -n Gentoo site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Gentoo-Minimal_stage2
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/ && set link ?viasf=1 ||
 
 set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791
