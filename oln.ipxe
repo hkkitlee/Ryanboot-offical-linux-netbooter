@@ -95,7 +95,7 @@ item	--key d	Slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou
 item	--key e	Slax			(E) Slax amd64/i386
 item	--key f	Slackware		(F) Slackware amd64/i386 with Installer
 item	--key g	Rancheros		(G) Rancher OS amd64/i386
-item	--key h	x-wrt			(H) X-wrt amd64/i386
+item	--key h	X-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	fatdog			(K) Fatdog64 Linux amd64
@@ -177,7 +177,7 @@ item	--gap Busybox
 item    Tinycore                Tinycore live amd64/i386
 item    Slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item    Alpine                  Alpine live amd64/i386
-item    x-wrt                   X-wrt live amd64/i386
+item    X-wrt                   X-wrt live amd64/i386
 item    --gap
 
 item	--gap Mandriva
@@ -976,8 +976,25 @@ kernel ${ds}/vmlinuz initrd=initrd ${kp}
 initrd ${ds}/initrd
 boot
 #################################################
-:x-wrt
+:X-wrt
 
+set ds1 https://downloads.x-wrt.com/rom/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:X-wrt_manual
+set ds https://downloads.x-wrt.com/rom/
+echo -n ${target} site: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:X-wrt_stage2
 echo Source: https://downloads.x-wrt.com/rom/
 echo Howto: https://blog.x-wrt.com/docs/install-on-vps2/
 echo
@@ -991,7 +1008,7 @@ echo SSID:X-WRT_XXXX Wifi passwd:88888888
 echo Web index:http://192.168.15.1/
 echo Username/Passwd:root/admin
 
-kernel https://downloads.x-wrt.com/rom/${kname}
+kernel ${ds}${kname}
 boot
 #################################################
 :devuan
