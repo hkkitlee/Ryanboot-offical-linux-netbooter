@@ -1206,7 +1206,7 @@ goto coreos
 
 set ds1 https://builds.coreos.fedoraproject.org/prod
 
-menu Sites boot ${target} from:
+menu Sites boot Fedora CoreOS from:
 item 1 ${ds1}
 item manual Manual Entry URL
 choose siteno
