@@ -69,7 +69,7 @@ item	--key m	openEuler		(M) openEuler amd64
 item	--key n	CentosStream		(N) Centos Stream amd64
 item	--key o	CloudLinuxOS		(O) CloudLinux OS amd64
 item	--key p	Absolute		(P) Absolute-Linux amd64
-item	--key q	pureos			(Q) PureOS Linux amd64
+item	--key q	PureOS			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
@@ -144,7 +144,7 @@ item    Parrot                  Parrot-Linux installer amd64/i386
 item    proxmoxve               Proxmox VE OS installer amd64 SF
 item    Slax                    Slax live amd64/i386
 item    Devuan                  Devuan installer amd64/i386
-item    pureos                  PureOS Linux installer amd64
+item    PureOS                  PureOS Linux installer amd64
 item    steamos                 SteamOS Linux installer amd64
 item    gparted-live            Gparted-Live live amd64 SF
 item    clonezilla              Clonezilla Live/Lite Server live amd64 SF
@@ -1487,19 +1487,31 @@ kernel ${ds}${version}/kernels/huge.s/bzImage initrd=initrd.img ${kp}
 initrd ${ds}${version}/isolinux/initrd.img
 boot
 #################################################
-:pureos
-echo Sites:
-echo https://mirrors.sonic.net/pureos/repo/pureos/
-echo https://mirrors.jevincanders.net/pureos/repo/pureos/
-echo http://mirror.linux.pizza/pureos/
-echo https://repo.puri.sm/pureos/
-echo
+:PureOS
+set ds1 https://mirrors.sonic.net/pureos/repo/pureos/
+set ds2 https://mirrors.jevincanders.net/pureos/repo/pureos/
+set ds3 http://mirror.linux.pizza/pureos/
+set ds4 https://repo.puri.sm/pureos/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:PureOS_manual
 set ds http://mirror.linux.pizza/pureos/
 echo -n PureOS site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:PureOS_stage2
 set release green
 echo -n Release : ${}
 read release
