@@ -72,7 +72,7 @@ item	--key p	Absolute		(P) Absolute-Linux amd64
 item	--key q	PureOS			(Q) PureOS Linux amd64
 item	--key r	Springdale		(R) Springdale Linux amd64
 item	--key s	ClearOS			(S) ClearOS Linux amd64
-item	--key t	steamos			(T) SteamOS Linux amd64
+item	--key t	SteamOS			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64 SF
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64 SF
 item	--key w	oracle8			(W) OracleLinux R8 Full amd64 SF
@@ -145,7 +145,7 @@ item    proxmoxve               Proxmox VE OS installer amd64 SF
 item    Slax                    Slax live amd64/i386
 item    Devuan                  Devuan installer amd64/i386
 item    PureOS                  PureOS Linux installer amd64
-item    steamos                 SteamOS Linux installer amd64
+item    SteamOS                 SteamOS Linux installer amd64
 item    gparted-live            Gparted-Live live amd64 SF
 item    clonezilla              Clonezilla Live/Lite Server live amd64 SF
 item    redorescue              Redo-Rescue live amd64 SF
@@ -1645,19 +1645,30 @@ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/ && set link ?vias
 kernel --name OneFileLinux.efi --timeout 100000 ${ds}OneFileLinux.efi${link}
 boot
 #################################################
-:steamos
-echo https://www.debian.org/mirror/list
-echo Sites:
-echo http://repo.steampowered.com/steamos/
-echo https://mirrors.nju.edu.cn/steamos/steamos/
-echo https://mirrors.tuna.tsinghua.edu.cn/steamos/steamos/
-echo
+:SteamOS
+set ds1 http://repo.steampowered.com/steamos/
+set ds2 https://mirrors.nju.edu.cn/steamos/steamos/
+set ds3 https://mirrors.tuna.tsinghua.edu.cn/steamos/steamos/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:SteamOS_manual
+echo https://www.debian.org/mirror/list
+echo
 set ds https://mirrors.tuna.tsinghua.edu.cn/steamos/steamos/
 echo -n SteamOS site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:SteamOS_stage2
 set version brewmaster
 echo -n SteamOS installer Version (alchemist, clockwerk, brewmaster): ${}
 read version
