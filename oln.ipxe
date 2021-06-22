@@ -104,7 +104,7 @@ item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
 item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 SF
-item	--key q gparted-live		(Q) Gparted-Live amd64 SF
+item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
 item	--key r clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	redorescue		(S) Redo-Rescue amd64 SF
 item	--key t	partmagic		(T) Parted Magic amd64 SF
@@ -146,7 +146,7 @@ item    Slax                    Slax live amd64/i386
 item    Devuan                  Devuan installer amd64/i386
 item    PureOS                  PureOS Linux installer amd64
 item    SteamOS                 SteamOS Linux installer amd64
-item    gparted-live            Gparted-Live live amd64 SF
+item    Gparted-Live            Gparted-Live live amd64 SF
 item    clonezilla              Clonezilla Live/Lite Server live amd64 SF
 item    redorescue              Redo-Rescue live amd64 SF
 item    partmagic               Parted Magic live amd64 SF
@@ -2047,17 +2047,27 @@ kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img
 initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
-:gparted-live
+:Gparted-Live
 
- echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo ${mirror0}${target}/
- echo
- set ds ${mirror0}${target}/
- echo -n Gparted-Live site: ${}
- read ds
- echo
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
+set ds2 ${mirror0}${target}/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Gparted-Live_manual
+set ds ${mirror0}${target}/
+echo -n Gparted-Live site: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Gparted-Live_stage2
 set answer Y
 echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
