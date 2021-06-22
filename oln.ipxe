@@ -58,7 +58,7 @@ item	--key b	Fedora			(B) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	Debian			(C) Debian amd64/i386
 item	--key d	Parrot			(D) Parrot-Linux amd64/i386
 item	--key e	Kali			(E) Kali-Linux amd64/i386 
-item	--key f	opensuse		(F) openSUSE amd64/i386
+item	--key f	openSUSE		(F) openSUSE amd64/i386
 item	--key g	ipfire			(G) IPFire amd64/i586
 item	--key h	mageia			(H) Mageia amd64/i586
 item	--key i	devuan			(I) Devuan amd64/i386
@@ -165,7 +165,7 @@ item    containerlinux          Container Linux by flatcar live amd64
 item    --gap
 
 item	--gap openSUSE
-item    opensuse                openSUSE installer amd64/i386
+item    openSUSE                openSUSE installer amd64/i386
 item    --gap
 
 item	--gap Slackware
@@ -175,7 +175,7 @@ item    --gap
 
 item	--gap Busybox
 item    Tinycore                Tinycore live amd64/i386
-item    slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item    Slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item    Alpine                  Alpine live amd64/i386
 item    x-wrt                   X-wrt live amd64/i386
 item    --gap
@@ -734,21 +734,34 @@ kernel ${ds}/iso/rolling/boot${path}/${kernel} initrd=rootfs.gz ${kp}
 initrd ${ds}/iso/rolling/boot${path}/rootfs.gz
 boot
 #################################################
-:opensuse
+:openSUSE
+set ds1 http://mirrors.tuna.tsinghua.edu.cn/opensuse/
+set ds2 https://mirror.bjtu.edu.cn/opensuse/
+set ds3 http://mirrors.ustc.edu.cn/opensuse/
+set ds4 http://download.opensuse.org/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+
+:openSUSE_manual
 echo https://mirrors.opensuse.org/
 echo
-echo Sites:
-echo http://mirrors.tuna.tsinghua.edu.cn/opensuse/
-echo https://mirror.bjtu.edu.cn/opensuse/
-echo http://mirrors.ustc.edu.cn/opensuse/
-echo http://download.opensuse.org/
-echo
-
 set ds http://mirrors.tuna.tsinghua.edu.cn/opensuse/
 echo -n openSUSE site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:openSUSE_stage2
 set release tumbleweed
 echo -n Release (tumbleweed, stable, current, leap): ${}
 read release
