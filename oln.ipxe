@@ -99,7 +99,7 @@ item	--key h	X-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	Fatdog			(K) Fatdog64 Linux amd64
-item	--key l	onefilelinux		(L) OneFileLinux
+item	--key l	OneFileLinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
@@ -192,7 +192,7 @@ item	--gap Others
 item    IPFire                  IPFire installer amd64/i586
 item    Rancheros               Rancher OS live amd64/i386
 item    clearlinux              Clear Linux OS installer amd64 SF
-item    onefilelinux            OneFileLinux live
+item    OneFileLinux            OneFileLinux live
 item    --gap
 
 item            start                   Back to Top
@@ -1619,17 +1619,28 @@ kernel ${ds}${version}/os/x86_64/images/pxeboot/vmlinuz initrd=initrd.img inst.r
 initrd ${ds}${version}/os/x86_64/images/pxeboot/initrd.img
 boot
 #################################################
-:onefilelinux
+:OneFileLinux
+set ds1 ${mirror0}
+set ds2 https://master.dl.sourceforge.net/project/ryanboot/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:OneFileLinux_manual
 echo https://github.com/zhovner/OneFileLinux
-echo Sites:
-echo ${mirror0}
-echo https://master.dl.sourceforge.net/project/ryanboot/
 echo
 set ds ${mirror0}
 echo -n OneFileLinux site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:OneFileLinux_stage2
 kernel ${ds}OneFileLinux.efi
 boot
 #################################################
