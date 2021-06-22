@@ -70,7 +70,7 @@ item	--key n	CentosStream		(N) Centos Stream amd64
 item	--key o	CloudLinuxOS		(O) CloudLinux OS amd64
 item	--key p	Absolute		(P) Absolute-Linux amd64
 item	--key q	PureOS			(Q) PureOS Linux amd64
-item	--key r	springdale		(R) Springdale Linux amd64
+item	--key r	Springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64 SF
@@ -129,7 +129,7 @@ item    Fedora	                Fedora installer (Everything, Server, Silverblue)
 item    coreosinstall           Fedora CoreOS installer amd64
 item    coreoslive              Fedora CoreOS live amd64
 item    Alma                    AlmaLinux installer amd64
-item    springdale              Springdale Linux installer amd64
+item    Springdale              Springdale Linux installer amd64
 item    SmeOS                   Koozali SME Server installer amd64
 item    clearos                 ClearOS Linux installer amd64
 item    CloudLinuxOS            CloudLinux OS installer amd64
@@ -1538,19 +1538,30 @@ kernel ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${li
 initrd ${ds}dists/${release}/main/installer-amd64/${version}/images/netboot/${link}debian-installer/amd64/initrd.gz
 boot
 #################################################
-:springdale
-echo http://springdale.math.ias.edu/
-echo Site:
-echo http://mirror.math.princeton.edu/pub/springdale/Springdale/
-echo http://ftp.halifax.rwth-aachen.de/puias/
-echo http://springdale.princeton.edu/data/springdale/
-echo
+:Springdale
+set ds1 http://mirror.math.princeton.edu/pub/springdale/Springdale/
+set ds2 http://ftp.halifax.rwth-aachen.de/puias/
+set ds3 http://springdale.princeton.edu/data/springdale/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Springdale_manual
+echo http://springdale.math.ias.edu/
+echo
 set ds http://mirror.math.princeton.edu/pub/springdale/Springdale/
 echo -n Springdale site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Springdale_stage2
 set version 8
 echo -n Springdale installer Version (6-8): ${}
 read version
