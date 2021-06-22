@@ -2074,23 +2074,23 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set answer Y ||
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=gparted-live.iso.img && set from fromiso=/gparted-live.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
- echo -n Kernel Parameter, Bootcode: ${}
- read kp
- echo
+set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
- initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${answer} Y && initrd --name gparted-live.iso.img --timeout 100000 ${ds}gparted-live.iso.img${link} ||
- boot
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+iseq ${answer} Y && initrd --name gparted-live.iso.img --timeout 100000 ${ds}gparted-live.iso.img${link} ||
+boot
 #################################################
 :Clonezilla
 
 set ds1 https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
-set ds2 ${mirror0}${target}/
+set ds2 ${mirror0}clonezilla/
 
 menu Sites boot ${target} from:
 item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
@@ -2102,7 +2102,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Clonezilla_manual
-set ds ${mirror0}${target}/
+set ds ${mirror0}clonezilla/
 echo -n Clonezilla-Live site: ${}
 read ds
 echo
