@@ -999,7 +999,7 @@ echo Source: https://downloads.x-wrt.com/rom/
 echo Howto: https://blog.x-wrt.com/docs/install-on-vps2/
 echo
 
-set kname x-wrt-9.0-b202103132124-x86-64-generic-initramfs-kernel.bin
+set kname x-wrt-9.0-b202106212213-x86-64-generic-initramfs-kernel.bin
 echo -n Kernel name: ${}
 read kname
 echo
