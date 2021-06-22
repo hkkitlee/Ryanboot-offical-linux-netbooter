@@ -2131,8 +2131,8 @@ boot
 #################################################
 :RedoRescue
 
-echo https://master.dl.sourceforge.net/project/ryanboot/redorescue/
-echo echo ${mirror0}redorescue/
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/redorescue/
+set ds2 ${mirror0}redorescue/
 
 menu Sites boot ${target} from:
 item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
