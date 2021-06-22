@@ -1419,16 +1419,24 @@ kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=ini
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
-:cloudlinuxos
-echo Sites:
-echo https://repo.cloudlinux.com/cloudlinux/
-echo
+:CloudLinuxOS
+set ds1 https://repo.cloudlinux.com/cloudlinux/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:CloudLinuxOS_manual
 set ds https://repo.cloudlinux.com/cloudlinux/
 echo -n Cloud Linux site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:CloudLinuxOS_stage2
 set version 8
 echo -n Cloud Linux installer Version (5 - 8): ${}
 read version
