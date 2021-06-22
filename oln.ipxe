@@ -93,7 +93,7 @@ item	--key b	Tinycore		(B) Tinycore amd64/i386
 item	--key c	Alpine			(C) Alpine amd64/i386
 item	--key d	Slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item	--key e	Slax			(E) Slax amd64/i386
-item	--key f	slackware		(F) Slackware amd64/i386 with Installer
+item	--key f	Slackware		(F) Slackware amd64/i386 with Installer
 item	--key g	rancheros		(G) Rancher OS amd64/i386
 item	--key h	x-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
@@ -169,7 +169,7 @@ item    openSUSE                openSUSE installer amd64/i386
 item    --gap
 
 item	--gap Slackware
-item    slackware               Slackware live amd64/i386 with Installer
+item    Slackware               Slackware live amd64/i386 with Installer
 item    absolute                Absolute-Linux installer amd64
 item    --gap
 
@@ -880,26 +880,41 @@ kernel ${ds}/releases/${mainv}/${subv}/images/${bit}/vmlinuz initrd=instroot ${k
 initrd ${ds}/releases/${mainv}/${subv}/images/${bit}/instroot
 boot
 #################################################
-:slackware
+:Slackware
 
+set ds1 http://ftp.linux.cz/pub/linux/slackware/
+set ds2 http://ftp.nara.wide.ad.jp/pub/Linux/slackware/
+set ds3 https://mirror.csclub.uwaterloo.ca/slackware/
+set ds4 https://mirror.its.dal.ca/slackware/
+set ds5 https://hkg.mirror.rackspace.com/slackware/
+set ds6 https://mirror-hk.koddos.net/slackware/
+set ds7 https://mirrors.bfsu.edu.cn/slackware/
+set ds8 https://mirrors.tuna.tsinghua.edu.cn/slackware/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item 6 ${ds6}
+item 7 ${ds7}
+item 8 ${ds8}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Slackware_manual
 echo https://mirrors.slackware.com/mirrorlist/
 echo
-echo Sites:
-echo http://ftp.linux.cz/pub/linux/slackware/
-echo http://ftp.nara.wide.ad.jp/pub/Linux/slackware/
-echo https://mirror.csclub.uwaterloo.ca/slackware/
-echo https://mirror.its.dal.ca/slackware/
-echo https://hkg.mirror.rackspace.com/slackware/
-echo https://mirror-hk.koddos.net/slackware/
-echo https://mirrors.bfsu.edu.cn/slackware/
-echo https://mirrors.tuna.tsinghua.edu.cn/slackware/
-echo
-
 set ds https://mirrors.tuna.tsinghua.edu.cn/slackware/
 echo -n Slackware site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Slackware_stage2
 set version current
 echo -n 13.0 - current Version: ${}
 read version
