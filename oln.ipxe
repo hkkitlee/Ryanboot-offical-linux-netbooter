@@ -76,7 +76,7 @@ item	--key t	SteamOS			(T) SteamOS Linux amd64
 item	--key u	ClearLinux		(U) Clear Linux OS amd64 SF
 item	--key v	ProxmoxVE		(V) Proxmox VE OS amd64 SF
 item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
-item	--key x	rocky			(X) RockyLinux 8 amd64
+item	--key x	Rocky			(X) RockyLinux 8 amd64
 
 item	--gap
 item		start			Back to Top
@@ -122,7 +122,7 @@ item    --gap   --      tui/gtk Text/Graphical User Interface. SF for hosting by
 item    --gap
 
 item	--gap RedHat
-item    rocky                   RockyLinux 8 installer amd64
+item    Rocky                   RockyLinux 8 installer amd64
 item    Oracle8                 OracleLinux R8 Full installer amd64 SF
 item    CentosStream            Centos Stream installer amd64
 item    Fedora	                Fedora installer (Everything, Server, Silverblue) amd64
@@ -2012,17 +2012,26 @@ initrd --name gentoo.igz --timeout 100000 ${ds}boot/gentoo.igz${link}
 initrd --name image.squashfs.img --timeout 100000 ${ds}image.squashfs.img${link}
 boot
 #################################################
-:rocky
+:Rocky
 
-echo https://rockylinux.org/
-echo Site:
-echo http://download.rockylinux.org/pub/rocky/
-echo
+set ds1 http://download.rockylinux.org/pub/rocky/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Rocky_manual
 set ds http://download.rockylinux.org/pub/rocky/
 echo -n Rocky Linux Site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Rocky_stage2
 set version 8
 echo -n (8.3, 8(8.4)) Version: ${}
 read version
