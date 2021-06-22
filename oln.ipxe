@@ -227,11 +227,11 @@ item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
-iseq ${siteno} manual && goto ${target}_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+#iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+#iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+#iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+#iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
 
 :Ubuntu_manual
 echo Mirror: https://launchpad.net/ubuntu/+archivemirrors
