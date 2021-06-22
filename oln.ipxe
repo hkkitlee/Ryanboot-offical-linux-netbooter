@@ -100,7 +100,7 @@ item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	Fatdog			(K) Fatdog64 Linux amd64
 item	--key l	OneFileLinux		(L) OneFileLinux
-item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script SF
+item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
@@ -155,7 +155,7 @@ item    --gap
 item	--gap Arch
 item    Arch                    Arch Linux live amd64 with Option Installer Script
 item    manjaro-xfce            Manjaro Linux Xfce live amd64 with Installer SF
-item    blackarch               BlackArch Linux live amd64 with Installer Script SF
+item    BlackArch               BlackArch Linux live amd64 with Installer Script SF
 item    garuda-wayfire          Garuda Linux Wayfire live amd64 with Installer SF
 item    --gap
 
@@ -1796,19 +1796,29 @@ kernel --name linux --timeout 100000 ${ds}linux${link} initrd=initrd ${kp}
 initrd --name initrd --timeout 100000 ${ds}initrd${link}
 boot
 #################################################
-:blackarch
-echo https://blackarch.org/blackarch-install.html
-echo
+:BlackArch
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/blackarch/
+set ds2 ${mirror0}blackarch/
 
-echo Sites:
-echo https://master.dl.sourceforge.net/project/ryanboot/blackarch/
-echo ${mirror0}blackarch/
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:BlackArch_manual
+echo Howto: https://blackarch.org/blackarch-install.html
 echo
 set ds ${mirror0}blackarch/
 echo -n BlackArch site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:BlackArch_stage2
 echo Login : root
 echo Password : blackarch 
 echo Installer script : blackarch-install
