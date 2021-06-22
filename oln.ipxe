@@ -214,19 +214,37 @@ chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/R
 #################################################
 :ubuntu
 
+set ds1 http://archive.ubuntu.com
+set ds2 http://mirrors.layeronline.com
+set ds3 http://mirrors.aliyun.com
+set ds4 http://mirrors.tuna.tsinghua.edu.cn
+
 echo https://launchpad.net/ubuntu/+archivemirrors
 echo Sites:
-echo http://archive.ubuntu.com
-echo http://mirrors.layeronline.com
-echo http://mirrors.aliyun.com
-echo http://mirrors.tuna.tsinghua.edu.cn
+echo 1 ${ds1}
+echo 2 ${ds2}
+echo 3 ${ds3}
+echo 4 ${ds4}
+echo manual Manual Entry URL
+echo
+echo -n Select 1-4, manual: ${}
+read siteno
 echo
 
+iseq ${siteno} manual && goto ubuntu_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ubuntu-stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ubuntu-stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ubuntu-stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ubuntu-stage2 || clear && goto ubuntu
+
+:ubuntu_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Ubuntu site: ${}
 read ds
 echo
+goto ubuntu_stage2
 
+:ubuntu_stage2
 echo Ubuntu 18.04.5 LTS (Bionic Beaver)
 echo Ubuntu 20.04.2 LTS (Focal Fossa)
 echo Ubuntu 20.10 (Groovy Gorilla)
