@@ -65,7 +65,7 @@ item	--key i	Devuan			(I) Devuan amd64/i386
 item	--key j	Alma			(J) AlmaLinux amd64
 item	--key k	coreosinstall		(K) Fedora CoreOS amd64
 item	--key l	SmeOS			(L) Koozali SME Server amd64
-item	--key m	openeuler		(M) openEuler amd64
+item	--key m	openEuler		(M) openEuler amd64
 item	--key n	centosstream		(N) Centos Stream amd64
 item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
 item	--key p	absolute		(P) Absolute-Linux amd64
@@ -133,7 +133,7 @@ item    springdale              Springdale Linux installer amd64
 item    SmeOS                   Koozali SME Server installer amd64
 item    clearos                 ClearOS Linux installer amd64
 item    cloudlinuxos            CloudLinux OS installer amd64
-item    openeuler               openEuler installer amd64
+item    openEuler               openEuler installer amd64
 item    --gap
 
 item	--gap Debian
@@ -1333,20 +1333,36 @@ kernel ${ds}${release}/smeos/x86_64/images/pxeboot/vmlinuz initrd=initrd.img ${k
 initrd ${ds}${release}/smeos/x86_64/images/pxeboot/initrd.img
 boot
 #################################################
-:openeuler
-echo Sites:
-echo https://repo.openeuler.org/
-echo https://mirrors.huaweicloud.com/openeuler/
-echo https://mirror.nju.edu.cn/openeuler/
-echo http://mirrors.hit.edu.cn/openeuler/
-echo https://mirror.truenetwork.ru/openeuler/
-echo http://mirror.lzu.edu.cn/openeuler/
+:openEuler
+set ds1 https://repo.openeuler.org/
+set ds2 https://mirrors.huaweicloud.com/openeuler/
+set ds3 https://mirror.nju.edu.cn/openeuler/
+set ds4 http://mirrors.hit.edu.cn/openeuler/
+set ds5 https://mirror.truenetwork.ru/openeuler/
+set ds6 http://mirror.lzu.edu.cn/openeuler/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item 6 ${ds6}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:openEuler_manual
+echo https://openeuler.org/zh/mirror/list/
 echo
 set ds http://mirror.lzu.edu.cn/openeuler/
 echo -n openEuler Site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:openEuler_stage2
 set version 20.09
 echo -n Version (20.03-LTS, 20.03-LTS-SP1, 20.09): ${}
 read version
