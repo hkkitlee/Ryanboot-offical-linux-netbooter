@@ -64,7 +64,7 @@ item	--key h	Mageia			(H) Mageia amd64/i586
 item	--key i	Devuan			(I) Devuan amd64/i386
 item	--key j	Alma			(J) AlmaLinux amd64
 item	--key k	coreosinstall		(K) Fedora CoreOS amd64
-item	--key l	smeos			(L) Koozali SME Server amd64
+item	--key l	SmeOS			(L) Koozali SME Server amd64
 item	--key m	openeuler		(M) openEuler amd64
 item	--key n	centosstream		(N) Centos Stream amd64
 item	--key o	cloudlinuxos		(O) CloudLinux OS amd64
@@ -98,7 +98,7 @@ item	--key g	Rancheros		(G) Rancher OS amd64/i386
 item	--key h	X-wrt			(H) X-wrt amd64/i386
 item	--key i	containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
-item	--key k	fatdog			(K) Fatdog64 Linux amd64
+item	--key k	Fatdog			(K) Fatdog64 Linux amd64
 item	--key l	onefilelinux		(L) OneFileLinux
 item	--key m	blackarch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
@@ -130,7 +130,7 @@ item    coreosinstall           Fedora CoreOS installer amd64
 item    coreoslive              Fedora CoreOS live amd64
 item    Alma                    AlmaLinux installer amd64
 item    springdale              Springdale Linux installer amd64
-item    smeos                   Koozali SME Server installer amd64
+item    SmeOS                   Koozali SME Server installer amd64
 item    clearos                 ClearOS Linux installer amd64
 item    cloudlinuxos            CloudLinux OS installer amd64
 item    openeuler               openEuler installer amd64
@@ -185,7 +185,7 @@ item    Mageia                  Mageia installer amd64/i586
 item    --gap
 
 item    --gap Puppy
-item    fatdog                  Fatdog64 Linux live amd64
+item    Fatdog                  Fatdog64 Linux live amd64
 item    --gap
 
 item	--gap Others
@@ -1256,12 +1256,24 @@ kernel ${ds}${path}/fedora-coreos-${version}-live-kernel-x86_64 initrd=fedora-co
 initrd ${ds}${path}/fedora-coreos-${version}-live-initramfs.x86_64.img
 boot
 #################################################
-:fatdog
+:Fatdog
+set ds1 http://distro.ibiblio.org/fatdog
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Fatdog_manual
 set ds http://distro.ibiblio.org/fatdog
-echo -n Fatdog64 Linux Site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Fatdog_stage2
 set release 810
 echo -n Release: ${}
 read release
@@ -1280,20 +1292,33 @@ echo
 kernel ${ds}/kernels/${release}/vmlinuz-initrd-${kversion} ${kp}
 boot
 #################################################
-:smeos
+:SmeOS
 
+set ds1 http://mirror.canada.pialasse.com/releases/
+set ds2 http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
+set ds3 http://mirrors.misouk.com/smeserver/releases/
+set ds4 http://mirror.internode.on.net/pub/smeserver/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:SmeOS_manual
 echo http://mirror.contribs.org/mirrors/
-echo Site:
-echo http://mirror.canada.pialasse.com/releases/
-echo http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
-echo http://mirrors.misouk.com/smeserver/releases/
-echo http://mirror.internode.on.net/pub/smeserver/
 echo
 set ds http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
-echo -n Koozali SME Server Site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:SmeOS_stage2
 set release 10
 echo -n Release (9, 9.2, 10, 10.0, testing/10.0.rc1) : ${}
 read release
