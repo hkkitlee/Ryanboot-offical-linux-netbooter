@@ -53,8 +53,8 @@ menu		Ryanboot-offical-linux-netbooter (List Installer)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
-item	--key a	ubuntu			(A) Ubuntu amd64/i386
-item	--key b	fedora64		(B) Fedora (Everything, Server, Silverblue) amd64
+item	--key a	Ubuntu			(A) Ubuntu amd64/i386
+item	--key b	Fedora			(B) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	debian			(C) Debian amd64/i386
 item	--key d	parrot			(D) Parrot-Linux amd64/i386
 item	--key e	kali			(E) Kali-Linux amd64/i386 
@@ -125,7 +125,7 @@ item	--gap RedHat
 item    rocky                   RockyLinux 8 installer amd64
 item    oracle8                 OracleLinux R8 Full installer amd64 SF
 item    centosstream            Centos Stream installer amd64
-item    fedora64                Fedora installer (Everything, Server, Silverblue) amd64
+item    Fedora	                Fedora installer (Everything, Server, Silverblue) amd64
 item    coreosinstall           Fedora CoreOS installer amd64
 item    coreoslive              Fedora CoreOS live amd64
 item    alma                    AlmaLinux installer amd64
@@ -138,7 +138,7 @@ item    --gap
 
 item	--gap Debian
 item    debian                  Debian installer amd64/i386
-item    ubuntu                  Ubuntu installer amd64/i386
+item    Ubuntu                  Ubuntu installer amd64/i386
 item    kali                    Kali-Linux installer amd64/i386
 item    parrot                  Parrot-Linux installer amd64/i386
 item    proxmoxve               Proxmox VE OS installer amd64 SF
@@ -212,7 +212,7 @@ reboot
 chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe
 
 #################################################
-:ubuntu
+:Ubuntu
 
 set ds1 http://archive.ubuntu.com
 set ds2 http://mirrors.layeronline.com
@@ -233,16 +233,16 @@ iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
 iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
 iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
 
-:ubuntu_manual
+:Ubuntu_manual
 echo Mirror: https://launchpad.net/ubuntu/+archivemirrors
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry Ubuntu URL: ${}
 read ds
 echo
-goto ubuntu_stage2
+goto Ubuntu_stage2
 
-:ubuntu_stage2
+:Ubuntu_stage2
 echo Ubuntu 18.04.5 LTS (Bionic Beaver)
 echo Ubuntu 20.04.2 LTS (Focal Fossa)
 echo Ubuntu 20.10 (Groovy Gorilla)
@@ -271,7 +271,7 @@ initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}image
 
 boot
 #################################################
-:fedora64
+:Fedora
 
 set ds1 http://ftp.cuhk.edu.hk/pub/linux
 set ds2 http://mirrors.tuna.tsinghua.edu.cn
@@ -292,14 +292,14 @@ iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
 iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
 iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
 
-:fedora64_manual
+:Fedora_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry Fedora URL: ${}
 read ds
 echo
-goto fedora64_stage2
+goto Fedora_stage2
 
-:fedora64_stage2
+:Fedora_stage2
 set version 34
 echo -n Fedora installer Version (32-34): ${}
 read version
