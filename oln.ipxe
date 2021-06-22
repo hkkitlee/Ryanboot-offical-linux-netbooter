@@ -940,14 +940,28 @@ kernel ${ds}/${bit}-${version}/kernels/${huge}/bzImage initrd=initrd.img ${kp}
 initrd ${ds}/${bit}-${version}/isolinux/initrd.img
 boot
 #################################################
-:rancheros
-echo https://www.vultr.com/docs/install-rancher-os-via-ipxe
+:Rancheros
 
+set ds1 http://releases.rancher.com/os/latest
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Rancheros_manual
+echo https://www.vultr.com/docs/install-rancher-os-via-ipxe
+echo
 set ds http://releases.rancher.com/os/latest
 echo -n RancherOS site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Rancheros_stage2
 set passwd temppasswd
 echo -n Temporary password: ${}
 read passwd
