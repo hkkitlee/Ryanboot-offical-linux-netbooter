@@ -75,7 +75,7 @@ item	--key s	ClearOS			(S) ClearOS Linux amd64
 item	--key t	SteamOS			(T) SteamOS Linux amd64
 item	--key u	ClearLinux		(U) Clear Linux OS amd64 SF
 item	--key v	ProxmoxVE		(V) Proxmox VE OS amd64 SF
-item	--key w	oracle8			(W) OracleLinux R8 Full amd64 SF
+item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	rocky			(X) RockyLinux 8 amd64
 
 item	--gap
@@ -123,7 +123,7 @@ item    --gap
 
 item	--gap RedHat
 item    rocky                   RockyLinux 8 installer amd64
-item    oracle8                 OracleLinux R8 Full installer amd64 SF
+item    Oracle8                 OracleLinux R8 Full installer amd64 SF
 item    CentosStream            Centos Stream installer amd64
 item    Fedora	                Fedora installer (Everything, Server, Silverblue) amd64
 item    coreosinstall           Fedora CoreOS installer amd64
@@ -1911,16 +1911,26 @@ initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 boot
 #################################################
-:oracle8
-echo https://master.dl.sourceforge.net/project/ryanboot/oracle8/
-echo ${mirror0}oracle8/
-echo
+:Oracle8
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/oracle8/
+set ds2 ${mirror0}oracle8/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Oracle8_manual
 set ds ${mirror0}oracle8/
 echo -n OracleLinux R8 site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Oracle8_stage2
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/oracle8/ && set link ?viasf=1 ||
 
 set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ inst.stage2=${ds}
