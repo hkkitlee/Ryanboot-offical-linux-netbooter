@@ -60,9 +60,9 @@ item	--key d	Parrot			(D) Parrot-Linux amd64/i386
 item	--key e	Kali			(E) Kali-Linux amd64/i386 
 item	--key f	openSUSE		(F) openSUSE amd64/i386
 item	--key g	IPFire			(G) IPFire amd64/i586
-item	--key h	mageia			(H) Mageia amd64/i586
+item	--key h	Mageia			(H) Mageia amd64/i586
 item	--key i	Devuan			(I) Devuan amd64/i386
-item	--key j	alma			(J) AlmaLinux amd64
+item	--key j	Alma			(J) AlmaLinux amd64
 item	--key k	coreosinstall		(K) Fedora CoreOS amd64
 item	--key l	smeos			(L) Koozali SME Server amd64
 item	--key m	openeuler		(M) openEuler amd64
@@ -128,7 +128,7 @@ item    centosstream            Centos Stream installer amd64
 item    Fedora	                Fedora installer (Everything, Server, Silverblue) amd64
 item    coreosinstall           Fedora CoreOS installer amd64
 item    coreoslive              Fedora CoreOS live amd64
-item    alma                    AlmaLinux installer amd64
+item    Alma                    AlmaLinux installer amd64
 item    springdale              Springdale Linux installer amd64
 item    smeos                   Koozali SME Server installer amd64
 item    clearos                 ClearOS Linux installer amd64
@@ -181,7 +181,7 @@ item    X-wrt                   X-wrt live amd64/i386
 item    --gap
 
 item	--gap Mandriva
-item    mageia                  Mageia installer amd64/i586
+item    Mageia                  Mageia installer amd64/i586
 item    --gap
 
 item    --gap Puppy
@@ -230,7 +230,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Ubuntu_manual
-echo Mirror: https://launchpad.net/ubuntu/+archivemirrors
+echo Mirror List: https://launchpad.net/ubuntu/+archivemirrors
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry ${target} URL: ${}
@@ -285,6 +285,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Fedora_manual
+echo Mirror List: https://mirrors.fedoraproject.org
 set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry ${target} URL: ${}
 read ds
@@ -334,7 +335,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Debian_manual
-echo https://www.debian.org/mirror/list
+echo Mirror List: https://www.debian.org/mirror/list
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry ${target} URL: ${}
@@ -392,7 +393,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Parrot_manual
-echo https://docs.parrotlinux.org/mirror-list/
+echo Mirror List: https://docs.parrotlinux.org/mirror-list/
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry ${target} URL: ${}
@@ -456,7 +457,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Kali_manual
-echo http://http.kali.org/README.mirrorlist
+echo Mirror List: http://http.kali.org/README.mirrorlist
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry ${target} URL: ${}
@@ -514,7 +515,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Arch_manual
-echo https://archlinux.org/mirrorlist/
+echo Mirror List: https://archlinux.org/mirrorlist/
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry ${target} URL: ${}
@@ -560,7 +561,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Tinycore_manual
-echo https://www.linuxsecrets.com/tinycorelinux-wiki/wiki:mirrors.html
+echo Mirror List: https://www.linuxsecrets.com/tinycorelinux-wiki/wiki:mirrors.html
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn/tinycorelinux
 echo -n Manual Entry ${target} URL: ${}
@@ -607,7 +608,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Alpine_manual
-echo https://mirrors.alpinelinux.org/
+echo Mirror List: https://mirrors.alpinelinux.org/
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/alpine/
 echo -n Manual Entry ${target} URL: ${}
@@ -669,7 +670,7 @@ iseq ${siteno} manual && goto offical_${target}_manual || set ds ${ds${siteno}} 
 
 :offical_Slitaz_manual
 set ds ${mirror0}slitaz/
-echo -n SliTaz site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto offical_${target}_stage2
@@ -712,7 +713,7 @@ iseq ${siteno} manual && goto teasiu_${target}_manual || set ds ${ds${siteno}} &
 
 :teasiu_Slitaz_manual
 set ds http://www.slitaz.cn:8083/dl/slitaz/
-echo -n SliTaz site: ${}                                                        
+echo -n Manual Entry ${target} URL: ${}
 read ds                                                                         
 echo
 goto teasiu_Slitaz_stage2
@@ -753,10 +754,10 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :openSUSE_manual
-echo https://mirrors.opensuse.org/
+echo Mirror List: https://mirrors.opensuse.org/
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/opensuse/
-echo -n openSUSE site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -798,7 +799,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Slax_manual
 set ds http://ftp.sh.cvut.cz
-echo -n Slax site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -850,10 +851,10 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :IPFire_manual
-echo https://mirrors.ipfire.org/
+echo Mirror List: https://mirrors.ipfire.org/
 echo
 set ds http://ftp.yz.yamagata-u.ac.jp/pub/network/security/ipfire/
-echo -n IPFire site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -906,10 +907,10 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Slackware_manual
-echo https://mirrors.slackware.com/mirrorlist/
+echo Mirror List: https://mirrors.slackware.com/mirrorlist/
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn/slackware/
-echo -n Slackware site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -953,10 +954,10 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Rancheros_manual
-echo https://www.vultr.com/docs/install-rancher-os-via-ipxe
+echo Howto: https://www.vultr.com/docs/install-rancher-os-via-ipxe
 echo
 set ds http://releases.rancher.com/os/latest
-echo -n RancherOS site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -989,7 +990,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :X-wrt_manual
 set ds https://downloads.x-wrt.com/rom/
-echo -n ${target} site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1025,7 +1026,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Devuan_manual
 set ds https://pkgmaster.devuan.org/devuan
-echo -n Devuan site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1058,20 +1059,32 @@ kernel ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/$
 initrd ${ds}/dists/${releases}/main/installer-${bit}/${version}/images/netboot/${link}debian-installer/${bit}/initrd.gz
 boot
 #################################################
-:mageia
+:Mageia
 
-echo https://mirrors.mageia.org/
-echo
-echo Sites:
-echo https://free.nchc.org.tw/mageia/
-echo https://mirrors.tuna.tsinghua.edu.cn/mageia/
-echo https://mirrors.ustc.edu.cn/mageia/
+set ds1 https://free.nchc.org.tw/mageia/
+set ds2 https://mirrors.tuna.tsinghua.edu.cn/mageia/
+set ds3 https://mirrors.ustc.edu.cn/mageia/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Mageia_manual
+echo Mirror List: https://mirrors.mageia.org/
 echo
 set ds https://mirrors.ustc.edu.cn/mageia/
-echo -n Mageia site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Mageia_stage2
 set version 8
 echo -n 6 - 8 Version: ${}
 read version
@@ -1094,22 +1107,34 @@ kernel ${ds}distrib/${version}/${bit}/isolinux/${path}/vmlinuz initrd=${ramdisk}
 initrd ${ds}distrib/${version}/${bit}/isolinux/${path}/${ramdisk}
 boot
 #################################################
-:alma
-echo https://mirrors.almalinux.org/
-echo
-echo Sites:
-echo https://repo.almalinux.org/almalinux/
-echo http://mirror.epn.edu.ec/almalinux/ 
-echo http://mirror.fem-net.de/almalinux/
-echo http://mirror.hahosting.com/almalinux/
-echo http://almalinux.japan.crexio.com/almalinux/
-echo
+:Alma
+set ds1 https://repo.almalinux.org/almalinux/
+set ds2 http://mirror.epn.edu.ec/almalinux/ 
+set ds3 http://mirror.fem-net.de/almalinux/
+set ds4 http://mirror.hahosting.com/almalinux/
+set ds5 http://almalinux.japan.crexio.com/almalinux/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Alma_manual
+echo Mirror List: https://mirrors.almalinux.org/
+echo
 set ds http://almalinux.japan.crexio.com/almalinux/
-echo -n AlmaLinux site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Alma_stage2
 set version 8
 echo -n Version: ${}
 read version
