@@ -219,17 +219,25 @@ set ds2 http://mirrors.layeronline.com
 set ds3 http://mirrors.aliyun.com
 set ds4 http://mirrors.tuna.tsinghua.edu.cn
 
-echo https://launchpad.net/ubuntu/+archivemirrors
-echo Sites:
-echo 1 ${ds1}
-echo 2 ${ds2}
-echo 3 ${ds3}
-echo 4 ${ds4}
-echo manual Manual Entry URL
-echo
-echo -n Select 1-4, manual: ${}
-read siteno
-echo
+#echo https://launchpad.net/ubuntu/+archivemirrors
+#echo Sites:
+#echo 1 ${ds1}
+#echo 2 ${ds2}
+#echo 3 ${ds3}
+#echo 4 ${ds4}
+#echo manual Manual Entry URL
+#echo
+#echo -n Select 1-4, manual: ${}
+#read siteno
+#echo
+
+menu Ubuntu Sites:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
 
 iseq ${siteno} manual && goto ubuntu_manual ||
 iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ubuntu_stage2 ||
