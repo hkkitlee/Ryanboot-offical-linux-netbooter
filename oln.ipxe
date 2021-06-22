@@ -1151,18 +1151,30 @@ kernel ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/vmlinuz initrd=initrd.img
 initrd ${ds}${version}/BaseOS/${bit}/os/images/pxeboot/initrd.img
 boot
 #################################################
-:containerlinux
+:Containerlinux
 
 set channel stable
 echo -n Channel(stable, beta, alpha, edge): ${}
 read channel
 echo
 
+set ds1 http://${channel}.release.flatcar-linux.net/amd64-usr/current
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Containerlinux_manual
 set ds http://${channel}.release.flatcar-linux.net/amd64-usr/current
-echo -n Slackware site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Containerlinux_stage2
 set kp
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
@@ -1192,11 +1204,23 @@ goto coreos
 ###
 :coreos
 
+set ds1 https://builds.coreos.fedoraproject.org/prod
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto coreos_manual || set ds ${ds${siteno}} && goto coreos_stage2
+
+:coreos_manual
 set ds https://builds.coreos.fedoraproject.org/prod
-echo -n Fedora CoreOS Site: ${}
+echo -n Manual Entry Fodora CoreOS URL: ${}
 read ds
 echo
+goto coreos_stage2
 
+:coreos_stage2
 set stream stable
 echo -n Stream(stable, testing, next): ${}
 read stream
