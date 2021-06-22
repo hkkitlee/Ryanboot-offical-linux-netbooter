@@ -2120,44 +2120,56 @@ iseq ${answer} Y && set img initrd=clonezilla.iso.img && set from fromiso=/clone
 
  
 set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset 
- echo -n Kernel Parameter, Bootcode: ${}
- read kp
- echo
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
- initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${answer} Y && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
- boot
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+iseq ${answer} Y && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
+boot
 #################################################
-:redorescue
+:RedoRescue
 
- echo Sites:
- echo https://master.dl.sourceforge.net/project/ryanboot/${target}/
- echo echo ${mirror0}${target}/
- echo
- set ds ${mirror0}${target}/
- echo -n Redo-Rescue site: ${}
- read ds
- echo
+echo https://master.dl.sourceforge.net/project/ryanboot/redorescue/
+echo echo ${mirror0}redorescue/
 
+menu Sites boot ${target} from:
+item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:RedoRescue_manual
+set ds ${mirror0}redorescue/
+echo -n Redo-Rescue site: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:RedoRescue_stage2
 set answer Y
 echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redorescue/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
 
- set kp boot=live union=overlay username=user vga=791 quiet splash setkmap=us ${from}
+set kp boot=live union=overlay username=user vga=791 quiet splash setkmap=us ${from}
 echo -n Kernel Parameter, Bootcode: ${}
- read kp
- echo
+read kp
+echo
 
- kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${img} ${kp}
- initrd --name initrd --timeout 100000 ${ds}initrd${link}
- iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
- boot
+kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrd ${img} ${kp}
+initrd --name initrd --timeout 100000 ${ds}initrd${link}
+iseq ${answer} Y && initrd --name redorescue.iso.img --timeout 100000 ${ds}redorescue.iso.img${link} ||
+boot
 #################################################
 :partmagic
 echo Reference:
