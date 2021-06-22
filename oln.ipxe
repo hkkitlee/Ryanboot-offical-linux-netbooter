@@ -1641,7 +1641,8 @@ echo
 goto ${target}_stage2
 
 :OneFileLinux_stage2
-kernel ${ds}OneFileLinux.efi
+iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/ && set link ?viasf=1 ||
+kernel --name OneFileLinux.efi --timeout 100000 ${ds}OneFileLinux.efi${link}
 boot
 #################################################
 :steamos
