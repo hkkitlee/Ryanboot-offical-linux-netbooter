@@ -106,7 +106,7 @@ item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
 item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
-item	--key s	redorescue		(S) Redo-Rescue amd64 SF
+item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	partmagic		(T) Parted Magic amd64 SF
 
 item	--gap
@@ -148,7 +148,7 @@ item    PureOS                  PureOS Linux installer amd64
 item    SteamOS                 SteamOS Linux installer amd64
 item    Gparted-Live            Gparted-Live live amd64 SF
 item    Clonezilla              Clonezilla Live/Lite Server live amd64 SF
-item    redorescue              Redo-Rescue live amd64 SF
+item    RedoRescue              Redo-Rescue live amd64 SF
 item    partmagic               Parted Magic live amd64 SF
 item    --gap
 
