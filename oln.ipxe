@@ -2050,7 +2050,7 @@ boot
 :Gparted-Live
 
 set ds1 https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
-set ds2 ${mirror0}${target}/
+set ds2 ${mirror0}gparted-live/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
