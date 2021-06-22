@@ -7,7 +7,7 @@ console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/r
 imgtrust --allow 
 
 set mirror0 http://183.230.23.18:58000/ryanboot/
-
+set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
 goto start
 
 :start
@@ -658,7 +658,7 @@ choose target_Slitaz && goto ${target_Slitaz}
 
 :offical_Slitaz
 set ds1 ${mirror0}slitaz/
-set ds2 https://master.dl.sourceforge.net/project/ryanboot/slitaz/
+set ds2 ${sourceforge}slitaz/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -676,7 +676,7 @@ echo
 goto offical_${target}_stage2
 
 :offical_Slitaz_stage2
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/slitaz/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}slitaz/ && set link ?viasf=1 ||
 
 set bit 64
 echo -n Kernel [32 / 64]: ${}                                                         
@@ -1310,7 +1310,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :SmeOS_manual
-echo http://mirror.contribs.org/mirrors/
+echo Mirror List: http://mirror.contribs.org/mirrors/
 echo
 set ds http://distro.ibiblio.org/pub/linux/distributions/smeserver/releases/
 echo -n Manual Entry ${target} URL: ${}
@@ -1354,10 +1354,10 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :openEuler_manual
-echo https://openeuler.org/zh/mirror/list/
+echo Mirror List: https://openeuler.org/zh/mirror/list/
 echo
 set ds http://mirror.lzu.edu.cn/openeuler/
-echo -n openEuler Site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1399,7 +1399,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 echo http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/centos/
-echo -n Centos Stream Site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1431,7 +1431,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :CloudLinuxOS_manual
 set ds https://repo.cloudlinux.com/cloudlinux/
-echo -n Cloud Linux site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1467,7 +1467,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Absolute_manual
 set ds https://www.absolutelinux.org/ftp/
-echo -n Absolute Linux site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1505,8 +1505,9 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :PureOS_manual
+echo Mirror List: https://tracker.pureos.net/w/installation_guide/mirrors/
 set ds http://mirror.linux.pizza/pureos/
-echo -n PureOS site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1553,10 +1554,10 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Springdale_manual
-echo http://springdale.math.ias.edu/
+echo Mirror List: http://springdale.math.ias.edu/
 echo
 set ds http://mirror.math.princeton.edu/pub/springdale/Springdale/
-echo -n Springdale site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1596,10 +1597,10 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :ClearOS_manual
-echo http://mirror.clearos.com/mirrorlist/
+echo Mirror List: http://mirror.clearos.com/mirrorlist/
 echo
 set ds http://mirror1-singapore.clearos.com/clearos/
-echo -n ClearOS site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1621,7 +1622,7 @@ boot
 #################################################
 :OneFileLinux
 set ds1 ${mirror0}
-set ds2 https://master.dl.sourceforge.net/project/ryanboot/
+set ds2 ${sourceforge}
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -1635,13 +1636,13 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 echo https://github.com/zhovner/OneFileLinux
 echo
 set ds ${mirror0}
-echo -n OneFileLinux site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :OneFileLinux_stage2
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge} && set link ?viasf=1 ||
 kernel --name OneFileLinux.efi --timeout 100000 ${ds}OneFileLinux.efi${link}
 boot
 #################################################
@@ -1660,10 +1661,10 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :SteamOS_manual
-echo https://www.debian.org/mirror/list
+echo Mirror List: https://www.debian.org/mirror/list
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn/steamos/steamos/
-echo -n SteamOS site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1708,7 +1709,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Memtest86_manual
 set ds ${mirror0}
-echo -n Memtest86 site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1732,7 +1733,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :SuperGrub2_manual
 set ds ${mirror0}
-echo -n Super Grub2 Disk site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1742,7 +1743,7 @@ sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 #################################################
 :ClearLinux
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/clearlinux/
+set ds1 ${sourceforge}clearlinux/
 set ds2 ${mirror0}clearinux/
 
 menu Sites boot ${target} from:
@@ -1757,7 +1758,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 echo Howto: https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 echo
 set ds ${mirror0}clearlinux/
-echo -n Clear Linux OS site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1772,7 +1773,7 @@ echo -n Please enter your yaml config location: ${}
 read config
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clearlinux/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}clearlinux/ && set link ?viasf=1 ||
 
 set kp init=/usr/lib/systemd/systemd-bootchart initcall_debug tsc=reliable no_timer_check noreplace-smp rw clri.descriptor=${config}
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1797,7 +1798,7 @@ initrd --name initrd --timeout 100000 ${ds}initrd${link}
 boot
 #################################################
 :BlackArch
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/blackarch/
+set ds1 ${sourceforge}blackarch/
 set ds2 ${mirror0}blackarch/
 
 menu Sites boot ${target} from:
@@ -1813,7 +1814,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 echo Howto: https://blackarch.org/blackarch-install.html
 echo
 set ds ${mirror0}blackarch/
-echo -n BlackArch site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1824,7 +1825,7 @@ echo Password : blackarch
 echo Installer script : blackarch-install
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/blackarch/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}blackarch/ && set link ?viasf=1 ||
 
 set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1839,7 +1840,7 @@ boot
 #################################################
 :ProxmoxVE
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/proxmox/
+set ds1 ${sourceforge}proxmox/
 set ds2 ${mirror0}proxmox/
 
 menu Sites boot ${target} from:
@@ -1853,14 +1854,14 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :ProxmoxVE_manual
 set ds ${mirror0}proxmox/
-echo -n Proxmox-VE site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :ProxmoxVE_stage2
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/proxmox/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}proxmox/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
 set kp ro ramdisk_size=921600 rw splash=verbose
@@ -1875,7 +1876,7 @@ boot
 #################################################
 :Garuda-Wayfire
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
+set ds1 ${sourceforge}garuda-wayfire/
 set ds2 ${mirror0}garuda-wayfire/
 
 menu Sites boot ${target} from:
@@ -1888,7 +1889,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Garuda-Wayfire_manual
 set ds ${mirror0}garuda-wayfire/
-echo -n Garuda site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -1898,7 +1899,7 @@ echo Login : garuda
 echo Password : garuda
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}garuda-wayfire/ && set link ?viasf=1 ||
 
 set kp ip=dhcp misobasedir=garuda miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 systemd.show_status=1 'apparmor=1' 'security=apparmor'
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1912,7 +1913,7 @@ initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 boot
 #################################################
 :Oracle8
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/oracle8/
+set ds1 ${sourceforge}oracle8/
 set ds2 ${mirror0}oracle8/
 
 menu Sites boot ${target} from:
@@ -1925,13 +1926,13 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Oracle8_manual
 set ds ${mirror0}oracle8/
-echo -n OracleLinux R8 site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :Oracle8_stage2
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/oracle8/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}oracle8/ && set link ?viasf=1 ||
 
 set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://yum.oracle.com/repo/OracleLinux/OL8/baseos/latest/x86_64/ inst.stage2=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1944,7 +1945,7 @@ boot
 #################################################
 :Manjaro-Xfce
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
+set ds1 ${sourceforge}manjaro-xfce/
 set ds2 ${mirror0}manjaro-xfce/
 
 
@@ -1958,13 +1959,13 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Manjaro-Xfce_manual
 set ds ${mirror0}manjaro-xfce/
-echo -n Manjaro site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :Manjaro-Xfce_stage2
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}manjaro-xfce/ && set link ?viasf=1 ||
 
 set kp ip=dhcp misobasedir=manjaro miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1
 echo -n Kernel Parameter, Bootcode: ${}
@@ -1979,7 +1980,7 @@ boot
 #################################################
 :Gentoo-Minimal
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/
+set ds1 ${sourceforge}gentoo-minimal/
 set ds2 ${mirror0}gentoo-minimal/
 
 menu Sites boot ${target} from:
@@ -1994,13 +1995,13 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Gentoo-Minimal_manual
 set ds ${mirror0}gentoo-minimal/
-echo -n Gentoo site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :Gentoo-Minimal_stage2
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gentoo-minimal/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}gentoo-minimal/ && set link ?viasf=1 ||
 
 set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791
 echo -n Kernel Parameter, Bootcode: ${}
@@ -2026,7 +2027,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Rocky_manual
 set ds http://download.rockylinux.org/pub/rocky/
-echo -n Rocky Linux Site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -2049,7 +2050,7 @@ boot
 #################################################
 :Gparted-Live
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/gparted-live/
+set ds1 ${sourceforge}gparted-live/
 set ds2 ${mirror0}gparted-live/
 
 menu Sites boot ${target} from:
@@ -2062,7 +2063,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Gparted-Live_manual
 set ds ${mirror0}gparted-live/
-echo -n Gparted-Live site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -2074,7 +2075,7 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set answer Y ||
+iseq ${ds} ${sourceforge}gparted-live/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=gparted-live.iso.img && set from fromiso=/gparted-live.iso || set from fetch=${ds}live/filesystem.squashfs
 
 set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
@@ -2089,7 +2090,7 @@ boot
 #################################################
 :Clonezilla
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/clonezilla/
+set ds1 ${sourceforge}clonezilla/
 set ds2 ${mirror0}clonezilla/
 
 menu Sites boot ${target} from:
@@ -2103,7 +2104,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :Clonezilla_manual
 set ds ${mirror0}clonezilla/
-echo -n Clonezilla-Live site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -2115,7 +2116,7 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/clonezilla/ && set link ?viasf=1 && set answer Y ||
+ iseq ${ds} ${sourceforge}clonezilla/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=clonezilla.iso.img && set from fromiso=/clonezilla.iso || set from fetch=${ds}live/filesystem.squashfs
 
  
@@ -2131,7 +2132,7 @@ boot
 #################################################
 :RedoRescue
 
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/redorescue/
+set ds1 ${sourceforge}redorescue/
 set ds2 ${mirror0}redorescue/
 
 menu Sites boot ${target} from:
@@ -2146,7 +2147,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :RedoRescue_manual
 set ds ${mirror0}redorescue/
-echo -n Redo-Rescue site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -2158,7 +2159,7 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/redorescue/ && set link ?viasf=1 && set answer Y ||
+iseq ${ds} ${sourceforge}redorescue/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
 
 set kp boot=live union=overlay username=user vga=791 quiet splash setkmap=us ${from}
@@ -2172,7 +2173,7 @@ iseq ${answer} Y && initrd --name redorescue.iso.img --timeout 100000 ${ds}redor
 boot
 #################################################
 :PartMagic
-set ds1 https://master.dl.sourceforge.net/project/ryanboot/partmagic/
+set ds1 ${sourceforge}partmagic/
 set ds2 ${mirror0}partmagic/
 
 menu Sites boot ${target} from:
@@ -2187,13 +2188,13 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 :PartMagic_manual
 set ds ${mirror0}partmagic/
-echo -n Parted Magic site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :PartMagic_stage2
-iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/partmagic/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}partmagic/ && set link ?viasf=1 ||
 
 set kp edd=on vga=normal boot=live eject=no
 echo -n Kernel Parameter, Bootcode: ${}
