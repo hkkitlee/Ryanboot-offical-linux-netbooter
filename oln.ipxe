@@ -219,7 +219,7 @@ set ds2 http://mirrors.layeronline.com
 set ds3 http://mirrors.aliyun.com
 set ds4 http://mirrors.tuna.tsinghua.edu.cn
 
-menu Ubuntu Sites:
+menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
