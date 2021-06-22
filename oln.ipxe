@@ -89,8 +89,8 @@ menu		Ryanboot-offical-linux-netbooter (List Live)
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a	Arch			(A) Arch Linux amd64 Live with Option Installer Script
-item	--key b	tinycore		(B) Tinycore amd64/i386
-item	--key c	alpine			(C) Alpine amd64/i386
+item	--key b	Tinycore		(B) Tinycore amd64/i386
+item	--key c	Alpine			(C) Alpine amd64/i386
 item	--key d	slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
 item	--key e	slax			(E) Slax amd64/i386
 item	--key f	slackware		(F) Slackware amd64/i386 with Installer
@@ -174,9 +174,9 @@ item    absolute                Absolute-Linux installer amd64
 item    --gap
 
 item	--gap Busybox
-item    tinycore                Tinycore live amd64/i386
+item    Tinycore                Tinycore live amd64/i386
 item    slitaz                  SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
-item    alpine                  Alpine live amd64/i386
+item    Alpine                  Alpine live amd64/i386
 item    x-wrt                   X-wrt live amd64/i386
 item    --gap
 
@@ -542,21 +542,33 @@ initrd ${ds}/archlinux/iso/latest/arch/boot/amd-ucode.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/intel-ucode.img
 boot
 #################################################
-:tinycore
+:Tinycore
 
+set ds1 http://tinycorelinux.net
+set ds2 http://mirrors.163.com/tinycorelinux
+set ds3 http://mirror.cpsc.ucalgary.ca/mirror/tinycorelinux
+set ds4 https://mirrors.tuna.tsinghua.edu.cn/tinycorelinux
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Tinycore_manual
 echo https://www.linuxsecrets.com/tinycorelinux-wiki/wiki:mirrors.html
-echo Sites:
-echo http://tinycorelinux.net
-echo http://mirrors.163.com/tinycorelinux
-echo http://mirror.cpsc.ucalgary.ca/mirror/tinycorelinux
-echo https://mirrors.tuna.tsinghua.edu.cn/tinycorelinux
 echo
-
 set ds https://mirrors.tuna.tsinghua.edu.cn/tinycorelinux
-echo -n Tinycore site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Tinycore_stage2
 set version 12
 echo -n 2-12  version: ${}
 read version
@@ -578,20 +590,32 @@ initrd ${ds}/${version}.x/${arch}/release/distribution_files/rootfs${file1}.gz
 
 boot
 #################################################
-:alpine
-echo https://mirrors.alpinelinux.org/
-echo Sites:
-echo http://mirrors.tuna.tsinghua.edu.cn/alpine/
-echo http://mirrors.ustc.edu.cn/alpine/
-echo http://mirror.xtom.com.hk/alpine/
-echo http://mirror.csclub.uwaterloo.ca/alpine/
-echo
+:Alpine
+set ds1 http://mirrors.tuna.tsinghua.edu.cn/alpine/
+set ds2 http://mirrors.ustc.edu.cn/alpine/
+set ds3 http://mirror.xtom.com.hk/alpine/
+set ds4 http://mirror.csclub.uwaterloo.ca/alpine/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Alpine_manual
+echo https://mirrors.alpinelinux.org/
+echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/alpine/
-echo -n Alpine site: ${}                                                      
+echo -n Manual Entry ${target} URL: ${}
 read ds                                                                         
 echo
+goto ${target}_stage2
 
+:Alpine_stage2
 set version 3.14 
 echo -n Version: 3.0-3.14  version: ${}                                                      
 read version                                                                    
