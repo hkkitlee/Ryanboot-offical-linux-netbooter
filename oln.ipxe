@@ -56,7 +56,7 @@ item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceFor
 item	--key a	Ubuntu			(A) Ubuntu amd64/i386
 item	--key b	Fedora			(B) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	Debian			(C) Debian amd64/i386
-item	--key d	parrot			(D) Parrot-Linux amd64/i386
+item	--key d	Parrot			(D) Parrot-Linux amd64/i386
 item	--key e	kali			(E) Kali-Linux amd64/i386 
 item	--key f	opensuse		(F) openSUSE amd64/i386
 item	--key g	ipfire			(G) IPFire amd64/i586
@@ -140,7 +140,7 @@ item	--gap Debian
 item    Debian                  Debian installer amd64/i386
 item    Ubuntu                  Ubuntu installer amd64/i386
 item    kali                    Kali-Linux installer amd64/i386
-item    parrot                  Parrot-Linux installer amd64/i386
+item    Parrot                  Parrot-Linux installer amd64/i386
 item    proxmoxve               Proxmox VE OS installer amd64 SF
 item    slax                    Slax live amd64/i386
 item    devuan                  Devuan installer amd64/i386
@@ -381,24 +381,48 @@ kernel ${ds}/debian/dists/${version}/main/installer-${arch}/current/images/netbo
 
 boot
 #################################################
-:parrot
+:Parrot
 
+set ds1 http://dk.archive.ubuntu.com
+set ds2 http://mirrors.mit.edu
+set ds3 http://ftp.th.debian.org
+set ds4 http://mirror.kku.ac.th
+set ds5 http://mirrors.ustc.edu.cn/
+set ds6 https://mirrors.sjtug.sjtu.edu.cn
+set ds7 https://mirrors.tuna.tsinghua.edu.cn
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item 6 ${ds6}
+item 7 ${ds7}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 7 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 7 && goto ${target}
+
+
+:Parrot_manual
 echo https://docs.parrotlinux.org/mirror-list/
-echo Sites:
-echo http://dk.archive.ubuntu.com
-echo http://mirrors.mit.edu
-echo http://ftp.th.debian.org
-echo http://mirror.kku.ac.th
-echo http://mirrors.ustc.edu.cn/
-echo https://mirrors.sjtug.sjtu.edu.cn
-echo https://mirrors.tuna.tsinghua.edu.cn
 echo
-
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Parrot site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+
+:Parrot_stage2
 set release rolling
 echo -n Release (rolling, parrot, stable): ${}
 read release
