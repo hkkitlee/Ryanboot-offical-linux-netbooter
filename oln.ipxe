@@ -228,10 +228,6 @@ item manual Manual Entry URL
 choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-#iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-#iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-#iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-#iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
 
 :Ubuntu_manual
 echo Mirror: https://launchpad.net/ubuntu/+archivemirrors
@@ -286,11 +282,7 @@ item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
-iseq ${siteno} manual && goto ${target}_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 2 && goto ${target}
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Fedora_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
@@ -339,13 +331,7 @@ item 6 ${ds6}
 item manual Manual Entry URL
 choose siteno
 
-iseq ${siteno} manual && goto ${target}_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 6 && goto ${target}
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Debian_manual
 echo https://www.debian.org/mirror/list
@@ -402,14 +388,7 @@ item 7 ${ds7}
 item manual Manual Entry URL
 choose siteno
 
-iseq ${siteno} manual && goto ${target}_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 7 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 7 && goto ${target}
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
 :Parrot_manual
@@ -473,14 +452,7 @@ item 7 ${ds7}
 item manual Manual Entry URL
 choose siteno
 
-iseq ${siteno} manual && goto ${target}_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 7 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 7 && goto ${target}
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
 :Kali_manual
@@ -538,12 +510,7 @@ item 5 ${ds5}
 item manual Manual Entry URL
 choose siteno
 
-iseq ${siteno} manual && goto ${target}_manual ||
-iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 5 && goto ${target}
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
 :Arch_manual
