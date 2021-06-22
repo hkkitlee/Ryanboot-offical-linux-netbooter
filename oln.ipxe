@@ -68,7 +68,7 @@ item	--key l	SmeOS			(L) Koozali SME Server amd64
 item	--key m	openEuler		(M) openEuler amd64
 item	--key n	CentosStream		(N) Centos Stream amd64
 item	--key o	CloudLinuxOS		(O) CloudLinux OS amd64
-item	--key p	absolute		(P) Absolute-Linux amd64
+item	--key p	Absolute		(P) Absolute-Linux amd64
 item	--key q	pureos			(Q) PureOS Linux amd64
 item	--key r	springdale		(R) Springdale Linux amd64
 item	--key s	clearos			(S) ClearOS Linux amd64
@@ -170,7 +170,7 @@ item    --gap
 
 item	--gap Slackware
 item    Slackware               Slackware live amd64/i386 with Installer
-item    absolute                Absolute-Linux installer amd64
+item    Absolute                Absolute-Linux installer amd64
 item    --gap
 
 item	--gap Busybox
@@ -1451,18 +1451,28 @@ kernel ${ds}${version}/install/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.im
 initrd ${ds}${version}/install/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
-:absolute
-echo Sites:
-echo https://www.absolutelinux.org/ftp/
-echo https://slackware.uk/absolute/
-echo http://mirrors.standaloneinstaller.com/absolutelinux/
-echo
+:Absolute
+set ds1 https://www.absolutelinux.org/ftp/
+set ds2 https://slackware.uk/absolute/
+set ds3 http://mirrors.standaloneinstaller.com/absolutelinux/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Absolute_manual
 set ds https://www.absolutelinux.org/ftp/
 echo -n Absolute Linux site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Absolute_stage2
 set version absolute-current64
 echo -n Absolute Linux Version : ${}
 read version
