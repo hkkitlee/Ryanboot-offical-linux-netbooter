@@ -102,7 +102,7 @@ item	--key k	Fatdog			(K) Fatdog64 Linux amd64
 item	--key l	OneFileLinux		(L) OneFileLinux
 item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script SF
 item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
-item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
+item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
 item	--key r clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
@@ -154,7 +154,7 @@ item    --gap
 
 item	--gap Arch
 item    Arch                    Arch Linux live amd64 with Option Installer Script
-item    manjaro-xfce            Manjaro Linux Xfce live amd64 with Installer SF
+item    Manjaro-Xfce            Manjaro Linux Xfce live amd64 with Installer SF
 item    BlackArch               BlackArch Linux live amd64 with Installer Script SF
 item    Garuda-Wayfire          Garuda Linux Wayfire live amd64 with Installer SF
 item    --gap
@@ -1942,17 +1942,28 @@ initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
 kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
 boot
 #################################################
-:manjaro-xfce
+:Manjaro-Xfce
 
-echo Sites:
-echo https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
-echo ${mirror0}manjaro-xfce/
-echo
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/
+set ds2 ${mirror0}manjaro-xfce/
+
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Manjaro-Xfce_manual
 set ds ${mirror0}manjaro-xfce/
 echo -n Manjaro site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Manjaro-Xfce_stage2
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/manjaro-xfce/ && set link ?viasf=1 ||
 
 set kp ip=dhcp misobasedir=manjaro miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1
