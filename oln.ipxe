@@ -61,7 +61,7 @@ item	--key e	Kali			(E) Kali-Linux amd64/i386
 item	--key f	openSUSE		(F) openSUSE amd64/i386
 item	--key g	IPFire			(G) IPFire amd64/i586
 item	--key h	mageia			(H) Mageia amd64/i586
-item	--key i	devuan			(I) Devuan amd64/i386
+item	--key i	Devuan			(I) Devuan amd64/i386
 item	--key j	alma			(J) AlmaLinux amd64
 item	--key k	coreosinstall		(K) Fedora CoreOS amd64
 item	--key l	smeos			(L) Koozali SME Server amd64
@@ -143,7 +143,7 @@ item    Kali                    Kali-Linux installer amd64/i386
 item    Parrot                  Parrot-Linux installer amd64/i386
 item    proxmoxve               Proxmox VE OS installer amd64 SF
 item    Slax                    Slax live amd64/i386
-item    devuan                  Devuan installer amd64/i386
+item    Devuan                  Devuan installer amd64/i386
 item    pureos                  PureOS Linux installer amd64
 item    steamos                 SteamOS Linux installer amd64
 item    gparted-live            Gparted-Live live amd64 SF
@@ -1011,13 +1011,26 @@ echo Username/Passwd:root/admin
 kernel ${ds}${kname}
 boot
 #################################################
-:devuan
+:Devuan
 
+
+set ds1 https://pkgmaster.devuan.org/devuan
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Devuan_manual
 set ds https://pkgmaster.devuan.org/devuan
 echo -n Devuan site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Devuan_stage2
 set releases beowulf
 echo -n Releases (jessie,beowulf): ${}
 read releases
