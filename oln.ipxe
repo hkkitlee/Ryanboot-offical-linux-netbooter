@@ -239,7 +239,7 @@ iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ubuntu_stage2 || set siteno 4 
 
 :ubuntu_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
-echo -n Ubuntu site: ${}
+echo -n Manual Entry Ubuntu URL: ${}
 read ds
 echo
 goto ubuntu_stage2
@@ -275,19 +275,37 @@ boot
 #################################################
 :fedora64
 
+set ds1 http://ftp.cuhk.edu.hk/pub/linux
+set ds2 http://mirrors.tuna.tsinghua.edu.cn
+set ds3 http://ftp-srv2.kddilabs.jp/Linux/packages
+set ds4 http://ftp.riken.jp/Linux
+
 echo https://fedoranews.org/fedora/mirrors.html
 echo Sites:
-echo http://ftp.cuhk.edu.hk/pub/linux
-echo http://mirrors.tuna.tsinghua.edu.cn
-echo http://ftp-srv2.kddilabs.jp/Linux/packages
-echo http://ftp.riken.jp/Linux
+echo 1 ${ds1}
+echo 2 ${ds2}
+echo 3 ${ds3}
+echo 4 ${ds4}
+echo manual Manual Entry URL
+echo
+echo -n Select 1-4, manual: ${}
+read siteno
 echo
 
+iseq ${siteno} manual && goto fedora64_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto fedora64_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto fedora64_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto fedora64_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto fedora64_stage2 || set siteno 2 && goto fedora64
+
+:fedora64_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
-echo -n Fedora site: ${}
+echo -n Manual Entry Fedora URL: ${}
 read ds
 echo
+goto fedora64_stage2
 
+:fedora64_stage2
 set version 34
 echo -n Fedora installer Version (32-34): ${}
 read version
