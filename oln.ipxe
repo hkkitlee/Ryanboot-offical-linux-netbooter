@@ -2074,8 +2074,8 @@ echo -n Do you want to use iPXE injection to boot (Y/n): ${}
 read answer
 echo
 
- iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/${target}/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${target}.iso || set from fetch=${ds}live/filesystem.squashfs
+ iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/gparted-live/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/gparted-live.iso || set from fetch=${ds}live/filesystem.squashfs
 
  set kp boot=live union=overlay username=user components noeject noswap ethdevice-timeout=60 net.ifnames=0 hooks=filesystem ${from}
  echo -n Kernel Parameter, Bootcode: ${}
@@ -2084,7 +2084,7 @@ iseq ${answer} Y && set img initrd=${target}.iso.img && set from fromiso=/${targ
 
  kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
  initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
- iseq ${answer} Y && initrd --name ${target}.iso.img --timeout 100000 ${ds}${target}.iso.img${link} ||
+ iseq ${answer} Y && initrd --name gparted-live.iso.img --timeout 100000 ${ds}gparted-live.iso.img${link} ||
  boot
 #################################################
 :clonezilla
