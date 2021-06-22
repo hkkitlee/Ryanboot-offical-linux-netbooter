@@ -2061,7 +2061,7 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :Gparted-Live_manual
-set ds ${mirror0}${target}/
+set ds ${mirror0}gparted-live/
 echo -n Gparted-Live site: ${}
 read ds
 echo
