@@ -71,7 +71,7 @@ item	--key o	CloudLinuxOS		(O) CloudLinux OS amd64
 item	--key p	Absolute		(P) Absolute-Linux amd64
 item	--key q	PureOS			(Q) PureOS Linux amd64
 item	--key r	Springdale		(R) Springdale Linux amd64
-item	--key s	clearos			(S) ClearOS Linux amd64
+item	--key s	ClearOS			(S) ClearOS Linux amd64
 item	--key t	steamos			(T) SteamOS Linux amd64
 item	--key u	clearlinux		(U) Clear Linux OS amd64 SF
 item	--key v	proxmoxve		(V) Proxmox VE OS amd64 SF
@@ -131,7 +131,7 @@ item    coreoslive              Fedora CoreOS live amd64
 item    Alma                    AlmaLinux installer amd64
 item    Springdale              Springdale Linux installer amd64
 item    SmeOS                   Koozali SME Server installer amd64
-item    clearos                 ClearOS Linux installer amd64
+item    ClearOS                 ClearOS Linux installer amd64
 item    CloudLinuxOS            CloudLinux OS installer amd64
 item    openEuler               openEuler installer amd64
 item    --gap
@@ -1576,21 +1576,35 @@ kernel ${ds}${version}/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.r
 initrd ${ds}${version}/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
-:clearos
-echo http://mirror.clearos.com/mirrorlist/
-echo Sites:
-echo http://mirror1-singapore.clearos.com/clearos/
-echo http://mirror2-singapore.clearos.com/clearos/
-echo http://www.mirrorservice.org/sites/clearfoundation.com/
-echo http://mirror1-newyork.clearos.com/clearos/
-echo http://mirror1-sanfrancisco.clearos.com/clearos/
-echo
+:ClearOS
+set ds1 http://mirror1-singapore.clearos.com/clearos/
+set ds2 http://mirror2-singapore.clearos.com/clearos/
+set ds3 http://www.mirrorservice.org/sites/clearfoundation.com/
+set ds4 http://mirror1-newyork.clearos.com/clearos/
+set ds5 http://mirror1-sanfrancisco.clearos.com/clearos/
 
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:ClearOS_manual
+echo http://mirror.clearos.com/mirrorlist/
+echo
 set ds http://mirror1-singapore.clearos.com/clearos/
 echo -n ClearOS site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:ClearOS_stage2
 set version 7
 echo -n ClearOS installer Version : ${}
 read version
