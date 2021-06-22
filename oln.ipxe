@@ -101,7 +101,7 @@ item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	Fatdog			(K) Fatdog64 Linux amd64
 item	--key l	OneFileLinux		(L) OneFileLinux
 item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script SF
-item	--key n garuda-wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
+item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
 item	--key o manjaro-xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
 item	--key p gentoo-minimal		(P) Gentoo Linux Minimal amd64 SF
 item	--key q gparted-live		(Q) Gparted-Live amd64 SF
@@ -156,7 +156,7 @@ item	--gap Arch
 item    Arch                    Arch Linux live amd64 with Option Installer Script
 item    manjaro-xfce            Manjaro Linux Xfce live amd64 with Installer SF
 item    BlackArch               BlackArch Linux live amd64 with Installer Script SF
-item    garuda-wayfire          Garuda Linux Wayfire live amd64 with Installer SF
+item    Garuda-Wayfire          Garuda Linux Wayfire live amd64 with Installer SF
 item    --gap
 
 item	--gap Gentoo
@@ -1873,17 +1873,27 @@ initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
 initrd --name proxmox.iso.img --timeout 100000 ${ds}proxmox.iso.img${link}
 boot
 #################################################
-:garuda-wayfire
+:Garuda-Wayfire
 
-echo Sites:
-echo https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
-echo ${mirror0}garuda-wayfire/
-echo
+set ds1 https://master.dl.sourceforge.net/project/ryanboot/garuda-wayfire/
+set ds2 ${mirror0}garuda-wayfire/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Garuda-Wayfire_manual
 set ds ${mirror0}garuda-wayfire/
 echo -n Garuda site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Garuda-Wayfire_stage2
 echo Login : garuda
 echo Password : garuda
 echo
