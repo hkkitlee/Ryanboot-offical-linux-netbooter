@@ -647,25 +647,34 @@ initrd ${ds}/v${version}/releases/${arch}/netboot/initramfs-${flavor}
 
 boot
 #################################################
-:slitaz
+:Slitaz
 
-menu Slitaz Version
-item    --key a offical_slitaz			(A) Offical Slitaz
-item    --key b teasiu_slitaz			(B) Teasiu Slitaz
-choose --default offical_slitaz target && cpair 0 && goto ${target}
+menu ${target} Version
+item    --key a offical_Slitaz			(A) Offical Slitaz
+item    --key b teasiu_Slitaz			(B) Teasiu Slitaz
+choose target && goto ${target}
 
 
-:offical_slitaz
-echo Sites:
-echo ${mirror0}slitaz/
-echo https://master.dl.sourceforge.net/project/ryanboot/slitaz/
-echo 
+:offical_Slitaz
+set ds1 ${mirror0}slitaz/
+set ds2 https://master.dl.sourceforge.net/project/ryanboot/slitaz/
 
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto offical_${target}_manual || set ds ${ds${siteno}} && goto offical_${target}_stage2
+
+:offical_Slitaz_manual
 set ds ${mirror0}slitaz/
 echo -n SliTaz site: ${}
 read ds
 echo
+goto offical_${target}_stage2
 
+:offical_Slitaz_stage2
 iseq ${ds} https://master.dl.sourceforge.net/project/ryanboot/slitaz/ && set link ?viasf=1 ||
 
 set bit 64
@@ -688,20 +697,27 @@ initrd --name rootfs5.gz --timeout 100000 ${ds}boot/rootfs5.gz${link}
 boot
 
 
-:teasiu_slitaz
-echo Support by teasiu http://wuyou.net/home.php?mod=space&uid=378921
-echo http://wuyou.net/forum.php?mod=viewthread&tid=190810&extra=&page=66
-echo
-echo Sites:
-echo http://ecoo.top:8083/dl/slitaz/
-echo http://www.slitaz.cn:8083/dl/slitaz/
-echo ${mirror0}
+:teasiu_Slitaz
 
+set ds1 http://ecoo.top:8083/dl/slitaz/
+set ds2 http://www.slitaz.cn:8083/dl/slitaz/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto teasiu_${target}_manual || set ds ${ds${siteno}} && goto teasiu_${target}_stage2
+
+:teasiu_Slitaz_manual
 set ds http://www.slitaz.cn:8083/dl/slitaz/
 echo -n SliTaz site: ${}                                                        
 read ds                                                                         
 echo
+goto teasiu_Slitaz_stage2
 
+:teasiu_Slitaz_stage2
 set bit 64                                                                           
 echo -n Kernel [32 / 64]: ${}                                                                           
 read bit                                                                                                           
