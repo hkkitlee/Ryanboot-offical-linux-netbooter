@@ -88,7 +88,7 @@ menu		Ryanboot-offical-linux-netbooter (List Live)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
-item	--key a	arch			(A) Arch Linux amd64 Live with Option Installer Script
+item	--key a	Arch			(A) Arch Linux amd64 Live with Option Installer Script
 item	--key b	tinycore		(B) Tinycore amd64/i386
 item	--key c	alpine			(C) Alpine amd64/i386
 item	--key d	slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
@@ -153,7 +153,7 @@ item    partmagic               Parted Magic live amd64 SF
 item    --gap
 
 item	--gap Arch
-item    arch                    Arch Linux live amd64 with Option Installer Script
+item    Arch                    Arch Linux live amd64 with Option Installer Script
 item    manjaro-xfce            Manjaro Linux Xfce live amd64 with Installer SF
 item    blackarch               BlackArch Linux live amd64 with Installer Script SF
 item    garuda-wayfire          Garuda Linux Wayfire live amd64 with Installer SF
@@ -237,7 +237,7 @@ iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno
 echo Mirror: https://launchpad.net/ubuntu/+archivemirrors
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn
-echo -n Manual Entry Ubuntu URL: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -294,7 +294,7 @@ iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno
 
 :Fedora_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
-echo -n Manual Entry Fedora URL: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -351,7 +351,7 @@ iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno
 echo https://www.debian.org/mirror/list
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
-echo -n Debian site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -416,7 +416,7 @@ iseq ${siteno} 7 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno
 echo https://docs.parrotlinux.org/mirror-list/
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
-echo -n Parrot site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -487,7 +487,7 @@ iseq ${siteno} 7 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno
 echo http://http.kali.org/README.mirrorlist
 echo
 set ds https://mirrors.tuna.tsinghua.edu.cn
-echo -n Kali site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
@@ -521,22 +521,41 @@ kernel ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images
 initrd ${ds}/kali/dists/kali-${release}/main/installer-${arch}/${version}/images/netboot/${link}debian-installer/${arch}/initrd.gz
 boot
 #################################################
-:arch
+:Arch
 
+set ds1 http://mirrors.evowise.com
+set ds2 http://hkg.mirror.rackspace.com
+set ds3 http://mirrors.cat.net
+set ds4 http://mirror.cedille.club
+set ds5 https://mirrors.tuna.tsinghua.edu.cn
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 5 && goto ${target}
+
+
+:Arch_manual
 echo https://archlinux.org/mirrorlist/
-echo Sites:
-echo http://mirrors.evowise.com
-echo http://hkg.mirror.rackspace.com
-echo http://mirrors.cat.net
-echo http://mirror.cedille.club
-echo https://mirrors.tuna.tsinghua.edu.cn
 echo
-
 set ds https://mirrors.tuna.tsinghua.edu.cn
-echo -n Arch site: ${}
+echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Arch_stage2
 echo Option Installation Script:
 echo http://hkkitlee.ddns.net:8999/arch-installer.sh 
 set is http://hkkitlee.ddns.net:8999/arch-installer.sh
