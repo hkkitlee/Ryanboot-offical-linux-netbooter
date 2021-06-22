@@ -55,7 +55,7 @@ item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection.
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a	Ubuntu			(A) Ubuntu amd64/i386
 item	--key b	Fedora			(B) Fedora (Everything, Server, Silverblue) amd64
-item	--key c	debian			(C) Debian amd64/i386
+item	--key c	Debian			(C) Debian amd64/i386
 item	--key d	parrot			(D) Parrot-Linux amd64/i386
 item	--key e	kali			(E) Kali-Linux amd64/i386 
 item	--key f	opensuse		(F) openSUSE amd64/i386
@@ -137,7 +137,7 @@ item    openeuler               openEuler installer amd64
 item    --gap
 
 item	--gap Debian
-item    debian                  Debian installer amd64/i386
+item    Debian                  Debian installer amd64/i386
 item    Ubuntu                  Ubuntu installer amd64/i386
 item    kali                    Kali-Linux installer amd64/i386
 item    parrot                  Parrot-Linux installer amd64/i386
@@ -240,7 +240,7 @@ set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry Ubuntu URL: ${}
 read ds
 echo
-goto Ubuntu_stage2
+goto ${target}_stage2
 
 :Ubuntu_stage2
 echo Ubuntu 18.04.5 LTS (Bionic Beaver)
@@ -290,14 +290,14 @@ iseq ${siteno} manual && goto ${target}_manual ||
 iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
 iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
 iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
-iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 4 && goto ${target}
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 2 && goto ${target}
 
 :Fedora_manual
 set ds http://mirrors.tuna.tsinghua.edu.cn
 echo -n Manual Entry Fedora URL: ${}
 read ds
 echo
-goto Fedora_stage2
+goto ${target}_stage2
 
 :Fedora_stage2
 set version 34
@@ -320,23 +320,43 @@ initrd ${path}/images/pxeboot/initrd.img
 kernel ${path}/images/pxeboot/vmlinuz initrd=initrd.img inst.stage2=${path} ${kp}
 boot
 #################################################
-:debian
+:Debian
 
+set ds1 http://ftp.hk.debian.org
+set ds2 http://ftp2.cn.debian.org
+set ds3 http://ftp.cn.debian.org
+set ds4 http://ftp.kr.debian.org
+set ds5 http://ftp.ca.debian.org
+set ds6 https://mirrors.tuna.tsinghua.edu.cn
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item 5 ${ds5}
+item 6 ${ds6}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual ||
+iseq ${siteno} 1 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 2 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 3 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 4 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 5 && set ds ${ds${siteno}} && goto ${target}_stage2 ||
+iseq ${siteno} 6 && set ds ${ds${siteno}} && goto ${target}_stage2 || set siteno 6 && goto ${target}
+
+:Debian_manual
 echo https://www.debian.org/mirror/list
-echo Sites:
-echo http://ftp.hk.debian.org
-echo http://ftp2.cn.debian.org
-echo http://ftp.cn.debian.org
-echo http://ftp.kr.debian.org
-echo http://ftp.ca.debian.org
-echo https://mirrors.tuna.tsinghua.edu.cn
 echo
-
 set ds https://mirrors.tuna.tsinghua.edu.cn
 echo -n Debian site: ${}
 read ds
 echo
+goto ${target}_stage2
 
+:Debian_stage2
 set version buster
 echo -n Debian installer Version (bullseye, buster, jessie): ${}
 read version
