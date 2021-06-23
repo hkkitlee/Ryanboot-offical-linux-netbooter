@@ -2251,7 +2251,7 @@ read answer
 echo
 
 iseq ${ds} ${sourceforge}openmediavault/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=openmediavault.iso.img && set from fromiso=/openmediavault.iso || set from fetch=${ds}live/filesystem.squashfs
+iseq ${answer} Y && set img initrd=openmediavault.iso.img && set from file://openmediavault.iso || set from fetch=${ds}live/filesystem.squashfs
 
 set kp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
