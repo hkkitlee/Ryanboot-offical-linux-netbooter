@@ -42,7 +42,7 @@ item	--key d Memtest86		(D) Memtest86
 item	--key e SuperGrub2		(E) SuperGrub2 Disk
 item	--gap
 item	--gap	--	Config
-item		background		Background config
+item		background		Background (PNG, Sreen Size) config
 item		colour			cpair config
 item		setting			iPXE config
 item	--gap
