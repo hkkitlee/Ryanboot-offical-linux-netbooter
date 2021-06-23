@@ -2258,8 +2258,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}install/vmlinuz${link} initrd=initrd.img ${img} ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}install/initrd.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}install/vmlinuz${link} initrd=initrd.gz ${img} ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}install/initrd.gz${link}
 iseq ${answer} Y && initrd --name openmediavault.iso.img --timeout 100000 ${ds}openmediavault.iso.img${link} ||
 boot
 
