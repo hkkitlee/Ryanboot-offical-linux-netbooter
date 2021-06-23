@@ -4,14 +4,15 @@
 ###The pursuit of perfection in any field ... is an art.###
 
 ###var explain
-#ds1 = data site option 1, ds = final data site
-#siteno = ds array num
+#ds1 = data site option 1
+#ds = chose data site boot from
+#siteno = data site array num
 #interface = tui/gui
 #kp = kernel parameter
 #link = option for URL link
 #arch = i386/amd64
 
-console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 800 --y 600
+console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768
 imgtrust --allow 
 
 set mirror0 http://183.230.23.18:58000/ryanboot/
@@ -2226,10 +2227,10 @@ boot
 set pic https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png
 echo -n Picture URL (png): ${}
 read pic
-set x 800
+set x 1280
 echo -n Length: ${}
 read x
-set y 600
+set y 800
 echo -n Height: ${}
 read y
 console --picture ${pic} --x ${x} --y ${y}
