@@ -2253,7 +2253,7 @@ echo
 iseq ${ds} ${sourceforge}openmediavault/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=openmediavault.iso.img && set from fromiso=/openmediavault.iso || set from fetch=${ds}live/filesystem.squashfs
 
-set kp ${from}
+set kp boot=live components ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
