@@ -46,7 +46,7 @@ item		cl			https://gitee.com/xxx
 item		xyz			netboot.xyz
 
 
-choose --default installer target && cpair 0 && goto ${target}
+choose target && cpair 0 && goto ${target}
 
 :installer
 menu		Ryanboot-offical-linux-netbooter (List Installer)
@@ -80,7 +80,7 @@ item	--key x	Rocky			(X) RockyLinux 8 amd64
 
 item	--gap
 item		start			Back to Top
-choose --default ubuntu target && cpair 0 && goto ${target}
+choose target && cpair 0 && goto ${target}
 
 
 :live
@@ -111,7 +111,7 @@ item	--key t	PartMagic		(T) Parted Magic amd64 SF
 
 item	--gap
 item		start			Back to Top
-choose --default arch target && cpair 0 && goto ${target}
+choose target && cpair 0 && goto ${target}
 
 
 :based
@@ -196,7 +196,7 @@ item    OneFileLinux            OneFileLinux live
 item    --gap
 
 item            start                   Back to Top
-choose --default rocky target && cpair 0 && goto ${target}
+choose target && cpair 0 && goto ${target}
 
 
 :failed
