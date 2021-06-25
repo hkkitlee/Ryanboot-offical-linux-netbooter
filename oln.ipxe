@@ -1376,8 +1376,8 @@ echo
 goto ${target}_stage2
 
 :openEuler_stage2
-set version 20.09
-echo -n Version (20.03-LTS, 20.03-LTS-SP1, 20.09): ${}
+set version 21.03
+echo -n Version (20.03-LTS, 20.03-LTS-SP1, 20.09, 21.03): ${}
 read version
 echo
 
