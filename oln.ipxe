@@ -88,7 +88,7 @@ item	--key u	ClearLinux		(U) Clear Linux OS amd64 SF
 item	--key v	ProxmoxVE		(V) Proxmox VE OS amd64 SF
 item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	Rocky			(X) RockyLinux 8 amd64
-item	--key y	ProxmoxBackup		(Y) Proxmox Backup OS amd64 SF
+item	--key y	ProxmoxBackup		(Y) Proxmox Backup Server OS amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -154,7 +154,7 @@ item	Ubuntu				Ubuntu installer amd64/i386
 item	Kali				Kali-Linux installer amd64/i386
 item	Parrot				Parrot-Linux installer amd64/i386
 item	ProxmoxVE			Proxmox VE OS installer amd64 SF
-item	ProxmoxBackup			Proxmox Backup OS amd64 SF
+item	ProxmoxBackup			Proxmox Backup Server OS amd64 SF
 item	Slax				Slax live amd64/i386
 item	Devuan				Devuan installer amd64/i386
 item	PureOS				PureOS Linux installer amd64
