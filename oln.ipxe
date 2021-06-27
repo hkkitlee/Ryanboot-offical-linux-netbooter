@@ -2292,7 +2292,7 @@ echo
 
 kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-mailgateway.iso.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
-initrd --name proxmox-backup-server.iso.img --timeout 100000 ${ds}proxmox-mailgateway.iso.img${link}
+initrd --name proxmox-mailgateway.iso.img --timeout 100000 ${ds}proxmox-mailgateway.iso.img${link}
 boot
 #################################################
 #################################################
