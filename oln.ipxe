@@ -1853,8 +1853,8 @@ boot
 #################################################
 :ProxmoxVE
 
-set ds1 ${sourceforge}proxmox/
-set ds2 ${mirror0}proxmox/
+set ds1 ${sourceforge}proxmox-ve/
+set ds2 ${mirror0}proxmox-ve/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -1866,7 +1866,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :ProxmoxVE_manual
-set ds ${mirror0}proxmox/
+set ds ${mirror0}proxmox-ve/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
@@ -1874,7 +1874,7 @@ goto ${target}_stage2
 
 :ProxmoxVE_stage2
 
-iseq ${ds} ${sourceforge}proxmox/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}proxmox-ve/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
 set kp ro ramdisk_size=921600 rw splash=verbose
@@ -1882,9 +1882,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 100000 ${ds}linux26${link} linux26 initrd=initrd.img initrd=proxmox.iso.img ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
-initrd --name proxmox.iso.img --timeout 100000 ${ds}proxmox.iso.img${link}
+kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-ve.iso.img ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
+initrd --name proxmox-ve.iso.img --timeout 100000 ${ds}proxmox-ve.iso.img${link}
 boot
 #################################################
 :Garuda-Wayfire
