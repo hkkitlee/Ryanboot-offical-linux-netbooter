@@ -155,6 +155,7 @@ item	Ubuntu				Ubuntu installer amd64/i386
 item	Kali				Kali-Linux installer amd64/i386
 item	Parrot				Parrot-Linux installer amd64/i386
 item	ProxmoxVE			Proxmox VE OS installer amd64 SF
+item	ProxmoxBackup			Proxmox Backup OS amd64 SF
 item	Slax				Slax live amd64/i386
 item	Devuan				Devuan installer amd64/i386
 item	PureOS				PureOS Linux installer amd64
@@ -163,7 +164,6 @@ item	Gparted-Live			Gparted-Live live amd64 SF
 item	Clonezilla			Clonezilla Live/Lite Server live amd64 SF
 item	RedoRescue			Redo-Rescue live amd64 SF
 item	PartMagic			Parted Magic live amd64 SF
-item	OpenMediaVault			OpenMediaVault amd64 SF
 item	--gap
 
 item	--gap Arch
@@ -2237,14 +2237,14 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
-:ProxmoxVE_manual
+:ProxmoxBackup_manual
 set ds ${mirror0}proxmox-backup/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:ProxmoxVE_stage2
+:ProxmoxBackup_stage2
 
 iseq ${ds} ${sourceforge}proxmox-backup/ && set link ?viasf=1 ||
 
