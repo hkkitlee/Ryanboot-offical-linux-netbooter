@@ -89,6 +89,7 @@ item	--key v	ProxmoxVE		(V) Proxmox VE OS amd64 SF
 item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	Rocky			(X) RockyLinux 8 amd64
 item	--key y	OpenMediaVault		(Y) OpenMediaVault amd64 SF
+item	--key z	ProxmoxBackup		(V) Proxmox Backup OS amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -2222,6 +2223,41 @@ initrd --name files.cgz --timeout 1000000 ${ds}pmagic/files.cgz${link}
 boot
 
 #################################################
+:ProxmoxBackup
+
+set ds1 ${sourceforge}proxmox-backup/
+set ds2 ${mirror0}proxmox-backup/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:ProxmoxVE_manual
+set ds ${mirror0}proxmox-backup/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:ProxmoxVE_stage2
+
+iseq ${ds} ${sourceforge}proxmox-backup/ && set link ?viasf=1 ||
+
+echo ramdisk_size value is in kb
+set kp ro ramdisk_size=921600 rw splash=verbose
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-backup-server.iso.img ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
+initrd --name proxmox-backup-server.iso.img --timeout 100000 ${ds}proxmox-backup-server.iso.img${link}
+boot
 #################################################
 #################################################
 #################################################
