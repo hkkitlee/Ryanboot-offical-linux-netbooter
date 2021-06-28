@@ -122,6 +122,7 @@ item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
 item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
+item	--key u Deepin-Desktop		(U) Deepin Desktop amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -2294,6 +2295,44 @@ echo
 kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-mailgateway.iso.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
 initrd --name proxmox-mailgateway.iso.img --timeout 100000 ${ds}proxmox-mailgateway.iso.img${link}
+boot
+#################################################
+:Deepin-Desktop
+#linux   /live/vmlinuz boot=live union=overlay livecd-installer locale=zh_CN console=tty splash --
+        initrd  /live/initrd.lz
+#linux   /live/vmlinuz-5.11.13 boot=live union=overlay livecd-installer locale=zh_CN console=tty splash --
+        initrd  /live/initrd-5.11.13.lz
+set ds1 ${sourceforge}deepin-desktop/
+set ds2 ${mirror0}deepin-desktop/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Deepin-Desktop_manual
+set ds ${mirror0}deepin-desktop/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Deepin-Desktop_stage2
+
+iseq ${ds} ${sourceforge}deepin-desktop/ && set link ?viasf=1 ||
+
+set kp boot=live union=overlay livecd-installer locale=zh_CN console=tty splash -- username=user live-config findiso=/deepin-desktop-community-amd64.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}boot/vmlinuz${link} initrd=initrd.lz initrd=deepin-desktop-community-amd64.iso.img ${kp}
+initrd --name initrd.lz --timeout 100000 ${ds}boot/initrd.lz${link}
+initrd --name deepin-desktop-community-amd64.iso.img --timeout 100000 ${ds}deepin-desktop-community-amd64.iso.img${link}
 boot
 #################################################
 #################################################
