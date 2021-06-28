@@ -2299,9 +2299,9 @@ boot
 #################################################
 :Deepin-Desktop
 #linux   /live/vmlinuz boot=live union=overlay livecd-installer locale=zh_CN console=tty splash --
-        initrd  /live/initrd.lz
+#        initrd  /live/initrd.lz
 #linux   /live/vmlinuz-5.11.13 boot=live union=overlay livecd-installer locale=zh_CN console=tty splash --
-        initrd  /live/initrd-5.11.13.lz
+#        initrd  /live/initrd-5.11.13.lz
 set ds1 ${sourceforge}deepin-desktop/
 set ds2 ${mirror0}deepin-desktop/
 
