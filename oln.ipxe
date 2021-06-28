@@ -2330,8 +2330,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}boot/vmlinuz${link} initrd=initrd.lz initrd=deepin-desktop-community-amd64.iso.img ${kp}
-initrd --name initrd.lz --timeout 100000 ${ds}boot/initrd.lz${link}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.lz initrd=deepin-desktop-community-amd64.iso.img ${kp}
+initrd --name initrd.lz --timeout 100000 ${ds}live/initrd.lz${link}
 initrd --name deepin-desktop-community-amd64.iso.img --timeout 100000 ${ds}deepin-desktop-community-amd64.iso.img${link}
 boot
 #################################################
