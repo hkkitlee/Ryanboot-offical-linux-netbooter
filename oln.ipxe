@@ -2331,7 +2331,7 @@ read kp
 echo
 
 kernel --name vmlinuz-5.11.13 --timeout 100000 ${ds}live/vmlinuz-5.11.13${link} initrd=initrd-5.11.13.lz initrd=deepin-desktop-community-amd64.iso.img ${kp}
-initrd --name initrd-5.11.13.lz --timeout 100000 ${ds}live/initrd.lz-5.11.13${link}
+initrd --name initrd-5.11.13.lz --timeout 100000 ${ds}live/initrd-5.11.13.lz${link}
 initrd --name deepin-desktop-community-amd64.iso.img --timeout 100000 ${ds}deepin-desktop-community-amd64.iso.img${link}
 boot
 #################################################
