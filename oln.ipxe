@@ -122,6 +122,7 @@ item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
 item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
+item	--key u	Deepin-Desktop		(U) Deepin Desktop amd64 SF
 
 item	--gap
 item		start			Back to Top
