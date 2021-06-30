@@ -16,6 +16,7 @@ console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/r
 imgtrust --allow 
 
 set mirror0 http://183.230.23.18:58000/ryanboot/
+set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
 set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
 
 
@@ -675,10 +676,12 @@ choose target_Slitaz && goto ${target_Slitaz}
 :offical_Slitaz
 set ds1 ${mirror0}slitaz/
 set ds2 ${sourceforge}slitaz/
+set ds3 ${mirror1}slitaz/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1639,10 +1642,12 @@ boot
 :OneFileLinux
 set ds1 ${mirror0}
 set ds2 ${sourceforge}
+set ds3 ${mirror1}
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1713,10 +1718,12 @@ boot
 
 set ds1 ${mirror0}
 set ds2 http://hkkitlee.ddns.net:8999/
+set ds3 ${mirror1}
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1737,10 +1744,12 @@ sanboot --no-describe --drive 0x80 ${ds}Memtest86-7.5.iso
 
 set ds1 ${mirror0}
 set ds2 http://hkkitlee.ddns.net:8999/
+set ds3 ${mirror1}
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1761,10 +1770,12 @@ sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 
 set ds1 ${sourceforge}clearlinux/
 set ds2 ${mirror0}clearinux/
+set ds3 ${mirror1}clearinux/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1816,10 +1827,12 @@ boot
 :BlackArch
 set ds1 ${sourceforge}blackarch/
 set ds2 ${mirror0}blackarch/
+set ds3 ${mirror1}blackarch/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1858,10 +1871,12 @@ boot
 
 set ds1 ${sourceforge}proxmox-ve/
 set ds2 ${mirror0}proxmox-ve/
+set ds3 ${mirror1}proxmox-ve/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1894,10 +1909,12 @@ boot
 
 set ds1 ${sourceforge}garuda-wayfire/
 set ds2 ${mirror0}garuda-wayfire/
+set ds3 ${mirror1}garuda-wayfire/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1931,10 +1948,12 @@ boot
 :Oracle8
 set ds1 ${sourceforge}oracle8/
 set ds2 ${mirror0}oracle8/
+set ds3 ${mirror1}oracle8/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1963,11 +1982,13 @@ boot
 
 set ds1 ${sourceforge}manjaro-xfce/
 set ds2 ${mirror0}manjaro-xfce/
+set ds3 ${mirror1}manjaro-xfce/
 
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -1998,12 +2019,14 @@ boot
 
 set ds1 ${sourceforge}gentoo-minimal/
 set ds2 ${mirror0}gentoo-minimal/
+set ds3 ${mirror1}gentoo-minimal/
 
 menu Sites boot ${target} from:
 item --gap -- https://www.unixmen.com/a-beginners-guide-to-install-gentoo/
 item --gap -- https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation#Minimal_installation_CD
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -2068,10 +2091,12 @@ boot
 
 set ds1 ${sourceforge}gparted-live/
 set ds2 ${mirror0}gparted-live/
+set ds3 ${mirror1}gparted-live/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -2108,11 +2133,13 @@ boot
 
 set ds1 ${sourceforge}clonezilla/
 set ds2 ${mirror0}clonezilla/
+set ds3 ${mirror1}clonezilla/
 
 menu Sites boot ${target} from:
 item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -2150,11 +2177,13 @@ boot
 
 set ds1 ${sourceforge}redorescue/
 set ds2 ${mirror0}redorescue/
+set ds3 ${mirror1}redorescue/
 
 menu Sites boot ${target} from:
 item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -2191,12 +2220,14 @@ boot
 :PartMagic
 set ds1 ${sourceforge}partmagic/
 set ds2 ${mirror0}partmagic/
+set ds3 ${mirror1}partmagic/
 
 menu Sites boot ${target} from:
 item --gap -- Howto: https://partedmagic.com/pxe/
 item --gap -- Script: boot/pxelinux/pm2pxe.sh
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -2229,10 +2260,12 @@ boot
 
 set ds1 ${sourceforge}proxmox-backup/
 set ds2 ${mirror0}proxmox-backup/
+set ds3 ${mirror1}proxmox-backup/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
@@ -2264,10 +2297,12 @@ boot
 :ProxmoxMailGateway
 set ds1 ${sourceforge}proxmox-mailgateway/
 set ds2 ${mirror0}proxmox-mailgateway/
+set ds3 ${mirror1}proxmox-mailgateway/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
+item 3 ${ds3}
 item manual Manual Entry URL
 choose siteno
 
