@@ -170,6 +170,7 @@ item	Clonezilla			Clonezilla Live/Lite Server live amd64 SF
 item	RedoRescue			Redo-Rescue live amd64 SF
 item	PartMagic			Parted Magic live amd64 SF
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 SF
+item	Ubuntu-Live			Ubuntu Live with Installer amd64 SF
 item	--gap
 
 item	--gap Arch
@@ -2367,7 +2368,7 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}ubuntukylin/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
-set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp url=${ds}ubuntukylin-21.04-desktop-amd64.iso
+set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp locale=zh_CN keyboard-configuration/layoutcode?=cn url=${ds}ubuntukylin-21.04-desktop-amd64.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
