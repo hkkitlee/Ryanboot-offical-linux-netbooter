@@ -124,7 +124,7 @@ item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
 item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
-item	--key u	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 SF
+item	--key v	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 SF
 
 item	--gap
 item		start			Back to Top
