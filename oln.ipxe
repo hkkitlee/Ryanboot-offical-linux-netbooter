@@ -123,6 +123,7 @@ item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
 item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
+item	--key u	UbuntuKylin		(U) Ubuntu Kylin amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -283,6 +284,10 @@ kernel ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}image
 initrd ${ds}/ubuntu/dists/${version}/main/installer-${arch}/current/${link}images/netboot/ubuntu-installer/${arch}/initrd.gz
 
 boot
+
+#root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://cdimage.ubuntu.com/ubuntu-server/daily-live/current/focal-live-server-amd64.iso
+
+
 #################################################
 :Fedora
 
@@ -2331,6 +2336,45 @@ initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
 initrd --name proxmox-mailgateway.iso.img --timeout 100000 ${ds}proxmox-mailgateway.iso.img${link}
 boot
 #################################################
+:UbuntuKylin
+set ds1 ${sourceforge}ubuntukylin/
+set ds2 ${mirror0}ubuntukylin/
+set ds3 ${mirror1}ubuntukylin/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:UbuntuKylin_manual
+set ds ${mirror0}ubuntukylin/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:UbuntuKylin_stage2
+
+iseq ${ds} ${sourceforge}ubuntukylin/ && set link ?viasf=1 ||
+
+echo ramdisk_size value is in kb
+set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp url=${ds}ubuntukylin-21.04-desktop-amd64.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name linux26 --timeout 100000 ${ds}casper/vmlinuz${link} linux26 initrd=initrd ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}casper/initrd${link}
+
+boot
+
+
+#root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://cdimage.ubuntu.com/ubuntu-server/daily-live/current/focal-live-server-amd64.iso
 #################################################
 #################################################
 #################################################
