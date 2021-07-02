@@ -124,6 +124,7 @@ item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
 item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
+item	--key v	Mx-Xfce			(V) MX Linux Xfce Live amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -1907,7 +1908,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-ve.iso.img ${kp}
+kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} initrd=initrd.img initrd=proxmox-ve.iso.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
 initrd --name proxmox-ve.iso.img --timeout 100000 ${ds}proxmox-ve.iso.img${link}
 boot
@@ -2296,7 +2297,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-backup-server.iso.img ${kp}
+kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} initrd=initrd.img initrd=proxmox-backup-server.iso.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
 initrd --name proxmox-backup-server.iso.img --timeout 100000 ${ds}proxmox-backup-server.iso.img${link}
 boot
@@ -2333,7 +2334,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} linux26 initrd=initrd.img initrd=proxmox-mailgateway.iso.img ${kp}
+kernel --name linux26 --timeout 100000 ${ds}boot/linux26${link} initrd=initrd.img initrd=proxmox-mailgateway.iso.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
 initrd --name proxmox-mailgateway.iso.img --timeout 100000 ${ds}proxmox-mailgateway.iso.img${link}
 boot
@@ -2371,11 +2372,47 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux26 --timeout 100000 ${ds}casper/vmlinuz${link} linux26 initrd=initrd ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd ${kp}
 initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 
 boot
 
+#################################################
+:Mx-Xfce
+set ds1 ${sourceforge}mx-xfce/
+set ds2 ${mirror0}mx-xfce/
+set ds3 ${mirror1}mx-xfce/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Mx-Xfce_manual
+set ds ${mirror0}mx-xfce/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Mx-Xfce_stage2
+
+iseq ${ds} ${sourceforge}mx-xfce/ && set link ?viasf=1 ||
+
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.gz ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
+
+boot
 #################################################
 #################################################
 #################################################
