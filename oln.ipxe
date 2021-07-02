@@ -123,7 +123,7 @@ item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
 item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
-item	--key u	UbuntuKylin		(U) Ubuntu Kylin amd64 SF
+item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -168,7 +168,7 @@ item	Gparted-Live			Gparted-Live live amd64 SF
 item	Clonezilla			Clonezilla Live/Lite Server live amd64 SF
 item	RedoRescue			Redo-Rescue live amd64 SF
 item	PartMagic			Parted Magic live amd64 SF
-item	UbuntuKylin			Ubuntu Kylin live amd64 SF
+item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 SF
 item	--gap
 
 item	--gap Arch
