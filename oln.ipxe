@@ -2404,13 +2404,14 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}mx-xfce/ && set link ?viasf=1 ||
 
-set kp url=${ds}MX-19.4_x64.iso
+set kp fromiso=/MX_x64.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}antiX/vmlinuz${link} initrd=initrd.gz ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}antiX/vmlinuz${link} initrd=initrd.gz initrd=MX_x64.iso.img ${kp}
 initrd --name initrd.gz --timeout 100000 ${ds}antiX/initrd.gz${link}
+initrd --name MX_x64.iso.img --timeout 100000 ${ds}MX_x64.iso.img${link}
 
 boot
 #################################################
