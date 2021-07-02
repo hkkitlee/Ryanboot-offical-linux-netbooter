@@ -158,8 +158,8 @@ item	Ubuntu				Ubuntu installer amd64/i386
 item	Kali				Kali-Linux installer amd64/i386
 item	Parrot				Parrot-Linux installer amd64/i386
 item	ProxmoxVE			Proxmox VE OS installer amd64 SF
-item	ProxmoxBackup			Proxmox Backup Server OS amd64 SF
-item	ProxmoxMailGateway		Proxmox MailGateway OS amd64 SF
+item	ProxmoxBackup			Proxmox Backup Server OS installer amd64 SF
+item	ProxmoxMailGateway		Proxmox MailGateway OS installer amd64 SF
 item	Slax				Slax live amd64/i386
 item	Devuan				Devuan installer amd64/i386
 item	PureOS				PureOS Linux installer amd64
@@ -168,6 +168,7 @@ item	Gparted-Live			Gparted-Live live amd64 SF
 item	Clonezilla			Clonezilla Live/Lite Server live amd64 SF
 item	RedoRescue			Redo-Rescue live amd64 SF
 item	PartMagic			Parted Magic live amd64 SF
+item	UbuntuKylin			Ubuntu Kylin live amd64 SF
 item	--gap
 
 item	--gap Arch
@@ -238,6 +239,7 @@ set ds3 http://mirrors.aliyun.com
 set ds4 http://mirrors.tuna.tsinghua.edu.cn
 
 menu Sites boot ${target} from:
+item --gap -- http://releases.ubuntu.com/
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
@@ -2342,6 +2344,7 @@ set ds2 ${mirror0}ubuntukylin/
 set ds3 ${mirror1}ubuntukylin/
 
 menu Sites boot ${target} from:
+item --gap -- http://releases.ubuntu.com/
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
@@ -2363,7 +2366,7 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}ubuntukylin/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
-set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp url=${ds}ubuntukylin-21.04-desktop-amd64.iso
+set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp url=${ds}ubuntukylin-21.04-desktop-amd64.iso${link}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
@@ -2373,8 +2376,6 @@ initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 
 boot
 
-
-#root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://cdimage.ubuntu.com/ubuntu-server/daily-live/current/focal-live-server-amd64.iso
 #################################################
 #################################################
 #################################################
