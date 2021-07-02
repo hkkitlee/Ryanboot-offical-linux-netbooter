@@ -65,7 +65,7 @@ menu		Ryanboot-offical-linux-netbooter (List Installer)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
-item	--key a Ubuntu			(A) Ubuntu amd64/i386
+item	--key a Ubuntu-install		(A) Ubuntu amd64/i386
 item	--key b	Fedora			(B) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	Debian			(C) Debian amd64/i386
 item	--key d	Parrot			(D) Parrot-Linux amd64/i386
@@ -154,7 +154,7 @@ item	--gap
 
 item	--gap Debian
 item	Debian				Debian installer amd64/i386
-item	Ubuntu				Ubuntu installer amd64/i386
+item	Ubuntu-install			Ubuntu installer amd64/i386
 item	Kali				Kali-Linux installer amd64/i386
 item	Parrot				Parrot-Linux installer amd64/i386
 item	ProxmoxVE			Proxmox VE OS installer amd64 SF
@@ -231,7 +231,7 @@ reboot
 chain https://github.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe || chain https://gitee.com/hkkitlee/Ryanboot-P2PBitTorrent-Boot-Linux/raw/master/RPBL.ipxe
 
 #################################################
-:Ubuntu
+:Ubuntu-install
 
 set ds1 http://archive.ubuntu.com
 set ds2 http://mirrors.layeronline.com
@@ -249,7 +249,7 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:Ubuntu_manual
+:Ubuntu-install_manual
 echo Mirror List: https://launchpad.net/ubuntu/+archivemirrors
 echo
 set ds http://mirrors.tuna.tsinghua.edu.cn
@@ -258,7 +258,7 @@ read ds
 echo
 goto ${target}_stage2
 
-:Ubuntu_stage2
+:Ubuntu-install_stage2
 echo Ubuntu 18.04.5 LTS (Bionic Beaver)
 echo Ubuntu 20.04.2 LTS (Focal Fossa)
 echo Ubuntu 20.10 (Groovy Gorilla)
