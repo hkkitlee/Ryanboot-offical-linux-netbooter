@@ -124,7 +124,6 @@ item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
 item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
-item	--key v	Mx-Xfce			(V) MX Linux Xfce Live amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -2378,42 +2377,6 @@ initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 boot
 
 #################################################
-:Mx-Xfce
-set ds1 ${sourceforge}mx-xfce/
-set ds2 ${mirror0}mx-xfce/
-set ds3 ${mirror1}mx-xfce/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:Mx-Xfce_manual
-set ds ${mirror0}mx-xfce/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:Mx-Xfce_stage2
-
-iseq ${ds} ${sourceforge}mx-xfce/ && set link ?viasf=1 ||
-
-set kp from=/
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel --name vmlinuz --timeout 100000 ${ds}antiX/vmlinuz${link} initrd=initrd.gz initrd=MX_x64.img ${kp}
-initrd --name initrd.gz --timeout 100000 ${ds}antiX/initrd.gz${link}
-initrd --name MX_x64.img --timeout 100000 ${ds}MX_x64.img${link}
-
-boot
 #################################################
 #################################################
 #################################################
