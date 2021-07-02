@@ -2369,7 +2369,7 @@ read kp
 echo
 
 kernel --name linux26 --timeout 100000 ${ds}casper/vmlinuz${link} linux26 initrd=initrd ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}casper/initrd${link}
+initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 
 boot
 
