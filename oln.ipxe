@@ -124,6 +124,7 @@ item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
 item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
 item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
+item	--key u	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -2377,6 +2378,44 @@ initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 boot
 
 #################################################
+:Ubuntu-Live
+set ds1 ${sourceforge}ubuntu-live/
+set ds2 ${mirror0}ubuntu-live/
+set ds3 ${mirror1}ubuntu-live/
+
+menu Sites boot ${target} from:
+item --gap -- http://releases.ubuntu.com/
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Ubuntu-Live_manual
+set ds ${mirror0}ubuntu-live/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Ubuntu-Live_stage2
+
+iseq ${ds} ${sourceforge}ubuntu-live/ && set link ?viasf=1 ||
+
+echo ramdisk_size value is in kb
+set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp url=${ds}ubuntu-21.04-desktop-amd64.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd ${kp}
+initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
+
+boot
+
 #################################################
 #################################################
 #################################################
