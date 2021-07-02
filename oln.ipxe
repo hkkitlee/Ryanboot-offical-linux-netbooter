@@ -2404,7 +2404,7 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}mx-xfce/ && set link ?viasf=1 ||
 
-set kp findiso=MX_x64.iso
+set kp fromiso=/MX_x64.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
