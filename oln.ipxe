@@ -2409,8 +2409,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.gz ${kp}
-initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
+kernel --name vmlinuz --timeout 100000 ${ds}antiX/vmlinuz${link} initrd=initrd.gz ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}antiX/initrd.gz${link}
 
 boot
 #################################################
