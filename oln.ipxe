@@ -2407,7 +2407,7 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}ubuntu-live/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
-set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp locale=en_US keyboard-configuration/layoutcode?=en url=${ds}ubuntu-21.04-desktop-amd64.iso
+set kp root=/dev/ram0 ramdisk_size=3000000 ip=dhcp locale=zh_CN keyboard-configuration/layoutcode?=cn url=${ds}ubuntu-21.04-desktop-amd64.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
