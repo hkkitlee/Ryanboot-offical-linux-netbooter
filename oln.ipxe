@@ -125,6 +125,7 @@ item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
 item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
 item	--key v	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 SF
+item	--key w Tails			(W) Tails Live amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -171,6 +172,7 @@ item	RedoRescue			Redo-Rescue live amd64 SF
 item	PartMagic			Parted Magic live amd64 SF
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 SF
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 SF
+item	Tails				Tails Live amd64 SF
 item	--gap
 
 item	--gap Arch
@@ -2417,6 +2419,43 @@ initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 
 boot
 
+#################################################
+:Tails
+set ds1 ${sourceforge}tails/
+set ds2 ${mirror0}tails/
+set ds3 ${mirror1}tails/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Tails_manual
+set ds ${mirror0}tails/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Tails_stage2
+
+iseq ${ds} ${sourceforge}tails/ && set link ?viasf=1 ||
+
+echo ramdisk_size value is in kb
+set kp root=/dev/ram0 ramdisk_size=3072000 ip=dhcp url=${ds}tails-amd64.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+
+boot
 #################################################
 #################################################
 #################################################
