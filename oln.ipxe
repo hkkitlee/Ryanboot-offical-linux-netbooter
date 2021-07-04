@@ -125,6 +125,7 @@ item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
 item	--key t	PartMagic		(T) Parted Magic amd64 SF
 item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
 item	--key v	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 SF
+item	--key w	ChimeraOS		(W) ChimeraOS Live with Installer amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -2418,6 +2419,45 @@ initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 boot
 
 #################################################
+:ChimeraOS
+
+set ds1 ${sourceforge}chimeraos/
+set ds2 ${mirror0}chimeraos/
+set ds3 ${mirror1}chimeraos/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:ChimeraOS_manual
+echo Download: https://github.com/ChimeraOS/install-media/releases
+echo
+set ds ${mirror0}chimeraos/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:ChimeraOS_stage2
+
+set kp ip=dhcp archisobasedir=arch
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+kernel ${ds}arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp}
+initrd ${ds}arch/boot/x86_64/initramfs-linux.img
+initrd ${ds}arch/boot/amd-ucode.img
+initrd ${ds}arch/boot/intel-ucode.img
+boot
+
 #################################################
 #################################################
 #################################################
