@@ -2446,7 +2446,7 @@ goto ${target}_stage2
 
 :ChimeraOS_stage2
 
-set kp ip=dhcp archisobasedir=arch
+set kp ip=dhcp archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
