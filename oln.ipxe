@@ -2446,7 +2446,7 @@ goto ${target}_stage2
 
 :ChimeraOS_stage2
 
-set kp ip=dhcp archiso_http_srv=${ds} archisobasedir=arch
+set kp img_loop=/chimeraos.iso earlymode
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
@@ -2456,6 +2456,7 @@ kernel ${ds}arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img in
 initrd ${ds}arch/boot/x86_64/initramfs-linux.img
 initrd ${ds}arch/boot/amd-ucode.img
 initrd ${ds}arch/boot/intel-ucode.img
+initrd ${ds}chimeraos.iso.img
 boot
 
 #################################################
