@@ -92,7 +92,7 @@ item	--key x	Rocky			(x) RockyLinux 8 amd64
 item	--key y	ProxmoxBackup		(y) Proxmox Backup Server OS amd64 (Mirror)
 item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
-item	--key A VzLinux8		(A) VzLinux 8 amd64 SF
+item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
