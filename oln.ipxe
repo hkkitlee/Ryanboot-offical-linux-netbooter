@@ -152,7 +152,7 @@ item	SmeOS				Koozali SME Server installer amd64
 item	ClearOS				ClearOS Linux installer amd64
 item	CloudLinuxOS			CloudLinux OS installer amd64
 item	openEuler			openEuler installer amd64
-item	Vzlinux8			Vzlinux 8 amd64 (Mirror)
+item	Vzlinux8			Vzlinux 8 installer amd64 (Mirror)
 item	--gap
 
 item	--gap Debian
