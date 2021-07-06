@@ -91,7 +91,7 @@ item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	Rocky			(X) RockyLinux 8 amd64
 item	--key y	ProxmoxBackup		(Y) Proxmox Backup Server OS amd64 SF
 item	--key z	ProxmoxMailGateway	(Z) Proxmox MailGateway OS amd64 SF
-item	--key 0x01 Vzlinux8		(Ctrl-A) Vzlinux 8 amd64 SF
+item	--key 0x03 Vzlinux8		(Ctrl-A) Vzlinux 8 amd64 SF
 
 item	--gap
 item		start			Back to Top
