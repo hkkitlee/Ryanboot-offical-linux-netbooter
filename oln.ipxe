@@ -91,7 +91,7 @@ item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
 item	--key x	Rocky			(X) RockyLinux 8 amd64
 item	--key y	ProxmoxBackup		(Y) Proxmox Backup Server OS amd64 SF
 item	--key z	ProxmoxMailGateway	(Z) Proxmox MailGateway OS amd64 SF
-#item	--key 0x01 xxxxxxxxxx	(Ctrl-a) xxxxxxxxxxxx
+item	--key 0x01 Vzlinux8		(Ctrl-A) Vzlinux 8 amd64 SF
 
 item	--gap
 item		start			Back to Top
@@ -151,6 +151,7 @@ item	SmeOS				Koozali SME Server installer amd64
 item	ClearOS				ClearOS Linux installer amd64
 item	CloudLinuxOS			CloudLinux OS installer amd64
 item	openEuler			openEuler installer amd64
+item	Vzlinux8			Vzlinux 8 amd64 SF
 item	--gap
 
 item	--gap Debian
@@ -2418,6 +2419,38 @@ initrd --name initrd --timeout 100000 ${ds}casper/initrd${link}
 boot
 
 #################################################
+:Vzlinux8
+set ds1 ${sourceforge}vzlinux8/
+set ds2 ${mirror0}vzlinuz8/
+set ds3 ${mirror1}vzlinuz8/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Vzlinuz8_manual
+set ds ${mirror0}vzlinuz8/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Vzlinuz8_stage2
+iseq ${ds} ${sourceforge}vzlinuz8/ && set link ?viasf=1 ||
+
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=http://repo.virtuozzo.com/vzlinux/8/BaseOS/x86_64/ inst.stage2=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
+boot
 #################################################
 #################################################
 #################################################
