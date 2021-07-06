@@ -104,28 +104,28 @@ menu		Ryanboot-offical-linux-netbooter (List Live)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
 item	--gap	--	tui/gtk Text/Graphical User Interface. (Mirror) for hosting by Third party file server.
-item	--key a	Arch			(A) Arch Linux amd64 Live with Option Installer Script
-item	--key b	Tinycore		(B) Tinycore amd64/i386
-item	--key c	Alpine			(C) Alpine amd64/i386
-item	--key d	Slitaz			(D) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
-item	--key e	Slax			(E) Slax amd64/i386
-item	--key f	Slackware		(F) Slackware amd64/i386 with Installer
-item	--key g	Rancheros		(G) Rancher OS amd64/i386
-item	--key h	X-wrt			(H) X-wrt amd64/i386
-item	--key i	Containerlinux		(I) Container Linux by flatcar amd64
-item	--key j	coreoslive		(J) Fedora CoreOS amd64
-item	--key k	Fatdog			(K) Fatdog64 Linux amd64
-item	--key l	OneFileLinux		(L) OneFileLinux
-item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script (Mirror)
-item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer (Mirror)
-item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer (Mirror)
-item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 (Mirror)
-item	--key q Gparted-Live		(Q) Gparted-Live amd64 (Mirror)
-item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 (Mirror)
-item	--key s	RedoRescue		(S) Redo-Rescue amd64 (Mirror)
-item	--key t	PartMagic		(T) Parted Magic amd64 (Mirror)
-item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 (Mirror)
-item	--key v	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 (Mirror)
+item	--key a	Arch			(a) Arch Linux amd64 Live with Option Installer Script
+item	--key b	Tinycore		(b) Tinycore amd64/i386
+item	--key c	Alpine			(c) Alpine amd64/i386
+item	--key d	Slitaz			(d) SliTaz rolling amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item	--key e	Slax			(e) Slax amd64/i386
+item	--key f	Slackware		(f) Slackware amd64/i386 with Installer
+item	--key g	Rancheros		(g) Rancher OS amd64/i386
+item	--key h	X-wrt			(h) X-wrt amd64/i386
+item	--key i	Containerlinux		(i) Container Linux by flatcar amd64
+item	--key j	coreoslive		(j) Fedora CoreOS amd64
+item	--key k	Fatdog			(k) Fatdog64 Linux amd64
+item	--key l	OneFileLinux		(l) OneFileLinux
+item	--key m	BlackArch		(m) BlackArch Linux amd64 Live with Installer Script (Mirror)
+item	--key n Garuda-Wayfire		(n) Garuda Linux Wayfire amd64 Live with Installer (Mirror)
+item	--key o Manjaro-Xfce		(o) Manjaro Linux Xfce amd64 Live with Installer (Mirror)
+item	--key p Gentoo-Minimal		(p) Gentoo Linux Minimal amd64 (Mirror)
+item	--key q Gparted-Live		(q) Gparted-Live amd64 (Mirror)
+item	--key r Clonezilla		(r) Clonezilla Live/Lite Server amd64 (Mirror)
+item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
+item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
+item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
+item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
