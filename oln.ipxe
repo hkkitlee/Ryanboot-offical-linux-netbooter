@@ -103,7 +103,7 @@ choose target && cpair 0 && goto ${target}
 menu		Ryanboot-offical-linux-netbooter (List Live)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
-item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
+item	--gap	--	tui/gtk Text/Graphical User Interface. (Mirror) for hosting by Third party file server.
 item	--key a	Arch			(A) Arch Linux amd64 Live with Option Installer Script
 item	--key b	Tinycore		(B) Tinycore amd64/i386
 item	--key c	Alpine			(C) Alpine amd64/i386
@@ -136,7 +136,7 @@ choose target && cpair 0 && goto ${target}
 menu            Ryanboot-offical-linux-netbooter (List by Based on)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection.
-item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
+item	--gap	--	tui/gtk Text/Graphical User Interface. (Mirror) for hosting by Third party file server.
 item	--gap
 
 item	--gap RedHat
