@@ -64,7 +64,7 @@ choose target && cpair 0 && goto ${target}
 menu		Ryanboot-offical-linux-netbooter (List Installer)
 
 item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection. 
-item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
+item	--gap	--	tui/gtk Text/Graphical User Interface. (Mirror) for hosting by Third party file server.
 item	--key a Ubuntu-install		(a) Ubuntu amd64/i386
 item	--key b	Fedora			(b) Fedora (Everything, Server, Silverblue) amd64
 item	--key c	Debian			(c) Debian amd64/i386
@@ -85,12 +85,12 @@ item	--key q	PureOS			(q) PureOS Linux amd64
 item	--key r	Springdale		(r) Springdale Linux amd64
 item	--key s	ClearOS			(s) ClearOS Linux amd64
 item	--key t	SteamOS			(t) SteamOS Linux amd64
-item	--key u	ClearLinux		(u) Clear Linux OS amd64 SF
-item	--key v	ProxmoxVE		(v) Proxmox VE OS amd64 SF
-item	--key w	Oracle8			(w) OracleLinux R8 Full amd64 SF
+item	--key u	ClearLinux		(u) Clear Linux OS amd64 (Mirror)
+item	--key v	ProxmoxVE		(v) Proxmox VE OS amd64 (Mirror)
+item	--key w	Oracle8			(w) OracleLinux R8 Full amd64 (Mirror)
 item	--key x	Rocky			(x) RockyLinux 8 amd64
-item	--key y	ProxmoxBackup		(y) Proxmox Backup Server OS amd64 SF
-item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 SF
+item	--key y	ProxmoxBackup		(y) Proxmox Backup Server OS amd64 (Mirror)
+item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A Vzlinux8		(A) Vzlinux 8 amd64 SF
 
@@ -116,16 +116,16 @@ item	--key i	Containerlinux		(I) Container Linux by flatcar amd64
 item	--key j	coreoslive		(J) Fedora CoreOS amd64
 item	--key k	Fatdog			(K) Fatdog64 Linux amd64
 item	--key l	OneFileLinux		(L) OneFileLinux
-item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script SF
-item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer SF
-item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer SF
-item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 SF
-item	--key q Gparted-Live		(Q) Gparted-Live amd64 SF
-item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 SF
-item	--key s	RedoRescue		(S) Redo-Rescue amd64 SF
-item	--key t	PartMagic		(T) Parted Magic amd64 SF
-item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 SF
-item	--key v	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 SF
+item	--key m	BlackArch		(M) BlackArch Linux amd64 Live with Installer Script (Mirror)
+item	--key n Garuda-Wayfire		(N) Garuda Linux Wayfire amd64 Live with Installer (Mirror)
+item	--key o Manjaro-Xfce		(O) Manjaro Linux Xfce amd64 Live with Installer (Mirror)
+item	--key p Gentoo-Minimal		(P) Gentoo Linux Minimal amd64 (Mirror)
+item	--key q Gparted-Live		(Q) Gparted-Live amd64 (Mirror)
+item	--key r Clonezilla		(R) Clonezilla Live/Lite Server amd64 (Mirror)
+item	--key s	RedoRescue		(S) Redo-Rescue amd64 (Mirror)
+item	--key t	PartMagic		(T) Parted Magic amd64 (Mirror)
+item	--key u	UbuntuKylin		(U) Ubuntu Kylin Live with Installer amd64 (Mirror)
+item	--key v	Ubuntu-Live		(V) Ubuntu Live with Installer amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -141,7 +141,7 @@ item	--gap
 
 item	--gap RedHat
 item	Rocky				RockyLinux 8 installer amd64
-item	Oracle8				OracleLinux R8 Full installer amd64 SF
+item	Oracle8				OracleLinux R8 Full installer amd64 (Mirror)
 item	CentosStream			Centos Stream installer amd64
 item	Fedora				Fedora installer (Everything, Server, Silverblue) amd64
 item	coreosinstall			Fedora CoreOS installer amd64
@@ -152,7 +152,7 @@ item	SmeOS				Koozali SME Server installer amd64
 item	ClearOS				ClearOS Linux installer amd64
 item	CloudLinuxOS			CloudLinux OS installer amd64
 item	openEuler			openEuler installer amd64
-item	Vzlinux8			Vzlinux 8 amd64 SF
+item	Vzlinux8			Vzlinux 8 amd64 (Mirror)
 item	--gap
 
 item	--gap Debian
@@ -160,30 +160,30 @@ item	Debian				Debian installer amd64/i386
 item	Ubuntu-install			Ubuntu installer amd64/i386
 item	Kali				Kali-Linux installer amd64/i386
 item	Parrot				Parrot-Linux installer amd64/i386
-item	ProxmoxVE			Proxmox VE OS installer amd64 SF
-item	ProxmoxBackup			Proxmox Backup Server OS installer amd64 SF
-item	ProxmoxMailGateway		Proxmox MailGateway OS installer amd64 SF
+item	ProxmoxVE			Proxmox VE OS installer amd64 (Mirror)
+item	ProxmoxBackup			Proxmox Backup Server OS installer amd64 (Mirror)
+item	ProxmoxMailGateway		Proxmox MailGateway OS installer amd64 (Mirror)
 item	Slax				Slax live amd64/i386
 item	Devuan				Devuan installer amd64/i386
 item	PureOS				PureOS Linux installer amd64
 item	SteamOS				SteamOS Linux installer amd64
-item	Gparted-Live			Gparted-Live live amd64 SF
-item	Clonezilla			Clonezilla Live/Lite Server live amd64 SF
-item	RedoRescue			Redo-Rescue live amd64 SF
-item	PartMagic			Parted Magic live amd64 SF
-item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 SF
-item	Ubuntu-Live			Ubuntu Live with Installer amd64 SF
+item	Gparted-Live			Gparted-Live live amd64 (Mirror)
+item	Clonezilla			Clonezilla Live/Lite Server live amd64 (Mirror)
+item	RedoRescue			Redo-Rescue live amd64 (Mirror)
+item	PartMagic			Parted Magic live amd64 (Mirror)
+item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
+item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	--gap
 
 item	--gap Arch
 item	Arch				Arch Linux live amd64 with Option Installer Script
-item	Manjaro-Xfce			Manjaro Linux Xfce live amd64 with Installer SF
-item	BlackArch			BlackArch Linux live amd64 with Installer Script SF
-item	Garuda-Wayfire			Garuda Linux Wayfire live amd64 with Installer SF
+item	Manjaro-Xfce			Manjaro Linux Xfce live amd64 with Installer (Mirror)
+item	BlackArch			BlackArch Linux live amd64 with Installer Script (Mirror)
+item	Garuda-Wayfire			Garuda Linux Wayfire live amd64 with Installer (Mirror)
 item	--gap
 
 item	--gap Gentoo
-item	Gentoo-Minimal			Gentoo Linux Minimal live amd64 SF
+item	Gentoo-Minimal			Gentoo Linux Minimal live amd64 (Mirror)
 item	Containerlinux			Container Linux by flatcar live amd64
 item	--gap
 
@@ -198,7 +198,7 @@ item	--gap
 
 item	--gap Busybox
 item	Tinycore			Tinycore live amd64/i386
-item	Slitaz				SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net)
+item	Slitaz				SliTaz rolling live amd64/i386 (Support by teasiu@bbs.wuyou.net) (Mirror)
 item	Alpine				Alpine live amd64/i386
 item	X-wrt				X-wrt live amd64/i386
 item	--gap
@@ -214,7 +214,7 @@ item	--gap
 item	--gap Others
 item	IPFire				IPFire installer amd64/i586
 item	Rancheros			Rancher OS live amd64/i386
-item	ClearLinux			Clear Linux OS installer amd64 SF
+item	ClearLinux			Clear Linux OS installer amd64 (Mirror)
 item	OneFileLinux			OneFileLinux live
 item	--gap
 
