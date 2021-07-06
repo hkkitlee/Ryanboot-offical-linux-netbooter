@@ -67,30 +67,31 @@ item	--gap	--	Auto select amd64/i[3,6]86. Release/Version Selection.
 item	--gap	--	tui/gtk Text/Graphical User Interface. SF for hosting by SourceForge.
 item	--key a Ubuntu-install		(a) Ubuntu amd64/i386
 item	--key b	Fedora			(b) Fedora (Everything, Server, Silverblue) amd64
-item	--key c	Debian			(C) Debian amd64/i386
-item	--key d	Parrot			(D) Parrot-Linux amd64/i386
-item	--key e	Kali			(E) Kali-Linux amd64/i386 
-item	--key f	openSUSE		(F) openSUSE amd64/i386
-item	--key g	IPFire			(G) IPFire amd64/i586
-item	--key h	Mageia			(H) Mageia amd64/i586
-item	--key i	Devuan			(I) Devuan amd64/i386
-item	--key j	Alma			(J) AlmaLinux amd64
-item	--key k	coreosinstall		(K) Fedora CoreOS amd64
-item	--key l	SmeOS			(L) Koozali SME Server amd64
-item	--key m	openEuler		(M) openEuler amd64
-item	--key n	CentosStream		(N) Centos Stream amd64
-item	--key o	CloudLinuxOS		(O) CloudLinux OS amd64
-item	--key p	Absolute		(P) Absolute-Linux amd64
-item	--key q	PureOS			(Q) PureOS Linux amd64
-item	--key r	Springdale		(R) Springdale Linux amd64
-item	--key s	ClearOS			(S) ClearOS Linux amd64
-item	--key t	SteamOS			(T) SteamOS Linux amd64
-item	--key u	ClearLinux		(U) Clear Linux OS amd64 SF
-item	--key v	ProxmoxVE		(V) Proxmox VE OS amd64 SF
-item	--key w	Oracle8			(W) OracleLinux R8 Full amd64 SF
-item	--key x	Rocky			(X) RockyLinux 8 amd64
-item	--key y	ProxmoxBackup		(Y) Proxmox Backup Server OS amd64 SF
-item	--key z	ProxmoxMailGateway	(Z) Proxmox MailGateway OS amd64 SF
+item	--key c	Debian			(c) Debian amd64/i386
+item	--key d	Parrot			(d) Parrot-Linux amd64/i386
+item	--key e	Kali			(e) Kali-Linux amd64/i386 
+item	--key f	openSUSE		(f) openSUSE amd64/i386
+item	--key g	IPFire			(g) IPFire amd64/i586
+item	--key h	Mageia			(h) Mageia amd64/i586
+item	--key i	Devuan			(i) Devuan amd64/i386
+item	--key j	Alma			(j) AlmaLinux amd64
+item	--key k	coreosinstall		(k) Fedora CoreOS amd64
+item	--key l	SmeOS			(l) Koozali SME Server amd64
+item	--key m	openEuler		(m) openEuler amd64
+item	--key n	CentosStream		(n) Centos Stream amd64
+item	--key o	CloudLinuxOS		(o) CloudLinux OS amd64
+item	--key p	Absolute		(p) Absolute-Linux amd64
+item	--key q	PureOS			(q) PureOS Linux amd64
+item	--key r	Springdale		(r) Springdale Linux amd64
+item	--key s	ClearOS			(s) ClearOS Linux amd64
+item	--key t	SteamOS			(t) SteamOS Linux amd64
+item	--key u	ClearLinux		(u) Clear Linux OS amd64 SF
+item	--key v	ProxmoxVE		(v) Proxmox VE OS amd64 SF
+item	--key w	Oracle8			(w) OracleLinux R8 Full amd64 SF
+item	--key x	Rocky			(x) RockyLinux 8 amd64
+item	--key y	ProxmoxBackup		(y) Proxmox Backup Server OS amd64 SF
+item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 SF
+item	--gap -- Shortcut CAPITALS Letter
 item	--key A Vzlinux8		(A) Vzlinux 8 amd64 SF
 
 item	--gap
@@ -2444,7 +2445,7 @@ goto ${target}_stage2
 :Vzlinux8_stage2
 iseq ${ds} ${sourceforge}vzlinux8/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=http://repo.virtuozzo.com/vzlinux/8/BaseOS/x86_64/ inst.stage2=${ds}
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=http://repo.virtuozzo.com/vzlinux/8/BaseOS/x86_64/os/ inst.stage2=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
