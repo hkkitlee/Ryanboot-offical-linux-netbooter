@@ -2425,6 +2425,7 @@ set ds2 ${mirror0}vzlinux8/
 set ds3 ${mirror1}vzlinux8/
 
 menu Sites boot ${target} from:
+item	--gap	--	http://repo.virtuozzo.com/vzlinux/8/iso/vzlinux-8-min.iso
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
