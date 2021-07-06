@@ -2421,8 +2421,8 @@ boot
 #################################################
 :Vzlinux8
 set ds1 ${sourceforge}vzlinux8/
-set ds2 ${mirror0}vzlinuz8/
-set ds3 ${mirror1}vzlinuz8/
+set ds2 ${mirror0}vzlinux8/
+set ds3 ${mirror1}vzlinux8/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -2433,15 +2433,15 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:Vzlinuz8_manual
-set ds ${mirror0}vzlinuz8/
+:Vzlinux8_manual
+set ds ${mirror0}vzlinux8/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Vzlinuz8_stage2
-iseq ${ds} ${sourceforge}vzlinuz8/ && set link ?viasf=1 ||
+:Vzlinux8_stage2
+iseq ${ds} ${sourceforge}vzlinux8/ && set link ?viasf=1 ||
 
 set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=http://repo.virtuozzo.com/vzlinux/8/BaseOS/x86_64/ inst.stage2=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
