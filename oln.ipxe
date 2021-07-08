@@ -1784,6 +1784,7 @@ set ds2 ${mirror0}clearinux/
 set ds3 ${mirror1}clearinux/
 
 menu Sites boot ${target} from:
+item --gap -- Howto: https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
@@ -1793,7 +1794,6 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :ClearLinux_manual
-echo Howto: https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 echo
 set ds ${mirror0}clearlinux/
 echo -n Manual Entry ${target} URL: ${}
