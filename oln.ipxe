@@ -126,6 +126,7 @@ item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
 item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
+item	--key w	Porteus			(w) Porteus Live amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2453,6 +2454,44 @@ echo
 initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
 kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
 boot
+#################################################
+:Porteus
+
+set ds1 ${sourceforge}porteus/
+set ds2 ${mirror0}porteus/
+set ds3 ${mirror1}porteus/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Porteus_manual
+set ds ${mirror0}porteus/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Porteus_stage2
+
+iseq ${ds} ${sourceforge}porteus/ && set link ?viasf=1 ||
+
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}boot/syslinux/vmlinuz${link} initrd=initrd.xz initrd=porteus-xfce.iso.img ${kp}
+initrd --name initrd.xz --timeout 100000 ${ds}boot/syslinux/initrd.xz${link}
+initrd --name porteus-xfce.iso.img --timeout 100000 ${ds}porteus-xfce.iso.img${link}
+boot
+
 #################################################
 #################################################
 #################################################
