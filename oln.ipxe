@@ -2487,9 +2487,9 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}boot/syslinux/vmlinuz${link} initrd=initrd.xz initrd=porteus-xfce.iso.xz ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}boot/syslinux/vmlinuz${link} initrd=initrd.xz initrd=porteus-xfce.iso.img ${kp}
 initrd --name initrd.xz --timeout 100000 ${ds}boot/syslinux/initrd.xz${link}
-initrd --name porteus-xfce.iso.xz --timeout 100000 ${ds}porteus-xfce.iso.xz${link}
+initrd --name porteus-xfce.iso.img --timeout 100000 ${ds}porteus-xfce.iso.img${link}
 boot
 
 #################################################
