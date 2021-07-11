@@ -126,7 +126,6 @@ item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
 item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
-item	--key w Deepin			(w) Deepin amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2455,41 +2454,6 @@ initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
 kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
 boot
 #################################################
-:Deepin
-set ds1 ${sourceforge}deepin/
-set ds2 ${mirror0}deepin/
-set ds3 ${mirror1}deepin/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:Deepin_manual
-set ds ${mirror0}deepin/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:Deepin_stage2
-
-iseq ${ds} ${sourceforge}deepin/ && set link ?viasf=1 ||
-
-set kp boot=live components quiet splash union=overlay livecd-installer locales=zh_CN.UTF-8 url=${ds}deepin-desktop-community-20.2.2-amd64.iso
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.lz ${kp}
-initrd --name initrd.lz --timeout 100000 ${ds}live/initrd.lz${link}
-
-boot
 #################################################
 #################################################
 #################################################
