@@ -126,7 +126,7 @@ item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
 item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
-item	--key w ExTiX			(w) ExTiX amd64 (Mirror)
+item	--key w Deepin			(w) Deepin amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
