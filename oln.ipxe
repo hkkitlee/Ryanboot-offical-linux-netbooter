@@ -2479,7 +2479,7 @@ goto ${target}_stage2
 :Easynas_stage2
 iseq ${ds} ${sourceforge}easynas/ && set link ?viasf=1 ||
 
-set kp root=/dev/ram0 load_ramdisk=1 splash=silent vga=0x314 showopts install=${ds}
+set kp rd.live.debug=1 rd.live.image rd.shell root=live:${ds}EasyNAS.raw.squashfs
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
