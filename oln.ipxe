@@ -2481,13 +2481,14 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}extix/ && set link ?viasf=1 ||
 
-set kp root=/dev/ram0 ramdisk_size=2048000 ip=dhcp from fetch=${ds}live/filesystem.squashfs
+set kp root=/dev/ram0 ramdisk_size=2048000 ip=dhcp from fromiso=/extix.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp}
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
+initrd --name extix.iso.img --timeout 100000 ${ds}extix.iso.img${link}
 
 boot
 #################################################
