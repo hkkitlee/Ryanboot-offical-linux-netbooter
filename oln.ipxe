@@ -2066,9 +2066,11 @@ boot
 :Rocky
 
 set ds1 http://download.rockylinux.org/pub/rocky/
+set ds2 https://mirrors.rit.edu/rocky/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
+item 1 ${ds2}
 item manual Manual Entry URL
 choose siteno
 
@@ -2191,7 +2193,6 @@ set ds2 ${mirror0}redorescue/
 set ds3 ${mirror1}redorescue/
 
 menu Sites boot ${target} from:
-item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
