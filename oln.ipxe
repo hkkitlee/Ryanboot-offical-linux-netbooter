@@ -154,6 +154,7 @@ item	ClearOS				ClearOS Linux installer amd64
 item	CloudLinuxOS			CloudLinux OS installer amd64
 item	openEuler			openEuler installer amd64
 item	VzLinux8			VzLinux 8 installer amd64 (Mirror)
+item	EuroLinux8			EuroLinux 8 installer amd64 (Mirror)
 item	--gap
 
 item	--gap Debian
