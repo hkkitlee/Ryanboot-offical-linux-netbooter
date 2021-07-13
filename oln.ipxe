@@ -2458,9 +2458,9 @@ kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd
 boot
 #################################################
 :EuroLinux8
-set ds1 ${sourceforge}eurolinux/
-set ds2 ${mirror0}eurolinux/
-set ds3 ${mirror1}eurolinux/
+set ds1 ${sourceforge}eurolinux8/
+set ds2 ${mirror0}eurolinux8/
+set ds3 ${mirror1}eurolinux8/
 
 menu Sites boot ${target} from:
 item    --gap   --      https://fbi.cdn.euro-linux.com/isos/EL-8.3-x86_64-20210624-minimal.iso
@@ -2473,14 +2473,14 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :EuroLinux8_manual
-set ds ${mirror0}eurolinux/
+set ds ${mirror0}eurolinux8/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :EuroLinux8_stage2
-iseq ${ds} ${sourceforge}eurolinux/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}eurolinux8/ && set link ?viasf=1 ||
 
 set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://fbi.cdn.euro-linux.com/dist/eurolinux/server/8/x86_64/certify-BaseOS/os/ inst.stage2=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
