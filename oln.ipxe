@@ -127,7 +127,6 @@ item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
 item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
-item	--key w	Tails			(w) Tails Live amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -176,7 +175,6 @@ item	RedoRescue			Redo-Rescue live amd64 (Mirror)
 item	PartMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
-item	Tails				Tails Live amd64 (Mirror)
 item	--gap
 
 item	--gap Arch
@@ -2493,42 +2491,6 @@ initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
 kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
 boot
 #################################################
-:Tails
-set ds1 ${sourceforge}tails/
-set ds2 ${mirror0}tails/
-set ds3 ${mirror1}tails/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:Tails_manual
-set ds ${mirror0}tails/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:Tails_stage2
-
-iseq ${ds} ${sourceforge}tails/ && set link ?viasf=1 ||
-
-set kp boot=live config live-media=removable nopersistence noprompt timezone=Etc/UTC splash noautologin module=Tails slab_nomerge slub_debug=FZP mce=0 vsyscall=none page_poison=1 init_on_free=1 mds=full,nosmt findiso=/tails.iso
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img initrd=tails.iso.img ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
-initrd --name tails.iso.img --timeout 100000 ${ds}tails.iso.img${link}
-
-boot
 #################################################
 #################################################
 :background
