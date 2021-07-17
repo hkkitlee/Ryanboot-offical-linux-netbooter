@@ -127,6 +127,7 @@ item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
 item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
+item	--key w	MLL			(w) Minimal Linux Live amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2489,6 +2490,40 @@ echo
 
 initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
 kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
+boot
+#################################################
+:MLL
+set ds1 ${sourceforge}mml/
+set ds2 ${mirror0}mml/
+set ds3 ${mirror1}mml/
+
+menu Sites boot ${target} from:
+item    --gap   --      https://github.com/ivandavidov/minimal
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:MLL_manual
+set ds ${mirror0}mml/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:MLL_stage2
+iseq ${ds} ${sourceforge}mml/ && set link ?viasf=1 ||
+
+set kp
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name kernel.xz --timeout 100000 ${ds}images/pxeboot/kernel.xz${link} initrd=rootfs.xz ${kp}
+initrd --name rootfs.xz --timeout 100000 ${ds}images/pxeboot/rootfs.xz${link}
 boot
 #################################################
 #################################################
