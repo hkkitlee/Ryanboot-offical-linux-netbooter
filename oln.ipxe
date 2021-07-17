@@ -219,6 +219,7 @@ item	IPFire				IPFire installer amd64/i586
 item	Rancheros			Rancher OS live amd64/i386
 item	ClearLinux			Clear Linux OS installer amd64 (Mirror)
 item	OneFileLinux			OneFileLinux live
+item	MLL				Minimal Linux Live amd64 (Mirror)
 item	--gap
 
 item	start				Back to Top
