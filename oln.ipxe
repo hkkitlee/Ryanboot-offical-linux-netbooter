@@ -2517,7 +2517,7 @@ goto ${target}_stage2
 :MLL_stage2
 iseq ${ds} ${sourceforge}mll/ && set link ?viasf=1 ||
 
-set kp
+set kp vga=ask
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
