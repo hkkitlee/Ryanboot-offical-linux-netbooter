@@ -2551,20 +2551,24 @@ echo
 goto ${target}_stage2
 
 :Live-Raizo_stage2
+set answer Y
+echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
+echo -n Do you want to use iPXE injection to boot (Y/n): ${}
+read answer
+echo
 
-iseq ${ds} ${sourceforge}live-raizo/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}live-raizo/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=Live-Raizo.iso.img && set from fromiso=/Live-Raizo.iso || set from fetch=${ds}live/filesystem.squashfs
 
-set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp fetch=${ds}live/filesystem.squashfs
-# url=${ds}Live-Raizo-v12.21.07.17i.iso
+set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
-
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
+iseq ${answer} Y && initrd --name Live-Raizo.iso.img --timeout 100000 ${ds}Live-Raizo.iso.img${link} ||
 boot
-
 #################################################
 #################################################
 #################################################
