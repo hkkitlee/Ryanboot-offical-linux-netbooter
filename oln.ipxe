@@ -94,7 +94,6 @@ item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
-item	--key C	Live-Raizo-install	(C) Live-Raizo amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -129,7 +128,7 @@ item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
 item	--key w	MLL			(w) Minimal Linux Live amd64 (Mirror)
-item	--key x	Live-Raizo-live		(x) Live-Raizo Live amd64 (Mirror)
+item	--key x	Live-Raizo		(x) Live-Raizo amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -178,7 +177,7 @@ item	RedoRescue			Redo-Rescue live amd64 (Mirror)
 item	PartMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
-item	Live-Raizo-live			Live-Raizo Live amd64 (Mirror)
+item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
 item	--gap
 
 item	--gap Arch
@@ -2530,7 +2529,7 @@ kernel --name kernel.xz --timeout 100000 ${ds}kernel.xz${link} initrd=rootfs.xz 
 initrd --name rootfs.xz --timeout 100000 ${ds}rootfs.xz${link}
 boot
 #################################################
-:Live-Raizo-live
+:Live-Raizo
 set ds1 ${sourceforge}live-raizo/
 set ds2 ${mirror0}live-raizo/
 set ds3 ${mirror1}live-raizo/
@@ -2545,14 +2544,14 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
-:Live-Raizo-live_manual
+:Live-Raizo_manual
 set ds ${mirror0}live-raizo/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Live-Raizo-live_stage2
+:Live-Raizo_stage2
 set answer Y
 echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
 echo -n Do you want to use iPXE injection to boot (Y/n): ${}
@@ -2572,48 +2571,6 @@ initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name Live-Raizo.iso.img --timeout 100000 ${ds}Live-Raizo.iso.img${link} ||
 boot
 #################################################
-:Live-Raizo-install
-set ds1 ${sourceforge}live-raizo/
-set ds2 ${mirror0}live-raizo/
-set ds3 ${mirror1}live-raizo/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:Live-Raizo-install_manual
-set ds ${mirror0}live-raizo/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:Live-Raizo-install_stage2
-set answer Y
-echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
-echo -n Do you want to use iPXE injection to boot (Y/n): ${}
-read answer
-echo
-
-iseq ${ds} ${sourceforge}live-raizo/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=Live-Raizo.iso.img && set from fromiso=/Live-Raizo.iso || set from fetch=${ds}live/filesystem.squashfs
-
-set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp ${from}
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel --name vmlinuz --timeout 100000 ${ds}install/vmlinuz${link} initrd=initrd.gz ${img} ${kp}
-initrd --name initrd.gz --timeout 100000 ${ds}install/initrd.gz${link}
-iseq ${answer} Y && initrd --name Live-Raizo.iso.img --timeout 100000 ${ds}Live-Raizo.iso.img${link} ||
-boot
-
 #################################################
 #################################################
 :background
