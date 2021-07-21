@@ -2544,7 +2544,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Live-Raizo_manual
-set ds ${mirror0}Live-Raizo/
+set ds ${mirror0}live-raizo/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
