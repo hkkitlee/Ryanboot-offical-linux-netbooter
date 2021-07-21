@@ -2566,7 +2566,7 @@ read kp
 echo
 
 kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img ${img} ${kp}
-initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
+initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name Live-Raizo.iso.img --timeout 100000 ${ds}Live-Raizo.iso.img${link} ||
 boot
 #################################################
