@@ -177,6 +177,7 @@ item	RedoRescue			Redo-Rescue live amd64 (Mirror)
 item	PartMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
+item	Live-Raizo			Live-Raizo amd64 (Mirror)
 item	--gap
 
 item	--gap Arch
