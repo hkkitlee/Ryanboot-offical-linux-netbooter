@@ -2599,13 +2599,14 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}easynas/ && set link ?viasf=1 ||
 
-set kp cdinst=1 splash ifcfg=*=dhcp loglevel=0 root=install:CDLABEL=INSTALL install=live:${ds}EasyNAS.raw.squashfs
+set kp cdinst=1 splash ifcfg=*=dhcp loglevel=0 root=install:CDLABEL=INSTALL install=hd:/EasyNAS.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 kernel --name vmlinuz --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd ${kp}
 initrd --name initrd --timeout 100000 ${ds}boot/x86_64/loader/initrd${link}
+initrd --name EasyNAS.iso.img --timeout 100000 ${ds}EasyNAS.iso.img${link}
 
 boot
 #################################################
