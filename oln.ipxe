@@ -17,7 +17,8 @@ imgtrust --allow
 
 set mirror0 http://183.230.23.18:58000/ryanboot/
 set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
-set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
+set sourceforge https://sourceforge.net/projects/ryanboot/
+#set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
 
 
 goto start
