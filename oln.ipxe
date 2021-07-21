@@ -2599,7 +2599,7 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}easynas/ && set link ?viasf=1 ||
 
-set kp cdinst=1 splash ifcfg=*=dhcp loglevel=0 root=install:CDLABEL=INSTALL inst.stage2=${ds}
+set kp cdinst=1 splash ifcfg=*=dhcp loglevel=0 root=install:CDLABEL=INSTALL root=live:${ds}EasyNAS.raw.squashfs
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
