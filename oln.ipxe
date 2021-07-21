@@ -2554,7 +2554,7 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}live-raizo/ && set link ?viasf=1 ||
 
-set kp root=/dev/ram0 ramdisk_size=3072000 ip=dhcp locale=zh_CN keyboard-configuration/layoutcode?=cn url=${ds}Live-Raizo-v12.21.07.17i.iso
+set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User ip=frommedia nox11autologin ip=dhcp url=${ds}Live-Raizo-v12.21.07.17i.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
