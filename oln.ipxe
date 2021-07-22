@@ -95,6 +95,7 @@ item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
+item	--key C EasyNAS			(C) EasyNAS amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2572,6 +2573,42 @@ initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name Live-Raizo.iso.img --timeout 100000 ${ds}Live-Raizo.iso.img${link} ||
 boot
 #################################################
+:EasyNAS
+set ds1 ${sourceforge}easynas/
+set ds2 ${mirror0}easynas/
+set ds3 ${mirror1}easynas/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:EasyNAS_manual
+set ds ${mirror0}easynas/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:EasyNAS_stage2
+
+iseq ${ds} ${sourceforge}easynas/ && set link ?viasf=1 ||
+
+set kp ifcfg=*=dhcp isofrom=/EasyNAS.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd initrd=EasyNAS.iso.img ${kp}
+initrd --name initrd --timeout 100000 ${ds}boot/x86_64/loader/initrd${link}
+initrd --name EasyNAS.iso.img --timeout 100000 ${ds}EasyNAS.iso.img${link}
+
+boot
 #################################################
 #################################################
 :background
