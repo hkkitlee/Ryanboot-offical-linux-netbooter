@@ -2605,7 +2605,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd initrd=EasyNAS.iso.img ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd ${kp}
 initrd --name initrd --timeout 100000 ${ds}boot/x86_64/loader/initrd${link}
 #initrd --name EasyNAS.iso.img --timeout 100000 ${ds}EasyNAS.iso.img${link}
 
