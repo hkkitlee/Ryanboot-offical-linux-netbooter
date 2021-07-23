@@ -2647,7 +2647,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.gz ${img} ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.gz ${img} ${from} ${kp}
 initrd --name initrd.gz --timeout 100000 ${ds}live/initrd.gz${link}
 iseq ${answer} Y && initrd --name turnkey.iso.img --timeout 100000 ${ds}turnkey.iso.img${link} ||
 boot
