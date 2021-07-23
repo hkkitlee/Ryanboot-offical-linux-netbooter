@@ -96,6 +96,7 @@ item	--gap -- Shortcut CAPITALS Letter
 item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
 item	--key C Amahi			(C) Amahi 11 amd64 (Mirror)
+item	--key D Openfiler		(D) Openfiler 2.99.1 amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -160,6 +161,7 @@ item	openEuler			openEuler installer amd64
 item	VzLinux8			VzLinux 8 installer amd64 (Mirror)
 item	EuroLinux8			EuroLinux 8 installer amd64 (Mirror)
 item	Amahi				Amahi 11 installer amd64 (Mirror)
+item	Openfiler			Openfiler 2.99.1 installer amd64 (Mirror)
 item	--gap
 
 item	--gap Debian
@@ -2599,7 +2601,6 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}amahi/ && set link ?viasf=1 ||
 
 set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=${ds} inst.ks=${ds}ks.cfg inst.updates=${ds}amahi.img
-# inst.repo=http://repo.virtuozzo.com/vzlinux/8/BaseOS/x86_64/os/
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
@@ -2609,6 +2610,38 @@ kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd
 boot
 
 #################################################
+:Openfiler
+set ds1 ${sourceforge}openfiler/
+set ds2 ${mirror0}openfiler/
+set ds3 ${mirror1}openfiler/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Openfiler_manual
+set ds ${mirror0}openfiler/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Amahi_stage2
+iseq ${ds} ${sourceforge}openfiler/ && set link ?viasf=1 ||
+
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
+boot
 #################################################
 #################################################
 #################################################
