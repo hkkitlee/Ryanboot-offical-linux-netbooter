@@ -2599,7 +2599,7 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}easynas/ && set link ?viasf=1 ||
 
-set kp rd.neednet=1 rd.live.debug=1 ip=dhcp root=live:${ds}EasyNAS.raw.squashfs rootfstype=squashfs rd.fstab=0 rd.luks=0 rd.lvm=0 rd.md=0
+set kp isofrom_device=/dev/disk/by-label/MULTIBOOT isofrom_system=/EasyNAS.iso
 #ifcfg=*=dhcp boot=isolinux iso-scan/filename=/EasyNAS.iso root=live:CDLABEL=INSTALL rd.live.image rhgb
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
