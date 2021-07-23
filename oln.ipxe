@@ -2579,6 +2579,9 @@ set ds2 ${mirror0}amahi/
 set ds3 ${mirror1}amahi/
 
 menu Sites boot ${target} from:
+item	--gap	--	(Installation Code)
+item	--gap	--	https://www.amahi.org/signup
+item	--gap	--	https://www.amahi.org/login
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
