@@ -2600,13 +2600,13 @@ goto ${target}_stage2
 :Amahi_stage2
 iseq ${ds} ${sourceforge}amahi/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=${ds} inst.ks=${ds}ks.cfg inst.updates=${ds}amahi.img
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=${ds} inst.ks=${ds}ks.cfg
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
-kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img inst.updates=${ds}amahi.img ${kp}
 boot
 
 #################################################
