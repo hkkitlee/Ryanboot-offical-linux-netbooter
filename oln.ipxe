@@ -95,6 +95,7 @@ item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
+item	--key C Amahi			(C) Amahi 11 amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2571,6 +2572,43 @@ kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.im
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name Live-Raizo.iso.img --timeout 100000 ${ds}Live-Raizo.iso.img${link} ||
 boot
+#################################################
+:Amahi
+set ds1 ${sourceforge}amahi/
+set ds2 ${mirror0}amahi/
+set ds3 ${mirror1}amahi/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Amahi_manual
+set ds ${mirror0}amahi/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Amahi_stage2
+iseq ${ds} ${sourceforge}amahi/ && set link ?viasf=1 ||
+
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=${ds}
+# inst.repo=http://repo.virtuozzo.com/vzlinux/8/BaseOS/x86_64/os/
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
+boot
+
+#################################################
+#################################################
 #################################################
 #################################################
 #################################################
