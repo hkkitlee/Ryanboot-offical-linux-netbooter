@@ -96,6 +96,7 @@ item	--gap -- Shortcut CAPITALS Letter
 item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
 item	--key C Amahi			(C) Amahi 11 amd64 (Mirror)
+item	--key D Turnkey			(D) Turnkey amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -181,6 +182,7 @@ item	PartMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
+item	Turnkey				Turnkey amd64 (Mirror)
 item	--gap
 
 item	--gap Arch
