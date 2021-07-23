@@ -2642,13 +2642,12 @@ echo
  iseq ${ds} ${sourceforge}turnkey/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=turnkey.iso.img && set from fromiso=/turnkey.iso || set from fetch=${ds}live/10root.squashfs
 
-set kp 
-#config enforcing=0 username=user components noeject hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset
+set kp root=/dev/ram rw showmounts di-live single noinithooks net.ifnames=0 --
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.gz boot=live union=overlay ${img} ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.gz ${img} ${kp}
 initrd --name initrd.gz --timeout 100000 ${ds}live/initrd.gz${link}
 iseq ${answer} Y && initrd --name turnkey.iso.img --timeout 100000 ${ds}turnkey.iso.img${link} ||
 boot
