@@ -2631,7 +2631,7 @@ read ds
 echo
 goto ${target}_stage2
 
-:Amahi_stage2
+:Openfiler_stage2
 iseq ${ds} ${sourceforge}openfiler/ && set link ?viasf=1 ||
 
 set kp ro ip=dhcp inst.gpt inst.stage2.all inst.stage2=${ds}
