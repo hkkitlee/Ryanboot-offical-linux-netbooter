@@ -2637,7 +2637,7 @@ goto ${target}_stage2
 :SystemRescue_stage2
 iseq ${ds} ${sourceforge}systemrescue/ && set link ?viasf=1 ||
 
-set kp archisobasedir=sysresccd archiso_http_srv=${ds}
+set kp archisobasedir=sysresccd archiso_http_srv=${ds} checksum
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
