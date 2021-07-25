@@ -2716,7 +2716,7 @@ goto ${target}_stage2
 :Bluestar_stage2
 iseq ${ds} ${sourceforge}bluestar/ && set link ?viasf=1 ||
 
-set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} checksum
+set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} cow_spacesize=30% cow_label=BSLX_PERSIST ipv6.disable=1 disablehooks=v86d,915resolution,gma3600 modprobe.blacklist=uvesafb console=tty1 checksum
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
