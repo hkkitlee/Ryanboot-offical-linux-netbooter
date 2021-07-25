@@ -132,9 +132,9 @@ item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
 item	--key w	MLL			(w) Minimal Linux Live amd64 (Mirror)
 item	--key x	Live-Raizo		(x) Live-Raizo amd64 (Mirror)
 item	--key y	SystemRescue		(y) SystemRescue amd64 (Mirror)
-item	--key z	EndeavourOS		(z) EndeavourOS Linux amd64 with Installer (Mirror)
+item	--key z	EndeavourOS		(z) EndeavourOS Linux amd64 Live with Installer (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
-item	--key A	Bluestar		(A) Bluestar Linux amd64 with Installer (Mirror)
+item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
 
 item	--gap
 item		start			Back to Top
