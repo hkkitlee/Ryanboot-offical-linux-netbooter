@@ -133,6 +133,7 @@ item	--key w	MLL			(w) Minimal Linux Live amd64 (Mirror)
 item	--key x	Live-Raizo		(x) Live-Raizo amd64 (Mirror)
 item	--key y	SystemRescue		(y) SystemRescue amd64 (Mirror)
 item	--key z	Bluestar		(z) Bluestar Linux amd64 (Mirror)
+item	--key A	EndeavourOS		(A) EndeavourOS Linux amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2687,6 +2688,41 @@ initrd --name amd_ucode.img --timeout 100000 ${ds}arch/boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
 boot
 #################################################
+:EndeavourOS
+
+set ds1 ${sourceforge}endeavouros/
+set ds2 ${mirror0}endeavouros/
+set ds3 ${mirror1}endeavouros/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:EndeavourOS_manual
+set ds ${mirror0}endeavouros/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:EndeavourOS_stage2
+iseq ${ds} ${sourceforge}endeavouros/ && set link ?viasf=1 ||
+
+set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} checksum
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=archiso.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
+initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
+initrd --name amd_ucode.img --timeout 100000 ${ds}arch/boot/amd_ucode.img${link}
+initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
+boot
 #################################################
 #################################################
 :background
