@@ -2637,13 +2637,13 @@ goto ${target}_stage2
 :SystemRescue_stage2
 iseq ${ds} ${sourceforge}systemrescue/ && set link ?viasf=1 ||
 
-set kp ip=dhcp misobasedir=manjaro miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1
+set kp ip=dhcp misobasedir=sysresccd miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} initrd=initramfs-x86_64.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
-initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/initramfs-x86_64.img${link}
+kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/x86_64/vmlinuz-x86_64${link} initrd=initramfs-x86_64.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
+initrd --name sysresccd.img --timeout 100000 ${ds}boot/x86_64/sysresccd.img${link}
 initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
 boot
