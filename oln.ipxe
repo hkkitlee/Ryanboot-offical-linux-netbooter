@@ -2719,7 +2719,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=archiso.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=archiso.img initrd=amd-ucode.img initrd=intel-ucode.img ${kp}
 initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
 initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img${link}
 initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${link}
