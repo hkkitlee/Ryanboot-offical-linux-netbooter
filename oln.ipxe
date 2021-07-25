@@ -2643,10 +2643,10 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/x86_64/vmlinuz-x86_64${link} initrd=initramfs-x86_64.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
-initrd --name sysresccd.img --timeout 100000 ${ds}boot/x86_64/sysresccd.img${link}
-initrd --name amd_ucode.img --timeout 100000 ${ds}boot/amd_ucode.img${link}
-initrd --name intel_ucode.img --timeout 100000 ${ds}boot/intel_ucode.img${link}
+kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}sysresccd/boot/x86_64/vmlinuz-x86_64${link} initrd=initramfs-x86_64.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
+initrd --name sysresccd.img --timeout 100000 ${ds}sysresccd/boot/x86_64/sysresccd.img${link}
+initrd --name amd_ucode.img --timeout 100000 ${ds}sysresccd/boot/amd_ucode.img${link}
+initrd --name intel_ucode.img --timeout 100000 ${ds}sysresccd/boot/intel_ucode.img${link}
 boot
 #################################################
 #################################################
