@@ -188,6 +188,7 @@ item	Arch				Arch Linux live amd64 with Option Installer Script
 item	Manjaro-Xfce			Manjaro Linux Xfce live amd64 with Installer (Mirror)
 item	BlackArch			BlackArch Linux live amd64 with Installer Script (Mirror)
 item	Garuda-Wayfire			Garuda Linux Wayfire live amd64 with Installer (Mirror)
+item	SystemRescue			SystemRescue amd64 (Mirror)
 item	--gap
 
 item	--gap Gentoo
