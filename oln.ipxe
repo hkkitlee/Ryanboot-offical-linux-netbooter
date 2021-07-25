@@ -575,7 +575,7 @@ read kp
 echo
 
 
-kernel ${ds}/archlinux/iso/latest/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} script=${is}
+kernel ${ds}/archlinux/iso/latest/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} script=${is} checksum
 initrd ${ds}/archlinux/iso/latest/arch/boot/x86_64/initramfs-linux.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/amd-ucode.img
 initrd ${ds}/archlinux/iso/latest/arch/boot/intel-ucode.img
@@ -1877,7 +1877,7 @@ echo
 
 iseq ${ds} ${sourceforge}blackarch/ && set link ?viasf=1 ||
 
-set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=${ds}
+set kp ip=dhcp archisobasedir=blackarch archiso_http_srv=${ds} checksum
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
@@ -1955,7 +1955,7 @@ echo
 
 iseq ${ds} ${sourceforge}garuda-wayfire/ && set link ?viasf=1 ||
 
-set kp ip=dhcp misobasedir=garuda miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 systemd.show_status=1 'apparmor=1' 'security=apparmor'
+set kp ip=dhcp misobasedir=garuda miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 systemd.show_status=1 'apparmor=1' 'security=apparmor' checksum
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
