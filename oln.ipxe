@@ -135,7 +135,7 @@ item	--key y	SystemRescue		(y) SystemRescue amd64 (Mirror)
 item	--key z	EndeavourOS		(z) EndeavourOS Linux amd64 Live with Installer (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
-item	--key B	Obarun			(B) Obarun Linux amd64 Live with Installer (Mirror)
+item	--key B	Grml			(B) Grml Linux amd64 Live (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2728,11 +2728,10 @@ initrd --name amd_ucode.img --timeout 100000 ${ds}arch/boot/amd_ucode.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
 boot
 #################################################
-:Obarun
-
-set ds1 ${sourceforge}obarun/
-set ds2 ${mirror0}obarun/
-set ds3 ${mirror1}obarun/
+:Grml
+set ds1 ${sourceforge}grml/
+set ds2 ${mirror0}grml/
+set ds3 ${mirror1}grml/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -2743,25 +2742,39 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:Obarun_manual
-set ds ${mirror0}obarun/
+
+:Grml_manual
+set ds ${mirror0}grml/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Obarun_stage2
-iseq ${ds} ${sourceforge}obarun/ && set link ?viasf=1 ||
+:Grml_stage2
+set bit 64
+echo -n 64/32 bit: ${}
+read bit
+echo
 
-set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} cow_spacesize=8G checksum
+set answer Y
+echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
+echo -n Do you want to use iPXE injection to boot (Y/n): ${}
+read answer
+echo
+
+iseq ${ds} ${sourceforge}grml/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=grml96-full.iso.img && set from fromiso=/grml96-full.iso || set from fetch=${ds}live/grml${bit}-full/grml${bit}-full.squashfs
+
+set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz${link} initrd=archiso.img initrd=intel_ucode.img ${kp}
-initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
-initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}boot/grml${bit}full/vmlinuz${link} initrd=initrd.img ${img} ${kp}
+initrd --name initrd.img --timeout 100000 ${ds}boot/grml${bit}full/initrd.img${link}
+iseq ${answer} Y && initrd --name grml96-full.iso.img --timeout 100000 ${ds}grml96-full.iso.img${link} ||
 boot
+
 #################################################
 #################################################
 #################################################
