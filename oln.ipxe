@@ -135,7 +135,7 @@ item	--key y	SystemRescue		(y) SystemRescue amd64 (Mirror)
 item	--key z	EndeavourOS		(z) EndeavourOS Linux amd64 Live with Installer (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
-item	--key B	Grml			(B) Grml Linux amd64 Live (Mirror)
+item	--key B	Grml			(B) Grml Linux amd64/i686+ Live (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -186,7 +186,7 @@ item	PartMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
-item	Grml				Grml Linux amd64 Live (Mirror)
+item	Grml				Grml Linux amd64/i686+ Live (Mirror)
 item	--gap
 
 item	--gap Arch
