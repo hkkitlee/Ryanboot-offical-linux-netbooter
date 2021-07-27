@@ -2765,7 +2765,7 @@ echo
 iseq ${ds} ${sourceforge}grml/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=grml96-full.iso.img && set from fromiso=/grml96-full.iso || set from fetch=${ds}live/grml${bit}-full/grml${bit}-full.squashfs
 
-set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp ${from}
+set kp boot=live apm=power-off vga=791 nomce net.ifnames=0 ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
