@@ -2141,11 +2141,12 @@ echo
 goto ${target}_stage2
 
 :Gparted-Live_stage2
-set answer Y
-echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
-echo -n Do you want to use iPXE injection to boot (Y/n): ${}
-read answer
-echo
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
 
 iseq ${ds} ${sourceforge}gparted-live/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=gparted-live.iso.img && set from fromiso=/gparted-live.iso || set from fetch=${ds}live/filesystem.squashfs
@@ -2184,11 +2185,12 @@ echo
 goto ${target}_stage2
 
 :Clonezilla_stage2
-set answer Y
-echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
-echo -n Do you want to use iPXE injection to boot (Y/n): ${}
-read answer
-echo
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
 
  iseq ${ds} ${sourceforge}clonezilla/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=clonezilla.iso.img && set from fromiso=/clonezilla.iso || set from fetch=${ds}live/filesystem.squashfs
@@ -2228,11 +2230,12 @@ echo
 goto ${target}_stage2
 
 :RedoRescue_stage2
-set answer Y
-echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
-echo -n Do you want to use iPXE injection to boot (Y/n): ${}
-read answer
-echo
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
 
 iseq ${ds} ${sourceforge}redorescue/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=redorescue.iso.img && set from fromiso=/redorescue.iso || set from fetch=${ds}live/filesystem.squashfs
@@ -2564,11 +2567,12 @@ echo
 goto ${target}_stage2
 
 :Live-Raizo_stage2
-set answer Y
-echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
-echo -n Do you want to use iPXE injection to boot (Y/n): ${}
-read answer
-echo
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
 
 iseq ${ds} ${sourceforge}live-raizo/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=Live-Raizo.iso.img && set from fromiso=/Live-Raizo.iso || set from fetch=${ds}live/filesystem.squashfs
@@ -2763,12 +2767,6 @@ item	--gap	-- Do you want to use iPXE injection to boot (Yes/No): ${}
 item Y Yes
 item n No
 choose answer
-
-#set answer Y
-#echo This initrd is not support fetch filesystem.squashfs from SourceForge (forced to Y).
-#echo -n Do you want to use iPXE injection to boot (Y/n): ${}
-#read answer
-#echo
 
 iseq ${ds} ${sourceforge}grml/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=grml96-full.iso.img && set from fromiso=/grml96-full.iso || set from fetch=${ds}live/grml${bit}-full/grml${bit}-full.squashfs
