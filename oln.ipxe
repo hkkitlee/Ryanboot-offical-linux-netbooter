@@ -135,6 +135,7 @@ item	--key y	SystemRescue		(y) SystemRescue amd64 (Mirror)
 item	--key z	EndeavourOS		(z) EndeavourOS Linux amd64 Live with Installer (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
+item	--key B	Obarun			(B) Obarun Linux amd64 Live with Installer (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2724,6 +2725,41 @@ echo
 kernel --name vmlinuz --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz${link} initrd=archiso.img initrd=amd_ucode.img initrd=intel_ucode.img ${kp}
 initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
 initrd --name amd_ucode.img --timeout 100000 ${ds}arch/boot/amd_ucode.img${link}
+initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
+boot
+#################################################
+:Obarun
+
+set ds1 ${sourceforge}obarun/
+set ds2 ${mirror0}obarun/
+set ds3 ${mirror1}obarun/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Obarun_manual
+set ds ${mirror0}obarun/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Obarun_stage2
+iseq ${ds} ${sourceforge}obarun/ && set link ?viasf=1 ||
+
+set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} cow_spacesize=8G checksum
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz${link} initrd=archiso.img initrd=intel_ucode.img ${kp}
+initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
 initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
 boot
 #################################################
