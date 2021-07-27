@@ -2752,10 +2752,10 @@ echo
 goto ${target}_stage2
 
 :Grml_stage2
-set bit 64
-echo -n 64/32 bit: ${}
-read bit
-echo
+menu 32/64 bit
+item 64 64bit
+item 32 32bit
+choose bit
 
 set answer Y
 echo This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Y).
