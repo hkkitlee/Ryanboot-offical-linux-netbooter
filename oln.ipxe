@@ -186,6 +186,7 @@ item	PartMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
+item	Grml				Grml Linux amd64 Live (Mirror)
 item	--gap
 
 item	--gap Arch
@@ -2763,7 +2764,7 @@ read answer
 echo
 
 iseq ${ds} ${sourceforge}grml/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=grml96-full.iso.img && set from findiso=/grml96-full.iso || set from fetch=${ds}live/grml${bit}-full/grml${bit}-full.squashfs
+iseq ${answer} Y && set img initrd=grml96-full.iso.img && set from fromiso=/grml96-full.iso || set from fetch=${ds}live/grml${bit}-full/grml${bit}-full.squashfs
 
 set kp boot=live apm=power-off vga=791 nomce net.ifnames=0 ip=dhcp live-media-path=/live/grml64-full/ bootid=2ca46f22-381a-4d24-9c57-b147ddb24540 ${from}
 echo -n Kernel Parameter, Bootcode: ${}
