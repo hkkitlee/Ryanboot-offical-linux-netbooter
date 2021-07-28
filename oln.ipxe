@@ -2809,7 +2809,6 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}linux-lite/ && set link ?viasf=1 ||
 
-echo ramdisk_size value is in kb
 set kp boot=casper ip=dhcp url=${ds}linux-lite-5.4-64bit.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
