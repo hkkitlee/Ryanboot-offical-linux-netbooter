@@ -136,6 +136,7 @@ item	--key z	EndeavourOS		(z) EndeavourOS Linux amd64 Live with Installer (Mirro
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
 item	--key B	Grml			(B) Grml Linux amd64/i686+ Live (Mirror)
+item	--key C	Linux-Lite		(C) Linux-Lite amd64 Live (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2782,6 +2783,42 @@ iseq ${answer} Y && initrd --name grml96-full.iso.img --timeout 100000 ${ds}grml
 boot
 
 #################################################
+:Linux-Lite
+set ds1 ${sourceforge}linux-lite/
+set ds2 ${mirror0}linux-lite/
+set ds3 ${mirror1}linux-lite/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Linux-Lite_manual
+set ds ${mirror0}linux-lite/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Linux-Lite_stage2
+
+iseq ${ds} ${sourceforge}linux-lite/ && set link ?viasf=1 ||
+
+echo ramdisk_size value is in kb
+set kp root=/dev/ram0 ramdisk_size=3072000 ip=dhcp locale=zh_CN keyboard-configuration/layoutcode?=cn url=${ds}linux-lite-5.4-64bit.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.gz ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
+
+boot
 #################################################
 #################################################
 :background
