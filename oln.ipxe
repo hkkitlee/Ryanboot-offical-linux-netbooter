@@ -188,6 +188,7 @@ item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
 item	Grml				Grml Linux amd64/i686+ Live (Mirror)
+item	Linux-Lite			Linux-Lite amd64 Live (Mirror)
 item	--gap
 
 item	--gap Arch
