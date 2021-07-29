@@ -2800,7 +2800,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Linux-Lite_manual
-set ds ${mirror0}linux-lite/
+set ds ${mirror0}linux-lite//
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
@@ -2808,16 +2808,24 @@ goto ${target}_stage2
 
 :Linux-Lite_stage2
 
-iseq ${ds} ${sourceforge}linux-lite/ && set link ?viasf=1 ||
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from SourceForge (forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
 
-set kp boot=casper ip=dhcp url=${ds}linux-lite-5.4-64bit.iso
+iseq ${ds} ${sourceforge}linux-lite/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=linux-lite.iso.img && set from fromiso=/linux-lite.iso || set from url=${ds}linux-lite-5.4-64bit.iso
+
+set kp boot=casper ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.gz ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.gz ${img} ${kp}
 initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
-
+iseq ${answer} Y && initrd --name linux-lite.iso.img --timeout 100000 ${ds}linux-lite.iso.img${link} ||
 boot
 #################################################
 #################################################
