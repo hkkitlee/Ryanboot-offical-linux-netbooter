@@ -2800,7 +2800,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Linux-Lite_manual
-set ds ${mirror0}linux-lite//
+set ds ${mirror0}linux-lite/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
