@@ -2810,7 +2810,7 @@ goto ${target}_stage2
 
 menu iPXE injection to boot ${target}
 item    --gap   -- This initrd is not support fetch iso from https (forced to Yes).
-item    --gap   -- Do you want to fetch iso from offical site (OSDN.net) to boot (Yes/No): ${}
+item    --gap   -- Do you want to fetch iso from ${mirror0} to boot (Yes/No): ${}
 item Y Yes
 item n No
 choose answer
