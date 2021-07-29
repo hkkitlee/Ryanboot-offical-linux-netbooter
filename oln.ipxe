@@ -2824,8 +2824,8 @@ read kp
 echo
 
 kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.gz ${img} ${kp}
-initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
 iseq ${answer} Y && initrd --name linux-lite.iso.img --timeout 100000 ${ds}linux-lite.iso.img${link} ||
+initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
 boot
 #################################################
 #################################################
