@@ -2810,13 +2810,13 @@ goto ${target}_stage2
 
 menu iPXE injection to boot ${target}
 item    --gap   -- This initrd is not support fetch iso from https (forced to Yes).
-item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item    --gap   -- Do you want to fetch iso from offical site (OSDN.net) to boot (Yes/No): ${}
 item Y Yes
 item n No
 choose answer
 
 iseq ${ds} ${sourceforge}linux-lite/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set from url=https://osdn.net/dl/linuxlite/linux-lite-5.4-64bit.iso || set from url=${ds}linux-lite-5.4-64bit.iso
+iseq ${answer} Y && set from url=${mirror0}linux-lite/linux-lite-5.4-64bit.iso || set from url=${ds}linux-lite-5.4-64bit.iso
 
 set kp boot=casper ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
