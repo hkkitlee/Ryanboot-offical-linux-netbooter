@@ -12,7 +12,7 @@
 #link = option for URL link
 #arch = i386/amd64
 
-console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768
+console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 ||  console --picture http://183.230.23.18:58000/ryanboot/logo.png --x 1024 --y 768
 imgtrust --allow 
 
 set mirror0 http://183.230.23.18:58000/ryanboot/
