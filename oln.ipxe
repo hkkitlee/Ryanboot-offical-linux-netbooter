@@ -2827,6 +2827,40 @@ kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.
 initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
 boot
 #################################################
+:NST
+set ds1 ${sourceforge}nst/
+set ds2 ${mirror0}nst/
+set ds3 ${mirror1}nst/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:NST_manual
+set ds ${mirror0}nst/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:NST_stage2
+iseq ${ds} ${sourceforge}nst/ && set link ?viasf=1 ||
+
+#set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=${ds} inst.stage2=${ds}
+set kp rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 audit=0 systemd.unit=multi-user.target nstrelocate=false ro ip=dhcp inst.stage2.all inst.repo=${ds} inst.stage2=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+initrd --name initrd0.img --timeout 100000 ${ds}isolinux/initrd0.img${link}
+kernel --name vmlinuz0 --timeout 100000 ${ds}isolinux/vmlinuz${link} initrd=initrd0.img ${kp}
+boot
+#################################################
 #################################################
 :background
 
