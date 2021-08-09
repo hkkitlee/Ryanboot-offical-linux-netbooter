@@ -137,7 +137,7 @@ item	--gap -- Shortcut CAPITALS Letter
 item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
 item	--key B	Grml			(B) Grml Linux amd64/i686+ Live (Mirror)
 item	--key C	Linux-Lite		(C) Linux-Lite amd64 Live (Mirror)
-#item	--key D	NST			(D) Network Security Toolkit amd64 Live (Mirror)
+item	--key D	NST			(D) Network Security Toolkit amd64 Live (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2853,7 +2853,7 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}nst/ && set link ?viasf=1 ||
 
 #set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=${ds} inst.stage2=${ds}
-set kp rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 audit=0 systemd.unit=multi-user.target nstrelocate=false ro ip=dhcp inst.stage2.all inst.repo=${ds} inst.stage2=${ds}
+set kp rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 audit=0 systemd.unit=multi-user.target nstrelocate=false ro ip=dhcp inst.stage2.all inst.repo=${ds}/LiveOS inst.stage2=${ds}/LiveOS
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
