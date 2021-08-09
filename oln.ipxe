@@ -2853,7 +2853,7 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}nst/ && set link ?viasf=1 ||
 
 #set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=${ds} inst.stage2=${ds}
-set kp rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 audit=0 systemd.unit=multi-user.target nstrelocate=false ro ip=dhcp inst.stage2.all inst.repo=${ds}/LiveOS inst.stage2=${ds}/LiveOS
+set kp rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 audit=0 systemd.unit=multi-user.target nstrelocate=false ro ip=dhcp root=live:${ds}LiveOS/squashfs.img
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
