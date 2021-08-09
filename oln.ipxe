@@ -2859,7 +2859,7 @@ read kp
 echo
 
 initrd --name initrd0.img --timeout 100000 ${ds}isolinux/initrd0.img${link}
-kernel --name vmlinuz0 --timeout 100000 ${ds}isolinux/vmlinuz${link} initrd=initrd0.img ${kp}
+kernel --name vmlinuz0 --timeout 100000 ${ds}isolinux/vmlinuz0${link} initrd=initrd0.img ${kp}
 boot
 #################################################
 #################################################
