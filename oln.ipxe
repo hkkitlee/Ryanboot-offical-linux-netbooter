@@ -393,7 +393,7 @@ echo
 goto ${target}_stage2
 
 :Debian_stage2
-set version buster
+set version bullseye
 echo -n Debian installer Version (bullseye, buster, jessie): ${}
 read version
 echo
