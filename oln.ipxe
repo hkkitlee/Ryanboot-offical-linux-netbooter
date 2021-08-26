@@ -1385,13 +1385,13 @@ initrd ${ds}${release}/smeos/x86_64/images/pxeboot/initrd.img
 boot
 #################################################
 :openEuler
-set ds1 https://repo.openeuler.org/
+set ds1 https://mirrors.tuna.tsinghua.edu.cn/openeuler/
 set ds2 https://mirrors.huaweicloud.com/openeuler/
 set ds3 https://mirror.nju.edu.cn/openeuler/
 set ds4 http://mirrors.hit.edu.cn/openeuler/
 set ds5 https://mirror.truenetwork.ru/openeuler/
 set ds6 http://mirror.lzu.edu.cn/openeuler/
-set ds7 https://mirrors.tuna.tsinghua.edu.cn/openeuler/
+set ds7 https://repo.openeuler.org/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
