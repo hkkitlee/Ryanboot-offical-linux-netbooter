@@ -2855,16 +2855,16 @@ echo
 goto ${target}_stage2
 
 :Archman_stage2
-set kp ip=dhcp archiso_http_srv=${ds}/archman/
+set kp ip=dhcp archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 
-kernel ${ds}/archman/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd ${ds}/archman/arch/boot/x86_64/initramfs-linux.img
-initrd ${ds}/archman/arch/boot/amd-ucode.img
-initrd ${ds}/archman/arch/boot/intel-ucode.img
+kernel ${ds}/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd ${ds}/arch/boot/x86_64/initramfs-linux.img
+initrd ${ds}/arch/boot/amd-ucode.img
+initrd ${ds}/arch/boot/intel-ucode.img
 boot
 #################################################
 #################################################
