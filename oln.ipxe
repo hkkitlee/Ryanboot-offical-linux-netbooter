@@ -2830,10 +2830,11 @@ kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.
 initrd --name initrd.gz --timeout 100000 ${ds}casper/initrd.gz${link}
 boot
 #################################################
-:NST
-set ds1 ${sourceforge}nst/
-set ds2 ${mirror0}nst/
-set ds3 ${mirror1}nst/
+:Archman
+
+set ds1 ${sourceforge}archman/
+set ds2 ${mirror0}archman/
+set ds3 ${mirror1}archman/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -2844,24 +2845,25 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:NST_manual
-set ds ${mirror0}nst/
+
+:Archman_manual
+set ds ${mirror0}archman/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:NST_stage2
-iseq ${ds} ${sourceforge}nst/ && set link ?viasf=1 ||
-
-#set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=${ds} inst.stage2=${ds}
-set kp rootfstype=auto ro rd.live.image rd.luks=0 rd.md=0 rd.dm=0 audit=0 systemd.unit=multi-user.target nstrelocate=false ro ip=dhcp root=live:${ds}LiveOS/squashfs.img
+:Archman_stage2
+set kp ip=dhcp archiso_http_srv=${ds}/archman/
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-initrd --name initrd0.img --timeout 100000 ${ds}isolinux/initrd0.img${link}
-kernel --name vmlinuz0 --timeout 100000 ${ds}isolinux/vmlinuz0${link} initrd=initrd0.img ${kp}
+
+kernel ${ds}/archman/arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd ${ds}/archman/arch/boot/x86_64/initramfs-linux.img
+initrd ${ds}/archman/arch/boot/amd-ucode.img
+initrd ${ds}/archman/arch/boot/intel-ucode.img
 boot
 #################################################
 #################################################
