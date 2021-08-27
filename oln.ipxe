@@ -137,7 +137,7 @@ item	--gap -- Shortcut CAPITALS Letter
 item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
 item	--key B	Grml			(B) Grml Linux amd64/i686+ Live (Mirror)
 item	--key C	Linux-Lite		(C) Linux-Lite amd64 Live (Mirror)
-#item	--key D	NST			(D) Network Security Toolkit amd64 Live (Mirror)
+item	--key D	Archman			(D) Archman Linux amd64 Live with Installer (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -200,6 +200,7 @@ item	Garuda-Wayfire			Garuda Linux Wayfire live amd64 with Installer (Mirror)
 item	SystemRescue			SystemRescue live amd64 (Mirror)
 item	EndeavourOS			EndeavourOS Linux live amd64 with Installer (Mirror)
 item	Bluestar			Bluestar Linux live amd64 with Installer (Mirror)
+item	Archman				Archman Linux amd64 Live with Installer (Mirror)
 item	--gap
 
 item	--gap Gentoo
