@@ -2820,7 +2820,7 @@ item n No
 choose answer
 
 iseq ${ds} ${sourceforge}linux-lite/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set from url=${mirror0}linux-lite/linux-lite-5.4-64bit.iso || set from url=${ds}linux-lite-5.4-64bit.iso
+iseq ${answer} Y && set from url=${mirror0}linux-lite/linux-lite.iso || set from url=${ds}linux-lite.iso
 
 set kp boot=casper ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
