@@ -138,7 +138,6 @@ item	--key A	Bluestar		(A) Bluestar Linux amd64 Live with Installer (Mirror)
 item	--key B	Grml			(B) Grml Linux amd64/i686+ Live (Mirror)
 item	--key C	Linux-Lite		(C) Linux-Lite amd64 Live (Mirror)
 item	--key D	Archman			(D) Archman Linux amd64 Live with Installer (Mirror)
-item	--key E	Obarun			(E) Obarun Linux JWM amd64 Live (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -2868,42 +2867,6 @@ initrd ${ds}/arch/boot/amd-ucode.img
 initrd ${ds}/arch/boot/intel-ucode.img
 boot
 #################################################
-:Obarun
-set ds1 ${sourceforge}obarun/
-set ds2 ${mirror0}obarun/
-set ds3 ${mirror1}obarun/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:Obarun_manual
-echo
-set ds ${mirror0}obarun/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:Obarun_stage2
-
-iseq ${ds} ${sourceforge}obarun/ && set link ?viasf=1 ||
-
-set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} checksum
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-kernel --name vmlinuz --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz${link} initrd=archiso.img initrd=intel_ucode.img ${kp}
-initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
-initrd --name intel_ucode.img --timeout 100000 ${ds}arch/boot/intel_ucode.img${link}
-boot
 #################################################
 #################################################
 :background
