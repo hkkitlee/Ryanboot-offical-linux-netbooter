@@ -2895,7 +2895,7 @@ goto ${target}_stage2
 
 iseq ${ds} ${sourceforge}obarun/ && set link ?viasf=1 ||
 
-set kp ip=dhcp archiso_http_srv=${ds} checksum
+set kp ip=dhcp archisobasedir=arch archiso_http_srv=${ds} checksum
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
