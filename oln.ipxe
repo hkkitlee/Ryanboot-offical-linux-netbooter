@@ -2971,7 +2971,7 @@ echo
 goto ${target}_stage2
 
 :Archcraft_stage2
-set kp ip=dhcp archiso_http_srv=${ds}
+set kp ip=dhcp misobasedir=arch archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
