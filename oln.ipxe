@@ -327,6 +327,7 @@ set ds1 http://ftp.cuhk.edu.hk/pub/linux
 set ds2 http://mirrors.tuna.tsinghua.edu.cn
 set ds3 http://ftp-srv2.kddilabs.jp/Linux/packages
 set ds4 http://ftp.riken.jp/Linux
+set ds5 https://hkg.mirror.rackspace.com/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -348,7 +349,7 @@ goto ${target}_stage2
 
 :Fedora_stage2
 set version 34
-echo -n Fedora installer Version (32-34): ${}
+echo -n Fedora installer Version (32-34, test/35_Beta): ${}
 read version
 echo
 
