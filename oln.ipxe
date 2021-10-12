@@ -3002,7 +3002,7 @@ goto ${target}_stage3
 :Debian-Live_stage3
 
 echo ramdisk_size value is in kb
-set kp ip=dhcp boot=live components splash url=${cdds}current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-xfce.iso
+set kp ip=dhcp boot=live components splash fetch=${cdds}current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-xfce.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
