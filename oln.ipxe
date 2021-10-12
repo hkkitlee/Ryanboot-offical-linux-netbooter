@@ -2946,6 +2946,69 @@ initrd ${ds}arch/boot/amd-ucode.img
 initrd ${ds}arch/boot/intel-ucode.img
 boot
 #################################################
+:Debian-Live
+set ds1 ${sourceforge}debian/
+set ds2 ${mirror0}debian/
+set ds3 ${mirror1}debian/
+
+menu Kernel boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Debian-Live_manual
+set ds ${sourceforge}debian/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+
+:Debian-Live_stage2
+
+iseq ${ds} ${sourceforge}debian/ && set link ?viasf=1 ||
+
+set cdds1 https://mirrors.tuna.tsinghua.edu.cn/debian-cd/
+set cdds2 https://cdimage.debian.org/debian-cd/
+set cdds3 http://ftp.cn.debian.org/debian-cd/
+
+menu ISO boot ${target} from:
+item --gap -- https://www.debian.org/mirror/list
+item 1 ${cdds1}
+item 2 ${cdds2}
+item 3 ${cdds3}
+item manual Manual Entry URL
+choose iso
+
+iseq ${iso} manual && goto ${target}_isomanual || set cdds ${cdds${iso}} && goto ${target}_stage3
+
+
+:Debian-Live_isomanual
+set ds http://ftp.cn.debian.org/debian-cd/
+echo -n Manual Entry ${target} ISO URL: ${}
+read cdds
+echo
+goto ${target}_stage3
+
+
+
+:Debian-Live_stage3
+
+echo ramdisk_size value is in kb
+set kp root=/dev/ram0 ramdisk_size=3072000 ip=dhcp locale=zh_CN keyboard-configuration/layoutcode?=cn url=${cdds}current-live/amd64/iso-hybrid/debian-live-11.1.0-amd64-xfce.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd ${kp}
+initrd --name initrd --timeout 100000 ${ds}live/initrd${link}
+
+boot
 #################################################
 #################################################
 #################################################
