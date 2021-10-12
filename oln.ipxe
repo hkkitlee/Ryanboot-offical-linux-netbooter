@@ -140,7 +140,7 @@ item	--key C	Linux-Lite		(C) Linux-Lite amd64 Live (Mirror)
 item	--key D	Archman			(D) Archman Linux amd64 Live with Installer (Mirror)
 item	--key E Mabox			(E) Mabox amd64 (Mirror)
 item	--key F ArcoLinux		(F) ArcoLinux amd64 (Mirror)
-item	--key G	Debian-Live		(G) Debian-Live amd64/i386
+item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 
 item	--gap
 item		start			Back to Top
@@ -193,7 +193,7 @@ item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
 item	Grml				Grml Linux amd64/i686+ Live (Mirror)
 item	Linux-Lite			Linux-Lite amd64 Live (Mirror)
-item	Debian-Live			Debian-Live amd64/i386
+item	Debian-Live			Debian-Live xfce amd64/i386
 item	--gap
 
 item	--gap Arch
