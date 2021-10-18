@@ -1091,8 +1091,8 @@ echo
 goto ${target}_stage2
 
 :Devuan_stage2
-set releases beowulf
-echo -n Releases (jessie,beowulf): ${}
+set releases chimaera
+echo -n Releases (jessie,ascii,beowulf,chimaera): ${}
 read releases
 echo
 
