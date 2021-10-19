@@ -141,6 +141,7 @@ item	--key D	Archman			(D) Archman Linux amd64 Live with Installer (Mirror)
 item	--key E Mabox			(E) Mabox amd64 (Mirror)
 item	--key F ArcoLinux		(F) ArcoLinux amd64 (Mirror)
 item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
+item	--key H Snal			(H) Snal amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -207,6 +208,7 @@ item	Bluestar			Bluestar Linux live amd64 with Installer (Mirror)
 item	Archman				Archman Linux amd64 Live with Installer (Mirror)
 item	Mabox				Mabox amd64 (Mirror)
 item	ArcoLinux			ArcoLinux amd64 (Mirror)
+item	Snal				Snal amd64 (Mirror)
 item	--gap
 
 item	--gap Gentoo
@@ -3012,6 +3014,42 @@ initrd --name initrd.img --timeout 100000 ${ds}initrd.img${link}
 
 boot
 #################################################
+:Snal
+
+set ds1 ${sourceforge}snal/
+set ds2 ${mirror0}snal/
+set ds3 ${mirror1}snal/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Snal_manual
+set ds ${mirror0}snal/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Snal_stage2
+set kp ip=dhcp archiso_http_srv=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+kernel ${ds}arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd ${ds}arch/boot/x86_64/initramfs-linux.img
+initrd ${ds}arch/boot/amd-ucode.img
+initrd ${ds}arch/boot/intel-ucode.img
+boot
+
 #################################################
 #################################################
 :background
