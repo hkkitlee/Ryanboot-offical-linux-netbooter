@@ -2948,10 +2948,10 @@ read kp
 echo
 
 
-kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux{link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img{link}
-initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img{link}
-initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img{link}
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img${link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img${link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${link}
 boot
 #################################################
 :Debian-Live
@@ -3049,10 +3049,10 @@ read kp
 echo
 
 
-kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux{link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img{link}
-initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img{link}
-initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img{link}
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img${link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img${link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${link}
 boot
 
 #################################################
@@ -3086,10 +3086,10 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux{link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=archiso.img ${kp} checksum
-initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img{link}
-initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img{link}
-initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img{link}
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=archiso.img ${kp} checksum
+initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img${link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img${link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${link}
 boot
 
 #################################################
