@@ -142,6 +142,7 @@ item	--key E Mabox			(E) Mabox amd64 (Mirror)
 item	--key F ArcoLinux		(F) ArcoLinux amd64 (Mirror)
 item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 item	--key H Snal			(H) Snal amd64 (Mirror)
+item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -209,6 +210,7 @@ item	Archman				Archman Linux amd64 Live with Installer (Mirror)
 item	Mabox				Mabox amd64 (Mirror)
 item	ArcoLinux			ArcoLinux amd64 (Mirror)
 item	Snal				Snal amd64 (Mirror)
+item	Reborn				RebornLinux amd64 (Mirror)
 item	--gap
 
 item	--gap Gentoo
@@ -2938,16 +2940,18 @@ echo
 goto ${target}_stage2
 
 :ArcoLinux_stage2
+iseq ${ds} ${sourceforge}arco/ && set link ?viasf=1 ||
+
 set kp ip=dhcp archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 
-kernel ${ds}arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd ${ds}arch/boot/x86_64/initramfs-linux.img
-initrd ${ds}arch/boot/amd-ucode.img
-initrd ${ds}arch/boot/intel-ucode.img
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux{link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img{link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img{link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img{link}
 boot
 #################################################
 :Debian-Live
@@ -3038,18 +3042,57 @@ echo
 goto ${target}_stage2
 
 :Snal_stage2
+iseq ${ds} ${sourceforge}snal/ && set link ?viasf=1 ||
 set kp ip=dhcp archiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
 
-kernel ${ds}arch/boot/x86_64/vmlinuz-linux vmlinuz-linux initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd ${ds}arch/boot/x86_64/initramfs-linux.img
-initrd ${ds}arch/boot/amd-ucode.img
-initrd ${ds}arch/boot/intel-ucode.img
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux{link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img{link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img{link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img{link}
 boot
 
+#################################################
+:Reborn
+
+set ds1 ${sourceforge}reborn/
+set ds2 ${mirror0}reborn/
+set ds3 ${mirror1}reborn/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Reborn_manual
+set ds ${mirror0}reborn/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Reborn_stage2
+iseq ${ds} ${sourceforge}reborn/ && set link ?viasf=1 ||
+set kp ip=dhcp archiso_http_srv=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux{link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=archiso.img ${kp} checksum
+initrd --name archiso.img --timeout 100000 ${ds}arch/boot/x86_64/archiso.img{link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img{link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img{link}
+boot
+
+#################################################
 #################################################
 #################################################
 :background
