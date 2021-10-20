@@ -3120,7 +3120,7 @@ goto ${target}_stage2
 :Regata_stage2
 iseq ${ds} ${sourceforge}regata/ && set link ?viasf=1 ||
 
-set kp root=/dev/ram0 init=/linuxrc dokeymap looptype=squashfs loop=/image.squashfs cdroot vga=791
+set kp quiet splash ivrs_ioapic[32]=00:14.0 loglevel=0 rd.systemd.show_status=auto rd.udev.log_priority=0 vt.global_cursor_default=0 rd.driver.blacklist=nouveau modprobe.blacklist=nouveau i8042.nopnp=1 root=live:CDLABEL=CDROM rd.live.image looptype=squashfs loop=/squashfs.img
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
