@@ -143,6 +143,7 @@ item	--key F ArcoLinux		(F) ArcoLinux amd64 (Mirror)
 item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
+item	--key J Regata			(J) Regata amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -216,6 +217,7 @@ item	--gap
 item	--gap Gentoo
 item	Gentoo-Minimal			Gentoo Linux Minimal live amd64 (Mirror)
 item	Containerlinux			Container Linux by flatcar live amd64
+item	Regata				Regata amd64 (Mirror)
 item	--gap
 
 item	--gap openSUSE
@@ -3093,6 +3095,40 @@ initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${l
 boot
 
 #################################################
+:Regata
+
+set ds1 ${sourceforge}regata/
+set ds2 ${mirror0}regata/
+set ds3 ${mirror1}regata/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Regata_manual
+set ds ${mirror0}regata/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Regata_stage2
+iseq ${ds} ${sourceforge}regata/ && set link ?viasf=1 ||
+
+set kp root=/dev/ram0 init=/linuxrc dokeymap cdroot vga=791 quiet splash ivrs_ioapic[32]=00:14.0 rd.systemd.show_status=auto rd.udev.log_priority=0 vt.global_cursor_default=0 rd.driver.blacklist=nouveau modprobe.blacklist=nouveau i8042.nopnp=1
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name linux --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd initrd=squashfs.img ${kp} loglevel=0 rd.live.image looptype=squashfs loop=/squashfs.img
+initrd --name initrd --timeout 100000 ${ds}boot/x86_64/loader/initrd${link}
+initrd --name squashfs.img --timeout 100000 ${ds}LiveOS/squashfs.img.img${link}
+boot
 #################################################
 #################################################
 :background
