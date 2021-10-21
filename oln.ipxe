@@ -3125,7 +3125,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name linux --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd initrd=Regata.iso.img ${kp} loglevel=0 rd.live.image cdroot looptype=iso loop=/Regata.iso
+kernel --name linux --timeout 100000 ${ds}boot/x86_64/loader/linux${link} initrd=initrd initrd=Regata.iso.img ${kp} loglevel=0 rd.live.image cdroot looptype=squashfs isoboot=/Regata.iso loop=/LiveOS/squashfs.img
 initrd --name initrd --timeout 100000 ${ds}boot/x86_64/loader/initrd${link}
 initrd --name Regata.iso.img --timeout 100000 ${ds}Regata.iso.img${link}
 boot
