@@ -679,7 +679,7 @@ goto ${target}_stage2
 
 :Alpine_stage2
 set version latest-stable 
-echo -n Version: v3.0-v3.14, latest-stable  version: ${}                                                      
+echo -n Version: v3.0-v3.15, latest-stable  version: ${}                                                      
 read version                                                                    
 echo
 
