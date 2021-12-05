@@ -3097,11 +3097,13 @@ boot
 set ds1 https://mirror.0xem.ma/stream/
 set ds2 http://hk.mirrors.thegigabit.com/centos/
 set ds3 http://mirrors.tuna.tsinghua.edu.cn/centos-stream/
+set ds4 http://mirror.stream.centos.org/9-stream/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
