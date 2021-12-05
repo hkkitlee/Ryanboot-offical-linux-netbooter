@@ -1463,8 +1463,6 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :CentOS_manual
-echo http://isoredirect.centos.org/centos/8-stream/isos/x86_64/
-echo
 set ds http://mirrors.tuna.tsinghua.edu.cn/centos/
 echo -n Manual Entry ${target} URL: ${}
 read ds
@@ -1482,8 +1480,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}-stream/BaseOS/x86_64/os ${kp}
-initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
+kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
+initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
 :CloudLinuxOS
