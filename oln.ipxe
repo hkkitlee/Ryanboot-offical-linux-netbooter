@@ -97,6 +97,7 @@ item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
 item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
 item	--key C Amahi			(C) Amahi 11 amd64 (Mirror)
 item	--key D Centosstream		(D) Centos-Stream amd64
+item	--key E UCS			(E) Univention Corporate Server amd64
 
 item	--gap
 item		start			Back to Top
@@ -198,6 +199,7 @@ item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
 item	Grml				Grml Linux amd64/i686+ Live (Mirror)
 item	Linux-Lite			Linux-Lite amd64 Live (Mirror)
 item	Debian-Live			Debian-Live xfce amd64/i386
+item	UCS				Univention Corporate Server amd64
 item	--gap
 
 item	--gap Arch
@@ -3130,6 +3132,51 @@ kernel ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=ini
 initrd ${ds}${version}-stream/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
+:UCS
+
+set ds1 https://updates.software-univention.de
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:UCS_manual
+echo Mirror List: https://www.debian.org/mirror/list
+echo
+set ds https://updates.software-univention.de/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:UCS_stage2
+set version 5.0-1
+echo -n Univention Corporate Server installer Version (4.0-0 - 5.0-1): ${}
+read version
+echo
+
+set interface gtk
+echo -n Debian installer interface (tui, gtk): ${}
+read interface
+echo
+
+
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+iseq ${interface} gtk && set link gtk/ || set link
+cpuid --ext 29 && set arch amd64 || set arch i386
+
+
+initrd ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/initrd.gz
+kernel ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+
+boot
+
 #################################################
 #################################################
 :background
