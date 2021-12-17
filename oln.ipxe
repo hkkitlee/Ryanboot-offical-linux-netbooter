@@ -3172,9 +3172,10 @@ iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-initrd ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/initrd.gz
-kernel ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-
+#initrd ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/initrd.gz
+#kernel ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd https://updates.software-univention.de/pxe/5.0-1/amd64/debian-installer/amd64/initrd.gz
+kernel https://updates.software-univention.de/pxe/5.0-1/amd64/debian-installer/amd64/linux
 boot
 
 #################################################
