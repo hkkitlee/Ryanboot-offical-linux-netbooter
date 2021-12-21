@@ -3144,7 +3144,6 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :UCS_manual
-echo Mirror List: https://www.debian.org/mirror/list
 echo
 set ds https://updates.software-univention.de/
 echo -n Manual Entry ${target} URL: ${}
@@ -3172,10 +3171,8 @@ iseq ${interface} gtk && set link gtk/ || set link
 cpuid --ext 29 && set arch amd64 || set arch i386
 
 
-#initrd ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/initrd.gz
-#kernel ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
-initrd https://updates.software-univention.de/pxe/5.0-1/amd64/debian-installer/amd64/initrd.gz
-kernel https://updates.software-univention.de/pxe/5.0-1/amd64/debian-installer/amd64/linux
+initrd ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/initrd.gz
+kernel ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 boot
 
 #################################################
