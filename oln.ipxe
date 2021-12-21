@@ -3158,7 +3158,7 @@ read version
 echo
 
 set interface gtk
-echo -n Debian installer interface (tui, gtk): ${}
+echo -n Univention Corporate Server installer interface (tui, gtk): ${}
 read interface
 echo
 
@@ -3168,11 +3168,11 @@ read kp
 echo
 
 iseq ${interface} gtk && set link gtk/ || set link
-cpuid --ext 29 && set arch amd64 || set arch i386
+set arch amd64
 
 
-initrd ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/initrd.gz
-kernel ${ds}/pxe/${version}/${arch}/${interface}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
+initrd ${ds}/pxe/${version}/${arch}/${link}/debian-installer/${arch}/initrd.gz
+kernel ${ds}/pxe/${version}/${arch}/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 boot
 
 #################################################
