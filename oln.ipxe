@@ -3193,14 +3193,14 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
-:Rescuezilla_manual
+:Rescuezilla1_manual
 set ds ${mirror0}rescuezilla/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Rescuezilla_stage2
+:Rescuezilla1_stage2
 
 iseq ${ds} ${sourceforge}rescuezilla/ && set link ?viasf=1 ||
 
