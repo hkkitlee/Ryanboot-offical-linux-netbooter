@@ -145,6 +145,7 @@ item	--key F ArcoLinux		(F) ArcoLinux amd64 (Mirror)
 item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
+item	--key J Rescuezilla		(J) Rescuezilla amd64
 
 item	--gap
 item		start			Back to Top
@@ -200,6 +201,7 @@ item	Grml				Grml Linux amd64/i686+ Live (Mirror)
 item	Linux-Lite			Linux-Lite amd64 Live (Mirror)
 item	Debian-Live			Debian-Live xfce amd64/i386
 item	UCS				Univention Corporate Server amd64
+item	Rescuezilla			Rescuezilla amd64
 item	--gap
 
 item	--gap Arch
@@ -3175,6 +3177,45 @@ initrd ${ds}/pxe/${version}/${arch}/${link}/debian-installer/${arch}/initrd.gz
 kernel ${ds}/pxe/${version}/${arch}/${link}/debian-installer/${arch}/linux initrd=initrd.gz ${kp}
 boot
 
+#################################################
+:Rescuezilla
+set ds1 ${sourceforge}rescuezilla/
+set ds2 ${mirror0}rescuezilla/
+set ds3 ${mirror1}rescuezilla/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Rescuezilla_manual
+set ds ${mirror0}rescuezilla/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Rescuezilla_stage2
+
+iseq ${ds} ${sourceforge}rescuezilla/ && set link ?viasf=1 ||
+
+echo ramdisk_size value is in kb
+set kp root=/dev/ram0 ramdisk_size=3072000 ip=dhcp url=${ds}rescuezilla.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.lz ${kp}
+initrd --name initrd --timeout 100000 ${ds}casper/initrd.lz${link}
+
+boot
+
+#################################################
 #################################################
 #################################################
 :background
