@@ -3205,7 +3205,7 @@ goto ${target}_stage2
 iseq ${ds} ${sourceforge}rescuezilla/ && set link ?viasf=1 ||
 
 echo ramdisk_size value is in kb
-set kp root=/dev/ram0 ramdisk_size=3072000 ip=dhcp url=${ds}rescuezilla.iso
+set kp boot=casper quiet splash fastboot fsck.mode=skip noprompt edd=on ip=dhcp url=${ds}rescuezilla.iso
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
