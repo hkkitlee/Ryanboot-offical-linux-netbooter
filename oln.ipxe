@@ -3247,7 +3247,7 @@ item n No
 choose answer
 
 iseq ${ds} ${sourceforge}rescuezilla/ && set link ?viasf=1 && set answer Y ||
-iseq ${answer} Y && set img initrd=rescuezilla.iso.img && set from fromiso=/rescuezilla.iso || set from fetch=${ds}casper/filesystem.squashfs
+iseq ${answer} Y && set img initrd=rescuezilla.iso.img && set from fromiso=/rescuezilla.iso || set from url=${ds}rescuezilla.iso
 
 set kp boot=casper quiet splash fastboot fsck.mode=skip noprompt edd=on ip=dhcp ${from}
 echo -n Kernel Parameter, Bootcode: ${}
