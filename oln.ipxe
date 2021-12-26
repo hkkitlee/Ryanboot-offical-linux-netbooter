@@ -3202,6 +3202,7 @@ goto ${target}_stage2
 
 :Rescuezilla_stage2
 
+echo Not support boot from https or iPXE injection boot, so set boot from ${mirror0}
 iseq ${ds} ${sourceforge}rescuezilla/ && set ds ${mirror0}rescuezilla/ ||
 
 echo ramdisk_size value is in kb
