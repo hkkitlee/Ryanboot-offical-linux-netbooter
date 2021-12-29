@@ -3178,7 +3178,7 @@ kernel ${ds}/pxe/${version}/${arch}/${link}/debian-installer/${arch}/linux initr
 boot
 
 #################################################
-:Rescuezilla
+:Rescuezilla1
 set ds1 ${sourceforge}rescuezilla/
 set ds2 ${mirror0}rescuezilla/
 set ds3 ${mirror1}rescuezilla/
@@ -3193,14 +3193,14 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
-:Rescuezilla_manual
+:Rescuezilla1_manual
 set ds ${mirror0}rescuezilla/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Rescuezilla_stage2
+:Rescuezilla1_stage2
 
 echo Not support boot from https or iPXE injection boot, so set boot from ${mirror0}
 iseq ${ds} ${sourceforge}rescuezilla/ && set ds ${mirror0}rescuezilla/ ||
@@ -3217,6 +3217,50 @@ initrd --name initrd.lz --timeout 100000 ${ds}casper/initrd.lz${link}
 boot
 
 #################################################
+:Rescuezilla
+
+set ds1 ${sourceforge}rescuezilla/
+set ds2 ${mirror0}rescuezilla/
+set ds3 ${mirror1}rescuezilla/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Rescuezilla_manual
+set ds ${mirror0}rescuezilla/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Rescuezilla_stage2
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
+
+ iseq ${ds} ${sourceforge}rescuezilla/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=rescuezilla.iso.img && set from fromiso=/rescuezilla.iso || set from url=${ds}rescuezilla.iso
+
+
+set kp boot=casper quiet splash fastboot fsck.mode=skip noprompt edd=on ip=dhcp ${from}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.lz ${img} ${kp}
+initrd --name initrd.lz --timeout 100000 ${ds}casper/initrd.lz${link}
+iseq ${answer} Y && initrd --name rescuezilla.iso.img --timeout 100000 ${ds}rescuezilla.iso.img${link} ||
+boot
+
 #################################################
 #################################################
 :background
