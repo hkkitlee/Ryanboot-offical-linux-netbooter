@@ -3313,24 +3313,14 @@ goto ${target}_stage2
 :Slacket_stage2
 
 iseq ${ds} ${sourceforge}slacket/ && set link ?viasf=1 ||
-set huge huge.s
-echo Symmetrical Multi-Processing, No need to set on x86-64
-echo Only need on very old Generic Kernel (i386)
-echo -n hugesmp.s/huge.s: ${}
-read huge
-echo
 
-cpuid --ext 29 && set bit slackware64 || set bit slackware
-
-set kp load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 SLACK_KERNEL=${huge}
+set kp max_loop=255 vga=791 locale=en_US.utf8 keymap=us useswap=yes copy2ram=no tz=Etc/GMT hwc=localtime runlevel=4
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-cpuid --ext 29 && set huge huge.s || echo -n Generic Kernels keeps ${huge}
-
-kernel ${ds}/boot/vmlinuz initrd=initrd.gz ${kp}
-initrd ${ds}/boot/initrd.gz
+kernel --name vmlunuz --timeout 100000 ${ds}/boot/vmlinuz${link} initrd=initrd.gz ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}/boot/initrd.gz${link}
 boot
 #################################################
 #################################################
