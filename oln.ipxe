@@ -147,6 +147,7 @@ item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
+item	--key K Slackel			(K) Slackel amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -232,6 +233,7 @@ item	--gap
 item	--gap Slackware
 item	Slackware			Slackware live amd64/i386 with Installer
 item	Absolute			Absolute-Linux installer amd64
+item	Slackel				Slackel amd64 (Mirror)
 item	--gap
 
 item	--gap Busybox
