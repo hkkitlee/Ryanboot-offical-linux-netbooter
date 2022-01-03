@@ -147,6 +147,7 @@ item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
+item	--key K Slackel			(K) Slackel amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -232,6 +233,7 @@ item	--gap
 item	--gap Slackware
 item	Slackware			Slackware live amd64/i386 with Installer
 item	Absolute			Absolute-Linux installer amd64
+item	Slackel				Slackel amd64 (Mirror)
 item	--gap
 
 item	--gap Busybox
@@ -3286,6 +3288,43 @@ initrd --name initrd.lz --timeout 100000 ${ds}casper/initrd.lz${link}
 boot
 
 #################################################
+:Slackel
+set ds1 ${sourceforge}slackel/
+set ds2 ${sourceforge1}slackel/
+set ds3 ${mirror0}slackel/
+set ds4 ${mirror1}slackel/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Slackel_manual
+echo
+set ds ${sourceforge1}slackel/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Slackel_stage2
+
+iseq ${ds} ${sourceforge}slackel/ && set link ?viasf=1 ||
+
+set kp max_loop=255 vga=791 locale=en_US.utf8 keymap=us useswap=yes copy2ram=no tz=Etc/GMT hwc=localtime runlevel=4 livemedia=scandev:/slackellive64-openbox.iso
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlunuz --timeout 100000 ${ds}boot/vmlinuz${link} initrd=initrd.gz initrd=slackellive64-openbox.iso.img ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}boot/initrd.gz${link}
+initrd --name slackellive64-openbox.iso.img --timeout 100000 ${ds}slackellive64-openbox.iso.img${link}
+boot
 #################################################
 #################################################
 :background
