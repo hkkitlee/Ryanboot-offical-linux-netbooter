@@ -18,8 +18,8 @@ imgtrust --allow
 set mirror0 http://183.230.23.18:58000/ryanboot/
 set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
 #set sourceforge https://sourceforge.net/projects/ryanboot/
-#set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
-set sourceforge http://downloads.sourceforge.net/project/ryanboot/
+set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
+set sourceforge1 http://downloads.sourceforge.net/project/ryanboot/
 
 
 goto start
@@ -727,12 +727,14 @@ choose target_Slitaz && goto ${target_Slitaz}
 :offical_Slitaz
 set ds1 ${mirror0}slitaz/
 set ds2 ${sourceforge}slitaz/
-set ds3 ${mirror1}slitaz/
+set ds3 ${sourceforge1}slitaz/
+set ds4 ${mirror1}slitaz/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 3 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -1693,12 +1695,14 @@ boot
 :OneFileLinux
 set ds1 ${mirror0}
 set ds2 ${sourceforge}
-set ds3 ${mirror1}
+set ds3 ${sourceforge1}
+set ds4 ${mirror1}
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -1820,14 +1824,16 @@ sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 :ClearLinux
 
 set ds1 ${sourceforge}clearlinux/
-set ds2 ${mirror0}clearinux/
-set ds3 ${mirror1}clearinux/
+set ds2 ${sourceforge1}clearlinux/
+set ds3 ${mirror0}clearinux/
+set ds4 ${mirror1}clearinux/
 
 menu Sites boot ${target} from:
 item --gap -- Howto: https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -1877,13 +1883,15 @@ boot
 #################################################
 :BlackArch
 set ds1 ${sourceforge}blackarch/
-set ds2 ${mirror0}blackarch/
-set ds3 ${mirror1}blackarch/
+set ds2 ${sourceforge1}blackarch/
+set ds3 ${mirror0}blackarch/
+set ds4 ${mirror1}blackarch/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -1921,13 +1929,15 @@ boot
 :ProxmoxVE
 
 set ds1 ${sourceforge}proxmox-ve/
-set ds2 ${mirror0}proxmox-ve/
-set ds3 ${mirror1}proxmox-ve/
+set ds2 ${sourceforge1}proxmox-ve/
+set ds3 ${mirror0}proxmox-ve/
+set ds4 ${mirror1}proxmox-ve/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -1959,13 +1969,15 @@ boot
 :Garuda-Wayfire
 
 set ds1 ${sourceforge}garuda-wayfire/
-set ds2 ${mirror0}garuda-wayfire/
-set ds3 ${mirror1}garuda-wayfire/
+set ds2 ${sourceforge1}garuda-wayfire/
+set ds3 ${mirror0}garuda-wayfire/
+set ds4 ${mirror1}garuda-wayfire/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -1998,13 +2010,15 @@ boot
 #################################################
 :Oracle8
 set ds1 ${sourceforge}oracle8/
-set ds2 ${mirror0}oracle8/
-set ds3 ${mirror1}oracle8/
+set ds2 ${sourceforge1}oracle8/
+set ds3 ${mirror0}oracle8/
+set ds4 ${mirror1}oracle8/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2032,14 +2046,16 @@ boot
 :Manjaro-Xfce
 
 set ds1 ${sourceforge}manjaro-xfce/
-set ds2 ${mirror0}manjaro-xfce/
-set ds3 ${mirror1}manjaro-xfce/
+set ds2 ${sourceforge1}manjaro-xfce/
+set ds3 ${mirror0}manjaro-xfce/
+set ds4 ${mirror1}manjaro-xfce/
 
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2069,8 +2085,9 @@ boot
 :Gentoo-Minimal
 
 set ds1 ${sourceforge}gentoo-minimal/
-set ds2 ${mirror0}gentoo-minimal/
-set ds3 ${mirror1}gentoo-minimal/
+set ds2 ${sourceforge1}gentoo-minimal/
+set ds3 ${mirror0}gentoo-minimal/
+set ds4 ${mirror1}gentoo-minimal/
 
 menu Sites boot ${target} from:
 item --gap -- https://www.unixmen.com/a-beginners-guide-to-install-gentoo/
@@ -2078,6 +2095,7 @@ item --gap -- https://wiki.gentoo.org/wiki/Handbook:X86/Full/Installation#Minima
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2143,13 +2161,15 @@ boot
 :Gparted-Live
 
 set ds1 ${sourceforge}gparted-live/
-set ds2 ${mirror0}gparted-live/
-set ds3 ${mirror1}gparted-live/
+set ds2 ${sourceforge1}gparted-live/
+set ds3 ${mirror0}gparted-live/
+set ds4 ${mirror1}gparted-live/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2186,14 +2206,16 @@ boot
 :Clonezilla
 
 set ds1 ${sourceforge}clonezilla/
-set ds2 ${mirror0}clonezilla/
-set ds3 ${mirror1}clonezilla/
+set ds2 ${sourceforge1}clonezilla/
+set ds3 ${mirror0}clonezilla/
+set ds4 ${mirror1}clonezilla/
 
 menu Sites boot ${target} from:
 item --gap -- Lite Server Mode---https://clonezilla.org/show-live-doc-content.php?topic=clonezilla-live/doc/11_lite_server
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2231,13 +2253,15 @@ boot
 :RedoRescue
 
 set ds1 ${sourceforge}redorescue/
-set ds2 ${mirror0}redorescue/
-set ds3 ${mirror1}redorescue/
+set ds2 ${sourceforge1}redorescue/
+set ds3 ${mirror0}redorescue/
+set ds4 ${mirror1}redorescue/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2274,8 +2298,9 @@ boot
 #################################################
 :PartMagic
 set ds1 ${sourceforge}partmagic/
-set ds2 ${mirror0}partmagic/
-set ds3 ${mirror1}partmagic/
+set ds2 ${sourceforge1}partmagic/
+set ds3 ${mirror0}partmagic/
+set ds4 ${mirror1}partmagic/
 
 menu Sites boot ${target} from:
 item --gap -- Howto: https://partedmagic.com/pxe/
@@ -2283,6 +2308,7 @@ item --gap -- Script: boot/pxelinux/pm2pxe.sh
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2314,13 +2340,15 @@ boot
 :ProxmoxBackup
 
 set ds1 ${sourceforge}proxmox-backup/
-set ds2 ${mirror0}proxmox-backup/
-set ds3 ${mirror1}proxmox-backup/
+set ds2 ${sourceforge1}proxmox-backup/
+set ds3 ${mirror0}proxmox-backup/
+set ds4 ${mirror1}proxmox-backup/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2351,13 +2379,15 @@ boot
 #################################################
 :ProxmoxMailGateway
 set ds1 ${sourceforge}proxmox-mailgateway/
-set ds2 ${mirror0}proxmox-mailgateway/
-set ds3 ${mirror1}proxmox-mailgateway/
+set ds2 ${sourceforge1}proxmox-mailgateway/
+set ds3 ${mirror0}proxmox-mailgateway/
+set ds4 ${mirror1}proxmox-mailgateway/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2388,14 +2418,16 @@ boot
 #################################################
 :UbuntuKylin
 set ds1 ${sourceforge}ubuntukylin/
-set ds2 ${mirror0}ubuntukylin/
-set ds3 ${mirror1}ubuntukylin/
+set ds2 ${sourceforge1}ubuntukylin/
+set ds3 ${mirror0}ubuntukylin/
+set ds4 ${mirror1}ubuntukylin/
 
 menu Sites boot ${target} from:
 item --gap -- http://releases.ubuntu.com/
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2427,14 +2459,16 @@ boot
 #################################################
 :Ubuntu-Live
 set ds1 ${sourceforge}ubuntu-live/
-set ds2 ${mirror0}ubuntu-live/
-set ds3 ${mirror1}ubuntu-live/
+set ds2 ${sourceforge1}ubuntu-live/
+set ds3 ${mirror0}ubuntu-live/
+set ds4 ${mirror1}ubuntu-live/
 
 menu Sites boot ${target} from:
 item --gap -- http://releases.ubuntu.com/
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2466,14 +2500,16 @@ boot
 #################################################
 :VzLinux8
 set ds1 ${sourceforge}vzlinux8/
-set ds2 ${mirror0}vzlinux8/
-set ds3 ${mirror1}vzlinux8/
+set ds2 ${sourceforge1}vzlinux8/
+set ds3 ${mirror0}vzlinux8/
+set ds4 ${mirror1}vzlinux8/
 
 menu Sites boot ${target} from:
 item	--gap	--	http://repo.virtuozzo.com/vzlinux/8/iso/vzlinux-8-min.iso
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2500,14 +2536,16 @@ boot
 #################################################
 :EuroLinux8
 set ds1 ${sourceforge}eurolinux8/
-set ds2 ${mirror0}eurolinux8/
-set ds3 ${mirror1}eurolinux8/
+set ds2 ${sourceforge1}eurolinux8/
+set ds3 ${mirror0}eurolinux8/
+set ds4 ${mirror1}eurolinux8/
 
 menu Sites boot ${target} from:
 item    --gap   --      https://fbi.cdn.euro-linux.com/isos/EL-8.3-x86_64-20210624-minimal.iso
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2534,14 +2572,16 @@ boot
 #################################################
 :MLL
 set ds1 ${sourceforge}mll/
-set ds2 ${mirror0}mll/
-set ds3 ${mirror1}mll/
+set ds2 ${sourceforge1}mll/
+set ds3 ${mirror0}mll/
+set ds4 ${mirror1}mll/
 
 menu Sites boot ${target} from:
 item    --gap   --      https://github.com/ivandavidov/minimal
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2568,13 +2608,15 @@ boot
 #################################################
 :Live-Raizo
 set ds1 ${sourceforge}live-raizo/
-set ds2 ${mirror0}live-raizo/
-set ds3 ${mirror1}live-raizo/
+set ds2 ${sourceforge1}live-raizo/
+set ds3 ${mirror0}live-raizo/
+set ds4 ${mirror1}live-raizo/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2611,8 +2653,9 @@ boot
 #################################################
 :Amahi
 set ds1 ${sourceforge}amahi/
-set ds2 ${mirror0}amahi/
-set ds3 ${mirror1}amahi/
+set ds2 ${sourceforge1}amahi/
+set ds3 ${mirror0}amahi/
+set ds4 ${mirror1}amahi/
 
 menu Sites boot ${target} from:
 item	--gap	--	(Installation Code)
@@ -2621,6 +2664,7 @@ item	--gap	--	https://www.amahi.org/login
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2649,13 +2693,15 @@ boot
 :SystemRescue
 
 set ds1 ${sourceforge}systemrescue/
-set ds2 ${mirror0}systemrescue/
-set ds3 ${mirror1}systemrescue/
+set ds2 ${sourceforge1}systemrescue/
+set ds3 ${mirror0}systemrescue/
+set ds4 ${mirror1}systemrescue/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2685,13 +2731,15 @@ boot
 :EndeavourOS
 
 set ds1 ${sourceforge}endeavouros/
-set ds2 ${mirror0}endeavouros/
-set ds3 ${mirror1}endeavouros/
+set ds2 ${sourceforge1}endeavouros/
+set ds3 ${mirror0}endeavouros/
+set ds4 ${mirror1}endeavouros/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2722,13 +2770,15 @@ boot
 :Bluestar
 
 set ds1 ${sourceforge}bluestar/
-set ds2 ${mirror0}bluestar/
-set ds3 ${mirror1}bluestar/
+set ds2 ${sourceforge1}bluestar/
+set ds3 ${mirror0}bluestar/
+set ds4 ${mirror1}bluestar/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2757,13 +2807,15 @@ boot
 #################################################
 :Grml
 set ds1 ${sourceforge}grml/
-set ds2 ${mirror0}grml/
-set ds3 ${mirror1}grml/
+set ds2 ${sourceforge1}grml/
+set ds3 ${mirror0}grml/
+set ds4 ${mirror1}grml/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2806,13 +2858,15 @@ boot
 #################################################
 :Linux-Lite
 set ds1 ${sourceforge}linux-lite/
-set ds2 ${mirror0}linux-lite/
-set ds3 ${mirror1}linux-lite/
+set ds2 ${sourceforge1}linux-lite/
+set ds3 ${mirror0}linux-lite/
+set ds4 ${mirror1}linux-lite/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2850,13 +2904,15 @@ boot
 :Archman
 
 set ds1 ${sourceforge}archman/
-set ds2 ${mirror0}archman/
-set ds3 ${mirror1}archman/
+set ds2 ${sourceforge1}archman/
+set ds3 ${mirror0}archman/
+set ds4 ${mirror1}archman/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2886,14 +2942,16 @@ boot
 :Mabox
 
 set ds1 ${sourceforge}mabox/
-set ds2 ${mirror0}mabox/
-set ds3 ${mirror1}mabox/
+set ds2 ${sourceforge1}mabox/
+set ds3 ${mirror0}mabox/
+set ds4 ${mirror1}mabox/
 
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2924,13 +2982,15 @@ boot
 :ArcoLinux
 
 set ds1 ${sourceforge}arco/
-set ds2 ${mirror0}arco/
-set ds3 ${mirror1}arco/
+set ds2 ${sourceforge1}arco/
+set ds3 ${mirror0}arco/
+set ds4 ${mirror1}arco/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -2961,13 +3021,15 @@ boot
 #################################################
 :Debian-Live
 set ds1 ${sourceforge}debian/
-set ds2 ${mirror0}debian/
-set ds3 ${mirror1}debian/
+set ds2 ${sourceforge1}debian/
+set ds3 ${mirror0}debian/
+set ds4 ${mirror1}debian/
 
 menu Kernel boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -3026,13 +3088,15 @@ boot
 :Snal
 
 set ds1 ${sourceforge}snal/
-set ds2 ${mirror0}snal/
-set ds3 ${mirror1}snal/
+set ds2 ${sourceforge1}snal/
+set ds3 ${mirror0}snal/
+set ds4 ${mirror1}snal/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -3064,13 +3128,15 @@ boot
 :Reborn
 
 set ds1 ${sourceforge}reborn/
-set ds2 ${mirror0}reborn/
-set ds3 ${mirror1}reborn/
+set ds2 ${sourceforge1}reborn/
+set ds3 ${mirror0}reborn/
+set ds4 ${mirror1}reborn/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -3181,13 +3247,15 @@ boot
 #################################################
 :Rescuezilla
 set ds1 ${sourceforge}rescuezilla/
-set ds2 ${mirror0}rescuezilla/
-set ds3 ${mirror1}rescuezilla/
+set ds2 ${sourceforge1}rescuezilla/
+set ds3 ${mirror0}rescuezilla/
+set ds4 ${mirror1}rescuezilla/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
+item 4 ${ds4}
 item manual Manual Entry URL
 choose siteno
 
@@ -3218,6 +3286,52 @@ initrd --name initrd.lz --timeout 100000 ${ds}casper/initrd.lz${link}
 boot
 
 #################################################
+:Slacket
+set ds1 ${sourceforge}slacket/
+set ds2 ${sourceforge1}slacket/
+set ds3 ${mirror0}slacket/
+set ds4 ${mirror1}slacket/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+:Slacket_manual
+echo
+set ds ${sourceforge1}slacket/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Slacket_stage2
+
+iseq ${ds} ${sourceforge}slacket/ && set link ?viasf=1 ||
+set huge huge.s
+echo Symmetrical Multi-Processing, No need to set on x86-64
+echo Only need on very old Generic Kernel (i386)
+echo -n hugesmp.s/huge.s: ${}
+read huge
+echo
+
+cpuid --ext 29 && set bit slackware64 || set bit slackware
+
+set kp load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 SLACK_KERNEL=${huge}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+cpuid --ext 29 && set huge huge.s || echo -n Generic Kernels keeps ${huge}
+
+kernel ${ds}/boot/vmlinuz initrd=initrd.gz ${kp}
+initrd ${ds}/boot/initrd.gz
+boot
 #################################################
 #################################################
 :background
