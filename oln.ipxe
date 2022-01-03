@@ -3289,11 +3289,11 @@ initrd --name initrd.lz --timeout 100000 ${ds}casper/initrd.lz${link}
 boot
 
 #################################################
-:Slacket
-set ds1 ${sourceforge}slacket/
-set ds2 ${sourceforge1}slacket/
-set ds3 ${mirror0}slacket/
-set ds4 ${mirror1}slacket/
+:Slackel
+set ds1 ${sourceforge}slackel/
+set ds2 ${sourceforge1}slackel/
+set ds3 ${mirror0}slackel/
+set ds4 ${mirror1}slackel/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -3305,17 +3305,17 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:Slacket_manual
+:Slackel_manual
 echo
-set ds ${sourceforge1}slacket/
+set ds ${sourceforge1}slackel/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Slacket_stage2
+:Slackel_stage2
 
-iseq ${ds} ${sourceforge}slacket/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}slackel/ && set link ?viasf=1 ||
 
 set kp max_loop=255 vga=791 locale=en_US.utf8 keymap=us useswap=yes copy2ram=no tz=Etc/GMT hwc=localtime runlevel=4
 echo -n Kernel Parameter, Bootcode: ${}
