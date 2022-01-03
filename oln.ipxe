@@ -3322,8 +3322,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlunuz --timeout 100000 ${ds}/boot/vmlinuz${link} initrd=initrd.gz ${kp}
-initrd --name initrd.gz --timeout 100000 ${ds}/boot/initrd.gz${link}
+kernel --name vmlunuz --timeout 100000 ${ds}boot/vmlinuz${link} initrd=initrd.gz ${kp}
+initrd --name initrd.gz --timeout 100000 ${ds}boot/initrd.gz${link}
 boot
 #################################################
 #################################################
