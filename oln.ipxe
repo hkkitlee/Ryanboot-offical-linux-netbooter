@@ -1688,7 +1688,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}/os/x86_64/images/pxeboot/vmlinuz initrd=upgrade.img inst.repo=${ds}${version}/os/x86_64 ${kp}
+kernel ${ds}${version}/os/x86_64/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/os/x86_64 ${kp}
 initrd ${ds}${version}/os/x86_64/images/pxeboot/initrd.img
 boot
 #################################################
