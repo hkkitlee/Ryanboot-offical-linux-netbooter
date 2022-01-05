@@ -1825,8 +1825,8 @@ sanboot --no-describe --drive 0x80 ${ds}super_grub2_disk_hybrid_2.04s1.iso
 
 set ds1 ${sourceforge}clearlinux/
 set ds2 ${sourceforge1}clearlinux/
-set ds3 ${mirror0}clearinux/
-set ds4 ${mirror1}clearinux/
+set ds3 ${mirror0}clearlinux/
+set ds4 ${mirror1}clearlinux/
 
 menu Sites boot ${target} from:
 item --gap -- Howto: https://docs.01.org/clearlinux/latest/get-started/ipxe-install.html#
