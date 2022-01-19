@@ -147,6 +147,7 @@ item	--key G	Debian-Live		(G) Debian-Live xfce amd64/i386
 item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
+item	--key K ArchLabs		(K) ArchLabs amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -218,6 +219,7 @@ item	Mabox				Mabox amd64 (Mirror)
 item	ArcoLinux			ArcoLinux amd64 (Mirror)
 item	Snal				Snal amd64 (Mirror)
 item	Reborn				RebornLinux amd64 (Mirror)
+item	ArchLabs			ArchLabs amd64 (Mirror)
 item	--gap
 
 item	--gap Gentoo
@@ -3283,6 +3285,46 @@ echo
 kernel --name vmlinuz --timeout 100000 ${ds}casper/vmlinuz${link} initrd=initrd.lz ${kp}
 initrd --name initrd.lz --timeout 100000 ${ds}casper/initrd.lz${link}
 
+boot
+
+#################################################
+:ArchLabs
+
+set ds1 ${sourceforge}archlabs/
+set ds2 ${sourceforge1}archlabs/
+set ds3 ${mirror0}archlabs/
+set ds4 ${mirror1}archlabs/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:ArchLabs_manual
+set ds ${mirror0}archlabs/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:ArchLabs_stage2
+iseq ${ds} ${sourceforge}archlabs/ && set link ?viasf=1 ||
+set kp ip=dhcp archiso_http_srv=${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img${link}
+initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img${link}
+initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${link}
 boot
 
 #################################################
