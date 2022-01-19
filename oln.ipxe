@@ -129,7 +129,7 @@ item	--key p Gentoo-Minimal		(p) Gentoo Linux Minimal amd64 (Mirror)
 item	--key q Gparted-Live		(q) Gparted-Live amd64 (Mirror)
 item	--key r Clonezilla		(r) Clonezilla Live/Lite Server amd64 (Mirror)
 item	--key s	RedoRescue		(s) Redo-Rescue amd64 (Mirror)
-item	--key t	PartMagic		(t) Parted Magic amd64 (Mirror)
+item	--key t	PartedMagic		(t) Parted Magic amd64 (Mirror)
 item	--key u	UbuntuKylin		(u) Ubuntu Kylin Live with Installer amd64 (Mirror)
 item	--key v	Ubuntu-Live		(v) Ubuntu Live with Installer amd64 (Mirror)
 item	--key w	MLL			(w) Minimal Linux Live amd64 (Mirror)
@@ -194,7 +194,7 @@ item	SteamOS				SteamOS Linux installer amd64
 item	Gparted-Live			Gparted-Live live amd64 (Mirror)
 item	Clonezilla			Clonezilla Live/Lite Server live amd64 (Mirror)
 item	RedoRescue			Redo-Rescue live amd64 (Mirror)
-item	PartMagic			Parted Magic live amd64 (Mirror)
+item	PartedMagic			Parted Magic live amd64 (Mirror)
 item	UbuntuKylin			Ubuntu Kylin live with Installer amd64 (Mirror)
 item	Ubuntu-Live			Ubuntu Live with Installer amd64 (Mirror)
 item	Live-Raizo			Live-Raizo Live amd64 (Mirror)
@@ -2296,11 +2296,11 @@ initrd --name initrd --timeout 100000 ${ds}initrd${link}
 iseq ${answer} Y && initrd --name redorescue.iso.img --timeout 100000 ${ds}redorescue.iso.img${link} ||
 boot
 #################################################
-:PartMagic
-set ds1 ${sourceforge}partmagic/
-set ds2 ${sourceforge1}partmagic/
-set ds3 ${mirror0}partmagic/
-set ds4 ${mirror1}partmagic/
+:PartedMagic
+set ds1 ${sourceforge}pmagic/
+set ds2 ${sourceforge1}pmagic/
+set ds3 ${mirror0}pmagic/
+set ds4 ${mirror1}pmagic/
 
 menu Sites boot ${target} from:
 item --gap -- Howto: https://partedmagic.com/pxe/
@@ -2314,15 +2314,15 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:PartMagic_manual
-set ds ${mirror0}partmagic/
+:PartedMagic_manual
+set ds ${mirror0}pmagic/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:PartMagic_stage2
-iseq ${ds} ${sourceforge}partmagic/ && set link ?viasf=1 ||
+:PartedMagic_stage2
+iseq ${ds} ${sourceforge}pmagic/ && set link ?viasf=1 ||
 
 set kp edd=on vga=normal boot=live eject=no
 echo -n Kernel Parameter, Bootcode: ${}
