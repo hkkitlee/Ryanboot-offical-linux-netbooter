@@ -148,7 +148,6 @@ item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
-item	--key L Artix			(L) Artix amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -221,7 +220,6 @@ item	ArcoLinux			ArcoLinux amd64 (Mirror)
 item	Snal				Snal amd64 (Mirror)
 item	Reborn				RebornLinux amd64 (Mirror)
 item	ArchLabs			ArchLabs amd64 with Installer (Mirror)
-item	Artix				Artixs amd64 (Mirror)
 item	--gap
 
 item	--gap Gentoo
@@ -3330,44 +3328,6 @@ initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${l
 boot
 
 #################################################
-:Artix
-
-set ds1 ${sourceforge}artix/
-set ds2 ${sourceforge1}artix/
-set ds3 ${mirror0}artix/
-set ds4 ${mirror1}artix/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item 4 ${ds4}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:Artix_manual
-set ds ${mirror0}artix/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:Artix_stage2
-iseq ${ds} ${sourceforge}artix/ && set link ?viasf=1 ||
-set kp ip=dhcp archiso_http_srv=${ds} archisobasedir=LiveOS
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-
-kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-x86_64.img ${kp} checksum
-initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/initramfs-x86_64.img${link}
-initrd --name amd-ucode.img --timeout 100000 ${ds}boot/amd-ucode.img${link}
-initrd --name intel-ucode.img --timeout 100000 ${ds}boot/intel-ucode.img${link}
-boot
 #################################################
 #################################################
 :background
