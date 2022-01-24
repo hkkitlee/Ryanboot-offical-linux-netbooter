@@ -148,7 +148,7 @@ item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
-item	--key L Artix			(L) Artixs amd64 (Mirror)
+item	--key L Artix			(L) Artix amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -3363,8 +3363,8 @@ read kp
 echo
 
 
-kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/x86_64/vmlinuz-x86_64${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/x86_64/initramfs-x86_64.img${link}
+kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/initramfs-x86_64.img${link}
 initrd --name amd-ucode.img --timeout 100000 ${ds}boot/amd-ucode.img${link}
 initrd --name intel-ucode.img --timeout 100000 ${ds}boot/intel-ucode.img${link}
 boot
