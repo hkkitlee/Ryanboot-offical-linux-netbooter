@@ -3363,7 +3363,7 @@ read kp
 echo
 
 
-kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
+kernel --name vmlinuz-x86_64 --timeout 100000 ${ds}boot/vmlinuz-x86_64${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-x86_64.img ${kp} checksum
 initrd --name initramfs-x86_64.img --timeout 100000 ${ds}boot/initramfs-x86_64.img${link}
 initrd --name amd-ucode.img --timeout 100000 ${ds}boot/amd-ucode.img${link}
 initrd --name intel-ucode.img --timeout 100000 ${ds}boot/intel-ucode.img${link}
