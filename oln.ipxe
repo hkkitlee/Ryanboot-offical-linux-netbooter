@@ -148,7 +148,7 @@ item	--key H Snal			(H) Snal amd64 (Mirror)
 item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
-item	--key L ArchBang		(L) ArchBang amd64 (Mirror)
+item	--key L ArchBang		(L) ArchBang amd64 with Installer (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -221,7 +221,7 @@ item	ArcoLinux			ArcoLinux amd64 (Mirror)
 item	Snal				Snal amd64 (Mirror)
 item	Reborn				RebornLinux amd64 (Mirror)
 item	ArchLabs			ArchLabs amd64 with Installer (Mirror)
-item	ArchBang			ArchBang amd64 (Mirror)
+item	ArchBang			ArchBang amd64 with Installer (Mirror)
 item	--gap
 
 item	--gap Gentoo
