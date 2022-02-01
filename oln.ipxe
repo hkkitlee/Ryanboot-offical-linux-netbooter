@@ -123,7 +123,7 @@ item	--key j	coreoslive		(j) Fedora CoreOS amd64
 item	--key k	Fatdog			(k) Fatdog64 Linux amd64
 item	--key l	OneFileLinux		(l) OneFileLinux
 item	--key m	BlackArch		(m) BlackArch Linux amd64 Live with Installer Script (Mirror)
-item	--key n Garuda-Wayfire		(n) Garuda Linux Wayfire amd64 Live with Installer (Mirror)
+item	--key n Garuda			(n) Garuda Linux Xfce amd64 Live with Installer (Mirror)
 item	--key o Manjaro-Xfce		(o) Manjaro Linux Xfce amd64 Live with Installer (Mirror)
 item	--key p Gentoo-Minimal		(p) Gentoo Linux Minimal amd64 (Mirror)
 item	--key q Gparted-Live		(q) Gparted-Live amd64 (Mirror)
@@ -211,7 +211,7 @@ item	--gap Arch
 item	Arch				Arch Linux live amd64 with Option Installer Script
 item	Manjaro-Xfce			Manjaro Linux Xfce live amd64 with Installer (Mirror)
 item	BlackArch			BlackArch Linux live amd64 with Installer Script (Mirror)
-item	Garuda-Wayfire			Garuda Linux Wayfire live amd64 with Installer (Mirror)
+item	Garuda				Garuda Linux Xfce live amd64 with Installer (Mirror)
 item	SystemRescue			SystemRescue live amd64 (Mirror)
 item	EndeavourOS			EndeavourOS Linux live amd64 with Installer (Mirror)
 item	Bluestar			Bluestar Linux live amd64 with Installer (Mirror)
@@ -642,8 +642,8 @@ echo
 goto ${target}_stage2
 
 :Tinycore_stage2
-set version 12
-echo -n 2-12  version: ${}
+set version 13
+echo -n 2-13 version: ${}
 read version
 echo
 
@@ -1970,12 +1970,12 @@ initrd --name initrd.img --timeout 100000 ${ds}boot/initrd.img${link}
 initrd --name proxmox-ve.iso.img --timeout 100000 ${ds}proxmox-ve.iso.img${link}
 boot
 #################################################
-:Garuda-Wayfire
+:Garuda
 
-set ds1 ${sourceforge}garuda-wayfire/
-set ds2 ${sourceforge1}garuda-wayfire/
-set ds3 ${mirror0}garuda-wayfire/
-set ds4 ${mirror1}garuda-wayfire/
+set ds1 ${sourceforge}garuda/
+set ds2 ${sourceforge1}garuda/
+set ds3 ${mirror0}garuda/
+set ds4 ${mirror1}garuda/
 
 menu Sites boot ${target} from:
 item 1 ${ds1}
@@ -1987,19 +1987,19 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:Garuda-Wayfire_manual
-set ds ${mirror0}garuda-wayfire/
+:Garuda_manual
+set ds ${mirror0}garuda/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Garuda-Wayfire_stage2
+:Garuda_stage2
 echo Login : garuda
 echo Password : garuda
 echo
 
-iseq ${ds} ${sourceforge}garuda-wayfire/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}garuda/ && set link ?viasf=1 ||
 
 set kp ip=dhcp misobasedir=garuda miso_http_srv=${ds} driver=free nouveau.modeset=1 i915.modeset=1 radeon.modeset=1 systemd.show_status=1 'apparmor=1' 'security=apparmor' checksum
 echo -n Kernel Parameter, Bootcode: ${}
