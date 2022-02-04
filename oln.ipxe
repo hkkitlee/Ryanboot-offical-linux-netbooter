@@ -149,7 +149,6 @@ item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
 item	--key L ArchBang		(L) ArchBang amd64 with Installer (Mirror)
-item	--key M ArchCraft		(M) ArchCraft amd64 with Installer (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -223,7 +222,6 @@ item	Snal				Snal amd64 (Mirror)
 item	Reborn				RebornLinux amd64 (Mirror)
 item	ArchLabs			ArchLabs amd64 with Installer (Mirror)
 item	ArchBang			ArchBang amd64 with Installer (Mirror)
-item	ArchCraft			ArchCraft amd64 with Installer (Mirror)
 item	--gap
 
 item	--gap Gentoo
@@ -3372,45 +3370,6 @@ initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${l
 boot
 
 #################################################
-:ArchCraft
-
-set ds1 ${sourceforge}archcraft/
-set ds2 ${sourceforge1}archcraft/
-set ds3 ${mirror0}archcraft/
-set ds4 ${mirror1}archcraft/
-
-menu Sites boot ${target} from:
-item 1 ${ds1}
-item 2 ${ds2}
-item 3 ${ds3}
-item 4 ${ds4}
-item manual Manual Entry URL
-choose siteno
-
-iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
-
-
-:ArchCraft_manual
-set ds ${mirror0}archcraft/
-echo -n Manual Entry ${target} URL: ${}
-read ds
-echo
-goto ${target}_stage2
-
-:ArchCraft_stage2
-iseq ${ds} ${sourceforge}archcraft/ && set link ?viasf=1 ||
-set kp ip=dhcp archiso_http_srv=${ds}
-echo -n Kernel Parameter, Bootcode: ${}
-read kp
-echo
-
-
-kernel --name vmlinuz-linux --timeout 100000 ${ds}arch/boot/x86_64/vmlinuz-linux${link} initrd=amd-ucode.img initrd=intel-ucode.img initrd=initramfs-linux.img ${kp} checksum
-initrd --name initramfs-linux.img --timeout 100000 ${ds}arch/boot/x86_64/initramfs-linux.img${link}
-initrd --name amd-ucode.img --timeout 100000 ${ds}arch/boot/amd-ucode.img${link}
-initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${link}
-boot
-
 #################################################
 #################################################
 #################################################
