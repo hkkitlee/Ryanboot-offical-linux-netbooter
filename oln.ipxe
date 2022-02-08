@@ -3406,8 +3406,8 @@ choose answer
 iseq ${ds} ${sourceforge}openmandriva/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=OpenMandriva.iso.img && set from fromiso=/OpenMandriva.iso || set from fetch=${ds}LiveOS/squashfs.img
 
-#set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp ${from}
 set kp nvme_core.default_ps_max_latency_us=0 vconsole.font=latarcyrheb-sun16 acpi_backlight=vendor vt.global_cursor_default=0 quiet rhgb splash=silent ${from} ip=dhcp
+set kp root=live:${ds}OpenMandriva.iso rd.live.image rd.neednet=1
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
