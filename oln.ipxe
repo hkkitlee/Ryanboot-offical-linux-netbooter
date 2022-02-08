@@ -149,6 +149,7 @@ item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
 item	--key L ArchBang		(L) ArchBang amd64 with Installer (Mirror)
+item	--key M OpenMandriva		(M) OpenMandriva amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -3370,6 +3371,50 @@ initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${l
 boot
 
 #################################################
+:OpenMandriva
+set ds1 ${sourceforge}openmandriva/
+set ds2 ${sourceforge1}openmandriva/
+set ds3 ${mirror0}openmandriva/
+set ds4 ${mirror1}openmandriva/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:OpenMandriva_manual
+set ds ${mirror0}openmandriva/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:OpenMandriva_stage2
+menu iPXE injection to boot ${target}
+item    --gap   -- This initrd is not support fetch filesystem.squashfs from https (SourceForge forced to Yes).
+item    --gap   -- Do you want to use iPXE injection to boot (Yes/No): ${}
+item Y Yes
+item n No
+choose answer
+
+iseq ${ds} ${sourceforge}openmandriva/ && set link ?viasf=1 && set answer Y ||
+iseq ${answer} Y && set img initrd=OpenMandriva.iso.img && set from fromiso=/OpenMandriva.iso || set from fetch=${ds}LiveOS/squashfs.img
+
+set kp boot=live union=overlay components hostname=raizo username=user user-fullname=Live-Raizo-User nox11autologin ip=dhcp ${from}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz0 --timeout 100000 ${ds}boot/vmlinuz0${link} initrd=liveinitrd.img ${img} ${kp}
+initrd --name liveinitrd.img --timeout 100000 ${ds}boot/liveinitrd.img${link}
+iseq ${answer} Y && initrd --name OpenMandriva.iso.img --timeout 100000 ${ds}OpenMandriva.iso.img${link} ||
+boot
 #################################################
 #################################################
 #################################################
