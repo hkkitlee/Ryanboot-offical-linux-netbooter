@@ -861,7 +861,7 @@ kernel ${ds}${release}/repo/oss/boot/${bit}/loader/linux initrd=initrd ${kp}
 initrd ${ds}${release}/repo/oss/boot/${bit}/loader/initrd
 boot
 #################################################
-:Slax
+:Slax-old
 
 set ds1 http://ftp.sh.cvut.cz
 set ds2 http://ftp.linux.cz/pub/linux
@@ -874,14 +874,14 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:Slax_manual
+:Slax-old_manual
 set ds http://ftp.sh.cvut.cz
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:Slax_stage2
+:Slax-old_stage2
 echo Slax Server is slow 
 echo
 set mainv 9
@@ -3409,6 +3409,42 @@ initrd --name initramfs.gz --timeout 100000 ${ds}syslinux/kernel/initramfs.gz${l
 boot
 
 #################################################
+:Slax
+
+set ds1 ${sourceforge}slax/
+set ds2 ${sourceforge1}slax/
+set ds3 ${mirror0}slax/
+set ds4 ${mirror1}slax/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Slax_manual
+set ds ${mirror0}slax/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Slax_stage2
+iseq ${ds} ${sourceforge}slax/ && set link ?viasf=1 ||
+set kp vga=normal load_ramdisk=1 prompt_ramdisk=0 rw printk.time=0 consoleblank=0 nocd nohd
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+kernel --name vmlinuz --timeout 100000 ${ds}/vmlinuz${link} initrd=initrfs.img slax.flags=toram ${kp} from=${ds}/slax.iso
+initrd --name initrfs.img --timeout 100000 ${ds}/initrfs.img${link}
+boot
+
 #################################################
 #################################################
 :background
