@@ -3389,14 +3389,14 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 
-:ArchBang_manual
+:Plop_manual
 set ds ${mirror0}plop/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:ArchBang_stage2
+:Plop_stage2
 iseq ${ds} ${sourceforge}plop/ && set link ?viasf=1 ||
 set kp vga=1 url=${ds}|/webfilelist-iso iso_filename=ploplinux.iso nomodeset
 echo -n Kernel Parameter, Bootcode: ${}
