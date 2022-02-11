@@ -260,6 +260,7 @@ item	Rancheros			Rancher OS live amd64/i386
 item	ClearLinux			Clear Linux OS installer amd64 (Mirror)
 item	OneFileLinux			OneFileLinux live
 item	MLL				Minimal Linux Live amd64 (Mirror)
+item	Plop				PlopLinux amd64 (Mirror)
 item	--gap
 
 item	start				Back to Top
@@ -3373,6 +3374,7 @@ boot
 #################################################
 :Plop
 
+##https://www.plop.at/en/ploplinux/live/networkboot-linux.html
 set ds1 ${sourceforge}plop/
 set ds2 ${sourceforge1}plop/
 set ds3 ${mirror0}plop/
@@ -3441,7 +3443,7 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}/vmlinuz${link} initrd=initrfs.img slax.flags=toram ${kp} from=${ds}/slax.iso
+kernel --name vmlinuz --timeout 100000 ${ds}/vmlinuz${link} initrd=initrfs.img slax.flags=toram ${kp} from=${ds}slax.iso
 initrd --name initrfs.img --timeout 100000 ${ds}/initrfs.img${link}
 boot
 
