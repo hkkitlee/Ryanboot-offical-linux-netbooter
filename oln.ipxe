@@ -149,6 +149,7 @@ item	--key I Reborn			(I) RebornLinux amd64 (Mirror)
 item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
 item	--key L ArchBang		(L) ArchBang amd64 with Installer (Mirror)
+item	--key M Plop			(M) PlopLinux amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -3370,6 +3371,43 @@ initrd --name intel-ucode.img --timeout 100000 ${ds}arch/boot/intel-ucode.img${l
 boot
 
 #################################################
+:Plop
+
+set ds1 ${sourceforge}plop/
+set ds2 ${sourceforge1}plop/
+set ds3 ${mirror0}plop/
+set ds4 ${mirror1}plop/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:ArchBang_manual
+set ds ${mirror0}plop/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:ArchBang_stage2
+iseq ${ds} ${sourceforge}plop/ && set link ?viasf=1 ||
+set kp vga=1 url=${ds}|/webfilelist-iso iso_filename=ploplinux.iso nomodeset
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+kernel --name bzImage --timeout 100000 ${ds}syslinux/kernel/bzImage${link} initrd=initramfs.gz ${kp}
+initrd --name initramfs.gz --timeout 100000 ${ds}syslinux/kernel/initramfs.gz${link}
+boot
+
 #################################################
 #################################################
 #################################################
