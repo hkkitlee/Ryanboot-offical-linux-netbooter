@@ -3443,8 +3443,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}/vmlinuz${link} initrd=initrfs.img slax.flags=toram ${kp} from=${ds}slax.iso
-initrd --name initrfs.img --timeout 100000 ${ds}/initrfs.img${link}
+kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrfs.img slax.flags=toram ${kp} from=${ds}slax.iso
+initrd --name initrfs.img --timeout 100000 ${ds}initrfs.img${link}
 boot
 
 #################################################
