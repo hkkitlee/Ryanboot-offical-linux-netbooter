@@ -3399,6 +3399,10 @@ echo
 goto ${target}_stage2
 
 :Plop_stage2
+echo Not support boot from https, so set boot from ${mirror0}
+iseq ${ds} ${sourceforge}plop/ && set ds ${sourceforge1}plop/ ||
+
+
 iseq ${ds} ${sourceforge}plop/ && set link ?viasf=1 ||
 set kp vga=1 url=${ds}|/webfilelist-iso iso_filename=ploplinux.iso nomodeset
 echo -n Kernel Parameter, Bootcode: ${}
