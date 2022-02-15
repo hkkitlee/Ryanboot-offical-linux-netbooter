@@ -3392,7 +3392,7 @@ iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto 
 
 
 :Plop_manual
-set ds ${sourceforge1}plop/
+set ds ${morror0}plop/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
@@ -3404,7 +3404,7 @@ iseq ${ds} ${sourceforge}plop/ && goto ${target}_manual ||
 
 
 iseq ${ds} ${sourceforge}plop/ && set link ?viasf=1 ||
-set kp vga=1 url=${ds}|/webfilelist-iso${link} iso_filename=ploplinux.iso nomodeset
+set kp vga=1 url=${ds}|/webfilelist-iso iso_filename=ploplinux.iso nomodeset
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
