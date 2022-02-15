@@ -3399,8 +3399,8 @@ echo
 goto ${target}_stage2
 
 :Plop_stage2
-echo Not support boot from https, so set boot from ${mirror0}
-iseq ${ds} ${sourceforge}plop/ && set ds ${sourceforge1}plop/ ||
+echo Not support boot from https, so Manual entry the Boot Server
+iseq ${ds} ${sourceforge}plop/ && goto ${target}_manual ||
 
 
 iseq ${ds} ${sourceforge}plop/ && set link ?viasf=1 ||
