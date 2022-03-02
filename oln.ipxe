@@ -95,7 +95,7 @@ item	--key y	ProxmoxBackup		(y) Proxmox Backup Server OS amd64 (Mirror)
 item	--key z	ProxmoxMailGateway	(z) Proxmox MailGateway OS amd64 (Mirror)
 item	--gap -- Shortcut CAPITALS Letter
 item	--key A VzLinux8		(A) VzLinux 8 amd64 (Mirror)
-item	--key B EuroLinux8		(B) EuroLinux 8 amd64 (Mirror)
+item	--key B EuroLinux		(B) EuroLinux amd64 (Mirror)
 item	--key C Amahi			(C) Amahi 11 amd64 (Mirror)
 item	--key D Centosstream		(D) Centos-Stream amd64
 item	--key E UCS			(E) Univention Corporate Server amd64
@@ -177,7 +177,7 @@ item	ClearOS				ClearOS Linux installer amd64
 item	CloudLinuxOS			CloudLinux OS installer amd64
 item	openEuler			openEuler installer amd64
 item	VzLinux8			VzLinux 8 installer amd64 (Mirror)
-item	EuroLinux8			EuroLinux 8 installer amd64 (Mirror)
+item	EuroLinux			EuroLinux installer amd64 (Mirror)
 item	Amahi				Amahi 11 installer amd64 (Mirror)
 item	Centosstream			Centos-Stream amd64
 item	--gap
@@ -2540,14 +2540,14 @@ initrd --name initrd.img --timeout 100000 ${ds}images/pxeboot/initrd.img${link}
 kernel --name vmlinuz --timeout 100000 ${ds}images/pxeboot/vmlinuz${link} initrd=initrd.img ${kp}
 boot
 #################################################
-:EuroLinux8
-set ds1 ${sourceforge}eurolinux8/
-set ds2 ${sourceforge1}eurolinux8/
-set ds3 ${mirror0}eurolinux8/
-set ds4 ${mirror1}eurolinux8/
+:EuroLinux
+set ds1 ${sourceforge}eurolinux/
+set ds2 ${sourceforge1}eurolinux/
+set ds3 ${mirror0}eurolinux/
+set ds4 ${mirror1}eurolinux/
 
 menu Sites boot ${target} from:
-item    --gap   --      https://fbi.cdn.euro-linux.com/isos/EL-8.3-x86_64-20210624-minimal.iso
+item    --gap   --     https://ftp.sh.cvut.cz/slax/Slax-11.x/slax-64bit-11.2.1.iso 
 item 1 ${ds1}
 item 2 ${ds2}
 item 3 ${ds3}
@@ -2558,16 +2558,17 @@ choose siteno
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
 :EuroLinux8_manual
-set ds ${mirror0}eurolinux8/
+set ds ${mirror0}eurolinux/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
 :EuroLinux8_stage2
-iseq ${ds} ${sourceforge}eurolinux8/ && set link ?viasf=1 ||
+iseq ${ds} ${sourceforge}eurolinux/ && set link ?viasf=1 ||
 
-set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://fbi.cdn.euro-linux.com/dist/eurolinux/server/8/x86_64/certify-BaseOS/os/ inst.stage2=${ds}
+#set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://fbi.cdn.euro-linux.com/dist/eurolinux/server/8/x86_64/certify-BaseOS/os/ inst.stage2=${ds}
+set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://fbi.cdn.euro-linux.com/dist/eurolinux/server/9/x86_64/certify-beta-BaseOS/os/ inst.stage2=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
