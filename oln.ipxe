@@ -3482,7 +3482,7 @@ goto ${target}_stage2
 
 :Hyperbola_stage2
 iseq ${ds} ${sourceforge}hyperbola/ && set link ?viasf=1 ||
-set kp ip=dhcp hyperisobasedir=hyperbola hyperiso_http_srv=http://${ds}
+set kp ip=dhcp hyperisobasedir=hyperbola hyperiso_http_srv=${ds}
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
