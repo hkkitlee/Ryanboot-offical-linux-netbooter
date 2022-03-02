@@ -150,6 +150,7 @@ item	--key J Rescuezilla		(J) Rescuezilla amd64 (Mirror)
 item	--key K ArchLabs		(K) ArchLabs amd64 with Installer (Mirror)
 item	--key L ArchBang		(L) ArchBang amd64 with Installer (Mirror)
 item	--key M Plop			(M) PlopLinux amd64 (Mirror)
+item	--key N Hyperbola		(N) Hyperbola amd64 (Mirror)
 
 item	--gap
 item		start			Back to Top
@@ -223,6 +224,7 @@ item	Snal				Snal amd64 (Mirror)
 item	Reborn				RebornLinux amd64 (Mirror)
 item	ArchLabs			ArchLabs amd64 with Installer (Mirror)
 item	ArchBang			ArchBang amd64 with Installer (Mirror)
+item	Hyperbola			Hyperbola amd64 (Mirror)
 item	--gap
 
 item	--gap Gentoo
@@ -3452,6 +3454,46 @@ kernel --name vmlinuz --timeout 100000 ${ds}vmlinuz${link} initrd=initrfs.img sl
 initrd --name initrfs.img --timeout 100000 ${ds}initrfs.img${link}
 boot
 
+#################################################
+:Hyperbola
+
+set ds1 ${sourceforge}hyperbola/
+set ds2 ${sourceforge1}hyperbola/
+set ds3 ${mirror0}hyperbola/
+set ds4 ${mirror1}hyperbola/
+
+menu Sites boot ${target} from:
+item 1 ${ds1}
+item 2 ${ds2}
+item 3 ${ds3}
+item 4 ${ds4}
+item manual Manual Entry URL
+choose siteno
+
+iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
+
+
+:Hyperbola_manual
+set ds ${mirror0}hyperbola/
+echo -n Manual Entry ${target} URL: ${}
+read ds
+echo
+goto ${target}_stage2
+
+:Hyperbola_stage2
+iseq ${ds} ${sourceforge}hyperbola/ && set link ?viasf=1 ||
+set kp ip=dhcp hyperisobasedir=hyperbola hyperiso_http_srv=http://${ds}
+echo -n Kernel Parameter, Bootcode: ${}
+read kp
+echo
+
+
+kernel --name vmlinuz --timeout 100000 ${ds}hyperbola/boot/x86_64/vmlinuz${link} initrd=initramfs-hyperiso.img ${kp} checksum
+initrd --name initramfs-hyperiso.img --timeout 100000 ${ds}hyperbola/boot/x86_64/initramfs-hyperiso.img${link}
+boot
+
+#################################################
+#################################################
 #################################################
 #################################################
 :background
