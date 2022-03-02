@@ -2557,14 +2557,14 @@ choose siteno
 
 iseq ${siteno} manual && goto ${target}_manual || set ds ${ds${siteno}} && goto ${target}_stage2
 
-:EuroLinux8_manual
+:EuroLinux_manual
 set ds ${mirror0}eurolinux/
 echo -n Manual Entry ${target} URL: ${}
 read ds
 echo
 goto ${target}_stage2
 
-:EuroLinux8_stage2
+:EuroLinux_stage2
 iseq ${ds} ${sourceforge}eurolinux/ && set link ?viasf=1 ||
 
 #set kp ro ip=dhcp inst.gpt inst.stage2.all inst.repo=https://fbi.cdn.euro-linux.com/dist/eurolinux/server/8/x86_64/certify-BaseOS/os/ inst.stage2=${ds}
