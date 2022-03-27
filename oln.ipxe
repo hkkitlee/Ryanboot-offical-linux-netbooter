@@ -3504,7 +3504,7 @@ choose siteno
 iseq ${siteno} 1 && set ds https://netboot.smartos.org/smartos.ipxe ||
 iseq ${siteno} 2 && set ds https://netboot.smartos.org/packet.ipxe ||
 
-chain ds
+chain ${ds}
 
 #################################################
 #################################################
