@@ -100,6 +100,7 @@ item	--key B EuroLinux		(B) EuroLinux amd64 (Mirror)
 item	--key C Amahi			(C) Amahi 11 amd64 (Mirror)
 item	--key D Centosstream		(D) Centos-Stream amd64
 item	--key E UCS			(E) Univention Corporate Server amd64
+item	--key F SmartOS			(F) SmartOS amd64
 
 item	--gap
 item		start			Back to Top
@@ -3493,6 +3494,18 @@ initrd --name initramfs-hyperiso.img --timeout 100000 ${ds}hyperbola/boot/x86_64
 boot
 
 #################################################
+:SmartOS
+
+menu boot :
+item 1 SmartOS
+item 2 SmartOS on Equinix Metal
+choose siteno
+
+iseq ${siteno} 1 && set ds https://netboot.smartos.org/smartos.ipxe ||
+iseq ${siteno} 2 && set ds https://netboot.smartos.org/packet.ipxe ||
+
+chain ds
+
 #################################################
 #################################################
 #################################################
