@@ -3507,8 +3507,13 @@ item 1 SmartOS
 item 2 SmartOS on Equinix Metal
 choose siteno
 
-iseq ${siteno} 1 && chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/smartos.ipxe ||
-iseq ${siteno} 2 && chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/packet.ipxe ||
+iseq ${siteno} 1 && goto SOS || goto SOSEM
+
+:SOS
+chain --autofree https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/smartos.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/smartos.ipxe 
+
+:SOSEM
+chain --autofree https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/packet.ipxe || chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/packet.ipxe
 
 
 #################################################
