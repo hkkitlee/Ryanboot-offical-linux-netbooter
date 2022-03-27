@@ -259,6 +259,9 @@ item	Fatdog				Fatdog64 Linux live amd64
 item	--gap
 
 item	--gap Others
+item	SmartOS				SmartOS with Equinix Metal
+
+item	--gap Others
 item	IPFire				IPFire installer amd64/i586
 item	Rancheros			Rancher OS live amd64/i386
 item	ClearLinux			Clear Linux OS installer amd64 (Mirror)
@@ -3504,7 +3507,7 @@ choose siteno
 iseq ${siteno} 1 && set ds https://netboot.smartos.org/smartos.ipxe ||
 iseq ${siteno} 2 && set ds https://netboot.smartos.org/packet.ipxe ||
 
-chain ${ds}
+chain --autofree ${ds}
 
 #################################################
 #################################################
