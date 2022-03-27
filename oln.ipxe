@@ -3498,16 +3498,18 @@ boot
 
 #################################################
 :SmartOS
+###https://wiki.smartos.org/pxe-booting-smartos/#creating-a-private-netboot-environment
+###https://netboot.smartos.org/smartos.ipxe
+###https://netboot.smartos.org/packet.ipxe
 
 menu boot SmartOS:
 item 1 SmartOS
 item 2 SmartOS on Equinix Metal
 choose siteno
 
-iseq ${siteno} 1 && set ds https://netboot.smartos.org/smartos.ipxe ||
-iseq ${siteno} 2 && set ds https://netboot.smartos.org/packet.ipxe ||
+iseq ${siteno} 1 && chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/smartos.ipxe ||
+iseq ${siteno} 2 && chain --autofree https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/packet.ipxe ||
 
-chain --autofree ${ds}
 
 #################################################
 #################################################
