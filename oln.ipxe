@@ -479,8 +479,8 @@ goto ${target}_stage2
 
 
 :Parrot_stage2
-set release rolling
-echo -n Release (rolling, parrot, stable): ${}
+set release parrot
+echo -n Release (parrot, stable): ${}
 read release
 echo
 
