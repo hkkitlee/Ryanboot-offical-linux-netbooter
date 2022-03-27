@@ -3499,7 +3499,7 @@ boot
 #################################################
 :SmartOS
 
-menu boot :
+menu boot SmartOS:
 item 1 SmartOS
 item 2 SmartOS on Equinix Metal
 choose siteno
