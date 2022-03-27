@@ -2247,13 +2247,12 @@ choose answer
  iseq ${ds} ${sourceforge}clonezilla/ && set link ?viasf=1 && set answer Y ||
 iseq ${answer} Y && set img initrd=clonezilla.iso.img && set from fromiso=/clonezilla.iso || set from fetch=${ds}live/filesystem.squashfs
 
- 
-set kp config enforcing=0 username=user components noeject hooks=filesystem ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 ${from} edd=on nomodeset 
+set kp enforcing=0 username=user ocs_live_run="ocs-live-general" ocs_live_extra_param="" ocs_live_batch="no" vga=788 edd=on nomodeset 
 echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp}
+kernel --name vmlinuz --timeout 100000 ${ds}live/vmlinuz${link} initrd=initrd.img boot=live union=overlay ${img} ${kp} config components noeject hooks=filesystem ${from}
 initrd --name initrd.img --timeout 100000 ${ds}live/initrd.img${link}
 iseq ${answer} Y && initrd --name clonezilla.iso.img --timeout 100000 ${ds}clonezilla.iso.img${link} ||
 boot
