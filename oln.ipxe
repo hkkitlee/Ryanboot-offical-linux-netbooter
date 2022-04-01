@@ -695,7 +695,7 @@ goto ${target}_stage2
 
 :Alpine_stage2
 set version latest-stable 
-echo -n Version: v3.0-v3.15.2, latest-stable  version: ${}                                                      
+echo -n Version: v3.0-v3.15.3, latest-stable  version: ${}                                                      
 read version                                                                    
 echo
 
@@ -946,7 +946,7 @@ echo -n Main Version: ${}
 read mainv
 echo
 
-set subv 2.27-core164
+set subv 2.27-core166
 echo -n Sub Version: ${}
 read subv
 echo
