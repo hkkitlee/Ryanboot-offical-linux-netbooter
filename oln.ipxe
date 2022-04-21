@@ -695,7 +695,7 @@ goto ${target}_stage2
 
 :Alpine_stage2
 set version latest-stable 
-echo -n Version: v3.0-v3.15.3, latest-stable  version: ${}                                                      
+echo -n Version: v3.0-v3.15.4, latest-stable  version: ${}                                                      
 read version                                                                    
 echo
 
@@ -1216,7 +1216,7 @@ echo
 goto ${target}_stage2
 
 :Alma_stage2
-set version 8
+set version 9.0-beta
 echo -n Version: ${}
 read version
 echo
