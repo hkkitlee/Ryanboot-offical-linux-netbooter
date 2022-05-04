@@ -946,7 +946,7 @@ echo -n Main Version: ${}
 read mainv
 echo
 
-set subv 2.27-core166
+set subv 2.27-core167
 echo -n Sub Version: ${}
 read subv
 echo
