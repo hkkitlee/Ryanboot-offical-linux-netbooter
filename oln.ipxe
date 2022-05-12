@@ -370,8 +370,8 @@ echo
 goto ${target}_stage2
 
 :Fedora_stage2
-set version 35
-echo -n Fedora installer Version (32-35): ${}
+set version 36
+echo -n Fedora installer Version (32-36): ${}
 read version
 echo
 
