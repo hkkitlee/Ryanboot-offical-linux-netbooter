@@ -32,8 +32,7 @@ item	--gap	--	IP: ${ip}/${netmask} Mac Address:${mac}
 item	--gap	--	DHCP:${dhcp-server} Gateway:${gateway} DNS:${dns}
 item	--gap	--	next-server(proxy):${next-server}/${proxydhcp/next-server} SMBIOS UUID:${uuid}
 item	--gap	--	Chip:${chip} Platform:${platform} Build Arch:${buildarch} Version:${version}
-item	--gap	--	https://hkkitlee.ddns.net:9000/ https://github.com/hkkitlee/Ryanboot
-item	--gap	--	Chainload:http://hkkitlee.ddns.net:8999/chain.ipxe
+item	--gap	--	https://github.com/hkkitlee/Ryanboot
 item	--gap	--	https://git[hub,ee].com/hkkitlee/Ryanboot-offical-linux-netbooter
 item	--gap  
 
