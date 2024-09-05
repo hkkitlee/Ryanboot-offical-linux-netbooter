@@ -2152,8 +2152,8 @@ echo
 goto ${target}_stage2
 
 :Rocky_stage2
-set version 8
-echo -n (8.3, 8(8.4)) Version: ${}
+set version 9.4
+echo -n (8, 9(9.4)) Version: ${}
 read version
 echo
 
@@ -2164,8 +2164,8 @@ read kp
 echo
 
 #kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
-kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/ inst.stage2=${ds}${version}/ ${kp} initrd=initrd.img
 initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
+kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/ inst.stage2=${ds}${version} ${kp} 
 boot
 #################################################
 :Gparted-Live
