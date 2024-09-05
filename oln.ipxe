@@ -2164,7 +2164,7 @@ read kp
 echo
 
 #kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
-kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/ inst.stage2=${ds}${version}/ ${kp}
+kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/ inst.stage2=${ds}${version}/ ${kp} initrd=initrd.img
 initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
