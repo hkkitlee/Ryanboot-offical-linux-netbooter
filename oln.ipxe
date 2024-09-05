@@ -16,12 +16,12 @@
 console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 ||  console --picture http://hkkitlee.ddns.net:8999/logo.png --x 1024 --y 768
 imgtrust --allow 
 
-set mirror0 http://183.230.23.18:58000/ryanboot/
-set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
-set sourceforge https://phoenixnap.dl.sourceforge.net/projects/ryanboot/
+#set mirror0 http://183.230.23.18:58000/ryanboot/
+#set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
+#set sourceforge https://phoenixnap.dl.sourceforge.net/projects/ryanboot/
 #set sourceforge https://sourceforge.net/projects/ryanboot/
 #set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
-set sourceforge1 http://downloads.sourceforge.net/project/ryanboot/
+#set sourceforge1 http://downloads.sourceforge.net/project/ryanboot/
 
 
 goto start
@@ -2163,7 +2163,8 @@ echo -n Kernel Parameter, Bootcode: ${}
 read kp
 echo
 
-kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
+#kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/BaseOS/x86_64/os ${kp}
+kernel ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${ds}${version}/ inst.stage2=${ds}${version}/ ${kp}
 initrd ${ds}${version}/BaseOS/x86_64/os/images/pxeboot/initrd.img
 boot
 #################################################
