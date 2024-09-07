@@ -16,7 +16,7 @@
 console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 || console --picture https://gitee.com/hkkitlee/Ryanboot-offical-linux-netbooter/raw/main/logo.png --x 1024 --y 768 ||  console --picture http://hkkitlee.ddns.net:8999/logo.png --x 1024 --y 768
 imgtrust --allow 
 
-#set mirror0 http://183.230.23.18:58000/ryanboot/
+set mirror0 http://hkkitlee.ddns.net/
 #set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
 #set sourceforge https://phoenixnap.dl.sourceforge.net/projects/ryanboot/
 #set sourceforge https://sourceforge.net/projects/ryanboot/
@@ -50,6 +50,7 @@ item	--gap	--	Config
 item		background		Background (PNG, Sreen Size) config
 item		colour			cpair config
 item		setting			iPXE config
+item		shell			iPXE Shell
 item	--gap
 item		poweroff		PowerOff
 item		reboot			Reboot
@@ -3539,6 +3540,10 @@ goto start
 #################################################
 :setting
 config
+goto start
+#################################################
+:shell
+shell
 goto start
 #################################################
 :xyz
