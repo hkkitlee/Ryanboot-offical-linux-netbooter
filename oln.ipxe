@@ -17,7 +17,7 @@ console --picture https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/r
 imgtrust --allow 
 
 set mirror0 http://hkkitlee.ddns.net/
-#set mirror1 http://jackieojackie.ddns.net:8999/ryanboot/
+set mirror1 https://github.com/hkkitlee/Ryanboot-offical-linux-netbooter/blob/main/
 #set sourceforge https://phoenixnap.dl.sourceforge.net/projects/ryanboot/
 #set sourceforge https://sourceforge.net/projects/ryanboot/
 #set sourceforge https://master.dl.sourceforge.net/project/ryanboot/
