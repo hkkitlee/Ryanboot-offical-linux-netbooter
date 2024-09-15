@@ -1973,7 +1973,7 @@ echo
 
 kernel --name linux26 --timeout 1000000000 ${ds}boot/linux26${link} initrd=initrd.img initrd=proxmox-ve.iso.img ${kp}
 initrd --name initrd.img --timeout 1000000000 ${ds}boot/initrd.img${link}
-initrd --name proxmox-ve.iso.img --timeout 100000 ${ds}proxmox-ve.iso.img${link}
+initrd --name proxmox-ve.iso.img --timeout 100000 ${ds}../proxmox-ve.iso.img${link}
 boot
 #################################################
 :Garuda
